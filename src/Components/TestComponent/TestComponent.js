@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+require('dotenv').config();
+
 const TestComponent = ({ value, testPlus, testMinus, testReset }) => {
+  const api = process.env.MOVIE_API;
+
   return (
     <div>
       <p>Test Component</p>
@@ -15,6 +19,7 @@ const TestComponent = ({ value, testPlus, testMinus, testReset }) => {
       <button type="button" onClick={testReset}>
         reset
       </button>
+      <p>{api}</p>
     </div>
   );
 };
