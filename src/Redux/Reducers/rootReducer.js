@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
-
-import counter from './counter';
+import topFilmsReducer from './topFilmsReducer';
 
 const rootReducer = combineReducers({
-  value: counter,
+  topFilms: topFilmsReducer,
 });
 
 export default rootReducer;

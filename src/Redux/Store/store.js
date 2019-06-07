@@ -2,17 +2,9 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../Reducers/rootReducer';
 
-const devTools =
-  // eslint-disable-next-line no-underscore-dangle
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-const thunkMiddleware = applyMiddleware(thunk);
+// eslint-disable-next-line no-underscore-dangle
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(
-  rootReducer,
-  compose(
-    devTools,
-    thunkMiddleware,
-  ),
-);
+const store = createStore(rootReducer, devTools(applyMiddleware(thunk)));
 
 export default store;

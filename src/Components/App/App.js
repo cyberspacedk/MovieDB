@@ -1,10 +1,10 @@
 import React from 'react';
-import TestComponent from '../Containers/TestContainer';
+import TopFilms from '../TopFilms/TopFilmsContainer';
 
 function App() {
   return (
     <div className="App">
-      <TestComponent />
+      <TopFilms />
     </div>
   );
 }
