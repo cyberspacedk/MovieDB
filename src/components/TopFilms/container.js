@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import fetchFilms from '../../Redux/Actions/getTopFilms';
-import TopFilms from './TopFilms';
+import TopFilms from './component';
 
 import {
   getTopFilmsSelector,
@@ -22,9 +22,8 @@ class TopFilmsContainer extends Component {
 
   render() {
     // eslint-disable-next-line react/prop-types
-    const { topFilms } = this.props;
 
-    return <TopFilms topFilms={topFilms} />;
+    return <TopFilms {...this.props} />;
   }
 }
 
@@ -34,9 +33,9 @@ const mstp = state => ({
   error: isError(state),
 });
 
-const mdtp = dispatch => ({
-  getFilms: x => dispatch(fetchFilms(x)),
-});
+const mdtp = {
+  getFilms: fetchFilms,
+};
 
 TopFilmsContainer.propTypes = {
   getFilms: PropTypes.func.isRequired,

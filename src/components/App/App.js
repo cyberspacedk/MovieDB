@@ -1,5 +1,5 @@
 import React from 'react';
-import TopFilms from '../TopFilms/TopFilmsContainer';
+import TopFilms from '../TopFilms';
 
 function App() {
   return (

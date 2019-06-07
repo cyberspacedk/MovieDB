@@ -21,7 +21,6 @@ const asyncDataAction = query => dispatch => {
     .get(query)
     .then(({ data }) => {
       dispatch(fetchDataSuccess(data));
-      console.log(data);
     })
     .catch(err => dispatch(fetchDataError(err)));
 };

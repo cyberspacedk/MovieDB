@@ -21,6 +21,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         films: payload,
+        loading: false,
       };
     default:
       return state;
