@@ -1,7 +1,16 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-shadow */
+/* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
+import axios from 'axios';
 import { Form, Icon, Input, Button } from 'antd';
+import {
+  REQUEST_TOKEN_PATH,
+  GET_SESSION_ID_LOGIN_PATH,
+  GET_SESSION_ID_PATH,
+} from '../../api/api';
 import 'antd/dist/antd.css';
 
 function hasErrors(fieldsError) {
@@ -12,14 +21,37 @@ class HorizontalLoginForm extends React.Component {
   componentDidMount() {
     // To disabled submit button at the beginning.
     this.props.form.validateFields();
+    // send request for token
+    axios(REQUEST_TOKEN_PATH).then(({ data }) =>
+      localStorage.setItem('REQUEST_TOKEN', JSON.stringify(data.request_token)),
+    );
   }
 
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-      }
+      const { username, password } = values;
+      const request_token = JSON.parse(localStorage.getItem('REQUEST_TOKEN'));
+      axios
+        .post(GET_SESSION_ID_LOGIN_PATH, {
+          username,
+          password,
+          request_token,
+        })
+        .then(({ data }) =>
+          axios
+            .post(GET_SESSION_ID_PATH, {
+              request_token: data.request_token,
+            })
+            .then(({ data }) => {
+              localStorage.setItem(
+                'SESSION_TOKEN',
+                JSON.stringify(data.session_id),
+              );
+            })
+            .catch(() => alert('Bad token !!!')),
+        )
+        .catch(() => alert('Incorrect login or password !!!'));
     });
   };
 
