@@ -7,3 +7,5 @@ export const REQUEST_TOKEN_PATH = `https://api.themoviedb.org/3/authentication/t
 export const GET_SESSION_ID_PATH = `https://api.themoviedb.org/3/authentication/session/new?api_key=${API_KEY}`;
 
 export const GET_SESSION_ID_LOGIN_PATH = `https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=${API_KEY}`;
+
+export const DELETE_SESSION_ID_PATH = `https://api.themoviedb.org/3/authentication/session?api_key=${API_KEY}`;

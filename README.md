@@ -1,1 +1,1 @@
-[Movie db](#https://www.themoviedb.org/documentation/api)
+[Movie db](https://www.themoviedb.org/documentation/api)
