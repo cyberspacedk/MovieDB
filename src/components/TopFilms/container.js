@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { GET_FILMS_PATH } from '../../api/api';
 import fetchFilms from '../../Redux/Actions/getTopFilms';
 import TopFilms from './component';
 
@@ -11,18 +12,12 @@ import {
   isError,
 } from '../../Redux/Selectors/getTopFilmsSelector';
 
-// eslint-disable-next-line no-unused-vars
-const uri =
-  'https://api.themoviedb.org/3/trending/movie/week?api_key=2452661f8c986fe61a12ec7532335900';
-
 class TopFilmsContainer extends Component {
   componentDidMount() {
-    this.props.getFilms(uri);
+    this.props.getFilms(GET_FILMS_PATH);
   }
 
   render() {
-    // eslint-disable-next-line react/prop-types
-
     return <TopFilms {...this.props} />;
   }
 }
