@@ -1,20 +1,15 @@
-/* eslint-disable no-shadow */
-/* eslint-disable prettier/prettier */
 import axios from 'axios';
 
-// ASYNC AWAIT SESSION ID
-/*
-const authentification = async (
+const authentification = (
   reqTokenPath,
   verifyPath,
   username,
   password,
   sessionPath,
-) => {
+) => async dispatch => {
   const requestToken = await axios(reqTokenPath).then(
     ({ data }) => data.request_token,
   );
-  console.log(requestToken);
 
   const verifiedToken = await axios
     .post(verifyPath, {
@@ -24,51 +19,23 @@ const authentification = async (
     })
     .then(({ data }) => data.request_token);
 
-  const sessionId = await axios
-    .post(sessionPath, { request_token: verifiedToken })
-    .then(({ data }) => data.session_id);
+  const sessionId = await axios.post(sessionPath, {
+    request_token: verifiedToken,
+  });
+  const { session_id: SID } = sessionId.data;
 
-  console.log(sessionId);
-};
-*/
+  dispatch({
+    type: 'SET_SESSION_ID',
+    payload: SID,
+  });
 
-const newRequestToken = reqTokenPath => {
-  axios(reqTokenPath).then(({ data }) =>
-    localStorage.setItem('REQUEST_TOKEN', JSON.stringify(data.request_token)),
-  );
-};
+  dispatch({
+    type: 'GET_USERLOGIN',
+    payload: username,
+  });
 
-const authentification = (
-  tokenPath,
-  username,
-  password,
-  sessionPath,
-) => dispatch => {
-  axios
-    .post(tokenPath, {
-      username,
-      password,
-      request_token: JSON.parse(localStorage.getItem('REQUEST_TOKEN')),
-    })
-    .then(({ data }) => {
-      axios
-        .post(sessionPath, { request_token: data.request_token })
-        .then(({ data }) => {
-          dispatch({
-            type: 'SET_SESSION_ID',
-            payload: data.session_id,
-          });
-          dispatch({
-            type: 'GET_USERLOGIN',
-            payload: username,
-          });
-
-          localStorage.setItem('SESSION_ID', JSON.stringify(data.session_id));
-          localStorage.setItem('USERNAME', JSON.stringify(username));
-        })
-        .catch(() => alert('Bad token !!!'));
-    })
-    .catch(err => console.log(err));
+  localStorage.setItem('SESSION_ID', JSON.stringify(SID));
+  localStorage.setItem('USERNAME', JSON.stringify(username));
 };
 
 const userLogout = (deletePath, sessionId) => dispatch => {
@@ -87,4 +54,4 @@ const userLogout = (deletePath, sessionId) => dispatch => {
     .catch(err => console.log(err));
 };
 
-export { authentification, newRequestToken, userLogout };
+export { authentification, userLogout };

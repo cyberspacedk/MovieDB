@@ -3,10 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Form from './component';
-import {
-  authentification,
-  newRequestToken,
-} from '../../../Redux/Store/authentifiction/actions';
+import { authentification } from '../../../Redux/Store/authentifiction/actions';
 import {
   REQUEST_TOKEN_PATH,
   GET_SESSION_ID_LOGIN_PATH,
@@ -29,9 +26,9 @@ const ContainerForm = ({ authentification }) => {
   const handleSubmitForm = e => {
     e.preventDefault();
     const { username, password } = userData;
-    newRequestToken(REQUEST_TOKEN_PATH);
 
     authentification(
+      REQUEST_TOKEN_PATH,
       GET_SESSION_ID_LOGIN_PATH,
       username,
       password,
