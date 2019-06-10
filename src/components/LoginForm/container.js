@@ -8,7 +8,10 @@ import {
   userLogout,
   newRequestToken,
 } from '../../Redux/Actions/setUserDataAction';
-import isAuthentificated from '../../Redux/Selectors/authReducer';
+import {
+  isAuthentificated,
+  getUserLogin,
+} from '../../Redux/Selectors/authReducer';
 import LoginForm from './component';
 
 const Header = styled.header`
@@ -21,18 +24,26 @@ const Header = styled.header`
   }
 `;
 
-const ContainerForm = ({ checkToken, logoutUser, isAuth, refreshToken }) => (
+const ContainerForm = ({
+  checkToken,
+  logoutUser,
+  isAuth,
+  refreshToken,
+  userLogin,
+}) => (
   <Header>
     <LoginForm
       auth={checkToken}
       logout={logoutUser}
       isAuth={isAuth}
       refreshToken={refreshToken}
+      userLogin={userLogin}
     />
   </Header>
 );
 const mstp = state => ({
   isAuth: isAuthentificated(state),
+  userLogin: getUserLogin(state),
 });
 const mdtp = {
   checkToken: sendDataForCheck,

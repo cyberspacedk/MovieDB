@@ -4,6 +4,11 @@
 /* eslint-disable no-shadow */
 import axios from 'axios';
 
+const getUserLogin = login => ({
+  type: 'GET_USERLOGIN',
+  payload: login,
+});
+
 const authSessionId = session => ({
   type: 'SET_SESSION_ID',
   payload: session,
@@ -32,8 +37,10 @@ export const sendDataForCheck = (
           request_token: data.request_token,
         })
         .then(({ data }) => {
+          dispatch(getUserLogin(login));
           dispatch(authSessionId(data.session_id));
           localStorage.setItem('SESSION_ID', JSON.stringify(data.session_id));
+          localStorage.setItem('USERNAME', JSON.stringify(login));
         })
         .catch(() => alert('Bad token !!!'));
     })

@@ -1,3 +1,3 @@
-const isAuthentificated = state => state.user.sessionId;
+export const isAuthentificated = state => state.user.sessionId;
 
-export default isAuthentificated;
+export const getUserLogin = state => state.user.username;

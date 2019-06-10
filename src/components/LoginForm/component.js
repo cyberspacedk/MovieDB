@@ -7,6 +7,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Form, Icon, Input, Button } from 'antd';
+import styled from 'styled-components';
 import {
   REQUEST_TOKEN_PATH,
   GET_SESSION_ID_LOGIN_PATH,
@@ -15,6 +16,15 @@ import {
 } from '../../api/api';
 import 'antd/dist/antd.css';
 
+const UserLigin = styled.p`
+  display: inline-block;
+  font-size: 1rem;
+  color: #fff;
+  margin-right: 10px;
+  span {
+    color: #ff002d;
+  }
+`;
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
@@ -43,8 +53,8 @@ class HorizontalLoginForm extends React.Component {
   };
 
   handleLogout = e => {
-    // e.preventDefault();
     const SID = JSON.parse(localStorage.getItem('SESSION_ID'));
+    localStorage.removeItem('REQUEST_TOKEN');
     this.props.logout(DELETE_SESSION_ID_PATH, SID);
   };
 
@@ -62,7 +72,7 @@ class HorizontalLoginForm extends React.Component {
     const passwordError =
       isFieldTouched('password') && getFieldError('password');
 
-    const { isAuth } = this.props;
+    const { isAuth, userLogin } = this.props;
     console.log(isAuth);
     return (
       <Form layout="inline" onSubmit={this.handleSubmit}>
@@ -117,6 +127,9 @@ class HorizontalLoginForm extends React.Component {
           </>
         ) : (
           <Form.Item>
+            <UserLigin>
+              Hi <span>{userLogin}</span>
+            </UserLigin>
             <Button
               type="primary"
               htmlType="submit"
