@@ -36,26 +36,24 @@ const Label = styled.h2`
   color: #fff;
 `;
 
-const TopFilms = ({ loading, topFilms }) => {
-  return (
-    <div>
-      <Label>Top Week chart </Label>
-      <List>
-        {loading && <li>...Loading</li>}
-        {topFilms.results !== undefined &&
-          topFilms.results.map(film => (
-            <Item key={film.id}>
-              <img
-                src={`https://image.tmdb.org/t/p/w200${film.poster_path}`}
-                alt="Poster"
-              />
-              <h2> {film.title} </h2>
-            </Item>
-          ))}
-      </List>
-    </div>
-  );
-};
+const TopFilms = ({ loading, topFilms }) => (
+  <div>
+    <Label>Top Week chart </Label>
+    <List>
+      {loading && <li>...Loading</li>}
+      {topFilms.results !== undefined &&
+        topFilms.results.map(film => (
+          <Item key={film.id}>
+            <img
+              src={`https://image.tmdb.org/t/p/w200${film.poster_path}`}
+              alt="Poster"
+            />
+            <h2> {film.title} </h2>
+          </Item>
+        ))}
+    </List>
+  </div>
+);
 
 TopFilms.propTypes = {
   loading: PropTypes.bool.isRequired,

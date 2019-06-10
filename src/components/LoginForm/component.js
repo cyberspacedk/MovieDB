@@ -1,156 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Icon, Input, Button } from 'antd';
 import styled from 'styled-components';
-import {
-  REQUEST_TOKEN_PATH,
-  GET_SESSION_ID_LOGIN_PATH,
-  GET_SESSION_ID_PATH,
-  DELETE_SESSION_ID_PATH,
-} from '../../api/api';
 import 'antd/dist/antd.css';
+import Forma from './forma';
+import UserInfo from './userInfo';
 
-const UserLigin = styled.p`
-  display: inline-block;
-  font-size: 1rem;
-  color: #fff;
-  margin-right: 10px;
-  span {
-    color: #ff002d;
-  }
+const Header = styled.header`
+  display: flex;
+  background-color: #383838;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  justify-content: flex-end;
 `;
-function hasErrors(fieldsError) {
-  return Object.keys(fieldsError).some(field => fieldsError[field]);
-}
 
-class HorizontalLoginForm extends React.Component {
-  componentDidMount() {
-    // eslint-disable-next-line react/destructuring-assignment
-    this.props.form.validateFields();
-  }
-
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.refreshToken(REQUEST_TOKEN_PATH);
-
-    this.props.form.validateFields((err, values) => {
-      const { username, password } = values;
-      // eslint-disable-next-line camelcase
-      const request_token = JSON.parse(localStorage.getItem('REQUEST_TOKEN'));
-
-      this.props.auth(
-        GET_SESSION_ID_LOGIN_PATH,
-        username,
-        password,
-        request_token,
-        GET_SESSION_ID_PATH,
-      );
-    });
-  };
-
-  handleLogout = () => {
-    const SID = JSON.parse(localStorage.getItem('SESSION_ID'));
-    localStorage.removeItem('REQUEST_TOKEN');
-    this.props.logout(DELETE_SESSION_ID_PATH, SID);
-  };
-
-  render() {
-    const {
-      form: {
-        getFieldDecorator,
-        getFieldsError,
-        getFieldError,
-        isFieldTouched,
-      },
-    } = this.props;
-
-    const usernameError =
-      isFieldTouched('username') && getFieldError('username');
-    const passwordError =
-      isFieldTouched('password') && getFieldError('password');
-
-    const { isAuth, userLogin } = this.props;
-    return (
-      <Form layout="inline" onSubmit={this.handleSubmit}>
-        {!isAuth ? (
-          <>
-            <Form.Item
-              validateStatus={usernameError ? 'error' : ''}
-              help={usernameError || ''}
-            >
-              {getFieldDecorator('username', {
-                rules: [
-                  { required: true, message: 'Please input your username!' },
-                ],
-              })(
-                <Input
-                  prefix={
-                    <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
-                  }
-                  placeholder="Username"
-                />,
-              )}
-            </Form.Item>
-
-            <Form.Item
-              validateStatus={passwordError ? 'error' : ''}
-              help={passwordError || ''}
-            >
-              {getFieldDecorator('password', {
-                rules: [
-                  { required: true, message: 'Please input your Password!' },
-                ],
-              })(
-                <Input
-                  prefix={
-                    <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />
-                  }
-                  type="password"
-                  placeholder="Password"
-                />,
-              )}
-            </Form.Item>
-
-            <Form.Item>
-              <Button
-                type="primary"
-                htmlType="submit"
-                disabled={hasErrors(getFieldsError())}
-              >
-                Log in
-              </Button>
-            </Form.Item>
-          </>
-        ) : (
-          <Form.Item>
-            <UserLigin>
-              Hi <span>{userLogin}</span>
-            </UserLigin>
-            <Button
-              type="primary"
-              htmlType="submit"
-              onClick={this.handleLogout}
-            >
-              Log out
-            </Button>
-          </Form.Item>
-        )}
-      </Form>
-    );
-  }
-}
-
-const WrappedHorizontalLoginForm = Form.create({ name: 'horizontal_login' })(
-  HorizontalLoginForm,
+const ParentForm = ({ isLogin }) => (
+  <Header>{!isLogin ? <Forma /> : <UserInfo />}</Header>
 );
 
-HorizontalLoginForm.propTypes = {
-  form: PropTypes.shape.isRequired,
-  isAuth: PropTypes.bool.isRequired,
-  userLogin: PropTypes.string.isRequired,
-  logout: PropTypes.func.isRequired,
-  auth: PropTypes.func.isRequired,
-  refreshToken: PropTypes.func.isRequired,
+ParentForm.propTypes = {
+  isLogin: PropTypes.string.isRequired,
 };
-
-export default WrappedHorizontalLoginForm;
+export default ParentForm;

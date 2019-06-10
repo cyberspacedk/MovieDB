@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { GET_FILMS_PATH } from '../../api/api';
-import fetchFilms from '../../Redux/Actions/getTopFilms';
+import { GET_FILMS_PATH } from '../../api';
+import fetchFilms from '../../Redux/Store/getTopChart/actions';
 import TopFilms from './component';
 
 import {
   getTopFilmsSelector,
   isloading,
   isError,
-} from '../../Redux/Selectors/getTopFilmsSelector';
+} from '../../Redux/Store/getTopChart/selectors';
 
 class TopFilmsContainer extends Component {
   componentDidMount() {
