@@ -1,11 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-alert */
-/* eslint-disable no-shadow */
-/* eslint-disable camelcase */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
 import React from 'react';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 import { Form, Icon, Input, Button } from 'antd';
 import styled from 'styled-components';
 import {
@@ -31,6 +25,7 @@ function hasErrors(fieldsError) {
 
 class HorizontalLoginForm extends React.Component {
   componentDidMount() {
+    // eslint-disable-next-line react/destructuring-assignment
     this.props.form.validateFields();
   }
 
@@ -40,6 +35,7 @@ class HorizontalLoginForm extends React.Component {
 
     this.props.form.validateFields((err, values) => {
       const { username, password } = values;
+      // eslint-disable-next-line camelcase
       const request_token = JSON.parse(localStorage.getItem('REQUEST_TOKEN'));
 
       this.props.auth(
@@ -52,7 +48,7 @@ class HorizontalLoginForm extends React.Component {
     });
   };
 
-  handleLogout = e => {
+  handleLogout = () => {
     const SID = JSON.parse(localStorage.getItem('SESSION_ID'));
     localStorage.removeItem('REQUEST_TOKEN');
     this.props.logout(DELETE_SESSION_ID_PATH, SID);
@@ -60,20 +56,20 @@ class HorizontalLoginForm extends React.Component {
 
   render() {
     const {
-      getFieldDecorator,
-      getFieldsError,
-      getFieldError,
-      isFieldTouched,
-    } = this.props.form;
+      form: {
+        getFieldDecorator,
+        getFieldsError,
+        getFieldError,
+        isFieldTouched,
+      },
+    } = this.props;
 
-    // Only show error after a field is touched.
     const usernameError =
       isFieldTouched('username') && getFieldError('username');
     const passwordError =
       isFieldTouched('password') && getFieldError('password');
 
     const { isAuth, userLogin } = this.props;
-    console.log(isAuth);
     return (
       <Form layout="inline" onSubmit={this.handleSubmit}>
         {!isAuth ? (
@@ -147,5 +143,14 @@ class HorizontalLoginForm extends React.Component {
 const WrappedHorizontalLoginForm = Form.create({ name: 'horizontal_login' })(
   HorizontalLoginForm,
 );
+
+HorizontalLoginForm.propTypes = {
+  form: PropTypes.shape.isRequired,
+  isAuth: PropTypes.bool.isRequired,
+  userLogin: PropTypes.string.isRequired,
+  logout: PropTypes.func.isRequired,
+  auth: PropTypes.func.isRequired,
+  refreshToken: PropTypes.func.isRequired,
+};
 
 export default WrappedHorizontalLoginForm;

@@ -1,3 +1,5 @@
-export const isAuthentificated = state => state.user.sessionId;
+const isAuthentificated = state => state.user.sessionId;
 
-export const getUserLogin = state => state.user.username;
+const getUserLogin = state => state.user.username;
+
+export { isAuthentificated, getUserLogin };

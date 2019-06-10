@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -14,6 +13,7 @@ import {
 
 class TopFilmsContainer extends Component {
   componentDidMount() {
+    // eslint-disable-next-line react/destructuring-assignment
     this.props.getFilms(GET_FILMS_PATH);
   }
 

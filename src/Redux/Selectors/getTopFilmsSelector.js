@@ -1,5 +1,7 @@
-export const getTopFilmsSelector = state => state.topFilms.films;
+const getTopFilmsSelector = state => state.topFilms.films;
 
-export const isloading = state => state.topFilms.loading;
+const isloading = state => state.topFilms.loading;
 
-export const isError = state => state.topFilms.error;
+const isError = state => state.topFilms.error;
+
+export { getTopFilmsSelector, isloading, isError };
