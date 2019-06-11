@@ -36,6 +36,7 @@ const Label = styled.h2`
   color: #fff;
 `;
 
+// eslint-disable-next-line react/prop-types
 const TopFilms = ({ loading, topFilms }) => (
   <div>
     <Label>Top Week chart </Label>
@@ -57,7 +58,6 @@ const TopFilms = ({ loading, topFilms }) => (
 
 TopFilms.propTypes = {
   loading: PropTypes.bool.isRequired,
-  topFilms: PropTypes.shape.isRequired,
 };
 
 export default TopFilms;

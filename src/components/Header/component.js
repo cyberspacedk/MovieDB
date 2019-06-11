@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import 'antd/dist/antd.css';
-import Forma from './forma';
-import UserInfo from './userInfo';
+import UserInfo from './UserInfo';
+import LoginForm from './LoginForm';
 
 const Header = styled.header`
   display: flex;
@@ -14,7 +13,7 @@ const Header = styled.header`
 `;
 
 const ParentForm = ({ isLogin }) => (
-  <Header>{!isLogin ? <Forma /> : <UserInfo />}</Header>
+  <Header>{!isLogin ? <LoginForm /> : <UserInfo />}</Header>
 );
 
 ParentForm.propTypes = {

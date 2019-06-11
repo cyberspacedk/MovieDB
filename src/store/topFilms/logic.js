@@ -8,12 +8,10 @@ const getTopFilmsLogic = createLogic({
 
   async process({ httpClient }, dispatch, done) {
     try {
-      const films = await httpClient
-        .get(
-          'https://api.themoviedb.org/3/trending/movie/week?api_key=2452661f8c986fe61a12ec7532335900',
-        )
-        .then(({ data }) => data.results);
-      dispatch(fetchDataSuccess(films));
+      const data = await httpClient.get(
+        'https://api.themoviedb.org/3/trending/movie/week?api_key=2452661f8c986fe61a12ec7532335900',
+      );
+      dispatch(fetchDataSuccess(data.data.results));
     } catch (err) {
       dispatch(fetchDataError(err));
     }

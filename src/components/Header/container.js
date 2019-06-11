@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { isAuthentificated } from '../../Redux/Store/authentifiction/selectors';
+import { isAuthentificated } from '../../store/authentifiction/selectors';
 
 import ParentForm from './component';
 

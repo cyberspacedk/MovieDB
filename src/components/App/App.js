@@ -1,6 +1,8 @@
 import React from 'react';
 import TopFilms from '../TopFilms';
-import LoginForm from '../LoginForm';
+import LoginForm from '../Header';
+import 'antd/dist/antd.css';
+
 // styles
 import GlobalStyle from '../../globalStyles';
 

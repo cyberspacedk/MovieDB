@@ -2,17 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import UserInfo from './component';
-import { userLogout } from '../../../Redux/Store/authentifiction/actions';
+import { userLogout } from '../../../store/authentifiction/actions';
 import {
   getUserLogin,
   isAuthentificated,
-} from '../../../Redux/Store/authentifiction/selectors';
+} from '../../../store/authentifiction/selectors';
 
 // eslint-disable-next-line no-shadow
 const ContainerUserInfo = ({ username, userLogout }) => {
-  const handleLogout = () => userLogout();
-
-  return <UserInfo userName={username} logout={handleLogout} />;
+  return <UserInfo userName={username} logout={userLogout} />;
 };
 
 const mstp = state => ({

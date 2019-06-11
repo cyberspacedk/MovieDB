@@ -2,14 +2,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchDataRequest } from '../../Redux/Store/topFilms/actions';
+import { fetchDataRequest } from '../../store/topFilms/actions';
 import TopFilms from './component';
 
 import {
   getTopFilmsSelector,
   isloading,
   isError,
-} from '../../Redux/Store/topFilms/selectors';
+} from '../../store/topFilms/selectors';
 
 class TopFilmsContainer extends Component {
   componentDidMount() {
@@ -18,7 +18,9 @@ class TopFilmsContainer extends Component {
   }
 
   render() {
-    return <TopFilms {...this.props} />;
+    const { error: _e, fetchDataRequest: _f, ...restProps } = this.props;
+
+    return <TopFilms {...restProps} />;
   }
 }
 
@@ -33,7 +35,7 @@ const mdtp = {
 };
 
 TopFilmsContainer.propTypes = {
-  getFilms: PropTypes.func.isRequired,
+  fetchDataRequest: PropTypes.func.isRequired,
 };
 
 export default connect(

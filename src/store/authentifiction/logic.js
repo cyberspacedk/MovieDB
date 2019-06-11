@@ -4,7 +4,7 @@ import {
   REQUEST_TOKEN_PATH,
   GET_SESSION_ID_LOGIN_PATH,
   GET_SESSION_ID_PATH,
-} from '../../../api';
+} from '../../api';
 import { userLogout, setSessionId, setUserLogin } from './actions';
 
 // LOGIC FOR AUTHENTIFICATE USER
