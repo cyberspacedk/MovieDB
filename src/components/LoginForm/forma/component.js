@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Icon, Input, Button } from 'antd';
 import 'antd/dist/antd.css';
 
@@ -31,5 +31,10 @@ const Forma = ({ handleInputValue, handleSubmitForm }) => (
     </Form.Item>
   </Form>
 );
+
+Forma.propTypes = {
+  handleInputValue: PropTypes.func.isRequired,
+  handleSubmitForm: PropTypes.isRequired,
+};
 
 export default Forma;

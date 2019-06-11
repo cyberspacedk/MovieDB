@@ -41,8 +41,8 @@ const TopFilms = ({ loading, topFilms }) => (
     <Label>Top Week chart </Label>
     <List>
       {loading && <li>...Loading</li>}
-      {topFilms.results !== undefined &&
-        topFilms.results.map(film => (
+      {topFilms !== undefined &&
+        topFilms.map(film => (
           <Item key={film.id}>
             <img
               src={`https://image.tmdb.org/t/p/w200${film.poster_path}`}

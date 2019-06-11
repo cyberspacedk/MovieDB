@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import topFilmsReducer from './getTopChart/reducers';
+import topFilmsReducer from './topFilms/reducers';
 import setUserDataReducer from './authentifiction/reducers';
 
 const rootReducer = combineReducers({

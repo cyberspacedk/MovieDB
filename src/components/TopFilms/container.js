@@ -1,20 +1,20 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { GET_FILMS_PATH } from '../../api';
-import fetchFilms from '../../Redux/Store/getTopChart/actions';
+import { fetchDataRequest } from '../../Redux/Store/topFilms/actions';
 import TopFilms from './component';
 
 import {
   getTopFilmsSelector,
   isloading,
   isError,
-} from '../../Redux/Store/getTopChart/selectors';
+} from '../../Redux/Store/topFilms/selectors';
 
 class TopFilmsContainer extends Component {
   componentDidMount() {
     // eslint-disable-next-line react/destructuring-assignment
-    this.props.getFilms(GET_FILMS_PATH);
+    this.props.fetchDataRequest();
   }
 
   render() {
@@ -29,7 +29,7 @@ const mstp = state => ({
 });
 
 const mdtp = {
-  getFilms: fetchFilms,
+  fetchDataRequest,
 };
 
 TopFilmsContainer.propTypes = {

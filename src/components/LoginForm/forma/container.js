@@ -1,16 +1,11 @@
-/* eslint-disable no-shadow */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Form from './component';
-import { authentification } from '../../../Redux/Store/authentifiction/actions';
-import {
-  REQUEST_TOKEN_PATH,
-  GET_SESSION_ID_LOGIN_PATH,
-  GET_SESSION_ID_PATH,
-} from '../../../api';
+import { authUser } from '../../../Redux/Store/authentifiction/actions';
 
-const ContainerForm = ({ authentification }) => {
+// eslint-disable-next-line no-shadow
+const ContainerForm = ({ authUser }) => {
   let userData = {
     username: '',
     password: '',
@@ -25,15 +20,7 @@ const ContainerForm = ({ authentification }) => {
 
   const handleSubmitForm = e => {
     e.preventDefault();
-    const { username, password } = userData;
-
-    authentification(
-      REQUEST_TOKEN_PATH,
-      GET_SESSION_ID_LOGIN_PATH,
-      username,
-      password,
-      GET_SESSION_ID_PATH,
-    );
+    authUser(userData);
   };
 
   return (
@@ -44,11 +31,11 @@ const ContainerForm = ({ authentification }) => {
   );
 };
 const mdtp = {
-  authentification,
+  authUser,
 };
 
 ContainerForm.propTypes = {
-  authentification: PropTypes.func.isRequired,
+  authUser: PropTypes.func.isRequired,
 };
 
 export default connect(

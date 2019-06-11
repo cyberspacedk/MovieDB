@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import UserInfo from './component';
-import { DELETE_SESSION_ID_PATH } from '../../../api';
 import { userLogout } from '../../../Redux/Store/authentifiction/actions';
 import {
   getUserLogin,
@@ -10,10 +9,8 @@ import {
 } from '../../../Redux/Store/authentifiction/selectors';
 
 // eslint-disable-next-line no-shadow
-const ContainerUserInfo = ({ username, userLogout, sessionID }) => {
-  const handleLogout = () => {
-    userLogout(DELETE_SESSION_ID_PATH, sessionID);
-  };
+const ContainerUserInfo = ({ username, userLogout }) => {
+  const handleLogout = () => userLogout();
 
   return <UserInfo userName={username} logout={handleLogout} />;
 };
@@ -28,7 +25,6 @@ const mdtp = {
 
 ContainerUserInfo.propTypes = {
   username: PropTypes.string.isRequired,
-  sessionID: PropTypes.string.isRequired,
   userLogout: PropTypes.func.isRequired,
 };
 
