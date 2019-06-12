@@ -1,14 +1,9 @@
-/* eslint-disable no-shadow */
-/* eslint-disable react/prop-types */
-import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 import * as Yup from 'yup';
 import { authUser } from '../../../store/authentifiction/actions';
 import LoginForm from './component';
-
-const TempContainer = props => <LoginForm {...props} />;
 
 const mdtp = {
   authUser,
@@ -27,6 +22,7 @@ export default compose(
       };
     },
     handleSubmit(values, { props, resetForm }) {
+      // eslint-disable-next-line no-shadow
       const { authUser } = props;
       const { rememberMe: _, ...user } = values;
       resetForm();
@@ -42,4 +38,4 @@ export default compose(
         .required('Обязательное поле'),
     }),
   }),
-)(TempContainer);
+)(LoginForm);

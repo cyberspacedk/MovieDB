@@ -41,8 +41,10 @@ const TopFilms = ({ loading, topFilms }) => (
   <div>
     <Label>Top Week chart </Label>
     <List>
-      {loading && <li>...Loading</li>}
-      {topFilms !== undefined &&
+      {loading ? (
+        <li>...Loading</li>
+      ) : (
+        topFilms !== undefined &&
         topFilms.map(film => (
           <Item key={film.id}>
             <img
@@ -51,7 +53,8 @@ const TopFilms = ({ loading, topFilms }) => (
             />
             <h2> {film.title} </h2>
           </Item>
-        ))}
+        ))
+      )}
     </List>
   </div>
 );

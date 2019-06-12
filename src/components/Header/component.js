@@ -17,6 +17,6 @@ const ParentForm = ({ isLogin }) => (
 );
 
 ParentForm.propTypes = {
-  isLogin: PropTypes.string.isRequired,
+  isLogin: PropTypes.bool.isRequired,
 };
 export default ParentForm;

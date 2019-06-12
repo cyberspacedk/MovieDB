@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Header should match its snapshot. User doesnt logged in  1`] = `
+<styled.header>
+  <Connect(WithFormik(LoginForm)) />
+</styled.header>
+`;
+
+exports[`Component: Header should match its snapshot. User logged in  1`] = `
+<styled.header>
+  <Connect(ContainerUserInfo) />
+</styled.header>
+`;

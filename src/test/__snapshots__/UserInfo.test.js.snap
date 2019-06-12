@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: UserInfo should match its snapshot. Display username 1`] = `
+<styled.div>
+  <span>
+    USERNAME
+  </span>
+  <Button
+    block={false}
+    ghost={false}
+    htmlType="button"
+    loading={false}
+    onClick={[Function]}
+    type="primary"
+  >
+    Logout
+  </Button>
+</styled.div>
+`;

@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: TopFilms Match its snapshot. Display ...Loading  1`] = `
+<div>
+  <styled.h2>
+    Top Week chart 
+  </styled.h2>
+  <styled.ul>
+    <li>
+      ...Loading
+    </li>
+  </styled.ul>
+</div>
+`;
+
+exports[`Component: TopFilms Match its snapshot. Display Data from DataBse 1`] = `
+<div>
+  <styled.h2>
+    Top Week chart 
+  </styled.h2>
+  <styled.ul>
+    <styled.li
+      key="1"
+    >
+      <img
+        alt="Poster"
+        src="https://image.tmdb.org/t/p/w200path to picture"
+      />
+      <h2>
+         
+        Some title
+         
+      </h2>
+    </styled.li>
+    <styled.li
+      key="2"
+    >
+      <img
+        alt="Poster"
+        src="https://image.tmdb.org/t/p/w200path to another picture"
+      />
+      <h2>
+         
+        Another title
+         
+      </h2>
+    </styled.li>
+  </styled.ul>
+</div>
+`;
+
+exports[`Component: TopFilms should match its snapshot. Display ...Loading  1`] = `
+<div>
+  <styled.h2>
+    Top Week chart 
+  </styled.h2>
+  <styled.ul>
+    <li>
+      ...Loading
+    </li>
+  </styled.ul>
+</div>
+`;
+
+exports[`Component: TopFilms should match its snapshot. Display Data from DataBse 1`] = `
+<div>
+  <styled.h2>
+    Top Week chart 
+  </styled.h2>
+  <styled.ul>
+    <styled.li
+      key="1"
+    >
+      <img
+        alt="Poster"
+        src="https://image.tmdb.org/t/p/w200path to picture"
+      />
+      <h2>
+         
+        Some title
+         
+      </h2>
+    </styled.li>
+    <styled.li
+      key="2"
+    >
+      <img
+        alt="Poster"
+        src="https://image.tmdb.org/t/p/w200path to another picture"
+      />
+      <h2>
+         
+        Another title
+         
+      </h2>
+    </styled.li>
+  </styled.ul>
+</div>
+`;

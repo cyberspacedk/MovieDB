@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: LoginForm should match its snapshot. Display errors in inputs 1`] = `
+<Form>
+  <styled.div>
+    <FormikConnect(FieldInner)
+      name="username"
+      placeholder="Username"
+      type="text"
+    />
+  </styled.div>
+  <styled.div>
+    <FormikConnect(FieldInner)
+      name="password"
+      placeholder="password"
+      type="password"
+    />
+  </styled.div>
+  <styled.div>
+    <Button
+      block={false}
+      ghost={false}
+      htmlType="submit"
+      loading={false}
+      type="primary"
+    >
+      Login
+    </Button>
+  </styled.div>
+</Form>
+`;
+
+exports[`Component: LoginForm should match its snapshot. Display errors in inputs 2`] = `
+<Form>
+  <styled.div>
+    <FormikConnect(FieldInner)
+      name="username"
+      placeholder="Username"
+      type="text"
+    />
+  </styled.div>
+  <styled.div>
+    <FormikConnect(FieldInner)
+      name="password"
+      placeholder="password"
+      type="password"
+    />
+  </styled.div>
+  <styled.div>
+    <Button
+      block={false}
+      ghost={false}
+      htmlType="submit"
+      loading={false}
+      type="primary"
+    >
+      Login
+    </Button>
+  </styled.div>
+</Form>
+`;
