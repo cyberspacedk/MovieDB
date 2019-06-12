@@ -1,56 +1,61 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/prop-types */
 import React from 'react';
-import { withFormik } from 'formik';
-import { Input, Button } from 'antd';
-import * as Yup from 'yup';
+import PropTypes from 'prop-types';
+import { Form, Field } from 'formik';
+import { Button } from 'antd';
+import styled from 'styled-components';
 
-const Container = ({ values, errors, touched, auth, handleChange }) => (
-  <form
-    onSubmit={e => {
-      e.preventDefault();
-      console.log(values);
-      const { rememberMe: _, ...user } = values;
-      auth(user);
-    }}
-  >
-    {touched.username && errors.username && <span>{errors.username} </span>}
-    <Input
-      type="text"
-      name="username"
-      placeholder="Username"
-      value={values.username}
-      onChange={handleChange}
-    />
-    {touched.password && errors.password && <span>{errors.password} </span>}
-    <Input
-      type="password"
-      name="password"
-      placeholder="password"
-      value={values.password}
-      onChange={handleChange}
-    />
-    <Button htmlType="submit" type="primary">
-      Login
-    </Button>
-  </form>
+const FormItem = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  input {
+    margin-bottom: 3px;
+  }
+  [name='error-message'] {
+    position: absolute;
+    left: -80%;
+    top: 0;
+    color: #f70f16;
+    font-size: 0.9rem;
+  }
+`;
+
+const LoginForm = ({ values, errors, touched }) => (
+  <Form>
+    <FormItem>
+      {touched.username && errors.username && (
+        <span name="error-message">{errors.username}</span>
+      )}
+      <Field
+        type="text"
+        name="username"
+        placeholder="Username"
+        value={values.username}
+      />
+    </FormItem>
+    <FormItem>
+      {touched.password && errors.password && (
+        <span name="error-message">{errors.password}</span>
+      )}
+      <Field
+        type="password"
+        name="password"
+        placeholder="password"
+        value={values.password}
+      />
+    </FormItem>
+    <FormItem>
+      <Button htmlType="submit" type="primary">
+        Login
+      </Button>
+    </FormItem>
+  </Form>
 );
 
-const FormikApp = withFormik({
-  mapPropsToValues() {
-    return {
-      username: '',
-      password: '',
-    };
-  },
-  validationSchema: Yup.object().shape({
-    username: Yup.string()
-      .min(4, 'Маловато символов')
-      .required('Обязательное поле'),
-    password: Yup.string()
-      .min(3, 'Короткий пароль')
-      .required('Обязательное поле'),
-  }),
-})(Container);
+LoginForm.propTypes = {
+  values: PropTypes.shape().isRequired,
+  errors: PropTypes.shape().isRequired,
+  touched: PropTypes.shape().isRequired,
+};
 
-export default FormikApp;
+export default LoginForm;
