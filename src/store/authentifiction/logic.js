@@ -1,10 +1,4 @@
 import { createLogic } from 'redux-logic';
-import {
-  DELETE_SESSION_ID_PATH,
-  REQUEST_TOKEN_PATH,
-  GET_SESSION_ID_LOGIN_PATH,
-  GET_SESSION_ID_PATH,
-} from '../../api';
 import { userLogout, setSessionId, setUserLogin } from './actions';
 
 // LOGIC FOR AUTHENTIFICATE USER
@@ -15,27 +9,31 @@ export const authUserLogic = createLogic({
 
   async process({ httpClient, action }, dispatch, done) {
     try {
-      const requestToken = await httpClient
-        .get(REQUEST_TOKEN_PATH)
-        .then(({ data }) => data.request_token);
+      const requestToken = await httpClient.get(
+        `authentication/token/new${httpClient.defaults.params.apiKey}`,
+      );
 
       const { username, password } = action.payload;
 
-      const verifiedToken = await httpClient
-        .post(GET_SESSION_ID_LOGIN_PATH, {
+      const verifiedToken = await httpClient.post(
+        `authentication/token/validate_with_login${
+          httpClient.defaults.params.apiKey
+        }`,
+        {
           username,
           password,
-          request_token: requestToken,
-        })
-        .then(({ data }) => data.request_token);
+          request_token: requestToken.data.request_token,
+        },
+      );
 
-      const sessionId = await httpClient
-        .post(GET_SESSION_ID_PATH, {
-          request_token: verifiedToken,
-        })
-        .then(({ data }) => data.session_id);
+      const sessionId = await httpClient.post(
+        `authentication/session/new${httpClient.defaults.params.apiKey}`,
+        {
+          request_token: verifiedToken.data.request_token,
+        },
+      );
 
-      dispatch(setSessionId(sessionId));
+      dispatch(setSessionId(sessionId.data.session_id));
       dispatch(setUserLogin(username));
 
       localStorage.setItem('SESSION_ID', JSON.stringify(sessionId));
@@ -55,7 +53,7 @@ export const userLogoutLogic = createLogic({
 
   process({ httpClient }, dispatch, done) {
     httpClient
-      .delete(DELETE_SESSION_ID_PATH, {
+      .delete(`authentication/session${httpClient.defaults.params.apiKey}`, {
         data: {
           session_id: JSON.parse(localStorage.getItem('SESSION_ID')),
         },

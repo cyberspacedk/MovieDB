@@ -1,6 +1,6 @@
-import axios from 'axios';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createLogicMiddleware } from 'redux-logic';
+import axios from '../api';
 import rootReducer from './rootReducer';
 import logic from './rootlogic';
 

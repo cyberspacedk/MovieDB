@@ -34,6 +34,7 @@ const LoginForm = ({ values, errors, touched }) => (
         value={values.username}
       />
     </FormItem>
+
     <FormItem>
       {touched.password && errors.password && (
         <span name="error-message">{errors.password}</span>
