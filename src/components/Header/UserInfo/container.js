@@ -9,9 +9,9 @@ import {
 } from '../../../store/authentifiction/selectors';
 
 // eslint-disable-next-line no-shadow
-const ContainerUserInfo = ({ username, userLogout }) => {
-  return <UserInfo userName={username} logout={userLogout} />;
-};
+const ContainerUserInfo = ({ username, userLogout }) => (
+  <UserInfo userName={username} logout={userLogout} />
+);
 
 const mstp = state => ({
   username: getUserLogin(state),

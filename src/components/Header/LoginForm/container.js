@@ -26,17 +26,23 @@ export default compose(
         password: '',
       };
     },
-    handleSubmit(values, { props }) {
+    handleSubmit(values, { props, resetForm }) {
       const { authUser } = props;
       const { rememberMe: _, ...user } = values;
+      resetForm();
       authUser(user);
     },
     validationSchema: Yup.object().shape({
       username: Yup.string()
-        .min(4, 'Маловато символов')
+        .min(4, 'Минимум 4 символа')
+        .matches(/^[a-z0-9_-]{4,16}$/, 'Запрещенные символы')
         .required('Обязательное поле'),
       password: Yup.string()
-        .min(3, 'Короткий пароль')
+        .min(6, 'Минимум 6 символов')
+        .matches(
+          /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}$/g,
+          'минимум один спец.сивол, цифрa и буквa в верхнем и нижнем регистре',
+        )
         .required('Обязательное поле'),
     }),
   }),

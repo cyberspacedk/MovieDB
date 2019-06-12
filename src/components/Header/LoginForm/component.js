@@ -13,7 +13,8 @@ const FormItem = styled.div`
   }
   [name='error-message'] {
     position: absolute;
-    left: -80%;
+    width: 100%;
+    left: -100%;
     top: 0;
     color: #f70f16;
     font-size: 0.9rem;
