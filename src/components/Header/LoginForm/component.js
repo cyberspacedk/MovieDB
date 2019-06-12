@@ -45,7 +45,14 @@ const LoginForm = ({ values, errors, touched }) => (
       />
     </FormItem>
     <FormItem>
-      <Button htmlType="submit" type="primary">
+      <Button
+        htmlType="submit"
+        type="primary"
+        disabled={
+          (touched.username && errors.username) ||
+          (touched.password && errors.password)
+        }
+      >
         Login
       </Button>
     </FormItem>
