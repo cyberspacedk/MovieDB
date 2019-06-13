@@ -1,63 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Field } from 'formik';
+import { Form } from 'formik';
 import { Button } from 'antd';
-import styled from 'styled-components';
-
-const FormItem = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
-  input {
-    margin-bottom: 3px;
-  }
-  [name='error-message'] {
-    position: absolute;
-    width: 100%;
-    left: -100%;
-    top: 0;
-    color: #f70f16;
-    font-size: 0.9rem;
-  }
-`;
+import FormField from './FormField/component';
 
 const LoginForm = ({ values, errors, touched }) => (
   <Form>
-    <FormItem>
-      {touched.username && errors.username && (
-        <span name="error-message">{errors.username}</span>
-      )}
-      <Field
-        type="text"
-        name="username"
-        placeholder="Username"
-        value={values.username}
-      />
-    </FormItem>
-
-    <FormItem>
-      {touched.password && errors.password && (
-        <span name="error-message">{errors.password}</span>
-      )}
-      <Field
-        type="password"
-        name="password"
-        placeholder="password"
-        value={values.password}
-      />
-    </FormItem>
-    <FormItem>
-      <Button
-        htmlType="submit"
-        type="primary"
-        disabled={
-          (touched.username && errors.username) ||
-          (touched.password && errors.password)
-        }
-      >
-        Login
-      </Button>
-    </FormItem>
+    <FormField
+      type="text"
+      name="username"
+      placeHolder="Username"
+      value={values}
+      errors={errors}
+      touched={touched}
+    />
+    <FormField
+      type="password"
+      name="password"
+      placeHolder="Password"
+      value={values}
+      errors={errors}
+      touched={touched}
+    />
+    <Button
+      htmlType="submit"
+      type="primary"
+      disabled={
+        (touched.username && errors.username) ||
+        (touched.password && errors.password)
+      }
+    >
+      Login
+    </Button>
   </Form>
 );
 
