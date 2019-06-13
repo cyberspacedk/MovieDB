@@ -10,6 +10,7 @@ const mstp = state => ({
   username: getUserLogin(state),
   sessionID: isAuthentificated(state),
 });
+
 const mdtp = {
   userLogout,
 };

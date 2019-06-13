@@ -10,9 +10,9 @@ const UserStatus = styled.div`
     font-weight: 700;
   }
 `;
-const UserInfo = ({ userName, userLogout }) => (
+const UserInfo = ({ username, userLogout }) => (
   <UserStatus>
-    <span>{userName}</span>
+    <span>{username}</span>
     <Button type="primary" onClick={userLogout}>
       Logout
     </Button>
@@ -20,7 +20,7 @@ const UserInfo = ({ userName, userLogout }) => (
 );
 
 UserInfo.propTypes = {
-  userName: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
   userLogout: PropTypes.func.isRequired,
 };
 

@@ -24,6 +24,7 @@ const FormField = ({ type, name, placeHolder, value, errors, touched }) => (
     {touched[name] && errors[name] && (
       <span name="error-message">{errors[name]}</span>
     )}
+
     <Field
       type={type}
       name={name}
