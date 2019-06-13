@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import UserInfo from '../components/Header/UserInfo/component';
+import UserInfo from '../component';
 
 describe('Component: UserInfo', () => {
   const props = {
-    userName: 'USERNAME',
-    logout() {},
+    username: 'USERNAME',
+    userLogout() {},
   };
 
   it('should match its snapshot. Display username', () => {

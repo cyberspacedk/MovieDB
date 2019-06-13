@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: FormItem should match its snapshot. 1`] = `
+<styled.div>
+  <FormikConnect(FieldInner)
+    name="username"
+    placeholder="Username"
+    type="text"
+    value="Sam"
+  />
+</styled.div>
+`;

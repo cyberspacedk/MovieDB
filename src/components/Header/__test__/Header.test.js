@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import Header from '../components/Header/component';
+import Header from '../component';
 
 describe('Component: Header', () => {
   const props = {

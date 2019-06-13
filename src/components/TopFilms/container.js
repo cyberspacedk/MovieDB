@@ -11,7 +11,7 @@ import {
   isError,
 } from '../../store/topFilms/selectors';
 
-class TopFilmsContainer extends Component {
+export class TopFilmsContainer extends Component {
   componentDidMount() {
     // eslint-disable-next-line react/destructuring-assignment
     this.props.fetchDataRequest();
@@ -24,7 +24,7 @@ class TopFilmsContainer extends Component {
   }
 }
 
-const mstp = state => ({
+export const mstp = state => ({
   topFilms: getTopFilmsSelector(state),
   loading: isloading(state),
   error: isError(state),

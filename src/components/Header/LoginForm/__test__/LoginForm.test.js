@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import LoginForm from '../components/Header/LoginForm/component';
+import LoginForm from '../component';
 
 describe('Component: LoginForm', () => {
   const props = {

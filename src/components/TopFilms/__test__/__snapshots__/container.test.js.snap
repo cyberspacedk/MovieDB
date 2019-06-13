@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopFilmsContainer  Snapshot. Should Match 1`] = `
+<ContextProvider
+  value={null}
+>
+  <TopFilmsContainer
+    error={false}
+    fetchDataRequest={[Function]}
+    loading={false}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    topFilms={
+      Array [
+        Object {},
+      ]
+    }
+  />
+</ContextProvider>
+`;
