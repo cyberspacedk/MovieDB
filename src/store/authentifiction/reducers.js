@@ -5,15 +5,11 @@ const initialState = {
 
 const setUserDataReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case 'SET_USERLOGIN':
+    case 'SET_USER_DATA':
       return {
         ...state,
-        username: payload,
-      };
-    case 'SET_SESSION_ID':
-      return {
-        ...state,
-        sessionId: payload,
+        username: payload.username,
+        sessionId: payload.sessionId,
       };
     case 'DELETE_SESSION_ID':
       return {

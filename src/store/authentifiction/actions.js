@@ -5,8 +5,6 @@ const authUser = userData => ({
   payload: userData,
 });
 
-const setSessionId = sid => ({ type: 'SET_SESSION_ID', payload: sid });
+const setUserData = userData => ({ type: 'SET_USER_DATA', payload: userData });
 
-const setUserLogin = username => ({ type: 'SET_USERLOGIN', payload: username });
-
-export { userLogout, authUser, setSessionId, setUserLogin };
+export { userLogout, authUser, setUserData };
