@@ -7,7 +7,6 @@ const setUserDataReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case 'SET_USER_DATA':
       return {
-        ...state,
         username: payload.username,
         sessionId: payload.sessionId,
       };

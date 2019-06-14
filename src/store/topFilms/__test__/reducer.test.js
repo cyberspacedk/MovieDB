@@ -1,7 +1,7 @@
 import reducer, { initialState } from '../reducers';
 
-describe('TOPFILMS REDUCER', () => {
-  it('FETCH_REQUEST', () => {
+describe('reducers', () => {
+  it('should set loading field to true', () => {
     const action = {
       type: 'FETCH_REQUEST',
     };
@@ -11,7 +11,7 @@ describe('TOPFILMS REDUCER', () => {
     });
   });
 
-  it('FETCH_ERROR', () => {
+  it('should set error field to error message', () => {
     const action = {
       type: 'FETCH_ERROR',
       payload: 'error message',
@@ -22,7 +22,7 @@ describe('TOPFILMS REDUCER', () => {
     });
   });
 
-  it('FETCH_RESPONSE', () => {
+  it('should set films field to response - films array', () => {
     const action = {
       type: 'FETCH_RESPONSE',
       payload: [{}],
@@ -31,5 +31,9 @@ describe('TOPFILMS REDUCER', () => {
       ...initialState,
       films: action.payload,
     });
+  });
+
+  it('should return initialState', () => {
+    expect(reducer(undefined, {})).toEqual(initialState);
   });
 });

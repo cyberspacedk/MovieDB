@@ -1,0 +1,34 @@
+import { userLogout, authUser, setUserData } from '../actions';
+
+describe('actions', () => {
+  it("should return - type:'DELETE_SESSION_ID'", () => {
+    const expectedAction = {
+      type: 'DELETE_SESSION_ID',
+    };
+    expect(userLogout()).toEqual(expectedAction);
+  });
+
+  it('should return userData from form', () => {
+    const userData = {
+      username: 'fakeuser',
+      password: '12345',
+    };
+    const expectedAction = {
+      type: 'AUTH_USER',
+      payload: userData,
+    };
+    expect(authUser(userData)).toEqual(expectedAction);
+  });
+
+  it('should return userData for setting in store', () => {
+    const userData = {
+      username: 'fakeuser',
+      sessionId: '53623g4jgfsusilss',
+    };
+    const expectedAction = {
+      type: 'SET_USER_DATA',
+      payload: userData,
+    };
+    expect(setUserData(userData)).toEqual(expectedAction);
+  });
+});
