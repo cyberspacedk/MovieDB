@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchDataRequest } from '../../store/topFilms/actions';
 import TopFilms from './component';
-
 import {
   getTopFilmsSelector,
   isloading,

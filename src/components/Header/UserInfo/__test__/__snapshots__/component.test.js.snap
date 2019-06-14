@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: UserInfo should match its snapshot. Display username 1`] = `
+exports[`Component: UserInfo Snapshot: should match 1`] = `
 <styled.div>
   <span>
     USERNAME
@@ -10,7 +10,7 @@ exports[`Component: UserInfo should match its snapshot. Display username 1`] = `
     ghost={false}
     htmlType="button"
     loading={false}
-    onClick={[Function]}
+    onClick={[MockFunction]}
     type="primary"
   >
     Logout

@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   films: [],
   loading: false,
   error: false,

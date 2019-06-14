@@ -1,23 +1,26 @@
+/* eslint-disable no-shadow */
 /* eslint-disable import/named */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import TopFilmsContainerConnected, {
-  mstp,
   TopFilmsContainer,
+  mstp,
 } from '../container';
-/*
- 1- snapshot
- 2- render one component
+import { fetchDataRequest } from '../../../store/topFilms/actions';
 
-*/
+/* jest.mock('../../../store/topFilms/actions',  ({
+  fetchDataRequest: jest.fn(),
+})); */
+
 describe('TopFilmsContainer ', () => {
   const mockStore = configureStore();
   const mockClick = jest.fn();
-  let store;
-  let wrapper;
+
+  // let wrapper;
+  // let wrapperDumb;
 
   const initialState = {
     topFilms: {
@@ -32,26 +35,62 @@ describe('TopFilmsContainer ', () => {
     error: false,
   };
 
-  beforeEach(() => {
-    store = mockStore(initialState);
-    wrapper = shallow(<TopFilmsContainerConnected store={store} />);
+  const store = mockStore(initialState);
+  const wrapper = shallow(
+    <TopFilmsContainerConnected store={store} {...props} />,
+  );
+  const container = wrapper.dive();
+
+  // const wrapperDumb = shallow(<TopFilmsContainer {...props} />);
+
+  // beforeEach(() => {
+  //  store = mockStore(initialState);
+  //  wrapper = shallow(<TopFilmsContainerConnected store={store} {...props} />);
+  //  wrapperDumb = shallow(<TopFilmsContainer {...props} />);
+  // });
+
+  it('Snapshot: connected container.', () => {
+    expect(shallowToJson(container)).toMatchSnapshot();
   });
 
-  it('Snapshot. Should Match', () => {
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('Should render container component', () => {
+  /* it('Should render container component', () => {
     expect(wrapper.length).toBe(1);
   });
 
-  it('Shoud show previous loading value', () => {
-    expect(mstp(initialState).loading).toEqual(false);
+  it('Snapshot: dumb component', () => {
+    expect(shallowToJson(wrapperDumb)).toMatchSnapshot();
   });
 
-  it('calls ComponentDidMount', () => {
-    const wrapperDump = shallow(<TopFilmsContainer {...props} />);
-    wrapperDump.instance().componentDidMount();
-    expect(wrapperDump.instance().fetchDataRequest).toHaveBeenCalledTimes(1);
+  it('Check: Is dumb component render a child', () => {
+    expect(wrapperDumb.length).toBe(1);
   });
+
+  it('Check: MapStateToProps', () => {
+    expect(mstp(initialState).loading).toEqual(false);
+  }); */
+
+  /* it('Simulate: dispatch action', () => {
+    const spy = jest.spyOn(TopFilmsContainer.prototype, 'fetchDataRequest');
+    const inst = mount(<TopFilmsContainer {...props} />);
+    inst.instance().fetchDataRequest();
+    expect(spy).toHaveBeenCalledTimes(1);
+  }); */
+
+  /*  it('Lifecycle: componentDidMount', () => {
+    // const component = shallow(<TopFilmsContainer {...props} />);
+    // component.instance().componentDidMount();
+    container.instance().componentDidMount();
+    expect(fetchDataRequest).toHaveBeenCalled();
+  }); */
+
+  /* it('Check launch action in componentDidMount', () => {
+    const mockFetch = jest.fn();
+
+    const nextProps = {
+      ...props,
+      fetchDataRequest: mockFetch,
+    };
+    const wrapper = shallow(<TopFilmsContainer {...nextProps} />);
+    expect(mockFetch).toHaveBeenCalledTimes(1);
+  }); */
 });

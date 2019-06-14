@@ -26,14 +26,14 @@ describe('Component: TopFilms', () => {
     expect(shallowToJson(TopFilmsComponent)).toMatchSnapshot();
   });
 
-  it('Tag content must be...Loading ', () => {
+  /* it('Tag content must be...Loading ', () => {
     const nextProps = {
       ...props,
       loading: true,
     };
     const TopFilmsComponent = shallow(<TopFilms {...nextProps} />);
     expect(TopFilmsComponent.find('li').text()).toEqual('...Loading');
-  });
+  }); */
 
   it('Display Two films', () => {
     const TopFilmsComponent = shallow(<TopFilms {...props} />);

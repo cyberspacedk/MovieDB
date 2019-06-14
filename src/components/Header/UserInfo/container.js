@@ -6,7 +6,7 @@ import {
   isAuthentificated,
 } from '../../../store/authentifiction/selectors';
 
-const mstp = state => ({
+export const mstp = state => ({
   username: getUserLogin(state),
   sessionID: isAuthentificated(state),
 });

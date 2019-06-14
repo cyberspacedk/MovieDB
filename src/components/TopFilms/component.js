@@ -44,7 +44,6 @@ const TopFilms = ({ loading, topFilms }) => (
       {loading ? (
         <li>...Loading</li>
       ) : (
-        topFilms !== undefined &&
         topFilms.map(film => (
           <Item key={film.id}>
             <img

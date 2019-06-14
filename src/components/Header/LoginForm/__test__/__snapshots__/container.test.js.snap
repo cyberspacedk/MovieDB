@@ -1,0 +1,453 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container: LoginForm Snapshot: should match 1`] = `
+<Connect(WithFormik(LoginForm))
+  sessionID={true}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  username="movie__watcher"
+>
+  <WithFormik(LoginForm)
+    authUser={[Function]}
+    sessionID={true}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    username="movie__watcher"
+  >
+    <Formik
+      authUser={[Function]}
+      enableReinitialize={false}
+      handleSubmit={[Function]}
+      initialValues={
+        Object {
+          "password": "",
+          "username": "",
+        }
+      }
+      isInitialValid={false}
+      onSubmit={[Function]}
+      render={[Function]}
+      sessionID={true}
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+      username="movie__watcher"
+      validateOnBlur={true}
+      validateOnChange={true}
+      validationSchema={[Function]}
+    >
+      <LoginForm
+        authUser={[Function]}
+        dirty={false}
+        errors={Object {}}
+        handleBlur={[Function]}
+        handleChange={[Function]}
+        handleReset={[Function]}
+        handleSubmit={[Function]}
+        initialValues={
+          Object {
+            "password": "",
+            "username": "",
+          }
+        }
+        isSubmitting={false}
+        isValid={false}
+        isValidating={false}
+        registerField={[Function]}
+        resetForm={[Function]}
+        sessionID={true}
+        setError={[Function]}
+        setErrors={[Function]}
+        setFieldError={[Function]}
+        setFieldTouched={[Function]}
+        setFieldValue={[Function]}
+        setFormikState={[Function]}
+        setStatus={[Function]}
+        setSubmitting={[Function]}
+        setTouched={[Function]}
+        setValues={[Function]}
+        store={
+          Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          }
+        }
+        submitCount={0}
+        submitForm={[Function]}
+        touched={Object {}}
+        unregisterField={[Function]}
+        username="movie__watcher"
+        validateField={[Function]}
+        validateForm={[Function]}
+        validateOnBlur={true}
+        validateOnChange={true}
+        values={
+          Object {
+            "password": "",
+            "username": "",
+          }
+        }
+      >
+        <Form>
+          <Component
+            formik={
+              Object {
+                "dirty": false,
+                "errors": Object {},
+                "handleBlur": [Function],
+                "handleChange": [Function],
+                "handleReset": [Function],
+                "handleSubmit": [Function],
+                "initialValues": Object {
+                  "password": "",
+                  "username": "",
+                },
+                "isSubmitting": false,
+                "isValid": false,
+                "isValidating": false,
+                "registerField": [Function],
+                "resetForm": [Function],
+                "setError": [Function],
+                "setErrors": [Function],
+                "setFieldError": [Function],
+                "setFieldTouched": [Function],
+                "setFieldValue": [Function],
+                "setFormikState": [Function],
+                "setStatus": [Function],
+                "setSubmitting": [Function],
+                "setTouched": [Function],
+                "setValues": [Function],
+                "status": undefined,
+                "submitCount": 0,
+                "submitForm": [Function],
+                "touched": Object {},
+                "unregisterField": [Function],
+                "validate": undefined,
+                "validateField": [Function],
+                "validateForm": [Function],
+                "validateOnBlur": true,
+                "validateOnChange": true,
+                "validationSchema": [Function],
+                "values": Object {
+                  "password": "",
+                  "username": "",
+                },
+              }
+            }
+          >
+            <form
+              onReset={[Function]}
+              onSubmit={[Function]}
+            >
+              <FormField
+                errors={Object {}}
+                name="username"
+                placeHolder="Username"
+                touched={Object {}}
+                type="text"
+                value={
+                  Object {
+                    "password": "",
+                    "username": "",
+                  }
+                }
+              >
+                <styled.div>
+                  <StyledComponent
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "sc-bdVaJa",
+                          "isStatic": true,
+                          "lastClassName": "bBnrsp",
+                          "rules": Array [
+                            "
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  input {
+    margin-bottom: 3px;
+  }
+  [name='error-message'] {
+    position: absolute;
+    width: 100%;
+    left: -100%;
+    top: 0;
+    color: #f70f16;
+    font-size: 0.9rem;
+  }
+",
+                          ],
+                        },
+                        "displayName": "styled.div",
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "self": [Circular],
+                        "styledComponentId": "sc-bdVaJa",
+                        "target": "div",
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                  >
+                    <div
+                      className="sc-bdVaJa bBnrsp"
+                    >
+                      <FormikConnect(FieldInner)
+                        name="username"
+                        placeholder="Username"
+                        type="text"
+                        value=""
+                      >
+                        <FieldInner
+                          formik={
+                            Object {
+                              "dirty": false,
+                              "errors": Object {},
+                              "handleBlur": [Function],
+                              "handleChange": [Function],
+                              "handleReset": [Function],
+                              "handleSubmit": [Function],
+                              "initialValues": Object {
+                                "password": "",
+                                "username": "",
+                              },
+                              "isSubmitting": false,
+                              "isValid": false,
+                              "isValidating": false,
+                              "registerField": [Function],
+                              "resetForm": [Function],
+                              "setError": [Function],
+                              "setErrors": [Function],
+                              "setFieldError": [Function],
+                              "setFieldTouched": [Function],
+                              "setFieldValue": [Function],
+                              "setFormikState": [Function],
+                              "setStatus": [Function],
+                              "setSubmitting": [Function],
+                              "setTouched": [Function],
+                              "setValues": [Function],
+                              "status": undefined,
+                              "submitCount": 0,
+                              "submitForm": [Function],
+                              "touched": Object {},
+                              "unregisterField": [Function],
+                              "validate": undefined,
+                              "validateField": [Function],
+                              "validateForm": [Function],
+                              "validateOnBlur": true,
+                              "validateOnChange": true,
+                              "validationSchema": [Function],
+                              "values": Object {
+                                "password": "",
+                                "username": "",
+                              },
+                            }
+                          }
+                          name="username"
+                          placeholder="Username"
+                          type="text"
+                          value=""
+                        >
+                          <input
+                            name="username"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            placeholder="Username"
+                            type="text"
+                            value=""
+                          />
+                        </FieldInner>
+                      </FormikConnect(FieldInner)>
+                    </div>
+                  </StyledComponent>
+                </styled.div>
+              </FormField>
+              <FormField
+                errors={Object {}}
+                name="password"
+                placeHolder="Password"
+                touched={Object {}}
+                type="password"
+                value={
+                  Object {
+                    "password": "",
+                    "username": "",
+                  }
+                }
+              >
+                <styled.div>
+                  <StyledComponent
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "sc-bdVaJa",
+                          "isStatic": true,
+                          "lastClassName": "bBnrsp",
+                          "rules": Array [
+                            "
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  input {
+    margin-bottom: 3px;
+  }
+  [name='error-message'] {
+    position: absolute;
+    width: 100%;
+    left: -100%;
+    top: 0;
+    color: #f70f16;
+    font-size: 0.9rem;
+  }
+",
+                          ],
+                        },
+                        "displayName": "styled.div",
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "self": [Circular],
+                        "styledComponentId": "sc-bdVaJa",
+                        "target": "div",
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                  >
+                    <div
+                      className="sc-bdVaJa bBnrsp"
+                    >
+                      <FormikConnect(FieldInner)
+                        name="password"
+                        placeholder="Password"
+                        type="password"
+                        value=""
+                      >
+                        <FieldInner
+                          formik={
+                            Object {
+                              "dirty": false,
+                              "errors": Object {},
+                              "handleBlur": [Function],
+                              "handleChange": [Function],
+                              "handleReset": [Function],
+                              "handleSubmit": [Function],
+                              "initialValues": Object {
+                                "password": "",
+                                "username": "",
+                              },
+                              "isSubmitting": false,
+                              "isValid": false,
+                              "isValidating": false,
+                              "registerField": [Function],
+                              "resetForm": [Function],
+                              "setError": [Function],
+                              "setErrors": [Function],
+                              "setFieldError": [Function],
+                              "setFieldTouched": [Function],
+                              "setFieldValue": [Function],
+                              "setFormikState": [Function],
+                              "setStatus": [Function],
+                              "setSubmitting": [Function],
+                              "setTouched": [Function],
+                              "setValues": [Function],
+                              "status": undefined,
+                              "submitCount": 0,
+                              "submitForm": [Function],
+                              "touched": Object {},
+                              "unregisterField": [Function],
+                              "validate": undefined,
+                              "validateField": [Function],
+                              "validateForm": [Function],
+                              "validateOnBlur": true,
+                              "validateOnChange": true,
+                              "validationSchema": [Function],
+                              "values": Object {
+                                "password": "",
+                                "username": "",
+                              },
+                            }
+                          }
+                          name="password"
+                          placeholder="Password"
+                          type="password"
+                          value=""
+                        >
+                          <input
+                            name="password"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            placeholder="Password"
+                            type="password"
+                            value=""
+                          />
+                        </FieldInner>
+                      </FormikConnect(FieldInner)>
+                    </div>
+                  </StyledComponent>
+                </styled.div>
+              </FormField>
+              <Button
+                block={false}
+                ghost={false}
+                htmlType="submit"
+                loading={false}
+                type="primary"
+              >
+                <Wave>
+                  <button
+                    className="ant-btn ant-btn-primary"
+                    onClick={[Function]}
+                    type="submit"
+                  >
+                    <span
+                      key=".0"
+                    >
+                      Login
+                    </span>
+                  </button>
+                </Wave>
+              </Button>
+            </form>
+          </Component>
+        </Form>
+      </LoginForm>
+    </Formik>
+  </WithFormik(LoginForm)>
+</Connect(WithFormik(LoginForm))>
+`;
