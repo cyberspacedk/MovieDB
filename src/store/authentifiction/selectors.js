@@ -1,4 +1,4 @@
-const isAuthentificated = state => Boolean(state.user.sessionId);
+const isAuthentificated = state => !!(state.user && state.user.sessionId);
 
 const getUserLogin = state => state.user.username;
 

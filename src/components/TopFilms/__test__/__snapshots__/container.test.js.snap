@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TopFilmsContainer  Snapshot: connected container. 1`] = `
+exports[`TopFilmsContainer  Should match its snapshot 1`] = `
 <TopFilmsContainer
   error={false}
   fetchDataRequest={[Function]}

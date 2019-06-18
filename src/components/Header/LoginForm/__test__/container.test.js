@@ -1,9 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { configure, shallow, mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import { shallowToJson } from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import LoginForm, { mapPropsToValues } from '../container';
+
+configure({ adapter: new Adapter() });
 
 describe('Container: LoginForm', () => {
   const initialState = {
@@ -15,46 +18,19 @@ describe('Container: LoginForm', () => {
   const props = {
     username: 'movie__watcher',
     sessionID: true,
+    onSubmit: jest.fn(),
   };
 
   const mockStore = configureStore();
-  const mockClick = jest.fn();
-  let store;
-  let wrapper;
+  const onChange = jest.fn();
 
-  beforeEach(() => {
-    store = mockStore(initialState);
-    wrapper = mount(<LoginForm store={store} {...props} />);
-  });
+  const store = mockStore(initialState);
+  const wrapper = mount(<LoginForm store={store} {...props} />);
+  const forma = wrapper.find('form');
 
   it('Snapshot: should match', () => {
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
-
-  /* it('Simulate: Form submit with userData', () => {
-    const forma = wrapper.find('form');
-
-    forma.find('[name="username"]').simulate('change', {
-      target: {
-        name: 'username',
-        value: 'fakeuser',
-      },
-    });
-
-    forma.find('[name="password"]').simulate('change', {
-      target: {
-        name: 'password',
-        value: 'fakepassword123',
-      },
-    });
-
-    forma.simulate('submit', { preventDefault() {} });
-
-    expect(mockLoginfn).toEqual({
-      username: 'fakeuser',
-      password: 'fakepassword123',
-    });
-  }); */
 
   it('Check: mapPropsToValues function', () => {
     expect(mapPropsToValues()).toEqual({
@@ -62,4 +38,25 @@ describe('Container: LoginForm', () => {
       password: '',
     });
   });
+
+  /* it('check input username onChange event', () => {
+    const inputUsername = forma.find('input[name="username"]');
+
+    inputUsername.simulate('change', {
+      persist: () => {},
+      target: {
+        name: 'username',
+        value: 'fakeuser',
+      },
+    });
+    const newValue = inputUsername.props().value;
+
+    expect(newValue).toEqual('fakeuser');
+  });
+
+  forma.find('input[name="password"]').simulate('change', {
+    target: {
+      value: 'fakepassword123',
+    },
+  }); */
 });

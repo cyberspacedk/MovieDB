@@ -7,7 +7,12 @@ describe('reducers', () => {
       payload: { username: 'fakeuser', sessionId: '53623g4jgfsusilss' },
     };
 
-    expect(reducer(initialState, action)).toEqual({
+    const state = {
+      username: '',
+      sessionId: '',
+    };
+
+    expect(reducer(state, action)).toEqual({
       username: 'fakeuser',
       sessionId: '53623g4jgfsusilss',
     });

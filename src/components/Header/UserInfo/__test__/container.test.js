@@ -2,34 +2,24 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
-import UserInfo, { mstp } from '../container';
+import UserInfo from '../container';
 
 describe('Container: UserInfo', () => {
-  const initialState = {
-    user: {
-      username: 'movie__watcher',
-      sessionId: '955360edb24b7e6d0179b7b4d6afdf5da2f56ada',
-    },
-  };
-  const props = {
-    username: 'movie__watcher',
-    sessionID: true,
-  };
+  const store = configureStore()({});
 
-  const mockStore = configureStore();
-  let store;
-  let wrapper;
-
-  beforeEach(() => {
-    store = mockStore(initialState);
-    wrapper = shallow(<UserInfo store={store} {...props} />);
-  });
+  const wrapper = shallow(<UserInfo store={store} />).dive();
 
   it('Snapshot: should match', () => {
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
 
-  it('MapStateToProps', () => {
-    expect(mstp(initialState)).toEqual(props);
+  it('maps state and dispatch to props', () => {
+    expect(wrapper.props()).toEqual(
+      expect.objectContaining({
+        username: expect.any(String),
+        sessionID: expect.any(Boolean),
+        userLogout: expect.any(Function),
+      }),
+    );
   });
 });

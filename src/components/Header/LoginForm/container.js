@@ -9,12 +9,10 @@ const mdtp = {
   authUser,
 };
 
-export const mapPropsToValues = () => {
-  return {
-    username: '',
-    password: '',
-  };
-};
+export const mapPropsToValues = () => ({
+  username: '',
+  password: '',
+});
 
 export const handleSubmit = (values, { props, resetForm }) => {
   // eslint-disable-next-line no-shadow

@@ -9,15 +9,14 @@ describe('actions', () => {
   });
 
   it('should return userData from form', () => {
-    const userData = {
-      username: 'fakeuser',
-      password: '12345',
-    };
+    const username = 'fakeuser';
+    const password = '12345';
+
     const expectedAction = {
       type: 'AUTH_USER',
-      payload: userData,
+      payload: { username, password },
     };
-    expect(authUser(userData)).toEqual(expectedAction);
+    expect(authUser(username, password)).toEqual(expectedAction);
   });
 
   it('should return userData for setting in store', () => {

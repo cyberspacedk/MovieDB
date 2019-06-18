@@ -60,6 +60,7 @@
     "husky": "^2.4.0",
     "jest-enzyme": "^7.0.2",
     "lint-staged": "^8.2.0",
-    "prettier": "^1.17.1"
+    "prettier": "^1.17.1",
+    "redux-logic-test": "^2.0.0"
   }
 }

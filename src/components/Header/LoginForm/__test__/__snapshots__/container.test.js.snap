@@ -2,6 +2,7 @@
 
 exports[`Container: LoginForm Snapshot: should match 1`] = `
 <Connect(WithFormik(LoginForm))
+  onSubmit={[MockFunction]}
   sessionID={true}
   store={
     Object {
@@ -17,6 +18,7 @@ exports[`Container: LoginForm Snapshot: should match 1`] = `
 >
   <WithFormik(LoginForm)
     authUser={[Function]}
+    onSubmit={[MockFunction]}
     sessionID={true}
     store={
       Object {
@@ -76,6 +78,7 @@ exports[`Container: LoginForm Snapshot: should match 1`] = `
         isSubmitting={false}
         isValid={false}
         isValidating={false}
+        onSubmit={[MockFunction]}
         registerField={[Function]}
         resetForm={[Function]}
         sessionID={true}
