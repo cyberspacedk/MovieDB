@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container: UserInfo Snapshot: should match 1`] = `
+<UserInfo
+  sessionID={true}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  userLogout={[Function]}
+  username="fakeuser"
+/>
+`;

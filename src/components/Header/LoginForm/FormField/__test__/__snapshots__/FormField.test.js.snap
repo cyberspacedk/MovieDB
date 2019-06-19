@@ -2,11 +2,10 @@
 
 exports[`Component: FormItem should match its snapshot. 1`] = `
 <styled.div>
-  <FormikConnect(FieldInner)
-    name="username"
+  <input
+    name=""
     placeholder="Username"
     type="text"
-    value="Sam"
   />
 </styled.div>
 `;

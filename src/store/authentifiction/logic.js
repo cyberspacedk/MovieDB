@@ -26,7 +26,6 @@ export const authUserLogic = createLogic({
           request_token,
         },
       );
-
       const {
         data: { session_id },
       } = await httpClient.post(

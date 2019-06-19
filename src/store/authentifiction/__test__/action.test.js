@@ -16,7 +16,7 @@ describe('actions', () => {
       type: 'AUTH_USER',
       payload: { username, password },
     };
-    expect(authUser(username, password)).toEqual(expectedAction);
+    expect(authUser({ username, password })).toEqual(expectedAction);
   });
 
   it('should return userData for setting in store', () => {

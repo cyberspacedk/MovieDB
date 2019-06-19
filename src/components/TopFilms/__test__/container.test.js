@@ -3,39 +3,26 @@
 /* eslint-disable import/named */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow, configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import { shallowToJson } from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
-import TopFilmsContainerConnected, {
-  TopFilmsContainer,
-  mstp,
-} from '../container';
+import TopFilmsContainerConnected, { TopFilmsContainer } from '../container';
 import { fetchDataRequest } from '../../../store/topFilms/actions';
 
-/* jest.mock('../../../store/topFilms/actions', {
-  fetchDataRequest: jest.fn(),
-});
- */
+configure({ adapter: new Adapter() });
+
 describe('TopFilmsContainer ', () => {
-  const mockStore = configureStore();
-  const initialState = {
+  const store = configureStore()({
     topFilms: {
       loading: false,
-      films: [{}],
+      films: [{ id: 1, title: 'Some title' }],
       error: false,
     },
-  };
-  const props = {
-    fetchDataRequest: jest.fn(),
-    loading: false,
-    error: false,
-  };
+  });
+  store.dispatch = jest.fn();
 
-  const store = mockStore(initialState);
-
-  const wrapper = shallow(
-    <TopFilmsContainerConnected store={store} {...props} />,
-  );
+  const wrapper = shallow(<TopFilmsContainerConnected store={store} />);
   const container = wrapper.dive();
 
   it('Should match its snapshot', () => {
@@ -43,15 +30,9 @@ describe('TopFilmsContainer ', () => {
   });
 
   it('Check call lifeCycleMethod componentDidMount', () => {
-    jest.spyOn(TopFilmsContainer.prototype, 'componentDidMount');
-    shallow(<TopFilmsContainer {...props} />);
-    expect(
-      TopFilmsContainer.prototype.componentDidMount.mock.calls.length,
-    ).toBe(1);
-  });
-
-  it('Check is action has been called in lifecyclemethod', () => {
-    expect(props.fetchDataRequest).toHaveBeenCalledTimes(1);
+    mount(<TopFilmsContainerConnected store={store} />);
+    const spy = jest.spyOn(store, 'dispatch');
+    expect(spy).toHaveBeenCalledWith(fetchDataRequest());
   });
 
   it('Map state and dispatch to props', () => {

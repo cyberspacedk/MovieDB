@@ -1,6 +1,6 @@
 const userLogout = () => ({ type: 'DELETE_SESSION_ID' });
 
-const authUser = (username, password) => ({
+const authUser = ({ username, password }) => ({
   type: 'AUTH_USER',
   payload: {
     username,

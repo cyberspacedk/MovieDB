@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react/require-default-props */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -35,6 +35,9 @@ const mdtp = {
 
 TopFilmsContainer.propTypes = {
   fetchDataRequest: PropTypes.func.isRequired,
+  topFilms: PropTypes.arrayOf(PropTypes.shape),
+  loading: PropTypes.bool,
+  error: PropTypes.bool,
 };
 
 export default connect(

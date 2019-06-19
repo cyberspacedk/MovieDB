@@ -3,7 +3,7 @@ import { authUserLogic } from '../logic';
 import setUserDataReducer from '../reducers';
 
 describe('applogic test without reducer', () => {
-  const logic = [authUserLogic];
+  const authlogic = [authUserLogic];
 
   const injectedDeps = {
     httpClient: {
@@ -16,11 +16,11 @@ describe('applogic test without reducer', () => {
     },
   };
   const initialState = {
-    username: 'some name',
-    sessionId: 'sd874v3s',
+    username: '',
+    sessionId: '',
   };
   const store = createMockStore({
-    logic,
+    logic: authlogic,
     injectedDeps,
     reducer: setUserDataReducer,
     initialState,

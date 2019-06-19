@@ -8,7 +8,7 @@ exports[`TopFilmsContainer  Should match its snapshot 1`] = `
   store={
     Object {
       "clearActions": [Function],
-      "dispatch": [Function],
+      "dispatch": [MockFunction],
       "getActions": [Function],
       "getState": [Function],
       "replaceReducer": [Function],
@@ -17,7 +17,10 @@ exports[`TopFilmsContainer  Should match its snapshot 1`] = `
   }
   topFilms={
     Array [
-      Object {},
+      Object {
+        "id": 1,
+        "title": "Some title",
+      },
     ]
   }
 />

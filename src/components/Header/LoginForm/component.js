@@ -1,44 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Form } from 'formik';
-import { Button } from 'antd';
+import { Form, Field } from 'formik';
 import FormField from './FormField/component';
+import FormButton from './FormButton/component';
 
-const LoginForm = ({ values, errors, touched }) => (
+const LoginForm = () => (
   <Form>
-    <FormField
-      type="text"
-      name="username"
-      placeHolder="Username"
-      value={values}
-      errors={errors}
-      touched={touched}
-    />
-    <FormField
-      type="password"
-      name="password"
-      placeHolder="Password"
-      value={values}
-      errors={errors}
-      touched={touched}
-    />
-    <Button
-      htmlType="submit"
-      type="primary"
-      disabled={
-        (touched.username && errors.username) ||
-        (touched.password && errors.password)
-      }
-    >
-      Login
-    </Button>
+    <Field name="username" component={FormField} />
+    <Field name="password" component={FormField} />
+    <Field component={FormButton} />
   </Form>
 );
-
-LoginForm.propTypes = {
-  values: PropTypes.shape().isRequired,
-  errors: PropTypes.shape().isRequired,
-  touched: PropTypes.shape().isRequired,
-};
 
 export default LoginForm;

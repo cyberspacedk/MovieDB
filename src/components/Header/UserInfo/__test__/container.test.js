@@ -5,7 +5,12 @@ import configureStore from 'redux-mock-store';
 import UserInfo from '../container';
 
 describe('Container: UserInfo', () => {
-  const store = configureStore()({});
+  const store = configureStore()({
+    user: {
+      username: 'fakeuser',
+      sessionId: '12345',
+    },
+  });
 
   const wrapper = shallow(<UserInfo store={store} />).dive();
 

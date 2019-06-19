@@ -2,80 +2,32 @@
 
 exports[`Component: LoginForm should match its snapshot. Display errors in inputs 1`] = `
 <Form>
-  <FormField
-    errors={
-      Object {
-        "password": "some errors in password field",
-        "username": "some errors in username field",
-      }
-    }
+  <FormikConnect(FieldInner)
+    component={[Function]}
     name="username"
-    placeHolder="Username"
-    touched={Object {}}
-    type="text"
-    value={Object {}}
   />
-  <FormField
-    errors={
-      Object {
-        "password": "some errors in password field",
-        "username": "some errors in username field",
-      }
-    }
+  <FormikConnect(FieldInner)
+    component={[Function]}
     name="password"
-    placeHolder="Password"
-    touched={Object {}}
-    type="password"
-    value={Object {}}
   />
-  <Button
-    block={false}
-    ghost={false}
-    htmlType="submit"
-    loading={false}
-    type="primary"
-  >
-    Login
-  </Button>
+  <FormikConnect(FieldInner)
+    component={[Function]}
+  />
 </Form>
 `;
 
 exports[`Component: LoginForm should match its snapshot. Display errors in inputs 2`] = `
 <Form>
-  <FormField
-    errors={
-      Object {
-        "password": "",
-        "username": "",
-      }
-    }
+  <FormikConnect(FieldInner)
+    component={[Function]}
     name="username"
-    placeHolder="Username"
-    touched={Object {}}
-    type="text"
-    value={Object {}}
   />
-  <FormField
-    errors={
-      Object {
-        "password": "",
-        "username": "",
-      }
-    }
+  <FormikConnect(FieldInner)
+    component={[Function]}
     name="password"
-    placeHolder="Password"
-    touched={Object {}}
-    type="password"
-    value={Object {}}
   />
-  <Button
-    block={false}
-    ghost={false}
-    htmlType="submit"
-    loading={false}
-    type="primary"
-  >
-    Login
-  </Button>
+  <FormikConnect(FieldInner)
+    component={[Function]}
+  />
 </Form>
 `;

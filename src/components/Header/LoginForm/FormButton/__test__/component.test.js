@@ -1,13 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import FormItem from '../component';
+import FormButton from '../component';
 
-describe('Component: FormItem', () => {
+describe('Component: FormButton', () => {
   const props = {
-    field: {
-      name: '',
-    },
     form: {
       errors: {},
       touched: {},
@@ -15,7 +12,7 @@ describe('Component: FormItem', () => {
   };
 
   it('should match its snapshot.', () => {
-    const formInput = shallow(<FormItem {...props} />);
-    expect(shallowToJson(formInput)).toMatchSnapshot();
+    const button = shallow(<FormButton {...props} />);
+    expect(shallowToJson(button)).toMatchSnapshot();
   });
 });

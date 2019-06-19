@@ -12,11 +12,9 @@ describe('getTopFilmsLogic operation', () => {
   const dispatch = jest.fn(() => done());
 
   getState.mockReturnValue({
-    topFilms: {
-      films: [{}],
-      loading: false,
-      error: false,
-    },
+    films: [{}],
+    loading: false,
+    error: false,
   });
 
   getTopFilmsLogic.process({ httpClient, getState }, dispatch, done);
@@ -30,6 +28,6 @@ describe('getTopFilmsLogic operation', () => {
   });
 
   it('calls done', () => {
-    expect(dispatch.mock.calls.length).toBe(1);
+    expect(done.mock.calls.length).toBe(2);
   });
 });

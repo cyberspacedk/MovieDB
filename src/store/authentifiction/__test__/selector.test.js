@@ -1,14 +1,13 @@
 import { isAuthentificated, getUserLogin } from '../selectors';
 
 describe('topfilms selector', () => {
+  const state = {
+    user: {
+      username: 'fakeuser',
+      sessionId: '12345',
+    },
+  };
   describe('session id exist', () => {
-    const state = {
-      user: {
-        username: 'fakeuser',
-        sessionId: '12345',
-      },
-    };
-
     it('returns true', () => {
       expect(isAuthentificated(state)).toBeTruthy();
     });
@@ -22,13 +21,6 @@ describe('topfilms selector', () => {
 
   describe('grab username', () => {
     it('returns username', () => {
-      const state = {
-        user: {
-          username: 'fakeuser',
-          sessionId: '12345',
-        },
-      };
-
       expect(getUserLogin(state)).toEqual(state.user.username);
     });
   });

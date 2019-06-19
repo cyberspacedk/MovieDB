@@ -14,6 +14,7 @@ export const mapPropsToValues = () => ({
   password: '',
 });
 
+// have to test handlesubmit
 export const handleSubmit = (values, { props, resetForm }) => {
   // eslint-disable-next-line no-shadow
   const { authUser } = props;
@@ -31,7 +32,6 @@ export const validationSchema = Yup.object().shape({
     .min(6, 'Минимум 6 символов')
     .required('Обязательное поле'),
 });
-
 export default compose(
   connect(
     null,
