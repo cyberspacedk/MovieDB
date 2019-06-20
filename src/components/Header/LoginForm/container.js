@@ -14,7 +14,7 @@ export const mapPropsToValues = () => ({
   password: '',
 });
 
-// have to test handlesubmit
+// РАЗОБРАТЬСЯ С ФУНКЦИЕЙ САБМИТА
 export const handleSubmit = (values, { props, resetForm }) => {
   // eslint-disable-next-line no-shadow
   const { authUser } = props;

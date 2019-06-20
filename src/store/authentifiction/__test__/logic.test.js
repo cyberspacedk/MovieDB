@@ -3,29 +3,41 @@ import httpClientMock, {
   multiHttpClientMock,
 } from '../../../utils/testHelpers/httpClientMock';
 
-// USER LOGIN
+// КАК РАБОТАЕТ МУЛЬТИКЛИЕНТ
 describe('authUserLogic operation', () => {
-  const httpClient = multiHttpClientMock({
-    method: 'get' || 'post',
-    response: {
-      data: {},
-    },
-  });
+  const requests = [
+    { method: 'get', response: { data: { request_token: 'token' } } },
+    { method: 'post', response: {} },
+    { method: 'post', response: { data: { session_id: '465sdc3awa' } } },
+  ];
+
+  const httpClient = multiHttpClientMock(requests);
 
   const getState = jest.fn();
   const done = jest.fn();
-  const dispatch = jest.fn(() => done());
-  const action = { payload: {} };
+  const dispatch = jest.fn();
+  const action = {
+    payload: {
+      username: 'somename',
+      password: 'qwerty123',
+    },
+  };
   getState.mockReturnValue({
     user: {},
   });
 
   authUserLogic.process({ httpClient, getState, action }, dispatch, done);
 
+  it('calls httpClient to get request token', () => {});
+
   it('dispatches action - SET_USER_DATA', () => {
     expect(dispatch.mock.calls.length).toBe(1);
     expect(dispatch.mock.calls[0][0]).toEqual({
       type: 'SET_USER_DATA',
+      payload: {
+        username: 'somename',
+        sessionId: '465sdc3awa',
+      },
     });
   });
 

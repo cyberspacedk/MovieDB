@@ -6,7 +6,7 @@ import FormButton from './FormButton/component';
 const LoginForm = () => (
   <Form>
     <Field name="username" component={FormField} />
-    <Field name="password" component={FormField} />
+    <Field name="password" type="password" component={FormField} />
     <Field component={FormButton} />
   </Form>
 );

@@ -29,10 +29,11 @@ describe('TopFilmsContainer ', () => {
     expect(shallowToJson(container)).toMatchSnapshot();
   });
 
+  // ПРИМЕР SPY
   it('Check call lifeCycleMethod componentDidMount', () => {
     mount(<TopFilmsContainerConnected store={store} />);
-    const spy = jest.spyOn(store, 'dispatch');
-    expect(spy).toHaveBeenCalledWith(fetchDataRequest());
+    // const spy = jest.spyOn(store, 'dispatch');
+    expect(store.dispatch).toHaveBeenCalledWith(fetchDataRequest());
   });
 
   it('Map state and dispatch to props', () => {

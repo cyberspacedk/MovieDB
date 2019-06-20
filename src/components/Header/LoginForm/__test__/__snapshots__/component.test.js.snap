@@ -9,6 +9,7 @@ exports[`Component: LoginForm should match its snapshot. Display errors in input
   <FormikConnect(FieldInner)
     component={[Function]}
     name="password"
+    type="password"
   />
   <FormikConnect(FieldInner)
     component={[Function]}
@@ -16,7 +17,7 @@ exports[`Component: LoginForm should match its snapshot. Display errors in input
 </Form>
 `;
 
-exports[`Component: LoginForm should match its snapshot. Display errors in inputs 2`] = `
+exports[`Component: LoginForm should match its snapshot. Display without errors in inputs 1`] = `
 <Form>
   <FormikConnect(FieldInner)
     component={[Function]}
@@ -25,6 +26,7 @@ exports[`Component: LoginForm should match its snapshot. Display errors in input
   <FormikConnect(FieldInner)
     component={[Function]}
     name="password"
+    type="password"
   />
   <FormikConnect(FieldInner)
     component={[Function]}

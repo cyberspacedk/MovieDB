@@ -18,7 +18,7 @@ describe('Component: LoginForm', () => {
     expect(shallowToJson(LoginFormComponent)).toMatchSnapshot();
   });
 
-  it('should match its snapshot. Display errors in inputs', () => {
+  it('should match its snapshot. Display without errors in inputs', () => {
     const nextProps = {
       ...props,
       errors: {

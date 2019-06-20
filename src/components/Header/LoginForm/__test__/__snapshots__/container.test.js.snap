@@ -332,6 +332,7 @@ exports[`Container: LoginForm Snapshot: should match 1`] = `
               <FormikConnect(FieldInner)
                 component={[Function]}
                 name="password"
+                type="password"
               >
                 <FieldInner
                   component={[Function]}
@@ -380,6 +381,7 @@ exports[`Container: LoginForm Snapshot: should match 1`] = `
                     }
                   }
                   name="password"
+                  type="password"
                 >
                   <FormField
                     field={
@@ -432,6 +434,7 @@ exports[`Container: LoginForm Snapshot: should match 1`] = `
                         },
                       }
                     }
+                    type="password"
                   >
                     <styled.div>
                       <StyledComponent
@@ -483,7 +486,7 @@ exports[`Container: LoginForm Snapshot: should match 1`] = `
                             onBlur={[Function]}
                             onChange={[Function]}
                             placeholder="Username"
-                            type="text"
+                            type="password"
                             value=""
                           />
                         </div>

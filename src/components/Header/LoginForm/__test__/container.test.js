@@ -4,7 +4,11 @@ import { configure, shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { shallowToJson } from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
-import LoginForm, { mapPropsToValues, validationSchema } from '../container';
+import LoginForm, {
+  mapPropsToValues,
+  validationSchema,
+  handleSubmit,
+} from '../container';
 
 configure({ adapter: new Adapter() });
 
@@ -45,5 +49,30 @@ describe('Container: LoginForm', () => {
 
   it('check validationSchema', () => {
     expect(validationSchema).toMatchSnapshot();
+  });
+
+  describe('check call submit func and inner function', () => {
+    const values = {
+      user: 'dfsf',
+      password: 'fdfsf',
+      rememberMe: true,
+    };
+    const { rememberMe: _x, ...userData } = values;
+    const formikProps = {
+      props: {
+        authUser: jest.fn(),
+      },
+      resetForm: jest.fn(),
+    };
+
+    handleSubmit(userData, formikProps);
+
+    it('should call resetForm func', () => {
+      expect(formikProps.resetForm).toHaveBeenCalled();
+    });
+
+    it('should dispatch action with user info', () => {
+      expect(formikProps.props.authUser).toHaveBeenCalledWith(userData);
+    });
   });
 });

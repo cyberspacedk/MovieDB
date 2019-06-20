@@ -9,7 +9,7 @@ describe('getTopFilmsLogic operation', () => {
 
   const getState = jest.fn();
   const done = jest.fn();
-  const dispatch = jest.fn(() => done());
+  const dispatch = jest.fn();
 
   getState.mockReturnValue({
     films: [{}],
@@ -28,6 +28,6 @@ describe('getTopFilmsLogic operation', () => {
   });
 
   it('calls done', () => {
-    expect(done.mock.calls.length).toBe(2);
+    expect(done).toBeCalled();
   });
 });

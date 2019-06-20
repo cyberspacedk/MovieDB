@@ -27,6 +27,7 @@ const FormField = ({ field, form: { touched, errors }, ...props }) => (
     <input type="text" placeholder="Username" {...field} {...props} />
   </FormItem>
 );
+
 FormField.propTypes = {
   field: PropTypes.shape({ name: PropTypes.string }).isRequired,
   form: PropTypes.shape({
