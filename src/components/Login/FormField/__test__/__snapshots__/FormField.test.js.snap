@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: FormItem should match its snapshot. 1`] = `
+<styled.div>
+  <input
+    name=""
+    placeholder="Username"
+    type="text"
+  />
+</styled.div>
+`;

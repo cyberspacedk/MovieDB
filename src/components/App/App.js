@@ -1,16 +1,22 @@
 import React from 'react';
-import TopFilms from '../TopFilms';
-import LoginForm from '../Header';
+import { Route, Switch } from 'react-router-dom';
+/* import TopFilms from '../TopFilms';
+import LoginForm from '../Header'; */
 import 'antd/dist/antd.css';
-
 // styles
 import GlobalStyle from '../../globalStyles';
+import '../../assets/styles/app.scss';
+import LoginPage from '../Login/container';
 
 function App() {
   return (
     <div className="App">
-      <LoginForm />
-      <TopFilms />
+      <Switch>
+        <Route path="/" component={LoginPage} />
+      </Switch>
+
+      {/*  <LoginForm />
+      <TopFilms /> */}
       <GlobalStyle />
     </div>
   );

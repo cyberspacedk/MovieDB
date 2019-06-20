@@ -2,8 +2,8 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 import * as Yup from 'yup';
-import { authUser } from '../../../store/authentifiction/actions';
 import LoginForm from './component';
+import { authUser } from '../../store/authentifiction/actions';
 
 const mdtp = {
   authUser,
@@ -14,7 +14,6 @@ export const mapPropsToValues = () => ({
   password: '',
 });
 
-// РАЗОБРАТЬ ТЕСТ САБМИТ ФОРМЫ
 export const handleSubmit = (values, { props, resetForm }) => {
   // eslint-disable-next-line no-shadow
   const { authUser } = props;

@@ -4,7 +4,12 @@ import { configure, shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { shallowToJson } from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
-import LoginForm, { mapPropsToValues, validationSchema } from '../container';
+import LoginForm, {
+  mapPropsToValues,
+  validationSchema,
+  handleSubmit,
+} from '../container';
+import { authUser } from '../../../../store/authentifiction/actions';
 
 configure({ adapter: new Adapter() });
 
@@ -45,5 +50,29 @@ describe('Container: LoginForm', () => {
 
   it('check validationSchema', () => {
     expect(validationSchema).toMatchSnapshot();
+  });
+
+  // РАСПУТАТЬ
+  it('check call handlesubmit and function inside', () => {
+    /*  const spy = jest.spyOn(handleSubmit, 'resetForm');
+    const called = handleSubmit(); */
+    const resetForm = jest.fn();
+    const values = {
+      username: 'name',
+      password: '219fsf',
+      rememberMe: false,
+    };
+    const params = {
+      props: {
+        authUser,
+      },
+      resetForm: jest.fn(),
+    };
+    handleSubmit(values, params);
+
+    mount(<LoginForm store={store} />);
+    const spy = jest.spyOn(store, 'dispatch');
+    expect(spy).toHaveBeenCalledWith(authUser(values));
+    /* expect(handleSubmit.props()).toHaveBeenCalled(); */
   });
 });

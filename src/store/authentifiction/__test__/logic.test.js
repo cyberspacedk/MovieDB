@@ -3,7 +3,7 @@ import httpClientMock, {
   multiHttpClientMock,
 } from '../../../utils/testHelpers/httpClientMock';
 
-// USER LOGIN
+// РАЗОБРАТЬ МУЛЬТИ КЛИЕНТ
 describe('authUserLogic operation', () => {
   const httpClient = multiHttpClientMock({
     method: 'get' || 'post',
