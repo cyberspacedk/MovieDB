@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Container: UserInfo Snapshot: should match 1`] = `
-<UserInfo
-  sessionID={true}
+exports[`Container: Header Snapshot: should match 1`] = `
+<ParentForm
+  dispatch={[Function]}
+  isLogin={false}
   store={
     Object {
       "clearActions": [Function],
@@ -13,7 +14,5 @@ exports[`Container: UserInfo Snapshot: should match 1`] = `
       "subscribe": [Function],
     }
   }
-  userLogout={[Function]}
-  username="fakeuser"
 />
 `;

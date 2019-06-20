@@ -1,9 +1,21 @@
 import { connect } from 'react-redux';
-import { isAuthentificated } from '../../store/authentifiction/selectors';
-import ParentForm from './component';
+import Header from './component';
+import { userLogout } from '../../store/authentifiction/actions';
+import {
+  getUserLogin,
+  isAuthentificated,
+} from '../../store/authentifiction/selectors';
 
 export const mstp = state => ({
-  isLogin: isAuthentificated(state),
+  username: getUserLogin(state),
+  sessionID: isAuthentificated(state),
 });
 
-export default connect(mstp)(ParentForm);
+const mdtp = {
+  userLogout,
+};
+
+export default connect(
+  mstp,
+  mdtp,
+)(Header);

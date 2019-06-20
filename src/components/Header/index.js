@@ -1,3 +1,3 @@
-import FormContainer from './container';
+import Header from './container';
 
-export default FormContainer;
+export default Header;

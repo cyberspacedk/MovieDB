@@ -7,7 +7,6 @@ const FormButton = ({ form: { touched, errors } }) => (
   <Button
     htmlType="submit"
     type="primary"
-    loading
     disabled={
       (touched.username && errors.username) ||
       (touched.password && errors.password)

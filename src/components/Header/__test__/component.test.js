@@ -4,20 +4,24 @@ import { shallowToJson } from 'enzyme-to-json';
 import Header from '../component';
 
 describe('Component: Header', () => {
-  const props = {
-    isLogin: false,
-  };
+  const mockClick = jest.fn();
 
-  it('should match its snapshot. User doesnt logged in ', () => {
-    const HeaderComponent = shallow(<Header {...props} />);
+  const props = {
+    username: 'USERNAME',
+    userLogout: mockClick,
+  };
+  const HeaderComponent = shallow(<Header {...props} />);
+
+  it('Snapshot: should match', () => {
     expect(shallowToJson(HeaderComponent)).toMatchSnapshot();
   });
 
-  it('should match its snapshot. User logged in ', () => {
-    const nextProps = {
-      isLogin: true,
-    };
-    const HeaderComponent = shallow(<Header {...nextProps} />);
-    expect(shallowToJson(HeaderComponent)).toMatchSnapshot();
+  it('Simulate: click on button. Logout', () => {
+    HeaderComponent.find('[type="primary"]').simulate('click');
+    expect(mockClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('Content: shoud match to props', () => {
+    expect(HeaderComponent.find('span').text()).toEqual(props.username);
   });
 });

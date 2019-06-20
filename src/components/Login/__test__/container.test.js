@@ -9,7 +9,7 @@ import LoginForm, {
   validationSchema,
   handleSubmit,
 } from '../container';
-import { authUser } from '../../../../store/authentifiction/actions';
+import { authUser } from '../../../store/authentifiction/actions';
 
 configure({ adapter: new Adapter() });
 

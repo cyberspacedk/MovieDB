@@ -6,13 +6,13 @@ import 'antd/dist/antd.css';
 // styles
 import GlobalStyle from '../../globalStyles';
 import '../../assets/styles/app.scss';
-import LoginPage from '../Login/container';
+import Home from '../Home';
 
 function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/" component={LoginPage} />
+        <Route path="/" component={Home} />
       </Switch>
 
       {/*  <LoginForm />
