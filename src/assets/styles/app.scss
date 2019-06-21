@@ -40,11 +40,12 @@ body,
 }
 
 .movie-image {
-  width: 100%;
+  display: block;
   height: 100%;
-  background-position: center center;
+  background-position: center 50%;
   background-repeat: no-repeat;
   overflow: hidden;
+  object-fit: contain;
 }
 
 .movie-data {

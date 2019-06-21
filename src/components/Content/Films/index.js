@@ -1,3 +1,3 @@
-import Films from './component';
+import Films from './container';
 
 export default Films;

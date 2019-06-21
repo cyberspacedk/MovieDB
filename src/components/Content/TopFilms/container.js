@@ -1,6 +1,8 @@
 /* eslint-disable react/require-default-props */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { fetchDataRequest } from '../../../store/topFilms/actions';
 import { singleFilmRequest } from '../../../store/singleFilm/actions';
@@ -42,7 +44,10 @@ TopFilmsContainer.propTypes = {
   error: PropTypes.bool,
 };
 
-export default connect(
-  mstp,
-  mdtp,
+export default compose(
+  connect(
+    mstp,
+    mdtp,
+  ),
+  withRouter,
 )(TopFilmsContainer);

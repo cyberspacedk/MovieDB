@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Layout, Row, Col, Card, BackTop } from 'antd';
 import Spinner from '../Spinner';
 
-const TopFilms = ({ loading, topFilms, singleFilmRequest }) => (
+const TopFilms = ({ loading, topFilms, singleFilmRequest, history }) => (
   <Layout>
     <Layout.Content>
       <div className="top-margin">
@@ -22,6 +21,10 @@ const TopFilms = ({ loading, topFilms, singleFilmRequest }) => (
                   md={{ span: 8 }}
                   lg={{ span: 6 }}
                   xl={{ span: 4 }}
+                  onClick={() => {
+                    singleFilmRequest(item.id);
+                    history.push(`/${item.id}`);
+                  }}
                 >
                   <Card
                     hoverable
@@ -40,12 +43,6 @@ const TopFilms = ({ loading, topFilms, singleFilmRequest }) => (
                       title={item.original_title}
                       description={`${item.overview.slice(0, 100)}...`}
                     />
-                    <Link
-                      to={`/${item.id}`}
-                      onClick={() => singleFilmRequest(item.id)}
-                    >
-                      More details ...
-                    </Link>
                   </Card>
                 </Col>
               ))

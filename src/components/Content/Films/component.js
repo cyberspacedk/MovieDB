@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Layout, Row, Col, Card, Pagination, BackTop } from 'antd';
 
 // eslint-disable-next-line no-unused-vars
-const Films = ({ response, totalResults, aboutFilm }) => (
+const Films = ({ response, totalResults, aboutFilm, history }) => (
   <Layout>
     <Layout.Content>
       <div className="top-margin">
@@ -18,6 +17,10 @@ const Films = ({ response, totalResults, aboutFilm }) => (
                 md={{ span: 8 }}
                 lg={{ span: 6 }}
                 xl={{ span: 4 }}
+                onClick={() => {
+                  aboutFilm(item.id);
+                  history.push(`/${item.id}`);
+                }}
               >
                 <Card
                   hoverable
@@ -34,9 +37,6 @@ const Films = ({ response, totalResults, aboutFilm }) => (
                     title={item.original_title}
                     description={`${item.overview.slice(0, 100)}...`}
                   />
-                  <Link to={`/${item.id}`} onClick={() => aboutFilm(item.id)}>
-                    More details ...
-                  </Link>
                 </Card>
               </Col>
             ))}
