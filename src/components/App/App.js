@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 /* import TopFilms from '../TopFilms';
 import LoginForm from '../Header'; */
 import 'antd/dist/antd.css';
@@ -7,16 +7,17 @@ import 'antd/dist/antd.css';
 import GlobalStyle from '../../globalStyles';
 import '../../assets/styles/app.scss';
 import Home from '../Home';
+import AboutFilm from '../AboutFilm';
 
 function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/" component={Home} />
+        <Route exact path="/" component={Home} />
+        <Route path="/:id" component={AboutFilm} />
+        <Redirect to="/" />
       </Switch>
 
-      {/*  <LoginForm />
-      <TopFilms /> */}
       <GlobalStyle />
     </div>
   );

@@ -1,0 +1,66 @@
+/* eslint-disable react/prop-types */
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Layout, Row, Col, Card, BackTop } from 'antd';
+import Spinner from '../Spinner';
+
+const TopFilms = ({ loading, topFilms, singleFilmRequest }) => (
+  <Layout>
+    <Layout.Content>
+      <div className="top-margin">
+        <Row type="flex" gutter={16} justify="center" align="left">
+          <Col span={20}>
+            {loading ? (
+              <Spinner />
+            ) : (
+              topFilms.map(item => (
+                <Col
+                  key={item.id}
+                  xs={{ span: 12 }}
+                  sm={{ span: 12 }}
+                  md={{ span: 8 }}
+                  lg={{ span: 6 }}
+                  xl={{ span: 4 }}
+                >
+                  <Card
+                    hoverable
+                    cover={
+                      <img
+                        alt={item.title}
+                        src={`https://image.tmdb.org/t/p/w200${
+                          item.poster_path
+                        }`}
+                      />
+                    }
+                    className="top-margin card-film"
+                    /*  actions={} */
+                  >
+                    <Card.Meta
+                      title={item.original_title}
+                      description={`${item.overview.slice(0, 100)}...`}
+                    />
+                    <Link
+                      to={`/${item.id}`}
+                      onClick={() => singleFilmRequest(item.id)}
+                    >
+                      More details ...
+                    </Link>
+                  </Card>
+                </Col>
+              ))
+            )}
+          </Col>
+        </Row>
+      </div>
+    </Layout.Content>
+    <BackTop />
+  </Layout>
+);
+
+TopFilms.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  topFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+export default TopFilms;

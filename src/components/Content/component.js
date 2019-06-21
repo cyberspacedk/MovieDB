@@ -6,6 +6,7 @@ import Spinner from './Spinner';
 import Empty from './Empty';
 import ErrorRequest from './Error';
 import Films from './Films';
+import TopFilms from './TopFilms';
 
 const Content = props => {
   const {
@@ -13,17 +14,23 @@ const Content = props => {
     isError,
     searchResponse,
     emptyResponse,
-    totalPages,
+    totalResults,
+    singleFilmRequest,
   } = props;
-  console.log(props);
   return (
     <Layout>
       <Layout.Content>
         <div className="top-margin">
           <Row type="flex" justify="center">
             <Col>
-              {searchResponse && (
-                <Films response={searchResponse} pages={totalPages} />
+              {searchResponse ? (
+                <Films
+                  response={searchResponse}
+                  totalResults={totalResults}
+                  aboutFilm={singleFilmRequest}
+                />
+              ) : (
+                <TopFilms />
               )}
               {isLoading && <Spinner />}
               {emptyResponse && <Empty />}

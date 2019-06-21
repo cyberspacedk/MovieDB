@@ -8,7 +8,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import { shallowToJson } from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import TopFilmsContainerConnected, { TopFilmsContainer } from '../container';
-import { fetchDataRequest } from '../../../store/topFilms/actions';
+import { fetchDataRequest } from '../../../../store/topFilms/actions';
 
 configure({ adapter: new Adapter() });
 

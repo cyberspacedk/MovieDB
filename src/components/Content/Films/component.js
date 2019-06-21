@@ -1,13 +1,14 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Layout, Row, Col, Card, Pagination } from 'antd';
+import { Link } from 'react-router-dom';
+import { Layout, Row, Col, Card, Pagination, BackTop } from 'antd';
 
 // eslint-disable-next-line no-unused-vars
-const Films = ({ response, pages }) => (
+const Films = ({ response, totalResults, aboutFilm }) => (
   <Layout>
     <Layout.Content>
       <div className="top-margin">
-        <Row type="flex" gutter={16} justify="center" align="left">
+        <Row type="flex" gutter={16} justify="center">
           <Col span={20}>
             {response.map(item => (
               <Col
@@ -33,19 +34,30 @@ const Films = ({ response, pages }) => (
                     title={item.original_title}
                     description={`${item.overview.slice(0, 100)}...`}
                   />
+                  <Link to={`/${item.id}`} onClick={() => aboutFilm(item.id)}>
+                    More details ...
+                  </Link>
                 </Card>
               </Col>
             ))}
           </Col>
         </Row>
 
-        <Row type="flex" justify="center">
-          <Col>
-            <Pagination defaultCurrent={1} total={7} className="pagination" />
-          </Col>
-        </Row>
+        {totalResults && (
+          <Row type="flex" justify="center">
+            <Col>
+              <Pagination
+                defaultCurrent={1}
+                total={totalResults}
+                className="pagination"
+                defaultPageSize={20}
+              />
+            </Col>
+          </Row>
+        )}
       </div>
     </Layout.Content>
+    <BackTop />
   </Layout>
 );
 

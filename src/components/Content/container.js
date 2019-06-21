@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import Content from './component';
+import { singleFilmRequest } from '../../store/singleFilm/actions';
 import {
   isError,
   isLoading,
   searchResponse,
   isEmptyResponse,
-  totalPages,
+  totalResults,
 } from '../../store/search/selectors';
 
 export const mstp = state => ({
@@ -13,6 +14,13 @@ export const mstp = state => ({
   isError: isError(state),
   searchResponse: searchResponse(state),
   emptyResponse: isEmptyResponse(state),
-  totalPages: totalPages(state),
+  totalResults: totalResults(state),
 });
-export default connect(mstp)(Content);
+
+const mdtp = {
+  singleFilmRequest,
+};
+export default connect(
+  mstp,
+  mdtp,
+)(Content);
