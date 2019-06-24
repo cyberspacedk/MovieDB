@@ -31,6 +31,7 @@ export default (state = initialState, { type, payload }) => {
         original_title,
         overview,
         runtime,
+        revenue,
       } = payload;
 
       const totalData = {
@@ -44,6 +45,7 @@ export default (state = initialState, { type, payload }) => {
         original_title,
         overview,
         runtime,
+        revenue,
       };
       return {
         ...state,

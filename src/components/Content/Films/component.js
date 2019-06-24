@@ -1,6 +1,7 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Layout, Row, Col, Card, Pagination, BackTop } from 'antd';
+import { Layout, Row, Col, Card, Pagination, BackTop, Icon } from 'antd';
 
 // eslint-disable-next-line no-unused-vars
 const Films = ({ response, totalResults, aboutFilm, history }) => (
@@ -31,7 +32,11 @@ const Films = ({ response, totalResults, aboutFilm, history }) => (
                     />
                   }
                   className="top-margin card-film"
-                  /*  actions={} */
+                  actions={[
+                    <Icon type="plus-circle" />,
+                    <Icon type="star" />,
+                    <Icon type="eye" />,
+                  ]}
                 >
                   <Card.Meta
                     title={item.original_title}

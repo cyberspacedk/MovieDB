@@ -40,9 +40,9 @@ body,
 }
 
 .movie-image {
-  display: block;
+  width: 100%;
   height: 100%;
-  background-position: center 50%;
+  background-position: center center;
   background-repeat: no-repeat;
   overflow: hidden;
   object-fit: contain;
@@ -54,7 +54,25 @@ body,
 .card-film {
   height: 505px;
 }
+.card-film img {
+  height: 320px;
+}
 
+.card-film .ant-card-body {
+  height: 180px;
+}
 .ant-back-top {
   right: 20px;
+}
+
+.accent-movie {
+  font-weight: 700;
+  margin-right: 20px;
+}
+.person-image {
+  height: 220px;
+}
+.casts-card .ant-card-body {
+  padding: 10px;
+  height: 90px;
 }
