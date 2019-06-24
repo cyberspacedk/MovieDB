@@ -1,13 +1,19 @@
-const userLogout = () => ({ type: 'DELETE_SESSION_ID' });
-
-const authUser = ({ username, password }) => ({
-  type: 'AUTH_USER',
+const authRequest = ({ username, password }) => ({
+  type: 'AUTH_REQUEST',
   payload: {
     username,
     password,
   },
 });
 
-const setUserData = userData => ({ type: 'SET_USER_DATA', payload: userData });
+const authSuccess = userData => ({ type: 'AUTH_SUCCESS', payload: userData });
 
-export { userLogout, authUser, setUserData };
+const authError = () => ({ type: 'AUTH_ERROR' });
+
+const authLogout = () => ({ type: 'AUTH_LOGOUT' });
+
+const tryAgain = () => ({
+  type: 'TRY_AGAIN',
+});
+
+export { authLogout, authRequest, authSuccess, authError, tryAgain };

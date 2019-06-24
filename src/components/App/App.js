@@ -7,14 +7,14 @@ import 'antd/dist/antd.css';
 import GlobalStyle from '../../globalStyles';
 import '../../assets/styles/app.scss';
 import Home from '../Home';
-import AboutFilm from '../AboutFilm';
+import Movie from '../Movie';
 
 function App() {
   return (
     <div className="App">
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/:id" component={AboutFilm} />
+        <Route path="/:id" component={Movie} />
         <Redirect to="/" />
       </Switch>
 

@@ -2,11 +2,11 @@
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
 import { createLogic } from 'redux-logic';
-import { userLogout, setUserData } from './actions';
+import { authLogout, authSuccess, authError } from './actions';
 
 // LOGIC FOR AUTHENTIFICATE USER
 export const authUserLogic = createLogic({
-  type: 'AUTH_USER',
+  type: 'AUTH_REQUEST',
   latest: true,
 
   async process({ httpClient, getState, action }, dispatch, done) {
@@ -35,12 +35,13 @@ export const authUserLogic = createLogic({
         },
       );
 
-      dispatch(setUserData({ username, sessionId: session_id }));
+      dispatch(authSuccess({ username, sessionId: session_id }));
 
       localStorage.setItem('SESSION_ID', JSON.stringify(session_id));
       localStorage.setItem('USERNAME', JSON.stringify(username));
     } catch (err) {
       console.log(err);
+      dispatch(authError());
     }
     done();
   },
@@ -48,7 +49,7 @@ export const authUserLogic = createLogic({
 
 // LOGIC FOR LOGOUT
 export const userLogoutLogic = createLogic({
-  type: 'DELETE_SESSION_ID',
+  type: 'AUTH_LOGOUT',
   latest: true,
 
   async process({ httpClient }, dispatch, done) {
@@ -61,7 +62,7 @@ export const userLogoutLogic = createLogic({
           },
         },
       );
-      dispatch(userLogout());
+      dispatch(authLogout());
       localStorage.clear();
     } catch (err) {
       console.log(err);
