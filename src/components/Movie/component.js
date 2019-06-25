@@ -17,7 +17,7 @@ import Header from '../Home/Dashboard/Header';
 import Spinner from '../shared/StatusFields/Spinner';
 import Error from '../shared/StatusFields/Error';
 import { getFilmDuration, transformNumbers } from '../../helpers/helpers';
-import CreateListAction from '../shared/UserAction/CreateListAction/component';
+import CreateListAction from '../shared/UserAction/CreateListAction';
 import FavoriteAction from '../shared/UserAction/FavoriteAction/component';
 import WatchListAction from '../shared/UserAction/WatchListAction/component';
 
