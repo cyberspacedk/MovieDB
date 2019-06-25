@@ -1,9 +1,9 @@
 import { authUserLogic, userLogoutLogic } from '../logic';
 import httpClientMock, {
   multiHttpClientMock,
-} from '../../../utils/testHelpers/httpClientMock';
+} from '../../../helpers/httpClientMock';
 
-// КАК РАБОТАЕТ МУЛЬТИКЛИЕНТ
+// РАЗОБРАТЬ МУЛЬТИ КЛИЕНТ
 describe('authUserLogic operation', () => {
   const requests = [
     { method: 'get', response: { data: { request_token: 'token' } } },

@@ -1,0 +1,78 @@
+// Ant Design
+@import '~antd/dist/antd.css';
+
+html,
+body,
+#app {
+  height: 100vh;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.ant-layout {
+  background-color: #fff;
+}
+
+.ant-layout-header .ant-typography {
+  color: #fff;
+}
+
+.top-margin {
+  margin-top: 20pt;
+}
+
+.pagination {
+  margin-top: 10pt;
+  margin-bottom: 10pt;
+}
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 400px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
+
+.movie-image {
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  object-fit: contain;
+}
+
+.movie-data {
+  margin-top: 20pt;
+}
+.card-film {
+  height: 505px;
+}
+.card-film img {
+  height: 320px;
+}
+
+.card-film .ant-card-body {
+  height: 180px;
+}
+.ant-back-top {
+  right: 20px;
+}
+
+.accent-movie {
+  font-weight: 700;
+  margin-right: 20px;
+}
+.person-image {
+  height: 220px;
+}
+.casts-card .ant-card-body {
+  padding: 10px;
+  height: 90px;
+}

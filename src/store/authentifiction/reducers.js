@@ -1,23 +1,39 @@
+import { fromStorage } from '../../helpers/helpers';
+
 export const initialState = {
-  username: JSON.parse(localStorage.getItem('USERNAME')) || '',
-  sessionId: JSON.parse(localStorage.getItem('SESSION_ID')) || '',
+  username: fromStorage('USERNAME') || '',
+  sessionId: fromStorage('SESSION_ID') || '',
+  failAuth: false,
 };
 
-const setUserDataReducer = (state = initialState, { type, payload }) => {
+export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case 'SET_USER_DATA':
+    case 'AUTH_SUCCESS':
       return {
+        ...state,
         username: payload.username,
         sessionId: payload.sessionId,
+        failAuth: false,
       };
-    case 'DELETE_SESSION_ID':
+    case 'AUTH_LOGOUT':
       return {
+        ...state,
         username: '',
         sessionId: '',
+        failAuth: false,
       };
+    case 'AUTH_ERROR':
+      return {
+        ...state,
+        failAuth: true,
+      };
+    case 'TRY_AGAIN':
+      return {
+        ...state,
+        failAuth: false,
+      };
+
     default:
       return state;
   }
 };
-
-export default setUserDataReducer;
