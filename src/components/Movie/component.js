@@ -114,7 +114,7 @@ const AboutFilm = props => {
                 {casts &&
                   casts.map(person => (
                     <Col
-                      key={person.id}
+                      key={person.cast_id}
                       xs={{ span: 12 }}
                       sm={{ span: 8 }}
                       md={{ span: 6 }}
@@ -154,7 +154,7 @@ const AboutFilm = props => {
                 {crew &&
                   crew.map(person => (
                     <Col
-                      key={person.id}
+                      key={person.credit_id}
                       xs={{ span: 12 }}
                       sm={{ span: 8 }}
                       md={{ span: 6 }}

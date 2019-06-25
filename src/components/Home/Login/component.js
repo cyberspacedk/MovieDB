@@ -20,8 +20,16 @@ const LoginForm = ({ isFailAuth }) => (
             <Typography>
               <Title>The Movie DB</Title>
               <Form>
-                <Field name="username" component={FormField} />
-                <Field name="password" component={FormField} />
+                <Field
+                  name="username"
+                  placeholder="Username"
+                  component={FormField}
+                />
+                <Field
+                  name="password"
+                  placeholder="Password"
+                  component={FormField}
+                />
                 <Field component={FormButton} />
               </Form>
             </Typography>
