@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Popover, Button, Icon } from 'antd';
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import CreateListFormModal from './CreateListFormModal';
 
@@ -29,15 +29,15 @@ PopoverContent.propTypes = {
   hidePopover: PropTypes.func.isRequired,
 };
 
-const CreateListAction = () => {
-  const [visiblePop, setVisiblePop] = useState(false);
-  const showPopover = visible => setVisiblePop(visible);
-  const hidePopover = () => setVisiblePop(false);
-
-  const [visibleMod, setVisibleMod] = useState(false);
-  const showModal = () => setVisibleMod(true);
-  const hideModal = () => setVisibleMod(false);
-
+const CreateListAction = props => {
+  const {
+    visiblePop,
+    visibleMod,
+    showPopover,
+    hidePopover,
+    showModal,
+    hideModal,
+  } = props;
   return (
     <>
       <Popover

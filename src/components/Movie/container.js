@@ -1,6 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { singleFilmRequest } from '../../store/singleFilm/actions';
 import AboutFilm from './component';
@@ -14,14 +14,16 @@ import {
   getFilmInfo,
 } from '../../store/singleFilm/selectors';
 
-const Movie = props => {
-  useEffect(() => {
-    const { id } = props.match.params;
-    props.singleFilmRequest(id);
-  }, []);
+class Movie extends Component {
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    this.props.singleFilmRequest(id);
+  }
 
-  return <AboutFilm {...props} />;
-};
+  render() {
+    return <AboutFilm {...this.props} />;
+  }
+}
 
 const mstp = state => ({
   isError: isError(state),
@@ -32,9 +34,11 @@ const mstp = state => ({
   crew: getCrew(state),
   genres: getGenres(state),
 });
+
 const mdtp = {
   singleFilmRequest,
 };
+
 export default connect(
   mstp,
   mdtp,

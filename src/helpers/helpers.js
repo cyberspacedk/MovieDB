@@ -12,3 +12,9 @@ export const transformNumbers = sum =>
     .toString()
     .split(/(?=(?:\d{3})+$)/)
     .join(',')}.00`;
+
+export const toStorage = (key, val) => {
+  localStorage.setItem(key, JSON.stringify(val));
+};
+
+export const fromStorage = key => JSON.parse(localStorage.getItem(key));

@@ -1,4 +1,6 @@
+/* eslint-disable no-console */
 import { createLogic } from 'redux-logic';
+import { fromStorage } from '../../helpers/helpers';
 
 const createListLogic = createLogic({
   type: 'CREATE_LIST_REQUEST',
@@ -6,7 +8,7 @@ const createListLogic = createLogic({
 
   // CORS
   async process({ httpClient, action }, dispatch, done) {
-    const ssid = JSON.parse(localStorage.getItem('SESSION_ID'));
+    const ssid = fromStorage('SESSION_ID');
     const { name, description } = action.payload;
     try {
       const { data } = await httpClient({

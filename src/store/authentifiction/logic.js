@@ -4,6 +4,8 @@
 import { createLogic } from 'redux-logic';
 import { authLogout, authSuccess, authError } from './actions';
 
+import { toStorage } from '../../helpers/helpers';
+
 // LOGIC FOR AUTHENTIFICATE USER
 export const authUserLogic = createLogic({
   type: 'AUTH_REQUEST',
@@ -37,8 +39,8 @@ export const authUserLogic = createLogic({
 
       dispatch(authSuccess({ username, sessionId: session_id }));
 
-      localStorage.setItem('SESSION_ID', JSON.stringify(session_id));
-      localStorage.setItem('USERNAME', JSON.stringify(username));
+      toStorage('SESSION_ID', session_id);
+      toStorage('USERNAME', username);
     } catch (err) {
       console.log(err);
       dispatch(authError());

@@ -1,6 +1,8 @@
+import { fromStorage } from '../../helpers/helpers';
+
 export const initialState = {
-  username: JSON.parse(localStorage.getItem('USERNAME')) || '',
-  sessionId: JSON.parse(localStorage.getItem('SESSION_ID')) || '',
+  username: fromStorage('USERNAME') || '',
+  sessionId: fromStorage('SESSION_ID') || '',
   failAuth: false,
 };
 
