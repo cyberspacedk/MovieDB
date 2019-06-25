@@ -1,19 +1,17 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Layout, Row, Col, Card, BackTop } from 'antd';
-import Spinner from '../../../../shared/StatusFields/Spinner';
+import { Layout, Row, Col, Card, Pagination, BackTop } from 'antd';
 
-const TrendingMovies = ({ loading, topFilms, singleFilmRequest, history }) => (
+// eslint-disable-next-line no-unused-vars
+const Movies = ({ response, totalResults, history }) => (
   <Layout>
     <Layout.Content>
       <div className="top-margin">
-        <Row type="flex" gutter={16} justify="center" align="left">
+        <Row type="flex" gutter={16} justify="center">
           <Col span={20}>
-            {loading ? (
-              <Spinner />
-            ) : (
-              topFilms.map(item => (
+            {response &&
+              response.map(item => (
                 <Col
                   key={item.id}
                   xs={{ span: 12 }}
@@ -22,7 +20,6 @@ const TrendingMovies = ({ loading, topFilms, singleFilmRequest, history }) => (
                   lg={{ span: 6 }}
                   xl={{ span: 4 }}
                   onClick={() => {
-                    singleFilmRequest(item.id);
                     history.push(`/${item.id}`);
                   }}
                 >
@@ -37,7 +34,6 @@ const TrendingMovies = ({ loading, topFilms, singleFilmRequest, history }) => (
                       />
                     }
                     className="top-margin card-film"
-                    /*  actions={} */
                   >
                     <Card.Meta
                       title={item.original_title}
@@ -45,19 +41,26 @@ const TrendingMovies = ({ loading, topFilms, singleFilmRequest, history }) => (
                     />
                   </Card>
                 </Col>
-              ))
-            )}
+              ))}
           </Col>
         </Row>
+
+        {totalResults && (
+          <Row type="flex" justify="center">
+            <Col>
+              <Pagination
+                defaultCurrent={1}
+                total={totalResults}
+                className="pagination"
+                defaultPageSize={20}
+              />
+            </Col>
+          </Row>
+        )}
       </div>
     </Layout.Content>
     <BackTop />
   </Layout>
 );
 
-TrendingMovies.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  topFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
-export default TrendingMovies;
+export default Movies;

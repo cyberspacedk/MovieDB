@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { fetchDataRequest } from '../../../../../store/topFilms/actions';
+import { fetchDataRequest } from '../../../../../store/trendingMovies/actions';
 import { singleFilmRequest } from '../../../../../store/singleFilm/actions';
 import TopFilms from './component';
 import {
   getTopFilmsSelector,
   isloading,
   isError,
-} from '../../../../../store/topFilms/selectors';
+} from '../../../../../store/trendingMovies/selectors';
 
-export class TopFilmsContainer extends Component {
+export class TrendingMoviesContainer extends Component {
   componentDidMount() {
     // eslint-disable-next-line react/destructuring-assignment
     this.props.fetchDataRequest();
@@ -37,7 +37,7 @@ const mdtp = {
   singleFilmRequest,
 };
 
-TopFilmsContainer.propTypes = {
+TrendingMoviesContainer.propTypes = {
   fetchDataRequest: PropTypes.func.isRequired,
   topFilms: PropTypes.arrayOf(PropTypes.shape),
   loading: PropTypes.bool,
@@ -50,4 +50,4 @@ export default compose(
     mdtp,
   ),
   withRouter,
-)(TopFilmsContainer);
+)(TrendingMoviesContainer);

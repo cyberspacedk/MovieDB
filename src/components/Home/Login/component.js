@@ -4,7 +4,7 @@ import { Layout, Row, Typography } from 'antd';
 import { Form, Field } from 'formik';
 import FormField from './FormField/component';
 import FormButton from './FormButton/component';
-import Error from '../../shared/StatusFields/Error';
+import Error from './FailAuth';
 
 const { Content } = Layout;
 const { Title } = Typography;

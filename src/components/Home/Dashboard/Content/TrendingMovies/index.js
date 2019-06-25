@@ -1,3 +1,3 @@
-import container from './container';
+import TrendingMovies from './container';
 
-export default container;
+export default TrendingMovies;

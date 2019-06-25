@@ -19,7 +19,8 @@ export const handleSubmit = (values, { props }) => {
 export const validationSchema = Yup.object().shape({
   search: Yup.string()
     .min(3, 'Минимум 3 символа')
-    .matches(/^[A-Za-z0-9_-\s]{3,16}$/, 'Только буквы, цифры и тире'),
+    .matches(/^[A-Za-z0-9_-\s]{3,16}$/, 'Только буквы, цифры и тире')
+    .required(),
 });
 const mdtp = {
   searchRequest,

@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import Dashboard from './Dashboard';
 import Login from './Login';
 
-const HomeWay = ({ isAuthentificated }) => (
+const Home = ({ isAuthentificated }) => (
   <>{!isAuthentificated ? <Login /> : <Dashboard />}</>
 );
 
-HomeWay.propTypes = {
-  isLogin: PropTypes.bool.isRequired,
+Home.propTypes = {
+  isAuthentificated: PropTypes.bool.isRequired,
 };
-export default HomeWay;
+export default Home;

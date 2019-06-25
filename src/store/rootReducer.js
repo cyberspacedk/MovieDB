@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import topFilmsReducer from './topFilms/reducers';
+import topFilmsReducer from './trendingMovies/reducers';
 import setUserDataReducer from './authentifiction/reducers';
 import searchFilmsReducer from './search/reducers';
 import singleFilmReducer from './singleFilm/reducers';
 
 const rootReducer = combineReducers({
-  topFilms: topFilmsReducer,
+  trendingMovies: topFilmsReducer,
   user: setUserDataReducer,
   search: searchFilmsReducer,
   singleFilm: singleFilmReducer,

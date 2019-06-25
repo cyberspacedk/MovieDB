@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import SearchPanel from './Content/SearchMovies';
+import SearchPanel from './Content/SearchPanel';
 import Content from './Content';
 
 const Dashboard = () => {

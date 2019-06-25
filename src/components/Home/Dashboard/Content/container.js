@@ -13,7 +13,7 @@ export const mstp = state => ({
   isLoading: isLoading(state),
   isError: isError(state),
   searchResponse: searchResponse(state),
-  emptyResponse: isEmptyResponse(state),
+  isEmpty: isEmptyResponse(state),
   totalResults: totalResults(state),
 });
 

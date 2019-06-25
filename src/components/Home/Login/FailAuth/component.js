@@ -1,16 +1,14 @@
-/* eslint-disable no-shadow */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Layout, Alert, Row, Col } from 'antd';
 
-const Error = () => (
+const FailAuth = () => (
   <Layout>
     <Layout.Content>
       <Row type="flex" justify="center">
         <Col span={10}>
           <Alert
-            message="OMG"
-            description="Hey dude smth went wrong. Try again later"
+            message="ACCESS DENIED. "
+            description="Failed authentification. Hey dude, try again.  "
             type="error"
             showIcon
           />
@@ -20,4 +18,4 @@ const Error = () => (
   </Layout>
 );
 
-export default Error;
+export default FailAuth;

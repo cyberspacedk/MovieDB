@@ -1,3 +1,3 @@
-import ErrorRequest from './component';
+import Error from './component';
 
-export default ErrorRequest;
+export default Error;

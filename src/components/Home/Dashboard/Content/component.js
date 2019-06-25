@@ -4,32 +4,26 @@ import React from 'react';
 import { Layout, Row, Col } from 'antd';
 import Spinner from '../../../shared/StatusFields/Spinner';
 import Empty from '../../../shared/StatusFields/Empty';
-import ErrorRequest from '../../../shared/StatusFields/Error';
-import Films from './Films';
+import Error from '../../../shared/StatusFields/Error';
+import Movies from './Movies';
 import TrendingMovies from './TrendingMovies';
 
 const Content = props => {
-  const {
-    isLoading,
-    isError,
-    searchResponse,
-    emptyResponse,
-    totalResults,
-  } = props;
+  const { isLoading, isError, searchResponse, isEmpty, totalResults } = props;
   return (
     <Layout>
       <Layout.Content>
         <div className="top-margin">
           <Row type="flex" justify="center">
             <Col>
+              {isLoading && <Spinner />}
+              {isEmpty && <Empty />}
+              {isError && <Error />}
               {searchResponse ? (
-                <Films response={searchResponse} totalResults={totalResults} />
+                <Movies response={searchResponse} totalResults={totalResults} />
               ) : (
                 <TrendingMovies />
               )}
-              {isLoading && <Spinner />}
-              {emptyResponse && <Empty />}
-              {isError && <ErrorRequest />}
             </Col>
           </Row>
         </div>
