@@ -1,3 +1,3 @@
-import Dashboard from './container';
+import Dashboard from './component';
 
 export default Dashboard;

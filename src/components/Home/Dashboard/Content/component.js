@@ -7,6 +7,7 @@ import Empty from '../../../shared/StatusFields/Empty';
 import Error from '../../../shared/StatusFields/Error';
 import Movies from './Movies';
 import TrendingMovies from './TrendingMovies';
+import SearchPanel from './SearchPanel';
 
 const Content = props => {
   const { isLoading, isError, searchResponse, isEmpty, totalResults } = props;
@@ -14,6 +15,11 @@ const Content = props => {
     <Layout>
       <Layout.Content>
         <div className="top-margin">
+          <Row type="flex" justify="center">
+            <Col span={20}>
+              <SearchPanel />
+            </Col>
+          </Row>
           <Row type="flex" justify="center">
             <Col>
               {isLoading && <Spinner />}

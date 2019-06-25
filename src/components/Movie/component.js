@@ -13,7 +13,6 @@ import {
   Card,
   BackTop,
 } from 'antd';
-import Header from '../Home/Dashboard/Header';
 import Spinner from '../shared/StatusFields/Spinner';
 import Error from '../shared/StatusFields/Error';
 import { getFilmDuration, transformNumbers } from '../../helpers/helpers';
@@ -28,7 +27,6 @@ const AboutFilm = props => {
 
   return (
     <Layout>
-      <Header />
       {isError && <Error />}
       {isLoading ? (
         <Spinner />

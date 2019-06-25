@@ -3,7 +3,6 @@ import httpClientMock, {
   multiHttpClientMock,
 } from '../../../helpers/httpClientMock';
 
-// РАЗОБРАТЬ МУЛЬТИ КЛИЕНТ
 describe('authUserLogic operation', () => {
   const requests = [
     { method: 'get', response: { data: { request_token: 'token' } } },
