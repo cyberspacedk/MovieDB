@@ -1,4 +1,8 @@
-const searchRequest = query => ({ type: 'SEARCH_REQUEST', payload: query });
+const searchRequest = (query, page = 1) => ({
+  type: 'SEARCH_REQUEST',
+  payload: query,
+  page,
+});
 
 const searchError = () => ({ type: 'SEARCH_ERROR' });
 

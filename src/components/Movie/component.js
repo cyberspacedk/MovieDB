@@ -17,7 +17,7 @@ import Spinner from '../shared/StatusFields/Spinner';
 import Error from '../shared/StatusFields/Error';
 import { getFilmDuration, transformNumbers } from '../../helpers/helpers';
 import CreateListAction from '../shared/UserAction/CreateListAction';
-import FavoriteAction from '../shared/UserAction/FavoriteAction/component';
+import FavoriteAction from '../shared/UserAction/FavoriteAction';
 import WatchListAction from '../shared/UserAction/WatchListAction/component';
 
 const AboutFilm = props => {
@@ -56,7 +56,7 @@ const AboutFilm = props => {
                 <Typography.Title level={1}>
                   {aboutFilm.title}
                   <CreateListAction />
-                  <FavoriteAction />
+                  <FavoriteAction movieId={aboutFilm.id} />
                   <WatchListAction />
                 </Typography.Title>
                 <Typography.Title level={3}>Overview</Typography.Title>

@@ -76,3 +76,7 @@ body,
   padding: 10px;
   height: 90px;
 }
+
+.clear .ant-card-actions {
+  display: none;
+}

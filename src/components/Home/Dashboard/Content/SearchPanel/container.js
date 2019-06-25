@@ -13,7 +13,7 @@ export const mapPropsToValues = () => ({
 export const handleSubmit = (values, { props }) => {
   const { search } = values;
   const { searchRequest } = props;
-  searchRequest(search);
+  searchRequest(search, 2);
 };
 
 export const validationSchema = Yup.object().shape({

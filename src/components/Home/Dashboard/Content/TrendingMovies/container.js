@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { fetchDataRequest } from '../../../../../store/trendingMovies/actions';
-import { singleFilmRequest } from '../../../../../store/singleFilm/actions';
 import TopFilms from './component';
 import {
   getTopFilmsSelector,
@@ -34,7 +33,6 @@ export const mstp = state => ({
 
 const mdtp = {
   fetchDataRequest,
-  singleFilmRequest,
 };
 
 TrendingMoviesContainer.propTypes = {

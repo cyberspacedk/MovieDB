@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { Icon } from 'antd';
 
-const FavoriteAction = () => {
-  const [favoriteStatus, setFavorite] = useState(false);
-  const handleFavorite = () => setFavorite(!favoriteStatus);
-
+const FavoriteAction = ({ handleFavorite, favoriteStatus }) => {
   return (
     <Icon
       type="heart"

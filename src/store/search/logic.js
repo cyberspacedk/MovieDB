@@ -7,10 +7,11 @@ const searchFilmsLogic = createLogic({
 
   async process({ httpClient, action }, dispatch, done) {
     const query = action.payload;
+    const { page } = action;
 
     try {
       const { data } = await httpClient.get(
-        `/search/movie?api_key=2452661f8c986fe61a12ec7532335900&query=${query}`,
+        `search/movie?api_key=2452661f8c986fe61a12ec7532335900&query=${query}&page=${page}`,
       );
       dispatch(searchSuccess(data));
     } catch (err) {
