@@ -6,13 +6,6 @@ import LoginForm from './component';
 import { authRequest } from '../../../store/authentifiction/actions';
 import { isFailAuth } from '../../../store/authentifiction/selectors';
 
-const mstp = state => ({
-  isFailAuth: isFailAuth(state),
-});
-const mdtp = {
-  authRequest,
-};
-
 export const mapPropsToValues = () => ({
   username: '',
   password: '',
@@ -34,6 +27,15 @@ export const validationSchema = Yup.object().shape({
     .min(4, 'Минимум 4 символов')
     .required('Обязательное поле'),
 });
+
+const mstp = state => ({
+  isFailAuth: isFailAuth(state),
+});
+
+const mdtp = {
+  authRequest,
+};
+
 export default compose(
   connect(
     mstp,

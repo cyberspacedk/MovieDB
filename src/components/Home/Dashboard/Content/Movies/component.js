@@ -1,13 +1,13 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Layout, Row, Col, Pagination, BackTop } from 'antd';
 import Card from '../../../../shared/Card';
 
-// eslint-disable-next-line no-unused-vars
+const { Content } = Layout;
+
 const Movies = ({ response, totalResults, history }) => (
   <Layout>
-    <Layout.Content>
+    <Content>
       <div className="top-margin">
         <Row type="flex" gutter={16} justify="center">
           <Col span={20}>
@@ -38,9 +38,15 @@ const Movies = ({ response, totalResults, history }) => (
           </Row>
         )}
       </div>
-    </Layout.Content>
+    </Content>
     <BackTop />
   </Layout>
 );
+
+Movies.propTypes = {
+  response: PropTypes.arrayOf(PropTypes.object).isRequired,
+  totalResults: PropTypes.number.isRequired,
+  history: PropTypes.shape(PropTypes.object).isRequired,
+};
 
 export default Movies;

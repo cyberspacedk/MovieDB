@@ -1,19 +1,21 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Typography, Row, Col, Layout } from 'antd';
 import Menu from './Menu';
 
-const Header = () => {
+const { Header } = Layout;
+const { Text } = Typography;
+
+const PageHeader = () => {
   return (
-    <Layout.Header>
+    <Header>
       <Row type="flex" justify="space-between">
         <Col>
-          <Typography.Text>THE MOVIE DB</Typography.Text>
+          <Text>THE MOVIE DB</Text>
         </Col>
         <Menu />
       </Row>
-    </Layout.Header>
+    </Header>
   );
 };
 
-export default Header;
+export default PageHeader;

@@ -1,8 +1,5 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable radix */
-/* eslint-disable react/prop-types */
-
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Layout,
   Row,
@@ -15,23 +12,32 @@ import {
 } from 'antd';
 import Spinner from '../shared/StatusFields/Spinner';
 import Error from '../shared/StatusFields/Error';
-import { getFilmDuration, transformNumbers } from '../../helpers/helpers';
+import { getFilmDuration, transformNumbers } from '../../helpers';
 import CreateListAction from '../shared/UserAction/CreateListAction';
 import FavoriteAction from '../shared/UserAction/FavoriteAction';
 import WatchListAction from '../shared/UserAction/WatchListAction';
 
-const AboutFilm = props => {
-  const { isError, isLoading, aboutFilm, images, casts, crew, genres } = props;
+const { Content } = Layout;
+const { Title, Paragraph } = Typography;
+const { Meta } = Card;
 
-  const posters = (images && images.slice(0, 3)) || [];
-
+const Movie = ({
+  error,
+  loading,
+  aboutFilm,
+  casts,
+  crew,
+  genres,
+  images,
+  posters,
+}) => {
   return (
     <Layout>
-      {isError && <Error />}
-      {isLoading ? (
+      {error && <Error />}
+      {loading ? (
         <Spinner />
       ) : (
-        <Layout.Content>
+        <Content>
           <Row type="flex">
             <Col span={24}>
               <Carousel>
@@ -53,58 +59,56 @@ const AboutFilm = props => {
           <div className="top-margin">
             <Row>
               <Col span={20} offset={2}>
-                <Typography.Title level={1}>
+                <Title level={1}>
                   {aboutFilm.title}
                   <CreateListAction />
                   <FavoriteAction movieId={aboutFilm.id} />
                   <WatchListAction movieId={aboutFilm.id} />
-                </Typography.Title>
-                <Typography.Title level={3}>Overview</Typography.Title>
-                <Typography.Paragraph>
-                  {aboutFilm.overview}
-                </Typography.Paragraph>
+                </Title>
+                <Title level={3}>Overview</Title>
+                <Paragraph>{aboutFilm.overview}</Paragraph>
               </Col>
             </Row>
             <Row>
               <Col span={20} offset={2}>
-                <Typography.Paragraph>
+                <Paragraph>
                   <span className="accent-movie">Original Language : </span>
                   {aboutFilm.lang === 'en' ? 'English' : 'Europian'}
-                </Typography.Paragraph>
+                </Paragraph>
               </Col>
               <Col span={20} offset={2}>
-                <Typography.Paragraph>
+                <Paragraph>
                   <span className="accent-movie">Runtime :</span>
                   {aboutFilm.runtime && getFilmDuration(aboutFilm.runtime)}
-                </Typography.Paragraph>
+                </Paragraph>
               </Col>
               <Col span={20} offset={2}>
-                <Typography.Paragraph>
+                <Paragraph>
                   <span className="accent-movie">Budget :</span>
                   {aboutFilm.budget && transformNumbers(aboutFilm.budget)}
-                </Typography.Paragraph>
+                </Paragraph>
               </Col>
               <Col span={20} offset={2}>
-                <Typography.Paragraph>
+                <Paragraph>
                   <span className="accent-movie">Revenue :</span>
                   {aboutFilm.revenue && transformNumbers(aboutFilm.revenue)}
-                </Typography.Paragraph>
+                </Paragraph>
               </Col>
               <Col span={20} offset={2}>
-                <Typography.Paragraph>
+                <Paragraph>
                   <span className="accent-movie">Genres :</span>
                   {genres &&
                     genres.map(genre => (
                       <Tag key={genre.id}>{genre.name.toUpperCase()}</Tag>
                     ))}
-                </Typography.Paragraph>
+                </Paragraph>
               </Col>
             </Row>
             <Row>
               <Col span={10} offset={2} className="top-margin">
-                <Typography.Title level={3}>
+                <Title level={3}>
                   <span className="accent-movie">Casts</span>
-                </Typography.Title>
+                </Title>
               </Col>
             </Row>
             <Row gutter={8} type="flex">
@@ -131,7 +135,7 @@ const AboutFilm = props => {
                           />
                         }
                       >
-                        <Card.Meta
+                        <Meta
                           title={person.name}
                           description={person.character}
                         />
@@ -142,9 +146,9 @@ const AboutFilm = props => {
             </Row>
             <Row>
               <Col span={10} offset={2} className="top-margin">
-                <Typography.Title level={3}>
+                <Title level={3}>
                   <span className="accent-movie">Crew</span>
-                </Typography.Title>
+                </Title>
               </Col>
             </Row>
             <Row gutter={8} type="flex">
@@ -171,7 +175,7 @@ const AboutFilm = props => {
                           />
                         }
                       >
-                        <Card.Meta
+                        <Meta
                           title={person.name}
                           description={person.department}
                         />
@@ -181,11 +185,22 @@ const AboutFilm = props => {
               </Col>
             </Row>
           </div>
-        </Layout.Content>
+        </Content>
       )}
       <BackTop />
     </Layout>
   );
 };
 
-export default AboutFilm;
+Movie.propTypes = {
+  error: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  aboutFilm: PropTypes.shape(PropTypes.object).isRequired,
+  casts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  crew: PropTypes.arrayOf(PropTypes.object).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
+  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+  posters: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+export default Movie;

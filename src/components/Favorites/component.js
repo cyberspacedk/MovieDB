@@ -22,8 +22,6 @@ const Favorites = ({
       title: 'Do you want to delete movie from favorites?',
       onOk() {
         removeFav(id, false);
-        // FAV REDIRECT
-        history.push('/');
       },
       onCancel() {},
     });

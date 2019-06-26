@@ -1,29 +1,27 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Layout, Row, Col, Pagination, BackTop, Icon, Modal } from 'antd';
 import Spinner from '../shared/StatusFields/Spinner';
 import Error from '../shared/StatusFields/Error';
 import Empty from '../shared/StatusFields/Empty';
 import Card from '../shared/Card';
 
+const { Content } = Layout;
+
 const WatchList = ({
   watchList,
-  isLoading,
-  isError,
+  loading,
+  error,
   history,
-  removeWatch,
-  currentPage,
   totalPage,
+  operationsWatchListRequest,
 }) => {
   const removeWatchModal = (e, id) => {
     e.stopPropagation();
     Modal.confirm({
       title: 'Do you want to delete movie from watchlist?',
       onOk() {
-        removeWatch(id, false);
-        // WATCH REDIRECT
-        history.push('/');
+        operationsWatchListRequest(id, false);
       },
       onCancel() {},
     });
@@ -31,12 +29,12 @@ const WatchList = ({
 
   return (
     <Layout>
-      <Layout.Content>
+      <Content>
         <div className="top-margin">
           <Row type="flex" gutter={16} justify="center">
             <Col span={20}>
-              {isLoading && <Spinner />}
-              {isError && <Error />}
+              {loading && <Spinner />}
+              {error && <Error />}
               {!watchList.length && <Empty />}
               {watchList &&
                 watchList.map(item => (
@@ -72,10 +70,18 @@ const WatchList = ({
             </Row>
           ) : null}
         </div>
-      </Layout.Content>
+      </Content>
       <BackTop />
     </Layout>
   );
+};
+WatchList.propTypes = {
+  watchList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  history: PropTypes.isRequired,
+  operationsWatchListRequest: PropTypes.func.isRequired,
+  totalPage: PropTypes.number.isRequired,
 };
 
 export default WatchList;

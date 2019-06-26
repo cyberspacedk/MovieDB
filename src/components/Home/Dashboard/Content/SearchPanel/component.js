@@ -3,8 +3,10 @@ import { Form, Field } from 'formik';
 import { Layout, Row, Col } from 'antd';
 import SearchField from './SearchField/component';
 
+const { Content } = Layout;
+
 const SearchPanel = () => (
-  <Layout.Content>
+  <Content>
     <Row type="flex">
       <Col
         xs={{ span: 22, offset: 1 }}
@@ -18,7 +20,7 @@ const SearchPanel = () => (
         </Form>
       </Col>
     </Row>
-  </Layout.Content>
+  </Content>
 );
 
 export default SearchPanel;

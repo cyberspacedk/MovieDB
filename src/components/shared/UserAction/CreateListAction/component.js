@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
-import { Popover, Button, Icon } from 'antd';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Popover, Button, Icon } from 'antd';
 import CreateListFormModal from './CreateListFormModal';
 
 const PopoverContent = ({ showModal, hidePopover }) => (
@@ -24,20 +23,15 @@ const PopoverContent = ({ showModal, hidePopover }) => (
     </div> */}
   </>
 );
-PopoverContent.propTypes = {
-  showModal: PropTypes.func.isRequired,
-  hidePopover: PropTypes.func.isRequired,
-};
 
-const CreateListAction = props => {
-  const {
-    visiblePop,
-    visibleMod,
-    showPopover,
-    hidePopover,
-    showModal,
-    hideModal,
-  } = props;
+const CreateListAction = ({
+  visiblePop,
+  visibleMod,
+  showPopover,
+  hidePopover,
+  showModal,
+  hideModal,
+}) => {
   return (
     <>
       <Popover
@@ -55,6 +49,20 @@ const CreateListAction = props => {
       <CreateListFormModal visibleMod={visibleMod} hideModal={hideModal} />
     </>
   );
+};
+
+PopoverContent.propTypes = {
+  showModal: PropTypes.func.isRequired,
+  hidePopover: PropTypes.func.isRequired,
+};
+
+CreateListAction.propTypes = {
+  visiblePop: PropTypes.bool.isRequired,
+  visibleMod: PropTypes.bool.isRequired,
+  showPopover: PropTypes.func.isRequired,
+  hidePopover: PropTypes.func.isRequired,
+  showModal: PropTypes.func.isRequired,
+  hideModal: PropTypes.func.isRequired,
 };
 
 export default CreateListAction;

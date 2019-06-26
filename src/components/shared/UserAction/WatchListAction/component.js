@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from 'antd';
 
 const WatchListAction = ({ handleWatchList, watchListStatus }) => {
@@ -10,6 +10,11 @@ const WatchListAction = ({ handleWatchList, watchListStatus }) => {
       onClick={handleWatchList}
     />
   );
+};
+
+WatchListAction.propTypes = {
+  handleWatchList: PropTypes.func.isRequired,
+  watchListStatus: PropTypes.bool.isRequired,
 };
 
 export default WatchListAction;

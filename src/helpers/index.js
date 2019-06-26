@@ -1,4 +1,25 @@
-const httpClientMock = ({ method, response, reject } = { reject: false }) => ({
+export const getFilmDuration = time => {
+  // eslint-disable-next-line no-bitwise
+  const hours = (time / 60) | 0;
+  const minutes = time - hours * 60;
+  return `${hours} h ${minutes} m`;
+};
+
+export const transformNumbers = sum =>
+  `${sum
+    .toString()
+    .split(/(?=(?:\d{3})+$)/)
+    .join(',')}.00`;
+
+export const toStorage = (key, val) => {
+  localStorage.setItem(key, JSON.stringify(val));
+};
+
+export const fromStorage = key => JSON.parse(localStorage.getItem(key));
+
+export const httpClientMock = (
+  { method, response, reject } = { reject: false },
+) => ({
   [method]: () =>
     new Promise((resolve, deny) => {
       if (reject) {
@@ -8,8 +29,6 @@ const httpClientMock = ({ method, response, reject } = { reject: false }) => ({
       }
     }),
 });
-
-export default httpClientMock;
 
 export const multiHttpClientMock = mocks => {
   const httpClient = { spies: {} };

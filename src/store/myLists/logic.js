@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { createLogic } from 'redux-logic';
-import { fromStorage } from '../../helpers/helpers';
+import { fromStorage } from '../../helpers';
+import { API } from '../../api';
 
 const createListLogic = createLogic({
   type: 'CREATE_LIST_REQUEST',
@@ -13,7 +14,10 @@ const createListLogic = createLogic({
     try {
       const { data } = await httpClient({
         method: 'post',
-        url: `list?session_id=${ssid}&api_key=2452661f8c986fe61a12ec7532335900`,
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        url: `list?session_id=${ssid}&api_key=${API}`,
         data: {
           name,
           description,

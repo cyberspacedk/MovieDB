@@ -1,16 +1,18 @@
 import React from 'react';
 import { Layout, Empty } from 'antd';
 
+const { Content } = Layout;
+
 const EmptyResult = () => (
   <Layout>
-    <Layout.Content>
+    <Content>
       <div className="top-margin">
         <Empty
           description="No movies found"
           image={Empty.PRESENTED_IMAGE_SIMPLE}
         />
       </div>
-    </Layout.Content>
+    </Content>
   </Layout>
 );
 

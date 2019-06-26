@@ -1,9 +1,11 @@
 import React from 'react';
 import { Layout, Row, Col, Spin } from 'antd';
 
+const { Content } = Layout;
+
 const Spinner = () => (
   <Layout>
-    <Layout.Content>
+    <Content>
       <div className="top-margin">
         <Row type="flex" justify="center">
           <Col>
@@ -11,7 +13,7 @@ const Spinner = () => (
           </Col>
         </Row>
       </div>
-    </Layout.Content>
+    </Content>
   </Layout>
 );
 

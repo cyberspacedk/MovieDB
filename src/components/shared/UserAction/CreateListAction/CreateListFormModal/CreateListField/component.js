@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Form } from 'antd';
@@ -15,7 +14,7 @@ const CreateListField = ({ field, form: { touched, errors }, ...props }) => (
 );
 
 CreateListField.propTypes = {
-  field: PropTypes.shape({ name: PropTypes.string }).isRequired,
+  field: PropTypes.shape(PropTypes.object).isRequired,
   form: PropTypes.shape({
     touched: PropTypes.object,
     errors: PropTypes.object,

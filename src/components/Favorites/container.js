@@ -1,11 +1,6 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-console */
-/* eslint-disable no-alert */
-/* eslint-disable no-restricted-globals */
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Favorites from './component';
 import {
@@ -25,20 +20,6 @@ class FavoritesContainer extends Component {
     this.props.getFavoritesRequest();
   }
 
-  // КАК ОБНОВИТЬ
-  /*
-  componentDidUpdate() {
-    this.props.getFavoritesRequest();
-  } */
-
-  /*  shouldComponentUpdate(nextProps) {
-    console.log('THIS PROPS', this.props);
-    console.log('NEXT PROPS', nextProps);
-    if (this.props.favoritesList.length === nextProps.favoritesList.length)
-      return false;
-    return true;
-  }
- */
   render() {
     return (
       <Favorites
@@ -48,6 +29,11 @@ class FavoritesContainer extends Component {
     );
   }
 }
+
+FavoritesContainer.propTypes = {
+  getFavoritesRequest: PropTypes.func.isRequired,
+  operationsFavoritesRequest: PropTypes.isRequired,
+};
 
 const mstp = state => ({
   favoritesList: getFavoritesList(state),

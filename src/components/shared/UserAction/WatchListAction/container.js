@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import WatchListAction from './component';
 import { operationsWatchListRequest } from '../../../../store/watchList/actions';
@@ -26,6 +26,11 @@ class WatchListActionContainer extends Component {
     );
   }
 }
+
+WatchListActionContainer.propTypes = {
+  operationsWatchListRequest: PropTypes.func.isRequired,
+  movieId: PropTypes.number.isRequired,
+};
 
 const mdtp = {
   operationsWatchListRequest,

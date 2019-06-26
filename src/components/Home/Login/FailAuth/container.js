@@ -1,22 +1,30 @@
-/* eslint-disable no-shadow */
-/* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { tryAgain } from '../../../../store/authentifiction/actions';
 import FailAuth from './component';
 
-const FailAuthContainer = ({ tryAgain }) => {
-  useEffect(() => {
+class FailAuthContainer extends Component {
+  componentDidMount() {
     setTimeout(() => {
-      tryAgain();
+      // eslint-disable-next-line react/destructuring-assignment
+      this.props.tryAgain();
     }, 2000);
-  });
+  }
 
-  return <FailAuth />;
+  render() {
+    return <FailAuth />;
+  }
+}
+
+FailAuthContainer.propTypes = {
+  tryAgain: PropTypes.func.isRequired,
 };
+
 const mdtp = {
   tryAgain,
 };
+
 export default connect(
   null,
   mdtp,

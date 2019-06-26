@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
@@ -25,6 +24,13 @@ export class TrendingMoviesContainer extends Component {
   }
 }
 
+TrendingMoviesContainer.propTypes = {
+  fetchDataRequest: PropTypes.func.isRequired,
+  topFilms: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+};
+
 export const mstp = state => ({
   topFilms: getTopFilmsSelector(state),
   loading: isloading(state),
@@ -33,13 +39,6 @@ export const mstp = state => ({
 
 const mdtp = {
   fetchDataRequest,
-};
-
-TrendingMoviesContainer.propTypes = {
-  fetchDataRequest: PropTypes.func.isRequired,
-  topFilms: PropTypes.arrayOf(PropTypes.shape),
-  loading: PropTypes.bool,
-  error: PropTypes.bool,
 };
 
 export default compose(

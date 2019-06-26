@@ -1,6 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
+
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { singleFilmRequest } from '../../store/singleFilm/actions';
 import AboutFilm from './component';
@@ -21,13 +22,22 @@ class Movie extends Component {
   }
 
   render() {
-    return <AboutFilm {...this.props} />;
+    const { images } = this.props;
+    const posters = (images && images.slice(0, 3)) || [];
+
+    return <AboutFilm {...this.props} posters={posters} />;
   }
 }
 
+Movie.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+  singleFilmRequest: PropTypes.func.isRequired,
+  match: PropTypes.shape(PropTypes.object).isRequired,
+};
+
 const mstp = state => ({
-  isError: isError(state),
-  isLoading: isLoading(state),
+  error: isError(state),
+  loading: isLoading(state),
   aboutFilm: getFilmInfo(state),
   images: getImages(state),
   casts: getCasts(state),

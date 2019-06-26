@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { createLogic } from 'redux-logic';
 import { authLogout, authSuccess, authError } from './actions';
-import { fromStorage, toStorage } from '../../helpers/helpers';
+import { fromStorage, toStorage } from '../../helpers';
 import { API } from '../../api';
 
 export const authUserLogic = createLogic({

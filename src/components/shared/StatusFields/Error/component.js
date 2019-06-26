@@ -1,11 +1,11 @@
-/* eslint-disable no-shadow */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Layout, Alert, Row, Col } from 'antd';
 
+const { Content } = Layout;
+
 const Error = () => (
   <Layout>
-    <Layout.Content>
+    <Content>
       <Row type="flex" justify="center">
         <Col span={10}>
           <Alert
@@ -16,7 +16,7 @@ const Error = () => (
           />
         </Col>
       </Row>
-    </Layout.Content>
+    </Content>
   </Layout>
 );
 

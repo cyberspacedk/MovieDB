@@ -1,4 +1,4 @@
-import { fromStorage } from '../../helpers/helpers';
+import { fromStorage } from '../../helpers';
 
 export const initialState = {
   username: fromStorage('USERNAME') || '',

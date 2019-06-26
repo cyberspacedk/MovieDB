@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Layout, Row, Typography } from 'antd';
 import { Form, Field } from 'formik';
 import FormField from './FormField/component';
@@ -40,4 +40,7 @@ const LoginForm = ({ isFailAuth }) => (
   </div>
 );
 
+LoginForm.propTypes = {
+  isFailAuth: PropTypes.bool.isRequired,
+};
 export default LoginForm;

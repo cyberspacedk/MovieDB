@@ -1,11 +1,15 @@
 /* eslint-disable no-console */
 import { createLogic } from 'redux-logic';
-import { getFavoritesResponse, getFavoritesError } from './actions';
-import { fromStorage } from '../../helpers/helpers';
+import {
+  getFavoritesResponse,
+  getFavoritesError,
+  getFavoritesRequest,
+} from './actions';
+import { fromStorage } from '../../helpers';
 
 import { API } from '../../api';
 
-const addToFavoriteLogic = createLogic({
+const operationsFavoriteLogic = createLogic({
   type: 'OPERATIONS_FAVORITES_REQUEST',
   latest: true,
 
@@ -13,15 +17,20 @@ const addToFavoriteLogic = createLogic({
     const movieId = action.payload;
     const { whatToDo } = action;
     const SSID = fromStorage('SESSION_ID');
-    httpClient({
-      method: 'post',
-      url: `account/{account_id}/favorite?api_key=${API}&session_id=${SSID}`,
-      data: {
-        media_type: 'movie',
-        media_id: movieId,
-        favorite: whatToDo,
-      },
-    });
+    try {
+      await httpClient({
+        method: 'post',
+        url: `account/{account_id}/favorite?api_key=${API}&session_id=${SSID}`,
+        data: {
+          media_type: 'movie',
+          media_id: movieId,
+          favorite: whatToDo,
+        },
+      });
+      dispatch(getFavoritesRequest());
+    } catch (err) {
+      console.log(err);
+    }
     done();
   },
 });
@@ -51,4 +60,4 @@ const getFavoritesLogic = createLogic({
   },
 });
 
-export { addToFavoriteLogic, getFavoritesLogic };
+export { operationsFavoriteLogic, getFavoritesLogic };

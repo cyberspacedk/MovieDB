@@ -1,9 +1,14 @@
+/* eslint-disable no-console */
 import { createLogic } from 'redux-logic';
-import { getWatchListError, getWatchListResponse } from './actions';
-import { fromStorage } from '../../helpers/helpers';
+import {
+  getWatchListError,
+  getWatchListResponse,
+  getWatchListRequest,
+} from './actions';
+import { fromStorage } from '../../helpers';
 import { API } from '../../api';
 
-const addToWatchListLogic = createLogic({
+const operationWatchListLogic = createLogic({
   type: 'OPERATIONS_WATCHLIST_REQUEST',
   latest: true,
 
@@ -11,15 +16,20 @@ const addToWatchListLogic = createLogic({
     const movieId = action.payload;
     const { whatToDo } = action;
     const SSID = fromStorage('SESSION_ID');
-    httpClient({
-      method: 'post',
-      url: `account/{account_id}/watchlist?api_key=${API}&session_id=${SSID}`,
-      data: {
-        media_type: 'movie',
-        media_id: movieId,
-        watchlist: whatToDo,
-      },
-    });
+    try {
+      await httpClient({
+        method: 'post',
+        url: `account/{account_id}/watchlist?api_key=${API}&session_id=${SSID}`,
+        data: {
+          media_type: 'movie',
+          media_id: movieId,
+          watchlist: whatToDo,
+        },
+      });
+      dispatch(getWatchListRequest());
+    } catch (err) {
+      console.log(err);
+    }
     done();
   },
 });
@@ -50,4 +60,4 @@ const getWatchListLogic = createLogic({
   },
 });
 
-export { addToWatchListLogic, getWatchListLogic };
+export { operationWatchListLogic, getWatchListLogic };

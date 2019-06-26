@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import FavoriteAction from './component';
 import { operationsFavoritesRequest } from '../../../../store/favorites/actions';
@@ -24,6 +24,11 @@ class FavoriteActionContainer extends Component {
     );
   }
 }
+
+FavoriteActionContainer.propTypes = {
+  operationsFavoritesRequest: PropTypes.func.isRequired,
+  movieId: PropTypes.number.isRequired,
+};
 
 const mdtp = {
   operationsFavoritesRequest,

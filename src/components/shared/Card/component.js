@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Col, Card } from 'antd';
 
 const CardItem = ({ id, poster, title, overview, history, actions }) => {
@@ -26,6 +26,15 @@ const CardItem = ({ id, poster, title, overview, history, actions }) => {
       </Card>
     </Col>
   );
+};
+
+CardItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  poster: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  overview: PropTypes.string.isRequired,
+  history: PropTypes.shape(PropTypes.object).isRequired,
+  actions: PropTypes.node.isRequired,
 };
 
 export default CardItem;

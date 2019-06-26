@@ -5,6 +5,7 @@ const client = axios.create({
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json;charset=utf-8',
+    // 'Cache-Control': 'no-cache',
   },
 });
 export const API = '2452661f8c986fe61a12ec7532335900';

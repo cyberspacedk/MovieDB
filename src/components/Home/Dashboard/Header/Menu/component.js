@@ -1,34 +1,36 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Typography, Col, Avatar, Dropdown, Icon, Menu } from 'antd';
+import { Typography, Col, Avatar, Dropdown, Icon, Menu, Divider } from 'antd';
+
+const { Item } = Menu;
+const { Text } = Typography;
 
 const UserMenu = ({ username, authLogout, history }) => {
   const Overlay = () => (
     <Menu>
-      <Menu.Item>
+      <Item>
         <Link to="/">Dashboard</Link>
-      </Menu.Item>
-      <Menu.Divider />
-      <Menu.Item>
+      </Item>
+      <Divider />
+      <Item>
         <Link to="/lists">My Lists</Link>
-      </Menu.Item>
-      <Menu.Item>
+      </Item>
+      <Item>
         <Link to="/watchlist">Watchlist</Link>
-      </Menu.Item>
-      <Menu.Item>
+      </Item>
+      <Item>
         <Link to="/favorites">Favorites</Link>
-      </Menu.Item>
-      <Menu.Divider />
-      <Menu.Item
+      </Item>
+      <Divider />
+      <Item
         onClick={() => {
           authLogout();
           history.push('/');
         }}
       >
         Logout
-      </Menu.Item>
+      </Item>
     </Menu>
   );
 
@@ -36,10 +38,10 @@ const UserMenu = ({ username, authLogout, history }) => {
     <Col>
       <Avatar icon="user" />
       <Dropdown overlay={Overlay}>
-        <Typography.Text>
+        <Text>
           {username}
           <Icon type="caret-down" />
-        </Typography.Text>
+        </Text>
       </Dropdown>
     </Col>
   );
@@ -48,6 +50,7 @@ const UserMenu = ({ username, authLogout, history }) => {
 UserMenu.propTypes = {
   username: PropTypes.string.isRequired,
   authLogout: PropTypes.func.isRequired,
+  history: PropTypes.shape(PropTypes.object).isRequired,
 };
 
 export default UserMenu;

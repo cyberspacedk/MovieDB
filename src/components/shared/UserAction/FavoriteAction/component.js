@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from 'antd';
 
 const FavoriteAction = ({ handleFavorite, favoriteStatus }) => {
@@ -10,6 +10,11 @@ const FavoriteAction = ({ handleFavorite, favoriteStatus }) => {
       onClick={handleFavorite}
     />
   );
+};
+
+FavoriteAction.propTypes = {
+  handleFavorite: PropTypes.func.isRequired,
+  favoriteStatus: PropTypes.bool.isRequired,
 };
 
 export default FavoriteAction;

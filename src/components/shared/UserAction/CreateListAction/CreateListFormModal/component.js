@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Field } from 'formik';
 import { Modal } from 'antd';
 import CreateListField from './CreateListField/component';
@@ -39,4 +39,11 @@ const CreateListFormModal = ({
   </Modal>
 );
 
+CreateListFormModal.propTypes = {
+  visibleMod: PropTypes.bool.isRequired,
+  hideModal: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleReset: PropTypes.func.isRequired,
+  errors: PropTypes.bool.isRequired,
+};
 export default CreateListFormModal;
