@@ -2,6 +2,7 @@ export const initialState = {
   response: {},
   loading: false,
   error: false,
+  query: '',
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -10,6 +11,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: true,
+        query: payload,
       };
     case 'SEARCH_ERROR':
       return {

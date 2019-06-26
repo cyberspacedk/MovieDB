@@ -15,6 +15,7 @@ const SearchField = ({
     help={errors[field.name]}
   >
     <Search
+      onSubmit={handleSubmit}
       placeholder="Enter movie name"
       size="large"
       enterButton="Search"

@@ -5,7 +5,7 @@ import Card from '../../../../shared/Card';
 
 const { Content } = Layout;
 
-const Movies = ({ response, totalResults, history }) => (
+const Movies = ({ response, totalResults, history, query, searchRequest }) => (
   <Layout>
     <Content>
       <div className="top-margin">
@@ -33,6 +33,7 @@ const Movies = ({ response, totalResults, history }) => (
                 total={totalResults}
                 className="pagination"
                 defaultPageSize={20}
+                onChange={page => searchRequest(query, page)}
               />
             </Col>
           </Row>
@@ -47,6 +48,8 @@ Movies.propTypes = {
   response: PropTypes.arrayOf(PropTypes.object).isRequired,
   totalResults: PropTypes.number.isRequired,
   history: PropTypes.shape(PropTypes.object).isRequired,
+  query: PropTypes.string.isRequired,
+  searchRequest: PropTypes.func.isRequired,
 };
 
 export default Movies;

@@ -13,7 +13,7 @@ export const handleSubmit = (values, { props }) => {
   const { search } = values;
   // eslint-disable-next-line no-shadow
   const { searchRequest } = props;
-  searchRequest(search, 1);
+  searchRequest(search);
 };
 
 export const validationSchema = Yup.object().shape({
