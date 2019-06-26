@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Typography, Row, Col, Layout } from 'antd';
-import Menu from '../Menu';
+import Menu from './Menu';
 
 const Header = () => {
   return (

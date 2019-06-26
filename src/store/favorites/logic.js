@@ -4,13 +4,13 @@ import { fromStorage } from '../../helpers/helpers';
 import { getFavoritesResponse, getFavoritesError } from './actions';
 
 const addToFavoriteLogic = createLogic({
-  type: 'ADD_TO_FAVORITES_REQUEST',
+  type: 'OPERATIONS_FAVORITES_REQUEST',
   latest: true,
 
   async process({ httpClient, action }, dispatch, done) {
     const ssid = fromStorage('SESSION_ID');
     const movieId = action.payload;
-    console.log(movieId);
+    const { whatToDo } = action;
     try {
       const { data } = await httpClient({
         method: 'post',
@@ -18,7 +18,7 @@ const addToFavoriteLogic = createLogic({
         data: {
           media_type: 'movie',
           media_id: movieId,
-          favorite: true,
+          favorite: whatToDo,
         },
       });
       console.log(data);

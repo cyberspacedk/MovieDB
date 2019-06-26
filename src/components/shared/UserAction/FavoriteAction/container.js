@@ -2,11 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FavoriteAction from './component';
-import { addToFavoritesRequest } from '../../../../store/favorites/actions';
-
-const mdtp = {
-  addToFavoritesRequest,
-};
+import { operationsFavoritesRequest } from '../../../../store/favorites/actions';
 
 class FavoriteActionContainer extends Component {
   state = {
@@ -15,7 +11,7 @@ class FavoriteActionContainer extends Component {
 
   handleFavorite = () => {
     this.setState(prevState => ({ favoriteStatus: !prevState.favoriteStatus }));
-    this.props.addToFavoritesRequest(this.props.movieId);
+    this.props.operationsFavoritesRequest(this.props.movieId, true);
   };
 
   render() {
@@ -28,6 +24,11 @@ class FavoriteActionContainer extends Component {
     );
   }
 }
+
+const mdtp = {
+  operationsFavoritesRequest,
+};
+
 export default connect(
   null,
   mdtp,

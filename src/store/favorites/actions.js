@@ -1,6 +1,7 @@
-const addToFavoritesRequest = movieId => ({
-  type: 'ADD_TO_FAVORITES_REQUEST',
+const operationsFavoritesRequest = (movieId, what) => ({
+  type: 'OPERATIONS_FAVORITES_REQUEST',
   payload: movieId,
+  whatToDo: what,
 });
 
 const getFavoritesError = () => ({
@@ -17,7 +18,7 @@ const getFavoritesResponse = fav => ({
 });
 
 export {
-  addToFavoritesRequest,
+  operationsFavoritesRequest,
   getFavoritesRequest,
   getFavoritesResponse,
   getFavoritesError,

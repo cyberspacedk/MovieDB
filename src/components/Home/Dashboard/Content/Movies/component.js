@@ -8,7 +8,7 @@ import Card from '../../../../shared/Card';
 const Movies = ({ response, totalResults, history }) => (
   <Layout>
     <Layout.Content>
-      <div className="top-margin clear">
+      <div className="top-margin">
         <Row type="flex" gutter={16} justify="center">
           <Col span={20}>
             {response &&

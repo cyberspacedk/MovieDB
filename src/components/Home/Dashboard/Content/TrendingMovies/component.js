@@ -9,7 +9,7 @@ import Card from '../../../../shared/Card';
 const TrendingMovies = ({ loading, error, topFilms, history }) => (
   <Layout>
     <Layout.Content>
-      <div className="top-margin clear">
+      <div className="top-margin">
         <Row type="flex" gutter={16} justify="center" align="left">
           <Col span={20}>
             {loading && <Spinner />}

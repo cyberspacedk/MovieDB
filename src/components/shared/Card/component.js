@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Col, Card, Icon } from 'antd';
+import { Col, Card } from 'antd';
 
-const CardItem = ({ id, poster, title, overview, history }) => {
+const CardItem = ({ id, poster, title, overview, history, actions }) => {
   return (
     <Col
       xs={{ span: 12 }}
@@ -19,7 +19,7 @@ const CardItem = ({ id, poster, title, overview, history }) => {
         cover={
           <img alt={title} src={`https://image.tmdb.org/t/p/w200${poster}`} />
         }
-        actions={[<Icon key="delete" type="delete" />]}
+        actions={actions}
         className="top-margin card-film"
       >
         <Card.Meta title={title} description={`${overview.slice(0, 100)}...`} />
