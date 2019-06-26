@@ -1,12 +1,10 @@
-/* eslint-disable no-console */
 import { createLogic } from 'redux-logic';
-import { getFavoritesResponse, getFavoritesError } from './actions';
+import { getWatchListError, getWatchListResponse } from './actions';
 import { fromStorage } from '../../helpers/helpers';
-
 import { API } from '../../api';
 
-const addToFavoriteLogic = createLogic({
-  type: 'OPERATIONS_FAVORITES_REQUEST',
+const addToWatchListLogic = createLogic({
+  type: 'OPERATIONS_WATCHLIST_REQUEST',
   latest: true,
 
   async process({ httpClient, action }, dispatch, done) {
@@ -15,19 +13,19 @@ const addToFavoriteLogic = createLogic({
     const SSID = fromStorage('SESSION_ID');
     httpClient({
       method: 'post',
-      url: `account/{account_id}/favorite?api_key=${API}&session_id=${SSID}`,
+      url: `account/{account_id}/watchlist?api_key=${API}&session_id=${SSID}`,
       data: {
         media_type: 'movie',
         media_id: movieId,
-        favorite: whatToDo,
+        watchlist: whatToDo,
       },
     });
     done();
   },
 });
 
-const getFavoritesLogic = createLogic({
-  type: 'GET_FAVORITES_REQUEST',
+const getWatchListLogic = createLogic({
+  type: 'GET_WATCHLIST_REQUEST',
   latest: true,
 
   async process({ httpClient }, dispatch, done) {
@@ -35,20 +33,21 @@ const getFavoritesLogic = createLogic({
       const SSID = fromStorage('SESSION_ID');
       const { data } = await httpClient({
         method: 'get',
-        url: `account/{account_id}/favorite/movies?api_key=${API}&session_id=${SSID}&sort_by=created_at.asc&page=${1}`,
+        url: `account/{account_id}/watchlist/movies?api_key=${API}&session_id=${SSID}&sort_by=created_at.asc&page=${1}`,
       });
 
-      const favorites = {
-        favorites_list: data.results,
+      const watchlist = {
+        watchlist_list: data.results,
         current_page: data.page,
         total_pages: data.total_pages,
       };
-      dispatch(getFavoritesResponse(favorites));
+
+      dispatch(getWatchListResponse(watchlist));
     } catch (err) {
-      dispatch(getFavoritesError());
+      dispatch(getWatchListError());
     }
     done();
   },
 });
 
-export { addToFavoriteLogic, getFavoritesLogic };
+export { addToWatchListLogic, getWatchListLogic };

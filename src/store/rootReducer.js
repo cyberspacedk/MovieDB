@@ -4,6 +4,7 @@ import setUserDataReducer from './authentifiction/reducers';
 import searchFilmsReducer from './search/reducers';
 import singleFilmReducer from './singleFilm/reducers';
 import favoritesListReducer from './favorites/reducers';
+import watchListReducer from './watchList/reducers';
 
 const rootReducer = combineReducers({
   trendingMovies: topFilmsReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   search: searchFilmsReducer,
   singleFilm: singleFilmReducer,
   favorites: favoritesListReducer,
+  watchlist: watchListReducer,
 });
 
 export default rootReducer;

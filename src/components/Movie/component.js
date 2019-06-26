@@ -18,7 +18,7 @@ import Error from '../shared/StatusFields/Error';
 import { getFilmDuration, transformNumbers } from '../../helpers/helpers';
 import CreateListAction from '../shared/UserAction/CreateListAction';
 import FavoriteAction from '../shared/UserAction/FavoriteAction';
-import WatchListAction from '../shared/UserAction/WatchListAction/component';
+import WatchListAction from '../shared/UserAction/WatchListAction';
 
 const AboutFilm = props => {
   const { isError, isLoading, aboutFilm, images, casts, crew, genres } = props;
@@ -57,7 +57,7 @@ const AboutFilm = props => {
                   {aboutFilm.title}
                   <CreateListAction />
                   <FavoriteAction movieId={aboutFilm.id} />
-                  <WatchListAction />
+                  <WatchListAction movieId={aboutFilm.id} />
                 </Typography.Title>
                 <Typography.Title level={3}>Overview</Typography.Title>
                 <Typography.Paragraph>

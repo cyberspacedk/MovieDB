@@ -7,22 +7,22 @@ import Error from '../shared/StatusFields/Error';
 import Empty from '../shared/StatusFields/Empty';
 import Card from '../shared/Card';
 
-const Favorites = ({
-  favoritesList,
+const WatchList = ({
+  watchList,
   isLoading,
   isError,
   history,
-  removeFav,
+  removeWatch,
   currentPage,
   totalPage,
 }) => {
-  const removeFavModal = (e, id) => {
+  const removeWatchModal = (e, id) => {
     e.stopPropagation();
     Modal.confirm({
-      title: 'Do you want to delete movie from favorites?',
+      title: 'Do you want to delete movie from watchlist?',
       onOk() {
-        removeFav(id, false);
-        // FAV REDIRECT
+        removeWatch(id, false);
+        // WATCH REDIRECT
         history.push('/');
       },
       onCancel() {},
@@ -37,9 +37,9 @@ const Favorites = ({
             <Col span={20}>
               {isLoading && <Spinner />}
               {isError && <Error />}
-              {!favoritesList.length && <Empty />}
-              {favoritesList &&
-                favoritesList.map(item => (
+              {!watchList.length && <Empty />}
+              {watchList &&
+                watchList.map(item => (
                   <Card
                     key={item.id}
                     id={item.id}
@@ -51,7 +51,7 @@ const Favorites = ({
                       <Icon
                         key="delete"
                         type="delete"
-                        onClick={e => removeFavModal(e, item.id)}
+                        onClick={e => removeWatchModal(e, item.id)}
                       />,
                     ]}
                   />
@@ -78,4 +78,4 @@ const Favorites = ({
   );
 };
 
-export default Favorites;
+export default WatchList;

@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { Icon } from 'antd';
 
-const WatchListAction = () => {
-  const [watchListStatus, setWatchList] = useState(false);
-
-  const handleFavorite = () => setWatchList(!watchListStatus);
-
+const WatchListAction = ({ handleWatchList, watchListStatus }) => {
   return (
     <Icon
       type="book"
       theme={watchListStatus ? 'filled' : undefined}
-      onClick={handleFavorite}
+      onClick={handleWatchList}
     />
   );
 };

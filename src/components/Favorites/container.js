@@ -16,12 +16,16 @@ import {
   getFavoritesList,
   isError,
   isLoading,
+  getCurrentPage,
+  getTotalPages,
 } from '../../store/favorites/selectors';
 
 class FavoritesContainer extends Component {
   componentDidMount() {
     this.props.getFavoritesRequest();
   }
+
+  // КАК ОБНОВИТЬ
   /*
   componentDidUpdate() {
     this.props.getFavoritesRequest();
@@ -49,6 +53,8 @@ const mstp = state => ({
   favoritesList: getFavoritesList(state),
   isLoading: isLoading(state),
   isError: isError(state),
+  currentPage: getCurrentPage(state),
+  totalPage: getTotalPages(state),
 });
 
 const mdtp = {

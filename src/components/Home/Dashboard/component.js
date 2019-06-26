@@ -4,6 +4,7 @@ import Header from './Header';
 import Content from './Content';
 import Movie from '../../Movie';
 import Favorites from '../../Favorites';
+import Watchlist from '../../Watchlist';
 
 const Dashboard = () => {
   return (
@@ -12,6 +13,7 @@ const Dashboard = () => {
       <Switch>
         <Route exact path="/" component={Content} />
         <Route path="/favorites" component={Favorites} />
+        <Route path="/watchlist" component={Watchlist} />
         <Route path="/:id" component={Movie} />
       </Switch>
     </div>

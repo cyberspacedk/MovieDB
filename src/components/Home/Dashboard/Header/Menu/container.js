@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
 import UserMenu from './component';
 import { authLogout } from '../../../../../store/authentifiction/actions';
 import { getUserLogin } from '../../../../../store/authentifiction/selectors';
@@ -11,7 +13,10 @@ const mdtp = {
   authLogout,
 };
 
-export default connect(
-  mstp,
-  mdtp,
+export default compose(
+  connect(
+    mstp,
+    mdtp,
+  ),
+  withRouter,
 )(UserMenu);

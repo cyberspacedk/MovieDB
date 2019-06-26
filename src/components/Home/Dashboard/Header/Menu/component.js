@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Typography, Col, Avatar, Dropdown, Icon, Menu } from 'antd';
 
-const UserMenu = ({ username, authLogout }) => {
+const UserMenu = ({ username, authLogout, history }) => {
   const Overlay = () => (
     <Menu>
       <Menu.Item>
@@ -21,7 +21,14 @@ const UserMenu = ({ username, authLogout }) => {
         <Link to="/favorites">Favorites</Link>
       </Menu.Item>
       <Menu.Divider />
-      <Menu.Item onClick={authLogout}>Logout</Menu.Item>
+      <Menu.Item
+        onClick={() => {
+          authLogout();
+          history.push('/');
+        }}
+      >
+        Logout
+      </Menu.Item>
     </Menu>
   );
 

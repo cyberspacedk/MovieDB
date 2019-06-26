@@ -1,23 +1,18 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 /* eslint-disable camelcase */
 import { createLogic } from 'redux-logic';
 import { authLogout, authSuccess, authError } from './actions';
+import { fromStorage, toStorage } from '../../helpers/helpers';
+import { API } from '../../api';
 
-import { toStorage } from '../../helpers/helpers';
-
-// LOGIC FOR AUTHENTIFICATE USER
 export const authUserLogic = createLogic({
   type: 'AUTH_REQUEST',
   latest: true,
 
-  async process({ httpClient, getState, action }, dispatch, done) {
+  async process({ httpClient, action }, dispatch, done) {
     try {
       const {
         data: { request_token },
-      } = await httpClient.get(
-        `authentication/token/new?api_key=2452661f8c986fe61a12ec7532335900`,
-      );
+      } = await httpClient.get(`authentication/token/new?api_key=${API}`);
       const { username, password } = action.payload;
 
       await httpClient.post(
@@ -42,25 +37,25 @@ export const authUserLogic = createLogic({
       toStorage('SESSION_ID', session_id);
       toStorage('USERNAME', username);
     } catch (err) {
-      console.log(err);
       dispatch(authError());
     }
     done();
   },
 });
 
-// LOGIC FOR LOGOUT
 export const userLogoutLogic = createLogic({
   type: 'AUTH_LOGOUT',
+  throttle: 10000,
   latest: true,
 
   async process({ httpClient }, dispatch, done) {
     try {
+      const SSID = fromStorage('SESSION_ID');
       await httpClient.delete(
         `authentication/session?api_key=2452661f8c986fe61a12ec7532335900`,
         {
           data: {
-            session_id: JSON.parse(localStorage.getItem('SESSION_ID')),
+            session_id: SSID,
           },
         },
       );
@@ -69,7 +64,6 @@ export const userLogoutLogic = createLogic({
     } catch (err) {
       console.log(err);
     }
-
     done();
   },
 });
