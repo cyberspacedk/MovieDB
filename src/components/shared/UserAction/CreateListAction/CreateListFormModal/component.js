@@ -22,6 +22,7 @@ const CreateListFormModal = ({
     onOk={() => {
       handleSubmit();
       hideModal();
+      setTimeout(handleReset, 0);
     }}
   >
     <Form>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'antd';
 
-const FormButton = ({ form: { touched, errors } }) => (
+const FormButton = ({ form: { touched, errors, isSubmitting } }) => (
   <Button
     htmlType="submit"
     type="primary"
@@ -10,6 +10,7 @@ const FormButton = ({ form: { touched, errors } }) => (
       (touched.username && errors.username) ||
       (touched.password && errors.password)
     }
+    loading={isSubmitting}
   >
     Log in
   </Button>

@@ -1,8 +1,8 @@
-import { fromStorage } from '../../helpers';
+import Cookies from 'js-cookie';
 
 export const initialState = {
-  username: fromStorage('USERNAME') || '',
-  sessionId: fromStorage('SESSION_ID') || '',
+  username: Cookies.get('USERNAME') || '',
+  sessionId: Cookies.get('SESSION_ID') || '',
   failAuth: false,
 };
 

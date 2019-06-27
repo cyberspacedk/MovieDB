@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Header from './Header';
 import Content from './Content';
 import Movie from '../../Movie';
+import MyLists from '../../MyLists';
 import Favorites from '../../Favorites';
 import Watchlist from '../../Watchlist';
 
@@ -12,6 +13,7 @@ const Dashboard = () => {
       <Header />
       <Switch>
         <Route exact path="/" component={Content} />
+        <Route path="/lists" component={MyLists} />
         <Route path="/favorites" component={Favorites} />
         <Route path="/watchlist" component={Watchlist} />
         <Route path="/:id" component={Movie} />

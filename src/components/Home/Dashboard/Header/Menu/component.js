@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Typography, Col, Avatar, Dropdown, Icon, Menu, Divider } from 'antd';
+import { Typography, Col, Avatar, Dropdown, Icon, Menu } from 'antd';
 
-const { Item } = Menu;
+const { Item, Divider } = Menu;
 const { Text } = Typography;
 
 const UserMenu = ({ username, authLogout, history }) => {

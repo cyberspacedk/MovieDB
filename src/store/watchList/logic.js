@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 import { createLogic } from 'redux-logic';
+import Cookies from 'js-cookie';
 import {
   getWatchListError,
   getWatchListResponse,
   getWatchListRequest,
 } from './actions';
-import { fromStorage } from '../../helpers';
 import { API } from '../../api';
 
 const operationWatchListLogic = createLogic({
@@ -15,7 +15,7 @@ const operationWatchListLogic = createLogic({
   async process({ httpClient, action }, dispatch, done) {
     const movieId = action.payload;
     const { whatToDo } = action;
-    const SSID = fromStorage('SESSION_ID');
+    const SSID = Cookies.get('SESSION_ID');
     try {
       await httpClient({
         method: 'post',
@@ -40,7 +40,7 @@ const getWatchListLogic = createLogic({
 
   async process({ httpClient }, dispatch, done) {
     try {
-      const SSID = fromStorage('SESSION_ID');
+      const SSID = Cookies.get('SESSION_ID');
       const { data } = await httpClient({
         method: 'get',
         url: `account/{account_id}/watchlist/movies?api_key=${API}&session_id=${SSID}&sort_by=created_at.asc&page=${1}`,

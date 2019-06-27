@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
 /* eslint-disable camelcase */
 import { createLogic } from 'redux-logic';
+import Cookies from 'js-cookie';
 import { authLogout, authSuccess, authError } from './actions';
-import { fromStorage, toStorage } from '../../helpers';
 import { API } from '../../api';
 
 export const authUserLogic = createLogic({
@@ -33,9 +34,8 @@ export const authUserLogic = createLogic({
       );
 
       dispatch(authSuccess({ username, sessionId: session_id }));
-
-      toStorage('SESSION_ID', session_id);
-      toStorage('USERNAME', username);
+      Cookies.set('SESSION_ID', session_id);
+      Cookies.set('USERNAME', username);
     } catch (err) {
       dispatch(authError());
     }
@@ -50,7 +50,7 @@ export const userLogoutLogic = createLogic({
 
   async process({ httpClient }, dispatch, done) {
     try {
-      const SSID = fromStorage('SESSION_ID');
+      const SSID = Cookies.get('SESSION_ID');
       await httpClient.delete(
         `authentication/session?api_key=2452661f8c986fe61a12ec7532335900`,
         {
@@ -60,7 +60,8 @@ export const userLogoutLogic = createLogic({
         },
       );
       dispatch(authLogout());
-      localStorage.clear();
+      Cookies.remove('SESSION_ID');
+      Cookies.remove('USERNAME');
     } catch (err) {
       console.log(err);
     }

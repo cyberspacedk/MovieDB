@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 import { createLogic } from 'redux-logic';
+import Cookies from 'js-cookie';
 import {
   getFavoritesResponse,
   getFavoritesError,
   getFavoritesRequest,
 } from './actions';
-import { fromStorage } from '../../helpers';
 
 import { API } from '../../api';
 
@@ -16,7 +16,7 @@ const operationsFavoriteLogic = createLogic({
   async process({ httpClient, action }, dispatch, done) {
     const movieId = action.payload;
     const { whatToDo } = action;
-    const SSID = fromStorage('SESSION_ID');
+    const SSID = Cookies.get('SESSION_ID');
     try {
       await httpClient({
         method: 'post',
@@ -41,7 +41,7 @@ const getFavoritesLogic = createLogic({
 
   async process({ httpClient }, dispatch, done) {
     try {
-      const SSID = fromStorage('SESSION_ID');
+      const SSID = Cookies.get('SESSION_ID');
       const { data } = await httpClient({
         method: 'get',
         url: `account/{account_id}/favorite/movies?api_key=${API}&session_id=${SSID}&sort_by=created_at.asc&page=${1}`,
