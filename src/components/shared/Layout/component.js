@@ -25,6 +25,7 @@ const PageLayout = ({
       <div className="top-margin">
         <Row type="flex" gutter={16} justify="center">
           <Col span={20}>
+            {error && <Error />}
             {loading ? (
               <Spinner />
             ) : (
@@ -91,7 +92,7 @@ const PageLayout = ({
           </Col>
         </Row>
 
-        {totalResults && (
+        {!loading && totalResults && (
           <Row type="flex" justify="center">
             <Col>
               <Pagination
@@ -104,10 +105,9 @@ const PageLayout = ({
             </Col>
           </Row>
         )}
+        {!loading && empty && <Empty />}
       </div>
     </Content>
-    {error && <Error />}
-    {empty && <Empty />}
     <BackTop />
   </Layout>
 );
