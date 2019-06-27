@@ -11,7 +11,7 @@ import {
   getWatchList,
   isError,
   isLoading,
-  getCurrentPage,
+  isEmpty,
   getTotalPages,
 } from '../../store/watchList/selectors';
 
@@ -35,7 +35,7 @@ const mstp = state => ({
   watchList: getWatchList(state),
   loading: isLoading(state),
   error: isError(state),
-  currentPage: getCurrentPage(state),
+  empty: isEmpty(state),
   totalPage: getTotalPages(state),
 });
 

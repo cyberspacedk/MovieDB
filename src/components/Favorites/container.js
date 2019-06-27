@@ -11,7 +11,7 @@ import {
   getFavoritesList,
   isError,
   isLoading,
-  getCurrentPage,
+  isEmpty,
   getTotalPages,
 } from '../../store/favorites/selectors';
 
@@ -21,25 +21,19 @@ class FavoritesContainer extends Component {
   }
 
   render() {
-    return (
-      <Favorites
-        {...this.props}
-        removeFav={this.props.operationsFavoritesRequest}
-      />
-    );
+    return <Favorites {...this.props} />;
   }
 }
 
 FavoritesContainer.propTypes = {
   getFavoritesRequest: PropTypes.func.isRequired,
-  operationsFavoritesRequest: PropTypes.isRequired,
 };
 
 const mstp = state => ({
   favoritesList: getFavoritesList(state),
-  isLoading: isLoading(state),
-  isError: isError(state),
-  currentPage: getCurrentPage(state),
+  loading: isLoading(state),
+  error: isError(state),
+  empty: isEmpty(state),
   totalPage: getTotalPages(state),
 });
 

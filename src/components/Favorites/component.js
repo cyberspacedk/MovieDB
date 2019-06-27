@@ -1,19 +1,15 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React from 'react';
-import { Layout, Row, Col, Pagination, BackTop, Icon, Modal } from 'antd';
-import Spinner from '../shared/StatusFields/Spinner';
-import Error from '../shared/StatusFields/Error';
-import Empty from '../shared/StatusFields/Empty';
-import Card from '../shared/Card';
+import PropTypes from 'prop-types';
+import { Modal } from 'antd';
+import PageLayout from '../shared/Layout';
 
 const Favorites = ({
   favoritesList,
-  isLoading,
-  isError,
+  loading,
+  error,
+  empty,
   history,
-  removeFav,
-  currentPage,
+  operationsFavoritesRequest,
   totalPage,
 }) => {
   const removeFavModal = (e, id) => {
@@ -21,59 +17,33 @@ const Favorites = ({
     Modal.confirm({
       title: 'Do you want to delete movie from favorites?',
       onOk() {
-        removeFav(id, false);
+        operationsFavoritesRequest(id, false);
       },
       onCancel() {},
     });
   };
 
   return (
-    <Layout>
-      <Layout.Content>
-        <div className="top-margin">
-          <Row type="flex" gutter={16} justify="center">
-            <Col span={20}>
-              {isLoading && <Spinner />}
-              {isError && <Error />}
-              {!favoritesList.length && <Empty />}
-              {favoritesList &&
-                favoritesList.map(item => (
-                  <Card
-                    key={item.id}
-                    id={item.id}
-                    poster={item.poster_path}
-                    title={item.original_title}
-                    overview={item.overview}
-                    history={history}
-                    actions={[
-                      <Icon
-                        key="delete"
-                        type="delete"
-                        onClick={e => removeFavModal(e, item.id)}
-                      />,
-                    ]}
-                  />
-                ))}
-            </Col>
-          </Row>
-
-          {totalPage ? (
-            <Row type="flex" justify="center">
-              <Col>
-                <Pagination
-                  defaultCurrent={1}
-                  total={totalPage}
-                  className="pagination"
-                  defaultPageSize={20}
-                />
-              </Col>
-            </Row>
-          ) : null}
-        </div>
-      </Layout.Content>
-      <BackTop />
-    </Layout>
+    <PageLayout
+      loading={loading}
+      empty={empty}
+      error={error}
+      array={favoritesList}
+      totalResults={totalPage}
+      history={history}
+      operations={removeFavModal}
+    />
   );
+};
+
+Favorites.propTypes = {
+  favoritesList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  history: PropTypes.isRequired,
+  operationsFavoritesRequest: PropTypes.func.isRequired,
+  totalPage: PropTypes.number.isRequired,
+  empty: PropTypes.bool.isRequired,
 };
 
 export default Favorites;

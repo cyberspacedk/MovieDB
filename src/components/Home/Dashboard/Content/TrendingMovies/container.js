@@ -9,6 +9,7 @@ import {
   getTopFilmsSelector,
   isloading,
   isError,
+  isEmpty,
 } from '../../../../../store/trendingMovies/selectors';
 
 export class TrendingMoviesContainer extends Component {
@@ -18,23 +19,19 @@ export class TrendingMoviesContainer extends Component {
   }
 
   render() {
-    const { error: _e, fetchDataRequest: _f, ...restProps } = this.props;
-
-    return <TopFilms {...restProps} />;
+    return <TopFilms {...this.props} />;
   }
 }
 
 TrendingMoviesContainer.propTypes = {
   fetchDataRequest: PropTypes.func.isRequired,
-  topFilms: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
 };
 
 export const mstp = state => ({
   topFilms: getTopFilmsSelector(state),
   loading: isloading(state),
   error: isError(state),
+  empty: isEmpty(state),
 });
 
 const mdtp = {
