@@ -61,7 +61,7 @@ const Movie = ({
               <Col span={20} offset={2}>
                 <Title level={1}>
                   {aboutFilm.title}
-                  <CreateListAction />
+                  <CreateListAction movieId={aboutFilm.id} />
                   <FavoriteAction movieId={aboutFilm.id} />
                   <WatchListAction movieId={aboutFilm.id} />
                 </Title>

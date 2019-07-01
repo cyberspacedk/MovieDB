@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-console */
 import { createLogic } from 'redux-logic';
 import Cookies from 'js-cookie';
@@ -79,4 +80,36 @@ const deleteCreatedListLogic = createLogic({
   },
 });
 
-export { createListLogic, getCreatedListLogic, deleteCreatedListLogic };
+const addMovieToListLogic = createLogic({
+  type: 'ADD_MOVIE_TO_LIST_REQUEST',
+  latest: true,
+
+  async process({ httpClient, action }, dispatch, done) {
+    const ssid = Cookies.get('SESSION_ID');
+    const { listId, movieId } = action.payload;
+
+    try {
+      const { data } = await httpClient({
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        url: `list/${listId}/add_item?api_key=${API}&session_id=${ssid}`,
+        data: {
+          media_id: movieId,
+        },
+      });
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+    done();
+  },
+});
+
+export {
+  createListLogic,
+  getCreatedListLogic,
+  deleteCreatedListLogic,
+  addMovieToListLogic,
+};

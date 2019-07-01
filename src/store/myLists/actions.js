@@ -17,6 +17,11 @@ const getCreatedListResponse = list => ({
   payload: list,
 });
 
+const addMovieToListRequest = (listId, movieId) => ({
+  type: 'ADD_MOVIE_TO_LIST_REQUEST',
+  payload: { listId, movieId },
+});
+
 const getCreatedListError = () => ({
   type: 'GET_CREATED_LIST_ERROR',
 });
@@ -27,4 +32,5 @@ export {
   getCreatedListResponse,
   getCreatedListError,
   deleteListRequest,
+  addMovieToListRequest,
 };

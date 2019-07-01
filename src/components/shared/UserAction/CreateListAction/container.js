@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCreatedListRequest } from '../../../../store/myLists/actions';
+import {
+  getCreatedListRequest,
+  addMovieToListRequest,
+} from '../../../../store/myLists/actions';
 import { getMyList } from '../../../../store/myLists/selectors';
 import CreateListAction from './component';
 
@@ -24,9 +27,14 @@ class CreateListActionContainer extends Component {
 
   hideModal = () => this.setState({ visibleMod: false });
 
+  addMovieToList = (listId, movieId) => {
+    this.props.addMovieToListRequest(listId, movieId);
+    this.hidePopover();
+  };
+
   render() {
     const { visiblePop, visibleMod } = this.state;
-    const { myLists } = this.props;
+
     return (
       <CreateListAction
         visiblePop={visiblePop}
@@ -35,7 +43,8 @@ class CreateListActionContainer extends Component {
         hidePopover={this.hidePopover}
         showModal={this.showModal}
         hideModal={this.hideModal}
-        myLists={myLists}
+        addMovieToList={this.addMovieToList}
+        {...this.props}
       />
     );
   }
@@ -43,6 +52,7 @@ class CreateListActionContainer extends Component {
 
 CreateListActionContainer.propTypes = {
   getCreatedListRequest: PropTypes.func.isRequired,
+  addMovieToListRequest: PropTypes.func.isRequired,
   myLists: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
@@ -52,6 +62,7 @@ const mstp = store => ({
 
 const mdtp = {
   getCreatedListRequest,
+  addMovieToListRequest,
 };
 
 export default connect(

@@ -12,6 +12,8 @@ const CreateListAction = ({
   showModal,
   hideModal,
   myLists,
+  movieId,
+  addMovieToList,
 }) => {
   return (
     <>
@@ -21,6 +23,8 @@ const CreateListAction = ({
             hidePopover={hidePopover}
             showModal={showModal}
             myLists={myLists}
+            addMovieToList={addMovieToList}
+            movieId={movieId}
           />
         }
         title="Add movie to list"
@@ -43,6 +47,8 @@ CreateListAction.propTypes = {
   showModal: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   myLists: PropTypes.arrayOf(PropTypes.object).isRequired,
+  movieId: PropTypes.number.isRequired,
+  addMovieToList: PropTypes.func.isRequired,
 };
 
 export default CreateListAction;
