@@ -9,6 +9,7 @@ import {
   isError,
   isLoading,
   isEmpty,
+  getListName,
 } from '../../../store/listDetails/selectors';
 
 class ListDetailsContainer extends Component {
@@ -33,6 +34,7 @@ const mstp = state => ({
   error: isError(state),
   empty: isEmpty(state),
   listDetails: getListDetails(state),
+  listName: getListName(state),
 });
 
 const mdtp = {

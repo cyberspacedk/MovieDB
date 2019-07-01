@@ -1,13 +1,15 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable no-nested-ternary */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Row, Col, Pagination, BackTop } from 'antd';
+import { Layout, Row, Col, Pagination, BackTop, Typography } from 'antd';
 import Error from '../StatusFields/Error';
 import Empty from '../StatusFields/Empty';
 import Spinner from '../StatusFields/Spinner';
 import CardItem from '../Card';
 
 const { Content } = Layout;
+const { Title } = Typography;
 
 const PageLayout = ({
   loading,
@@ -15,12 +17,24 @@ const PageLayout = ({
   empty,
   array,
   totalResults,
+  currentPage,
   history,
   goToNextPage,
   operations,
+  title,
 }) => (
   <Layout>
     <Content>
+      {title && (
+        <Row>
+          <Col offset={2} span={20}>
+            <div className="top-margin">
+              <Title>{title}</Title>
+            </div>
+          </Col>
+        </Row>
+      )}
+
       <div className="top-margin">
         <Row type="flex" gutter={16} justify="center">
           <Col span={20}>
@@ -45,7 +59,7 @@ const PageLayout = ({
           <Row type="flex" justify="center">
             <Col>
               <Pagination
-                defaultCurrent={1}
+                defaultCurrent={currentPage}
                 total={totalResults}
                 className="pagination"
                 defaultPageSize={20}
@@ -70,6 +84,8 @@ PageLayout.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   empty: PropTypes.bool.isRequired,
+  title: PropTypes.string,
+  currentPage: PropTypes.number,
 };
 
 export default PageLayout;

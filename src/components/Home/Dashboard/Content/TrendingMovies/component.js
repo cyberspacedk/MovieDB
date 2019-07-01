@@ -9,6 +9,7 @@ const TrendingMovies = ({ loading, error, topFilms, history, empty }) => (
     array={topFilms}
     history={history}
     empty={empty}
+    totalResults={0}
   />
 );
 

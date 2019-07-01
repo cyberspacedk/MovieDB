@@ -10,7 +10,9 @@ const getListDetailsLogic = createLogic({
     const id = action.payload;
     try {
       const { data } = await httpClient.get(`/list/${id}?api_key=${API}`);
-      dispatch(getListDetailsResponse(data.items));
+      console.log(data);
+
+      dispatch(getListDetailsResponse(data.items, data.name));
     } catch (err) {
       dispatch(getCreatedListError());
     }

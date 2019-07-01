@@ -13,6 +13,7 @@ const Favorites = ({
 }) => {
   return (
     <PageLayout
+      title="Favorites"
       loading={loading}
       empty={empty}
       error={error}

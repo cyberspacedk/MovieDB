@@ -7,8 +7,8 @@ const getListDetailsRequest = listId => ({
   payload: listId,
 });
 
-const getListDetailsResponse = listDetails => ({
+const getListDetailsResponse = (listDetails, listName) => ({
   type: 'GET_LIST_DETAILS_RESPONSE',
-  payload: listDetails,
+  payload: { listDetails, listName },
 });
 export { getCreatedListError, getListDetailsRequest, getListDetailsResponse };

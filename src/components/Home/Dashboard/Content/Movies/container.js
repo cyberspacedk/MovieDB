@@ -5,12 +5,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Movies from './component';
 import {
-  getQuery,
-  isLoading,
   isError,
-  searchResponse,
+  isLoading,
   isEmpty,
-  totalResults,
+  getSearchResponse,
+  getTotalResults,
+  getQuery,
+  getCurrentPage,
 } from '../../../../../store/search/selectors';
 import { searchRequest } from '../../../../../store/search/actions';
 
@@ -30,9 +31,10 @@ const mstp = state => ({
   loading: isLoading(state),
   error: isError(state),
   empty: isEmpty(state),
-  movies: searchResponse(state),
+  movies: getSearchResponse(state),
   query: getQuery(state),
-  totalResults: totalResults(state),
+  totalResults: getTotalResults(state),
+  currentPage: getCurrentPage(state),
 });
 
 const mdtp = {

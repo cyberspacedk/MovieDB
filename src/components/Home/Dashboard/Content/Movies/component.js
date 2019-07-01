@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 import PageLayout from '../../../../shared/Layout';
@@ -10,6 +11,7 @@ const Movies = ({
   totalResults,
   history,
   goToNextPage,
+  currentPage,
 }) => (
   <PageLayout
     loading={loading}
@@ -17,6 +19,7 @@ const Movies = ({
     error={error}
     array={movies}
     totalResults={totalResults}
+    currentPage={currentPage}
     history={history}
     goToNextPage={goToNextPage}
   />
@@ -30,6 +33,7 @@ Movies.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   empty: PropTypes.bool.isRequired,
+  currentPage: PropTypes.number,
 };
 
 export default Movies;

@@ -13,6 +13,7 @@ const WatchList = ({
 }) => {
   return (
     <PageLayout
+      title="Watchlist"
       loading={loading}
       empty={empty}
       error={error}
