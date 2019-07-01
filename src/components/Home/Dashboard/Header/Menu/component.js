@@ -36,7 +36,10 @@ const UserMenu = ({ username, authLogout, history }) => {
 
   return (
     <Col>
-      <Avatar icon="user" />
+      <Avatar
+        icon="user"
+        src="https://media.wired.com/photos/5b7350e75fc74d47846ce4e4/master/w_550,c_limit/Popcorn-869302844.jpg"
+      />
       <Dropdown overlay={Overlay}>
         <Text>
           {username}

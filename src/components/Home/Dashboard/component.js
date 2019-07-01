@@ -4,6 +4,7 @@ import Header from './Header';
 import Content from './Content';
 import Movie from '../../Movie';
 import MyLists from '../../MyLists';
+import ListDetails from '../../MyLists/ListDetails';
 import Favorites from '../../Favorites';
 import Watchlist from '../../Watchlist';
 
@@ -13,9 +14,10 @@ const Dashboard = () => {
       <Header />
       <Switch>
         <Route exact path="/" component={Content} />
-        <Route path="/lists" component={MyLists} />
+        <Route exact path="/lists/" component={MyLists} />
         <Route path="/favorites" component={Favorites} />
         <Route path="/watchlist" component={Watchlist} />
+        <Route exact path="/lists/:id" component={ListDetails} />
         <Route path="/:id" component={Movie} />
       </Switch>
     </div>

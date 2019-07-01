@@ -23,6 +23,7 @@ const MyList = ({
   error,
   loading,
   totalPages,
+  history,
 }) => {
   const showDeleteModal = id => {
     confirm({
@@ -71,6 +72,7 @@ const MyList = ({
                         onClick={() => showDeleteModal(item.id)}
                       />,
                     ]}
+                    onClick={() => history.push(`/lists/${item.id}`)}
                   >
                     <Title level={4}>{item.name}</Title>
                     <Paragraph level={4}>{item.description}</Paragraph>
