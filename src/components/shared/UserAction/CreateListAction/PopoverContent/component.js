@@ -1,38 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'antd';
+import PopoverButton from './PopoverButton';
 
-const PopoverContent = ({
-  showModal,
-  hidePopover,
-  myLists,
-  movieId,
-  addMovieToList,
-}) => (
+const PopoverContent = ({ showDialog, myLists, movieId, addMovieToList }) => (
   <div>
-    <Button
-      type="link"
-      onClick={() => {
-        hidePopover();
-        showModal();
-      }}
-    >
+    <Button type="link" onClick={showDialog}>
       Create new list ...
     </Button>
     {myLists &&
       myLists.map(item => (
         <div key={item.id}>
-          <Button type="link" onClick={() => addMovieToList(item.id, movieId)}>
-            {item.name}
-          </Button>
+          <PopoverButton
+            item={item}
+            movieId={movieId}
+            addMovieToList={addMovieToList}
+          />
         </div>
       ))}
   </div>
 );
 
 PopoverContent.propTypes = {
-  showModal: PropTypes.func.isRequired,
-  hidePopover: PropTypes.func.isRequired,
+  showDialog: PropTypes.func.isRequired,
   myLists: PropTypes.arrayOf(PropTypes.object).isRequired,
   movieId: PropTypes.number.isRequired,
   addMovieToList: PropTypes.func.isRequired,

@@ -8,8 +8,7 @@ const CreateListAction = ({
   visiblePop,
   visibleMod,
   showPopover,
-  hidePopover,
-  showModal,
+  showDialog,
   hideModal,
   myLists,
   movieId,
@@ -20,8 +19,7 @@ const CreateListAction = ({
       <Popover
         content={
           <PopoverContent
-            hidePopover={hidePopover}
-            showModal={showModal}
+            showDialog={showDialog}
             myLists={myLists}
             addMovieToList={addMovieToList}
             movieId={movieId}
@@ -43,8 +41,7 @@ CreateListAction.propTypes = {
   visiblePop: PropTypes.bool.isRequired,
   visibleMod: PropTypes.bool.isRequired,
   showPopover: PropTypes.func.isRequired,
-  hidePopover: PropTypes.func.isRequired,
-  showModal: PropTypes.func.isRequired,
+  showDialog: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   myLists: PropTypes.arrayOf(PropTypes.object).isRequired,
   movieId: PropTypes.number.isRequired,

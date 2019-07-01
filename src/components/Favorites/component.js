@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal } from 'antd';
 import PageLayout from '../shared/Layout';
 
 const Favorites = ({
@@ -12,17 +11,6 @@ const Favorites = ({
   operationsFavoritesRequest,
   totalPage,
 }) => {
-  const removeFavModal = (e, id) => {
-    e.stopPropagation();
-    Modal.confirm({
-      title: 'Do you want to delete movie from favorites?',
-      onOk() {
-        operationsFavoritesRequest(id, false);
-      },
-      onCancel() {},
-    });
-  };
-
   return (
     <PageLayout
       loading={loading}
@@ -31,7 +19,7 @@ const Favorites = ({
       array={favoritesList}
       totalResults={totalPage}
       history={history}
-      operations={removeFavModal}
+      operations={operationsFavoritesRequest}
     />
   );
 };
