@@ -1,28 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Popover, Button, Icon } from 'antd';
+import { Popover, Icon } from 'antd';
 import CreateListFormModal from './CreateListFormModal';
-
-const PopoverContent = ({ showModal, hidePopover }) => (
-  <>
-    <div>
-      <Button
-        type="link"
-        onClick={() => {
-          hidePopover();
-          showModal();
-        }}
-      >
-        Create new list ...
-      </Button>
-    </div>
-
-    {/* If list exist map this
-    <div>
-      <Button type="link">List name</Button>
-    </div> */}
-  </>
-);
+import PopoverContent from './PopoverContent';
 
 const CreateListAction = ({
   visiblePop,
@@ -31,12 +11,17 @@ const CreateListAction = ({
   hidePopover,
   showModal,
   hideModal,
+  myLists,
 }) => {
   return (
     <>
       <Popover
         content={
-          <PopoverContent hidePopover={hidePopover} showModal={showModal} />
+          <PopoverContent
+            hidePopover={hidePopover}
+            showModal={showModal}
+            myLists={myLists}
+          />
         }
         title="Add movie to list"
         visible={visiblePop}
@@ -45,15 +30,9 @@ const CreateListAction = ({
       >
         <Icon type="plus-circle" />
       </Popover>
-
       <CreateListFormModal visibleMod={visibleMod} hideModal={hideModal} />
     </>
   );
-};
-
-PopoverContent.propTypes = {
-  showModal: PropTypes.func.isRequired,
-  hidePopover: PropTypes.func.isRequired,
 };
 
 CreateListAction.propTypes = {
@@ -63,6 +42,7 @@ CreateListAction.propTypes = {
   hidePopover: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
+  myLists: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default CreateListAction;

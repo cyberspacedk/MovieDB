@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getCreatedListRequest } from '../../../../store/myLists/actions';
+import { getMyList } from '../../../../store/myLists/selectors';
 import CreateListAction from './component';
 
 class CreateListActionContainer extends Component {
@@ -6,6 +10,11 @@ class CreateListActionContainer extends Component {
     visiblePop: false,
     visibleMod: false,
   };
+
+  componentDidMount() {
+    // eslint-disable-next-line react/destructuring-assignment
+    this.props.getCreatedListRequest();
+  }
 
   showPopover = visible => this.setState({ visiblePop: visible });
 
@@ -17,6 +26,7 @@ class CreateListActionContainer extends Component {
 
   render() {
     const { visiblePop, visibleMod } = this.state;
+    const { myLists } = this.props;
     return (
       <CreateListAction
         visiblePop={visiblePop}
@@ -25,8 +35,26 @@ class CreateListActionContainer extends Component {
         hidePopover={this.hidePopover}
         showModal={this.showModal}
         hideModal={this.hideModal}
+        myLists={myLists}
       />
     );
   }
 }
-export default CreateListActionContainer;
+
+CreateListActionContainer.propTypes = {
+  getCreatedListRequest: PropTypes.func.isRequired,
+  myLists: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+const mstp = store => ({
+  myLists: getMyList(store),
+});
+
+const mdtp = {
+  getCreatedListRequest,
+};
+
+export default connect(
+  mstp,
+  mdtp,
+)(CreateListActionContainer);
