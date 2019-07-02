@@ -2,16 +2,7 @@ const isError = state => state.search.error;
 const isLoading = state => state.search.loading;
 const isEmpty = state => state.search.response.results.length === 0;
 const getQuery = state => state.search.query;
-const getSearchResponse = state => state.search.response.results || false;
-const getTotalResults = state => state.search.response.total_results;
-const getCurrentPage = state => state.search.response.page;
+const searchResponse = state => state.search.response.results || false;
+const totalResults = state => state.search.response.total_results || false;
 
-export {
-  isError,
-  isLoading,
-  isEmpty,
-  getSearchResponse,
-  getTotalResults,
-  getQuery,
-  getCurrentPage,
-};
+export { isError, isLoading, isEmpty, searchResponse, totalResults, getQuery };

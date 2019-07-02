@@ -38,14 +38,14 @@ const CreateListAction = ({
 };
 
 CreateListAction.propTypes = {
-  visiblePop: PropTypes.bool,
-  visibleMod: PropTypes.bool,
-  showPopover: PropTypes.func,
-  showDialog: PropTypes.func,
-  hideModal: PropTypes.func,
-  myLists: PropTypes.arrayOf(PropTypes.object),
-  movieId: PropTypes.number,
-  addMovieToList: PropTypes.func,
+  visiblePop: PropTypes.bool.isRequired,
+  visibleMod: PropTypes.bool.isRequired,
+  showPopover: PropTypes.func.isRequired,
+  showDialog: PropTypes.func.isRequired,
+  hideModal: PropTypes.func.isRequired,
+  myLists: PropTypes.arrayOf(PropTypes.object).isRequired,
+  movieId: PropTypes.number.isRequired,
+  addMovieToList: PropTypes.func.isRequired,
 };
 
 export default CreateListAction;

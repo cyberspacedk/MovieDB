@@ -20,25 +20,21 @@ class FavoritesContainer extends Component {
     this.props.getFavoritesRequest();
   }
 
-  goToNextPage = page => {
-    this.props.getFavoritesRequest(page);
-  };
-
   render() {
-    return <Favorites {...this.props} goToNextPage={this.goToNextPage} />;
+    return <Favorites {...this.props} />;
   }
 }
 
 FavoritesContainer.propTypes = {
-  getFavoritesRequest: PropTypes.func,
+  getFavoritesRequest: PropTypes.func.isRequired,
 };
 
 const mstp = state => ({
+  favoritesList: getFavoritesList(state),
   loading: isLoading(state),
   error: isError(state),
   empty: isEmpty(state),
-  favoritesList: getFavoritesList(state),
-  totalResults: getTotalPages(state),
+  totalPage: getTotalPages(state),
 });
 
 const mdtp = {

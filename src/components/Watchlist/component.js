@@ -8,34 +8,31 @@ const WatchList = ({
   error,
   empty,
   history,
-  goToNextPage,
-  totalResults,
+  totalPage,
   operationsWatchListRequest,
 }) => {
   return (
     <PageLayout
-      title="Watchlist"
       loading={loading}
       empty={empty}
       error={error}
       array={watchList}
-      goToNextPage={goToNextPage}
-      totalResults={totalResults}
+      totalResults={totalPage}
       history={history}
       operations={operationsWatchListRequest}
+      removeBox
     />
   );
 };
 
 WatchList.propTypes = {
-  watchList: PropTypes.arrayOf(PropTypes.object),
-  loading: PropTypes.bool,
-  error: PropTypes.bool,
-  history: PropTypes,
-  operationsWatchListRequest: PropTypes.func,
-  totalResults: PropTypes.number,
-  empty: PropTypes.bool,
-  goToNextPage: PropTypes.func,
+  watchList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  history: PropTypes.isRequired,
+  operationsWatchListRequest: PropTypes.func.isRequired,
+  totalPage: PropTypes.number.isRequired,
+  empty: PropTypes.bool.isRequired,
 };
 
 export default WatchList;

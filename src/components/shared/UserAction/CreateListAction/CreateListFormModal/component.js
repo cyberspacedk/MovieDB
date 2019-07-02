@@ -41,10 +41,10 @@ const CreateListFormModal = ({
 );
 
 CreateListFormModal.propTypes = {
-  visibleMod: PropTypes.bool,
-  hideModal: PropTypes.func,
-  handleSubmit: PropTypes.func,
-  handleReset: PropTypes.func,
-  errors: PropTypes.shape(PropTypes.object),
+  visibleMod: PropTypes.bool.isRequired,
+  hideModal: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleReset: PropTypes.func.isRequired,
+  errors: PropTypes.bool.isRequired,
 };
 export default CreateListFormModal;

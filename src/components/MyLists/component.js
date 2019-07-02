@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Row, Col, Typography, Icon, Pagination } from 'antd';
+import { Layout, Row, Col, Typography, Icon } from 'antd';
 import CreateListFormModal from '../shared/UserAction/CreateListAction/CreateListFormModal';
 import Error from '../shared/StatusFields/Error';
 import Empty from '../shared/StatusFields/Empty';
@@ -19,9 +19,7 @@ const MyList = ({
   myLists,
   error,
   loading,
-  empty,
-  totalResults,
-  goToNextPage,
+  totalPages,
   history,
 }) => {
   return (
@@ -42,7 +40,7 @@ const MyList = ({
             {error && <Error />}
             {loading ? (
               <Spinner />
-            ) : (
+            ) : totalPages ? (
               myLists.map(item => (
                 <ListItem
                   key={item.id}
@@ -51,24 +49,11 @@ const MyList = ({
                   deleteListRequest={deleteListRequest}
                 />
               ))
+            ) : (
+              <Empty />
             )}
           </Col>
         </Row>
-
-        {!loading && totalResults !== 0 && (
-          <Row type="flex" justify="center">
-            <Col>
-              <Pagination
-                defaultCurrent={1}
-                total={totalResults}
-                className="pagination"
-                defaultPageSize={20}
-                onChange={goToNextPage}
-              />
-            </Col>
-          </Row>
-        )}
-        {!loading && empty && <Empty />}
       </Content>
       <CreateListFormModal visibleMod={visibleMod} hideModal={hideModal} />
     </Layout>
@@ -76,16 +61,14 @@ const MyList = ({
 };
 
 MyList.propTypes = {
-  showModal: PropTypes.func,
-  hideModal: PropTypes.func,
-  goToNextPage: PropTypes.func,
-  visibleMod: PropTypes.bool,
-  deleteListRequest: PropTypes.func,
-  myLists: PropTypes.arrayOf(PropTypes.object),
-  error: PropTypes.bool,
-  loading: PropTypes.bool,
-  empty: PropTypes.bool,
-  totalResults: PropTypes.number,
-  history: PropTypes.shape(PropTypes.object),
+  showModal: PropTypes.func.isRequired,
+  hideModal: PropTypes.func.isRequired,
+  visibleMod: PropTypes.bool.isRequired,
+  deleteListRequest: PropTypes.func.isRequired,
+  myLists: PropTypes.arrayOf(PropTypes.object).isRequired,
+  error: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  history: PropTypes.shape(PropTypes.object).isRequired,
 };
 export default MyList;

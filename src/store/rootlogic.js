@@ -8,10 +8,7 @@ import {
   deleteCreatedListLogic,
   addMovieToListLogic,
 } from './myLists/logic';
-import {
-  getListDetailsLogic,
-  deleteMovieFromListLogic,
-} from './listDetails/logic';
+import getListDetailsLogic from './listDetails/logic';
 import { operationsFavoriteLogic, getFavoritesLogic } from './favorites/logic';
 import { operationWatchListLogic, getWatchListLogic } from './watchList/logic';
 
@@ -25,7 +22,6 @@ export default [
   getCreatedListLogic,
   getListDetailsLogic,
   deleteCreatedListLogic,
-  deleteMovieFromListLogic,
   addMovieToListLogic,
   operationsFavoriteLogic,
   getFavoritesLogic,

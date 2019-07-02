@@ -57,9 +57,9 @@ class CreateListActionContainer extends Component {
 }
 
 CreateListActionContainer.propTypes = {
-  getCreatedListRequest: PropTypes.func,
-  addMovieToListRequest: PropTypes.func,
-  myLists: PropTypes.arrayOf(PropTypes.object),
+  getCreatedListRequest: PropTypes.func.isRequired,
+  addMovieToListRequest: PropTypes.func.isRequired,
+  myLists: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 const mstp = store => ({

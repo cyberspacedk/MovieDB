@@ -8,9 +8,8 @@ const getWatchListError = () => ({
   type: 'GET_WATCHLIST_ERROR',
 });
 
-const getWatchListRequest = (page = 1) => ({
+const getWatchListRequest = () => ({
   type: 'GET_WATCHLIST_REQUEST',
-  payload: page,
 });
 
 const getWatchListResponse = watch => ({

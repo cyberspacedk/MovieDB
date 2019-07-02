@@ -8,34 +8,31 @@ const Favorites = ({
   error,
   empty,
   history,
-  goToNextPage,
   operationsFavoritesRequest,
-  totalResults,
+  totalPage,
 }) => {
   return (
     <PageLayout
-      title="Favorites"
-      error={error}
       loading={loading}
-      array={favoritesList}
-      goToNextPage={goToNextPage}
-      totalResults={totalResults}
       empty={empty}
+      error={error}
+      array={favoritesList}
+      totalResults={totalPage}
       history={history}
       operations={operationsFavoritesRequest}
+      removeBox
     />
   );
 };
 
 Favorites.propTypes = {
-  favoritesList: PropTypes.arrayOf(PropTypes.object),
-  loading: PropTypes.bool,
-  error: PropTypes.bool,
-  history: PropTypes,
-  operationsFavoritesRequest: PropTypes.func,
-  totalResults: PropTypes.number,
-  empty: PropTypes.bool,
-  goToNextPage: PropTypes.func,
+  favoritesList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  history: PropTypes.isRequired,
+  operationsFavoritesRequest: PropTypes.func.isRequired,
+  totalPage: PropTypes.number.isRequired,
+  empty: PropTypes.bool.isRequired,
 };
 
 export default Favorites;

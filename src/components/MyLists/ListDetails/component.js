@@ -2,36 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PageLayout from '../../shared/Layout';
 
-const ListDetails = ({
-  loading,
-  empty,
-  error,
-  detailsList,
-  history,
-  listName,
-  deleteMovieFromListRequest,
-}) => {
+const ListDetails = ({ loading, empty, error, listDetails, history }) => {
   return (
     <PageLayout
-      title={listName}
       loading={loading}
       empty={empty}
       error={error}
-      array={detailsList}
+      array={listDetails}
       history={history}
-      operations={deleteMovieFromListRequest}
     />
   );
 };
 
 ListDetails.propTypes = {
-  detailsList: PropTypes.arrayOf(PropTypes.object),
-  loading: PropTypes.bool,
-  error: PropTypes.bool,
-  history: PropTypes,
-  empty: PropTypes.bool,
-  listName: PropTypes.string,
-  deleteMovieFromListRequest: PropTypes.func,
+  listDetails: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  history: PropTypes.isRequired,
+  empty: PropTypes.bool.isRequired,
 };
 
 export default ListDetails;

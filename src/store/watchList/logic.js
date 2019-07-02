@@ -38,19 +38,20 @@ const getWatchListLogic = createLogic({
   type: 'GET_WATCHLIST_REQUEST',
   latest: true,
 
-  async process({ httpClient, action }, dispatch, done) {
-    const page = action.payload;
+  async process({ httpClient }, dispatch, done) {
     try {
       const SSID = Cookies.get('SESSION_ID');
       const { data } = await httpClient({
         method: 'get',
-        url: `account/{account_id}/watchlist/movies?api_key=${API}&session_id=${SSID}&sort_by=created_at.asc&page=${page}`,
+        url: `account/{account_id}/watchlist/movies?api_key=${API}&session_id=${SSID}&sort_by=created_at.asc&page=${1}`,
       });
 
       const watchlist = {
         watchlist_list: data.results,
-        total_results: data.total_results,
+        current_page: data.page,
+        total_pages: data.total_pages,
       };
+
       dispatch(getWatchListResponse(watchlist));
     } catch (err) {
       dispatch(getWatchListError());

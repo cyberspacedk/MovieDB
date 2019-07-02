@@ -21,26 +21,22 @@ class WatchListContainer extends Component {
     this.props.getWatchListRequest();
   }
 
-  goToNextPage = page => {
-    this.props.getWatchListRequest(page);
-  };
-
   render() {
-    return <WatchList {...this.props} goToNextPage={this.goToNextPage} />;
+    return <WatchList {...this.props} />;
   }
 }
 
 WatchListContainer.propTypes = {
-  operationsWatchListRequest: PropTypes.func,
-  getWatchListRequest: PropTypes.func,
+  operationsWatchListRequest: PropTypes.func.isRequired,
+  getWatchListRequest: PropTypes.func.isRequired,
 };
 
 const mstp = state => ({
-  error: isError(state),
-  loading: isLoading(state),
-  empty: isEmpty(state),
   watchList: getWatchList(state),
-  totalResults: getTotalPages(state),
+  loading: isLoading(state),
+  error: isError(state),
+  empty: isEmpty(state),
+  totalPage: getTotalPages(state),
 });
 
 const mdtp = {

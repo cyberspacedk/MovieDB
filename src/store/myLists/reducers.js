@@ -1,5 +1,7 @@
 const initialState = {
+  page: 0,
   lists: [],
+  total_pages: 0,
   total_results: 0,
   loading: false,
   error: false,

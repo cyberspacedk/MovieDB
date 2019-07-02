@@ -9,16 +9,15 @@ const TrendingMovies = ({ loading, error, topFilms, history, empty }) => (
     array={topFilms}
     history={history}
     empty={empty}
-    totalResults={0}
   />
 );
 
 TrendingMovies.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.bool,
-  empty: PropTypes.bool,
-  topFilms: PropTypes.arrayOf(PropTypes.object),
-  history: PropTypes.shape(PropTypes.object),
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  empty: PropTypes.bool.isRequired,
+  topFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
+  history: PropTypes.shape(PropTypes.object).isRequired,
 };
 
 export default TrendingMovies;

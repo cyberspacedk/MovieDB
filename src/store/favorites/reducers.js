@@ -1,6 +1,7 @@
 const initialState = {
   favorites_list: [],
-  total_results: 0,
+  current_page: 0,
+  total_pages: 0,
   loading: false,
   error: false,
 };
@@ -10,7 +11,7 @@ export default (state = initialState, { type, payload }) => {
     case 'GET_FAVORITES_REQUEST':
       return {
         ...state,
-        loading: true,
+        loadiing: true,
         error: false,
       };
     case 'GET_FAVORITES_RESPONSE':
