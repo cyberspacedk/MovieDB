@@ -21,6 +21,7 @@ class CardItemContainer extends Component {
         } else {
           operations(item.id, false);
         }
+
       },
       onCancel() {},
     });

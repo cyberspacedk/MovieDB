@@ -20,8 +20,8 @@ class PopoverButtonContainer extends Component {
 }
 
 PopoverButtonContainer.propTypes = {
-  movieId: PropTypes.number,
-  item: PropTypes.arrayOf(PropTypes.object),
-  addMovieToList: PropTypes.func,
+  movieId: PropTypes.number.isRequired,
+  item: PropTypes.arrayOf(PropTypes.object).isRequired,
+  addMovieToList: PropTypes.func.isRequired,
 };
 export default PopoverButtonContainer;

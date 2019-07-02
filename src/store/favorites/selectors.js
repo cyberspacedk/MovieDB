@@ -5,6 +5,7 @@ const getTotalPages = state => state.favorites.total_results;
 const isEmpty = state => state.favorites.favorites_list.length === 0;
 const getCurrentPage = state => state.favorites.current_page;
 
+
 export {
   getCurrentPage,
   getFavoritesList,

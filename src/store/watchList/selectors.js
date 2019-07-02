@@ -5,6 +5,8 @@ const isEmpty = state => state.watchlist.watchlist_list.length === 0;
 const getTotalPages = state => state.watchlist.total_results;
 const getCurrentPage = state => state.watchlist.current_page;
 
+
+
 export {
   getCurrentPage,
   getWatchList,
