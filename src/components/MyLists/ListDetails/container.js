@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ListDetails from './component';
-import { getListDetailsRequest } from '../../../store/listDetails/actions';
+import {
+  getListDetailsRequest,
+  deleteMovieFromListRequest,
+} from '../../../store/listDetails/actions';
 import {
   getListDetails,
   isError,
@@ -24,21 +27,22 @@ class ListDetailsContainer extends Component {
 }
 
 ListDetailsContainer.propTypes = {
-  id: PropTypes.number.isRequired,
-  getListDetailsRequest: PropTypes.func.isRequired,
-  match: PropTypes.shape(PropTypes.object).isRequired,
+  id: PropTypes.number,
+  getListDetailsRequest: PropTypes.func,
+  match: PropTypes.shape(PropTypes.object),
 };
 
 const mstp = state => ({
   loading: isLoading(state),
   error: isError(state),
   empty: isEmpty(state),
-  listDetails: getListDetails(state),
+  detailsList: getListDetails(state),
   listName: getListName(state),
 });
 
 const mdtp = {
   getListDetailsRequest,
+  deleteMovieFromListRequest,
 };
 export default connect(
   mstp,

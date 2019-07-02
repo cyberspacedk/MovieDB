@@ -41,9 +41,9 @@ const ListItem = ({ item, handleListDetails, deleteListRequest }) => {
 };
 
 ListItem.propTypes = {
-  item: PropTypes.arrayOf(PropTypes.object).isRequired,
-  handleListDetails: PropTypes.func.isRequired,
-  deleteListRequest: PropTypes.func.isRequired,
+  item: PropTypes.arrayOf(PropTypes.object),
+  handleListDetails: PropTypes.func,
+  deleteListRequest: PropTypes.func,
 };
 
 export default ListItem;

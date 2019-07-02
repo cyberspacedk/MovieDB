@@ -12,16 +12,15 @@ const { Content } = Layout;
 const { Title } = Typography;
 
 const PageLayout = ({
-  loading,
-  error,
-  empty,
-  array,
-  totalResults,
-  currentPage,
-  history,
-  goToNextPage,
-  operations,
   title,
+  error,
+  loading,
+  array,
+  empty,
+  operations,
+  history,
+  totalResults,
+  goToNextPage,
 }) => (
   <Layout>
     <Content>
@@ -55,11 +54,11 @@ const PageLayout = ({
           </Col>
         </Row>
 
-        {!loading && totalResults !== 0 && (
+        {!loading && totalResults > 0 && (
           <Row type="flex" justify="center">
             <Col>
               <Pagination
-                defaultCurrent={currentPage}
+                defaultCurrent={1}
                 total={totalResults}
                 className="pagination"
                 defaultPageSize={20}
@@ -68,6 +67,7 @@ const PageLayout = ({
             </Col>
           </Row>
         )}
+
         {!loading && empty && <Empty />}
       </div>
     </Content>
@@ -76,16 +76,15 @@ const PageLayout = ({
 );
 
 PageLayout.propTypes = {
-  array: PropTypes.arrayOf(PropTypes.object).isRequired,
-  totalResults: PropTypes.number.isRequired,
-  history: PropTypes.shape(PropTypes.object).isRequired,
-  goToNextPage: PropTypes.func.isRequired,
-  operations: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
-  empty: PropTypes.bool.isRequired,
   title: PropTypes.string,
-  currentPage: PropTypes.number,
+  error: PropTypes.bool,
+  loading: PropTypes.bool,
+  array: PropTypes.arrayOf(PropTypes.object),
+  history: PropTypes.shape(PropTypes.object),
+  totalResults: PropTypes.number,
+  empty: PropTypes.bool,
+  goToNextPage: PropTypes.func,
+  operations: PropTypes.func,
 };
 
 export default PageLayout;

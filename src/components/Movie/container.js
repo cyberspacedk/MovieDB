@@ -30,9 +30,9 @@ class Movie extends Component {
 }
 
 Movie.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.object).isRequired,
-  singleFilmRequest: PropTypes.func.isRequired,
-  match: PropTypes.shape(PropTypes.object).isRequired,
+  images: PropTypes.arrayOf(PropTypes.object),
+  singleFilmRequest: PropTypes.func,
+  match: PropTypes.shape(PropTypes.object),
 };
 
 const mstp = state => ({

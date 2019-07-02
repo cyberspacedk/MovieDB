@@ -1,7 +1,6 @@
 const initialState = {
   favorites_list: [],
-  current_page: 0,
-  total_pages: 0,
+  total_results: 0,
   loading: false,
   error: false,
 };

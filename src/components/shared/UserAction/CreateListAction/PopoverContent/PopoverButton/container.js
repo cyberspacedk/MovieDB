@@ -13,8 +13,8 @@ const PopoverButtonContainer = ({ movieId, addMovieToList, item }) => {
 };
 
 PopoverButtonContainer.propTypes = {
-  movieId: PropTypes.number.isRequired,
-  item: PropTypes.arrayOf(PropTypes.object).isRequired,
-  addMovieToList: PropTypes.func.isRequired,
+  movieId: PropTypes.number,
+  item: PropTypes.arrayOf(PropTypes.object),
+  addMovieToList: PropTypes.func,
 };
 export default PopoverButtonContainer;

@@ -11,9 +11,9 @@ const CardItemContainer = props => {
 };
 
 CardItemContainer.propTypes = {
-  item: PropTypes.shape(PropTypes.string).isRequired,
-  history: PropTypes.shape(PropTypes.object).isRequired,
-  operations: PropTypes.func.isRequired,
+  item: PropTypes.shape(PropTypes.string),
+  history: PropTypes.shape(PropTypes.object),
+  operations: PropTypes.func,
 };
 
 export default CardItemContainer;

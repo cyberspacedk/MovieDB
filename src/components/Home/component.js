@@ -8,6 +8,6 @@ const Home = ({ isAuthentificated }) => (
 );
 
 Home.propTypes = {
-  isAuthentificated: PropTypes.bool.isRequired,
+  isAuthentificated: PropTypes.bool,
 };
 export default Home;

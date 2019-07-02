@@ -19,7 +19,7 @@ const MenuContainer = ({ authLogout, history, username }) => {
 
 MenuContainer.propTypes = {
   authLogout: PropTypes.func.isRequired,
-  history: PropTypes.shape(PropTypes.object).isRequired,
+  history: PropTypes.shape(PropTypes.object),
   username: PropTypes.string.isRequired,
 };
 

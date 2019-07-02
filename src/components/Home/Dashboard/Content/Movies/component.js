@@ -26,13 +26,13 @@ const Movies = ({
 );
 
 Movies.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-  totalResults: PropTypes.number.isRequired,
-  history: PropTypes.shape(PropTypes.object).isRequired,
-  goToNextPage: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
-  empty: PropTypes.bool.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.object),
+  totalResults: PropTypes.number,
+  history: PropTypes.shape(PropTypes.object),
+  goToNextPage: PropTypes.func,
+  loading: PropTypes.bool,
+  error: PropTypes.bool,
+  empty: PropTypes.bool,
   currentPage: PropTypes.number,
 };
 

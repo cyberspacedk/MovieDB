@@ -12,7 +12,7 @@ import {
 const createListLogic = createLogic({
   type: 'CREATE_LIST_REQUEST',
   latest: true,
-  // CORS
+
   async process({ httpClient, action }, dispatch, done) {
     const ssid = Cookies.get('SESSION_ID');
     const { name, description } = action.payload;
@@ -49,11 +49,11 @@ const getCreatedListLogic = createLogic({
         `account/{account_id}/lists?api_key=${API}&session_id=${ssid}&page=${page}`,
       );
       const resp = {
-        ...data,
         lists: data.results,
+        total_results: data.total_results,
       };
-      const { results: _r, ...myLists } = resp;
-      dispatch(getCreatedListResponse(myLists));
+      // ПРОВЕРИТЬ ЗАПРОС
+      dispatch(getCreatedListResponse(resp));
     } catch (err) {
       console.log(err);
       dispatch(getCreatedListError());

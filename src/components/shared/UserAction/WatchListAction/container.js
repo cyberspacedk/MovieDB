@@ -28,8 +28,8 @@ class WatchListActionContainer extends Component {
 }
 
 WatchListActionContainer.propTypes = {
-  operationsWatchListRequest: PropTypes.func.isRequired,
-  movieId: PropTypes.number.isRequired,
+  operationsWatchListRequest: PropTypes.func,
+  movieId: PropTypes.number,
 };
 
 const mdtp = {

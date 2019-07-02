@@ -22,10 +22,10 @@ const PopoverContent = ({ showDialog, myLists, movieId, addMovieToList }) => (
 );
 
 PopoverContent.propTypes = {
-  showDialog: PropTypes.func.isRequired,
-  myLists: PropTypes.arrayOf(PropTypes.object).isRequired,
-  movieId: PropTypes.number.isRequired,
-  addMovieToList: PropTypes.func.isRequired,
+  showDialog: PropTypes.func,
+  myLists: PropTypes.arrayOf(PropTypes.object),
+  movieId: PropTypes.number,
+  addMovieToList: PropTypes.func,
 };
 
 export default PopoverContent;

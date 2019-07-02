@@ -1,14 +1,20 @@
+/* eslint-disable no-unused-expressions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Card, Icon, Modal } from 'antd';
 
-const CardItem = ({ item, operations, showMoreDetails }) => {
-  const removeWatchModal = e => {
+const CardItem = ({ item, operations, showMoreDetails, history }) => {
+  const removeMovieModal = e => {
     e.stopPropagation();
     Modal.confirm({
-      title: 'Do you want to delete movie from watchlist?',
+      title: 'Do you want to delete movie ?',
       onOk() {
-        operations(item.id, false);
+        if (history.location.pathname.includes('lists')) {
+          const listId = /[0-9]{2,}$/.exec(history.location.pathname)[0];
+          operations(listId, item.id);
+        } else {
+          operations(item.id, false);
+        }
       },
       onCancel() {},
     });
@@ -35,7 +41,7 @@ const CardItem = ({ item, operations, showMoreDetails }) => {
         }
         actions={
           operations
-            ? [<Icon key="delete" type="delete" onClick={removeWatchModal} />]
+            ? [<Icon key="delete" type="delete" onClick={removeMovieModal} />]
             : null
         }
         className="top-margin card-film"
@@ -50,9 +56,10 @@ const CardItem = ({ item, operations, showMoreDetails }) => {
 };
 
 CardItem.propTypes = {
-  item: PropTypes.shape(PropTypes.string).isRequired,
-  operations: PropTypes.func.isRequired,
-  showMoreDetails: PropTypes.func.isRequired,
+  item: PropTypes.shape(PropTypes.string),
+  operations: PropTypes.func,
+  showMoreDetails: PropTypes.func,
+  history: PropTypes.shape(PropTypes.object),
 };
 
 export default CardItem;

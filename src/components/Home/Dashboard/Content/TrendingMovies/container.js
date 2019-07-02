@@ -24,7 +24,7 @@ export class TrendingMoviesContainer extends Component {
 }
 
 TrendingMoviesContainer.propTypes = {
-  fetchDataRequest: PropTypes.func.isRequired,
+  fetchDataRequest: PropTypes.func,
 };
 
 export const mstp = state => ({

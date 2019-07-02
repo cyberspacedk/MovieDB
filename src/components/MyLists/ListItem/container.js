@@ -16,9 +16,9 @@ const ListItemContainer = ({ history, item, deleteListRequest }) => {
 };
 
 ListItemContainer.propTypes = {
-  history: PropTypes.shape(PropTypes.object).isRequired,
-  item: PropTypes.arrayOf(PropTypes.object).isRequired,
-  deleteListRequest: PropTypes.func.isRequired,
+  history: PropTypes.shape(PropTypes.object),
+  item: PropTypes.arrayOf(PropTypes.object),
+  deleteListRequest: PropTypes.func,
 };
 
 export default ListItemContainer;

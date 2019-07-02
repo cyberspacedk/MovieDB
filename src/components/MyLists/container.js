@@ -11,6 +11,7 @@ import {
   isError,
   isLoading,
   getTotalPages,
+  isEmpty,
 } from '../../store/myLists/selectors';
 
 class MyListsContainer extends Component {
@@ -27,6 +28,11 @@ class MyListsContainer extends Component {
 
   hideModal = () => this.setState({ visibleMod: false });
 
+  goToNextPage = page => {
+    console.log(page);
+    this.props.getCreatedListRequest(page);
+  };
+
   render() {
     const { visibleMod } = this.state;
 
@@ -35,6 +41,7 @@ class MyListsContainer extends Component {
         showModal={this.showModal}
         hideModal={this.hideModal}
         visibleMod={visibleMod}
+        goToNextPage={this.goToNextPage}
         {...this.props}
       />
     );
@@ -42,14 +49,15 @@ class MyListsContainer extends Component {
 }
 
 MyListsContainer.propTypes = {
-  getCreatedListRequest: PropTypes.func.isRequired,
+  getCreatedListRequest: PropTypes.func,
 };
 
 const mstp = state => ({
-  myLists: getMyList(state),
   error: isError(state),
   loading: isLoading(state),
-  totalPages: getTotalPages(state),
+  empty: isEmpty(state),
+  totalResults: getTotalPages(state),
+  myLists: getMyList(state),
 });
 
 const mdtp = { getCreatedListRequest, deleteListRequest };

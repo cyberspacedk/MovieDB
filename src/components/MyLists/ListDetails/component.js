@@ -6,9 +6,10 @@ const ListDetails = ({
   loading,
   empty,
   error,
-  listDetails,
+  detailsList,
   history,
   listName,
+  deleteMovieFromListRequest,
 }) => {
   return (
     <PageLayout
@@ -16,19 +17,21 @@ const ListDetails = ({
       loading={loading}
       empty={empty}
       error={error}
-      array={listDetails}
+      array={detailsList}
       history={history}
+      operations={deleteMovieFromListRequest}
     />
   );
 };
 
 ListDetails.propTypes = {
-  listDetails: PropTypes.arrayOf(PropTypes.object).isRequired,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
-  history: PropTypes.isRequired,
-  empty: PropTypes.bool.isRequired,
-  listName: PropTypes.string.isRequired,
+  detailsList: PropTypes.arrayOf(PropTypes.object),
+  loading: PropTypes.bool,
+  error: PropTypes.bool,
+  history: PropTypes,
+  empty: PropTypes.bool,
+  listName: PropTypes.string,
+  deleteMovieFromListRequest: PropTypes.func,
 };
 
 export default ListDetails;

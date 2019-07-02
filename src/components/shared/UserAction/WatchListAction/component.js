@@ -13,8 +13,8 @@ const WatchListAction = ({ handleWatchList, watchListStatus }) => {
 };
 
 WatchListAction.propTypes = {
-  handleWatchList: PropTypes.func.isRequired,
-  watchListStatus: PropTypes.bool.isRequired,
+  handleWatchList: PropTypes.func,
+  watchListStatus: PropTypes.bool,
 };
 
 export default WatchListAction;
