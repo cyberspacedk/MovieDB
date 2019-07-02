@@ -23,6 +23,7 @@ const Favorites = ({
       empty={empty}
       history={history}
       operations={operationsFavoritesRequest}
+      removeBox
     />
   );
 };

@@ -21,10 +21,12 @@ const PageLayout = ({
   history,
   totalResults,
   goToNextPage,
+  removeBox,
 }) => (
   <Layout>
     <Content>
       {error && <Error />}
+
       {title && (
         <Row>
           <Col offset={2} span={20}>
@@ -34,6 +36,7 @@ const PageLayout = ({
           </Col>
         </Row>
       )}
+
       {loading ? (
         <Spinner />
       ) : (
@@ -47,6 +50,7 @@ const PageLayout = ({
                     item={item}
                     operations={operations}
                     history={history}
+                    removeBox={removeBox}
                   />
                 ))}
             </Col>
@@ -73,17 +77,21 @@ const PageLayout = ({
     <BackTop />
   </Layout>
 );
+PageLayout.defaultProps = {
+  removeBox: false,
+};
 
 PageLayout.propTypes = {
+  array: PropTypes.arrayOf(PropTypes.object).isRequired,
+  totalResults: PropTypes.number.isRequired,
+  history: PropTypes.shape(PropTypes.object).isRequired,
+  goToNextPage: PropTypes.func.isRequired,
+  operations: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  empty: PropTypes.bool.isRequired,
+  removeBox: PropTypes.bool,
   title: PropTypes.string,
-  error: PropTypes.bool,
-  loading: PropTypes.bool,
-  array: PropTypes.arrayOf(PropTypes.object),
-  history: PropTypes.shape(PropTypes.object),
-  totalResults: PropTypes.number,
-  empty: PropTypes.bool,
-  goToNextPage: PropTypes.func,
-  operations: PropTypes.func,
 };
 
 export default PageLayout;

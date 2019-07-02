@@ -3,7 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Card, Icon } from 'antd';
 
-const CardItem = ({ item, operations, showMoreDetails, removeMovieModal }) => {
+const CardItem = ({
+  item,
+  handleShowMoreDetails,
+  handleRemoveWatchModal,
+  removeBox,
+}) => {
   return (
     <Col
       xs={{ span: 12 }}
@@ -11,7 +16,7 @@ const CardItem = ({ item, operations, showMoreDetails, removeMovieModal }) => {
       md={{ span: 8 }}
       lg={{ span: 6 }}
       xl={{ span: 4 }}
-      onClick={showMoreDetails}
+      onClick={handleShowMoreDetails}
     >
       <Card
         hoverable
@@ -24,8 +29,14 @@ const CardItem = ({ item, operations, showMoreDetails, removeMovieModal }) => {
           ) : null
         }
         actions={
-          operations
-            ? [<Icon key="delete" type="delete" onClick={removeMovieModal} />]
+          removeBox
+            ? [
+                <Icon
+                  key="delete"
+                  type="delete"
+                  onClick={handleRemoveWatchModal}
+                />,
+              ]
             : null
         }
         className="top-margin card-film"
@@ -38,12 +49,19 @@ const CardItem = ({ item, operations, showMoreDetails, removeMovieModal }) => {
     </Col>
   );
 };
+CardItem.defaultProps = {
+  removeBox: false,
+};
 
 CardItem.propTypes = {
-  item: PropTypes.shape(PropTypes.string),
-  operations: PropTypes.func,
-  showMoreDetails: PropTypes.func,
-  removeMovieModal: PropTypes.func,
+  item: PropTypes.shape({
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    overview: PropTypes.string,
+  }).isRequired,
+  handleShowMoreDetails: PropTypes.func.isRequired,
+  handleRemoveWatchModal: PropTypes.func.isRequired,
+  removeBox: PropTypes.bool,
 };
 
 export default CardItem;

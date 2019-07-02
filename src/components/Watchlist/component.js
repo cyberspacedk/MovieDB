@@ -23,6 +23,7 @@ const WatchList = ({
       totalResults={totalResults}
       history={history}
       operations={operationsWatchListRequest}
+      removeBox
     />
   );
 };

@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PopoverButton from './component';
 
-const PopoverButtonContainer = ({ movieId, addMovieToList, item }) => {
-  const handlerAddMovieToList = () => {
+class PopoverButtonContainer extends Component {
+  handlerAddMovieToList = () => {
+    const { item, movieId, addMovieToList } = this.props;
     addMovieToList(item.id, movieId);
-    console.log(item.id, movieId);
   };
-  return (
-    <PopoverButton item={item} handlerAddMovieToList={handlerAddMovieToList} />
-  );
-};
+
+  render() {
+    const { item } = this.props;
+    return (
+      <PopoverButton
+        item={item}
+        handlerAddMovieToList={this.handlerAddMovieToList}
+      />
+    );
+  }
+}
 
 PopoverButtonContainer.propTypes = {
   movieId: PropTypes.number,

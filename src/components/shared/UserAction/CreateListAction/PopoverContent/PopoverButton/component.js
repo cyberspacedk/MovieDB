@@ -9,8 +9,10 @@ const PopoverButton = ({ item, handlerAddMovieToList }) => (
 );
 
 PopoverButton.propTypes = {
-  item: PropTypes.arrayOf(PropTypes.object),
-  handlerAddMovieToList: PropTypes.func,
+  item: PropTypes.shape({
+    name: PropTypes.string,
+  }).isRequired,
+  handlerAddMovieToList: PropTypes.func.isRequired,
 };
 
 export default PopoverButton;

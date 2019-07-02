@@ -1,37 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from 'antd';
 import Card from './component';
 
-class CardItemContainer extends React.Component {
-  removeMovieModal = e => {
+class CardItemContainer extends Component {
+  handleShowMoreDetails = () => {
+    const { history, item } = this.props;
+    history.push(`/${item.id}`);
+  };
+
+  handleRemoveWatchModal = e => {
     e.stopPropagation();
-
-    const { history, item, operations } = this.props;
-
+    const { operations, item } = this.props;
     Modal.confirm({
-      title: 'Do you want to delete movie ?',
+      title: 'Do you want to delete movie from watchlist?',
       onOk() {
-        if (history.location.pathname.includes('lists')) {
-          const listId = /[0-9]{2,}$/.exec(history.location.pathname)[0];
-          operations(listId, item.id);
-        } else {
-          operations(item.id, false);
-        }
+        operations(item.id, false);
       },
       onCancel() {},
     });
   };
 
-  showMoreDetails = () => {
-    this.props.history.push(`/${this.props.item.id}`);
-  };
-
   render() {
     return (
       <Card
-        showMoreDetails={this.showMoreDetails}
-        removeMovieModal={this.removeMovieModal}
+        handleShowMoreDetails={this.handleShowMoreDetails}
+        handleRemoveWatchModal={this.handleRemoveWatchModal}
         {...this.props}
       />
     );
