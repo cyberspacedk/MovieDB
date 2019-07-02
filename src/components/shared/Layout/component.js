@@ -18,6 +18,7 @@ const PageLayout = ({
   history,
   goToNextPage,
   operations,
+  removeBox,
 }) => (
   <Layout>
     <Content>
@@ -35,6 +36,7 @@ const PageLayout = ({
                   item={item}
                   operations={operations}
                   history={history}
+                  removeBox={removeBox}
                 />
               ))
             )}
@@ -60,6 +62,9 @@ const PageLayout = ({
     <BackTop />
   </Layout>
 );
+PageLayout.defaultProps = {
+  removeBox: false,
+};
 
 PageLayout.propTypes = {
   array: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -70,6 +75,7 @@ PageLayout.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   empty: PropTypes.bool.isRequired,
+  removeBox: PropTypes.bool,
 };
 
 export default PageLayout;

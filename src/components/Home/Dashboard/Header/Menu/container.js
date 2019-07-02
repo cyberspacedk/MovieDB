@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -7,19 +7,25 @@ import UserMenu from './component';
 import { authLogout } from '../../../../../store/authentifiction/actions';
 import { getUserLogin } from '../../../../../store/authentifiction/selectors';
 
-// eslint-disable-next-line no-shadow
-const MenuContainer = ({ authLogout, history, username }) => {
-  const handleLogout = () => {
+class MenuContainer extends Component {
+  handleLogout = () => {
+    // eslint-disable-next-line no-shadow
+    const { authLogout, history } = this.props;
     authLogout();
     history.push('/');
   };
 
-  return <UserMenu username={username} handleLogout={handleLogout} />;
-};
+  render() {
+    const { username } = this.props;
+    return <UserMenu username={username} handleLogout={this.handleLogout} />;
+  }
+}
 
 MenuContainer.propTypes = {
   authLogout: PropTypes.func.isRequired,
-  history: PropTypes.shape(PropTypes.object).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
   username: PropTypes.string.isRequired,
 };
 

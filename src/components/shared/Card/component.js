@@ -1,19 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Card, Icon, Modal } from 'antd';
+import { Col, Card, Icon } from 'antd';
 
-const CardItem = ({ item, operations, showMoreDetails }) => {
-  const removeWatchModal = e => {
-    e.stopPropagation();
-    Modal.confirm({
-      title: 'Do you want to delete movie from watchlist?',
-      onOk() {
-        operations(item.id, false);
-      },
-      onCancel() {},
-    });
-  };
-
+const CardItem = ({
+  item,
+  handleShowMoreDetails,
+  handleRemoveWatchModal,
+  removeBox,
+}) => {
   return (
     <Col
       xs={{ span: 12 }}
@@ -21,7 +15,7 @@ const CardItem = ({ item, operations, showMoreDetails }) => {
       md={{ span: 8 }}
       lg={{ span: 6 }}
       xl={{ span: 4 }}
-      onClick={showMoreDetails}
+      onClick={handleShowMoreDetails}
     >
       <Card
         hoverable
@@ -34,8 +28,14 @@ const CardItem = ({ item, operations, showMoreDetails }) => {
           ) : null
         }
         actions={
-          operations
-            ? [<Icon key="delete" type="delete" onClick={removeWatchModal} />]
+          removeBox
+            ? [
+                <Icon
+                  key="delete"
+                  type="delete"
+                  onClick={handleRemoveWatchModal}
+                />,
+              ]
             : null
         }
         className="top-margin card-film"
@@ -48,11 +48,19 @@ const CardItem = ({ item, operations, showMoreDetails }) => {
     </Col>
   );
 };
+CardItem.defaultProps = {
+  removeBox: false,
+};
 
 CardItem.propTypes = {
-  item: PropTypes.shape(PropTypes.string).isRequired,
-  operations: PropTypes.func.isRequired,
-  showMoreDetails: PropTypes.func.isRequired,
+  item: PropTypes.shape({
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    overview: PropTypes.string,
+  }).isRequired,
+  handleShowMoreDetails: PropTypes.func.isRequired,
+  handleRemoveWatchModal: PropTypes.func.isRequired,
+  removeBox: PropTypes.bool,
 };
 
 export default CardItem;

@@ -20,6 +20,7 @@ const Favorites = ({
       totalResults={totalPage}
       history={history}
       operations={operationsFavoritesRequest}
+      removeBox
     />
   );
 };

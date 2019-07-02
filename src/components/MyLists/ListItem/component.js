@@ -1,21 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Icon, Card, Modal, Typography } from 'antd';
+import { Col, Icon, Card, Typography } from 'antd';
 
 const { Paragraph, Title } = Typography;
 
-const ListItem = ({ item, handleListDetails, deleteListRequest }) => {
-  const showDeleteModal = e => {
-    e.stopPropagation();
-    Modal.confirm({
-      title: 'Do you want to delete this list?',
-      onOk() {
-        deleteListRequest(item.id);
-      },
-      onCancel() {},
-    });
-  };
-
+const ListItem = ({ item, handleListDetails, handleDeleteModal }) => {
   return (
     <Col
       className="my-list-card"
@@ -29,7 +18,7 @@ const ListItem = ({ item, handleListDetails, deleteListRequest }) => {
         hoverable
         className="top-margin"
         actions={[
-          <Icon key="delete" type="delete" onClick={showDeleteModal} />,
+          <Icon key="delete" type="delete" onClick={handleDeleteModal} />,
         ]}
         onClick={handleListDetails}
       >
@@ -41,9 +30,12 @@ const ListItem = ({ item, handleListDetails, deleteListRequest }) => {
 };
 
 ListItem.propTypes = {
-  item: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleListDetails: PropTypes.func.isRequired,
-  deleteListRequest: PropTypes.func.isRequired,
+  handleDeleteModal: PropTypes.func.isRequired,
+  item: PropTypes.shape({
+    name: PropTypes.string,
+    description: PropTypes.string,
+  }).isRequired,
 };
 
 export default ListItem;
