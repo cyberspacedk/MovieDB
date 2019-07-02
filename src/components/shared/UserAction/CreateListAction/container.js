@@ -32,6 +32,11 @@ class CreateListActionContainer extends Component {
     this.hidePopover();
   };
 
+  showDialog = () => {
+    this.showModal();
+    this.hidePopover();
+  };
+
   render() {
     const { visiblePop, visibleMod } = this.state;
 
@@ -44,6 +49,7 @@ class CreateListActionContainer extends Component {
         showModal={this.showModal}
         hideModal={this.hideModal}
         addMovieToList={this.addMovieToList}
+        showDialog={this.showDialog}
         {...this.props}
       />
     );

@@ -1,3 +1,5 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
@@ -5,7 +7,29 @@ import UserMenu from './component';
 import { authLogout } from '../../../../../store/authentifiction/actions';
 import { getUserLogin } from '../../../../../store/authentifiction/selectors';
 
-export const mstp = state => ({
+class MenuContainer extends Component {
+  handleLogout = () => {
+    // eslint-disable-next-line no-shadow
+    const { authLogout, history } = this.props;
+    authLogout();
+    history.push('/');
+  };
+
+  render() {
+    const { username } = this.props;
+    return <UserMenu username={username} handleLogout={this.handleLogout} />;
+  }
+}
+
+MenuContainer.propTypes = {
+  authLogout: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+  username: PropTypes.string.isRequired,
+};
+
+const mstp = state => ({
   username: getUserLogin(state),
 });
 
@@ -19,4 +43,4 @@ export default compose(
     mdtp,
   ),
   withRouter,
-)(UserMenu);
+)(MenuContainer);

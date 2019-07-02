@@ -6,7 +6,7 @@ import { Typography, Col, Avatar, Dropdown, Icon, Menu } from 'antd';
 const { Item, Divider } = Menu;
 const { Text } = Typography;
 
-const UserMenu = ({ username, authLogout, history }) => {
+const UserMenu = ({ username, handleLogout }) => {
   const Overlay = () => (
     <Menu>
       <Item>
@@ -23,14 +23,7 @@ const UserMenu = ({ username, authLogout, history }) => {
         <Link to="/favorites">Favorites</Link>
       </Item>
       <Divider />
-      <Item
-        onClick={() => {
-          authLogout();
-          history.push('/');
-        }}
-      >
-        Logout
-      </Item>
+      <Item onClick={handleLogout}>Logout</Item>
     </Menu>
   );
 
@@ -52,8 +45,7 @@ const UserMenu = ({ username, authLogout, history }) => {
 
 UserMenu.propTypes = {
   username: PropTypes.string.isRequired,
-  authLogout: PropTypes.func.isRequired,
-  history: PropTypes.shape(PropTypes.object).isRequired,
+  handleLogout: PropTypes.func.isRequired,
 };
 
 export default UserMenu;

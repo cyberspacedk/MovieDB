@@ -1,14 +1,13 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Row, Col, Pagination, BackTop, Card, Icon } from 'antd';
-// eslint-disable-next-line no-unused-vars
+import { Layout, Row, Col, Pagination, BackTop } from 'antd';
 import Error from '../StatusFields/Error';
 import Empty from '../StatusFields/Empty';
 import Spinner from '../StatusFields/Spinner';
+import CardItem from '../Card';
 
 const { Content } = Layout;
-const { Meta } = Card;
 
 const PageLayout = ({
   loading,
@@ -19,6 +18,7 @@ const PageLayout = ({
   history,
   goToNextPage,
   operations,
+  removeBox,
 }) => (
   <Layout>
     <Content>
@@ -31,68 +31,19 @@ const PageLayout = ({
             ) : (
               array &&
               array.map(item => (
-                <Col
+                <CardItem
                   key={item.id}
-                  xs={{ span: 12 }}
-                  sm={{ span: 12 }}
-                  md={{ span: 8 }}
-                  lg={{ span: 6 }}
-                  xl={{ span: 4 }}
-                  onClick={() => {
-                    history.push(`/${item.id}`);
-                  }}
-                >
-                  {!operations ? (
-                    <Card
-                      hoverable
-                      cover={
-                        <img
-                          alt={item.title}
-                          src={`https://image.tmdb.org/t/p/w200${
-                            item.poster_path
-                          }`}
-                        />
-                      }
-                      className="top-margin card-film"
-                    >
-                      <Meta
-                        title={item.title}
-                        description={`${item.overview.slice(0, 100)}...`}
-                      />
-                    </Card>
-                  ) : (
-                    <Card
-                      hoverable
-                      cover={
-                        <img
-                          alt={item.title}
-                          src={`https://image.tmdb.org/t/p/w200${
-                            item.poster_path
-                          }`}
-                        />
-                      }
-                      actions={[
-                        <Icon
-                          key="delete"
-                          type="delete"
-                          onClick={e => operations(e, item.id)}
-                        />,
-                      ]}
-                      className="top-margin card-film"
-                    >
-                      <Meta
-                        title={item.title}
-                        description={`${item.overview.slice(0, 100)}...`}
-                      />
-                    </Card>
-                  )}
-                </Col>
+                  item={item}
+                  operations={operations}
+                  history={history}
+                  removeBox={removeBox}
+                />
               ))
             )}
           </Col>
         </Row>
 
-        {!loading && totalResults && (
+        {!loading && totalResults !== 0 && (
           <Row type="flex" justify="center">
             <Col>
               <Pagination
@@ -111,6 +62,9 @@ const PageLayout = ({
     <BackTop />
   </Layout>
 );
+PageLayout.defaultProps = {
+  removeBox: false,
+};
 
 PageLayout.propTypes = {
   array: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -121,6 +75,7 @@ PageLayout.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   empty: PropTypes.bool.isRequired,
+  removeBox: PropTypes.bool,
 };
 
 export default PageLayout;

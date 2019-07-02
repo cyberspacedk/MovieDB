@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal } from 'antd';
 import PageLayout from '../shared/Layout';
 
 const WatchList = ({
@@ -12,17 +11,6 @@ const WatchList = ({
   totalPage,
   operationsWatchListRequest,
 }) => {
-  const removeWatchModal = (e, id) => {
-    e.stopPropagation();
-    Modal.confirm({
-      title: 'Do you want to delete movie from watchlist?',
-      onOk() {
-        operationsWatchListRequest(id, false);
-      },
-      onCancel() {},
-    });
-  };
-
   return (
     <PageLayout
       loading={loading}
@@ -31,7 +19,8 @@ const WatchList = ({
       array={watchList}
       totalResults={totalPage}
       history={history}
-      operations={removeWatchModal}
+      operations={operationsWatchListRequest}
+      removeBox
     />
   );
 };
