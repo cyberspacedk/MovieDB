@@ -14,6 +14,6 @@ const PageContent = ({ searchResponse }) => {
 };
 
 PageContent.propTypes = {
-  searchResponse: PropTypes.arrayOf(PropTypes.object).isRequired,
+  searchResponse: PropTypes.arrayOf(PropTypes.object),
 };
 export default PageContent;

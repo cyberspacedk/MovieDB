@@ -25,7 +25,8 @@
     "jest": true
   },
   "rules": {
-    "no-console": 1,
+    "no-console": 0,
+    "react/require-default-props": [0, { "forbidDefaultForRequired": true }],
     "linebreak-style": ["error", "unix"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/destructuring-assignment": [

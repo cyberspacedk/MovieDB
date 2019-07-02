@@ -193,14 +193,14 @@ const Movie = ({
 };
 
 Movie.propTypes = {
-  error: PropTypes.bool.isRequired,
-  loading: PropTypes.bool.isRequired,
-  aboutFilm: PropTypes.shape(PropTypes.object).isRequired,
-  casts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  crew: PropTypes.arrayOf(PropTypes.object).isRequired,
-  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
-  images: PropTypes.arrayOf(PropTypes.object).isRequired,
-  posters: PropTypes.arrayOf(PropTypes.object).isRequired,
+  error: PropTypes.bool,
+  loading: PropTypes.bool,
+  aboutFilm: PropTypes.shape(PropTypes.object),
+  casts: PropTypes.arrayOf(PropTypes.object),
+  crew: PropTypes.arrayOf(PropTypes.object),
+  genres: PropTypes.arrayOf(PropTypes.object),
+  images: PropTypes.arrayOf(PropTypes.object),
+  posters: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Movie;
