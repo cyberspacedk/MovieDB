@@ -49,7 +49,6 @@ const getWatchListLogic = createLogic({
 
       const watchlist = {
         watchlist_list: data.results,
-        current_page: data.page,
         total_results: data.total_results,
       };
       dispatch(getWatchListResponse(watchlist));

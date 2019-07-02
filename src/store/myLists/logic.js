@@ -52,6 +52,7 @@ const getCreatedListLogic = createLogic({
         lists: data.results,
         total_results: data.total_results,
       };
+      console.log(data);
       // ПРОВЕРИТЬ ЗАПРОС
       dispatch(getCreatedListResponse(resp));
     } catch (err) {

@@ -1,25 +1,9 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Card, Icon, Modal } from 'antd';
+import { Col, Card, Icon } from 'antd';
 
-const CardItem = ({ item, operations, showMoreDetails, history }) => {
-  const removeMovieModal = e => {
-    e.stopPropagation();
-    Modal.confirm({
-      title: 'Do you want to delete movie ?',
-      onOk() {
-        if (history.location.pathname.includes('lists')) {
-          const listId = /[0-9]{2,}$/.exec(history.location.pathname)[0];
-          operations(listId, item.id);
-        } else {
-          operations(item.id, false);
-        }
-      },
-      onCancel() {},
-    });
-  };
-
+const CardItem = ({ item, operations, showMoreDetails, removeMovieModal }) => {
   return (
     <Col
       xs={{ span: 12 }}
@@ -59,7 +43,7 @@ CardItem.propTypes = {
   item: PropTypes.shape(PropTypes.string),
   operations: PropTypes.func,
   showMoreDetails: PropTypes.func,
-  history: PropTypes.shape(PropTypes.object),
+  removeMovieModal: PropTypes.func,
 };
 
 export default CardItem;

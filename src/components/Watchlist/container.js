@@ -22,7 +22,6 @@ class WatchListContainer extends Component {
   }
 
   goToNextPage = page => {
-    console.log(page);
     this.props.getWatchListRequest(page);
   };
 

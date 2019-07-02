@@ -10,7 +10,7 @@ export default (state = initialState, { type, payload }) => {
     case 'GET_FAVORITES_REQUEST':
       return {
         ...state,
-        loadiing: true,
+        loading: true,
         error: false,
       };
     case 'GET_FAVORITES_RESPONSE':

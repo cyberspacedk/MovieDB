@@ -24,6 +24,7 @@ const PageLayout = ({
 }) => (
   <Layout>
     <Content>
+      {error && <Error />}
       {title && (
         <Row>
           <Col offset={2} span={20}>
@@ -33,43 +34,41 @@ const PageLayout = ({
           </Col>
         </Row>
       )}
-
-      <div className="top-margin">
-        <Row type="flex" gutter={16} justify="center">
-          <Col span={20}>
-            {error && <Error />}
-            {loading ? (
-              <Spinner />
-            ) : (
-              array &&
-              array.map(item => (
-                <CardItem
-                  key={item.id}
-                  item={item}
-                  operations={operations}
-                  history={history}
-                />
-              ))
-            )}
-          </Col>
-        </Row>
-
-        {!loading && totalResults > 0 && (
-          <Row type="flex" justify="center">
-            <Col>
-              <Pagination
-                defaultCurrent={1}
-                total={totalResults}
-                className="pagination"
-                defaultPageSize={20}
-                onChange={goToNextPage}
-              />
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="top-margin">
+          <Row type="flex" gutter={16} justify="center">
+            <Col span={20}>
+              {array &&
+                array.map(item => (
+                  <CardItem
+                    key={item.id}
+                    item={item}
+                    operations={operations}
+                    history={history}
+                  />
+                ))}
             </Col>
           </Row>
-        )}
 
-        {!loading && empty && <Empty />}
-      </div>
+          {totalResults > 0 && (
+            <Row type="flex" justify="center">
+              <Col>
+                <Pagination
+                  defaultCurrent={1}
+                  total={totalResults}
+                  className="pagination"
+                  defaultPageSize={20}
+                  onChange={goToNextPage}
+                />
+              </Col>
+            </Row>
+          )}
+
+          {!loading && empty && <Empty />}
+        </div>
+      )}
     </Content>
     <BackTop />
   </Layout>

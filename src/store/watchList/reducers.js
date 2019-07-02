@@ -10,11 +10,12 @@ export default (state = initialState, { type, payload }) => {
     case 'GET_WATCHLIST_REQUEST':
       return {
         ...state,
-        loadiing: true,
+        loading: true,
         error: false,
       };
     case 'GET_WATCHLIST_RESPONSE':
       return {
+        ...state,
         ...payload,
         loading: false,
         error: false,
