@@ -51,7 +51,9 @@ const getFavoritesLogic = createLogic({
       const favorites = {
         favorites_list: data.results,
         total_results: data.total_results,
+        current_page: data.page,
       };
+
       dispatch(getFavoritesResponse(favorites));
     } catch (err) {
       dispatch(getFavoritesError());

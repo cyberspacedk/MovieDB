@@ -26,7 +26,6 @@ const createListLogic = createLogic({
         data: {
           name,
           description,
-          language: 'en',
         },
       });
       dispatch(getCreatedListRequest());
@@ -51,8 +50,9 @@ const getCreatedListLogic = createLogic({
       const resp = {
         lists: data.results,
         total_results: data.total_results,
+        current_page: data.page,
       };
-      console.log(data);
+
       // ПРОВЕРИТЬ ЗАПРОС
       dispatch(getCreatedListResponse(resp));
     } catch (err) {

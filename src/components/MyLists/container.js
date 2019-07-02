@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -11,6 +12,7 @@ import {
   isError,
   isLoading,
   getTotalPages,
+  getCurrentPage,
   isEmpty,
 } from '../../store/myLists/selectors';
 
@@ -20,7 +22,6 @@ class MyListsContainer extends Component {
   };
 
   componentDidMount() {
-    // eslint-disable-next-line react/destructuring-assignment
     this.props.getCreatedListRequest();
   }
 
@@ -29,7 +30,6 @@ class MyListsContainer extends Component {
   hideModal = () => this.setState({ visibleMod: false });
 
   goToNextPage = page => {
-    console.log(page);
     this.props.getCreatedListRequest(page);
   };
 
@@ -57,6 +57,7 @@ const mstp = state => ({
   loading: isLoading(state),
   empty: isEmpty(state),
   totalResults: getTotalPages(state),
+  currentPage: getCurrentPage(state),
   myLists: getMyList(state),
 });
 

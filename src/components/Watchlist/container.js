@@ -13,6 +13,7 @@ import {
   isLoading,
   isEmpty,
   getTotalPages,
+  getCurrentPage,
 } from '../../store/watchList/selectors';
 
 class WatchListContainer extends Component {
@@ -41,6 +42,7 @@ const mstp = state => ({
   empty: isEmpty(state),
   watchList: getWatchList(state),
   totalResults: getTotalPages(state),
+  currentPage: getCurrentPage(state),
 });
 
 const mdtp = {

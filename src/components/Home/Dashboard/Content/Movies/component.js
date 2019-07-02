@@ -28,7 +28,9 @@ const Movies = ({
 Movies.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object),
   totalResults: PropTypes.number,
-  history: PropTypes.shape(PropTypes.object),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
   goToNextPage: PropTypes.func,
   loading: PropTypes.bool,
   error: PropTypes.bool,

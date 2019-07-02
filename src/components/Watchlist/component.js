@@ -9,6 +9,7 @@ const WatchList = ({
   empty,
   history,
   goToNextPage,
+  currentPage,
   totalResults,
   operationsWatchListRequest,
 }) => {
@@ -19,6 +20,7 @@ const WatchList = ({
       empty={empty}
       error={error}
       array={watchList}
+      currentPage={currentPage}
       goToNextPage={goToNextPage}
       totalResults={totalResults}
       history={history}
@@ -37,6 +39,7 @@ WatchList.propTypes = {
   totalResults: PropTypes.number,
   empty: PropTypes.bool,
   goToNextPage: PropTypes.func,
+  currentPage: PropTypes.number,
 };
 
 export default WatchList;

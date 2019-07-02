@@ -9,6 +9,7 @@ const Favorites = ({
   empty,
   history,
   goToNextPage,
+  currentPage,
   operationsFavoritesRequest,
   totalResults,
 }) => {
@@ -19,6 +20,7 @@ const Favorites = ({
       loading={loading}
       array={favoritesList}
       goToNextPage={goToNextPage}
+      currentPage={currentPage}
       totalResults={totalResults}
       empty={empty}
       history={history}
@@ -37,6 +39,7 @@ Favorites.propTypes = {
   totalResults: PropTypes.number,
   empty: PropTypes.bool,
   goToNextPage: PropTypes.func,
+  currentPage: PropTypes.number,
 };
 
 export default Favorites;

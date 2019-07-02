@@ -11,11 +11,16 @@ class CardItemContainer extends Component {
 
   handleRemoveWatchModal = e => {
     e.stopPropagation();
-    const { operations, item } = this.props;
+    const { history, operations, item } = this.props;
     Modal.confirm({
-      title: 'Do you want to delete movie from watchlist?',
+      title: 'Do you want to delete movie ?',
       onOk() {
-        operations(item.id, false);
+        if (history.location.pathname.includes('lists')) {
+          const listId = /[0-9]{2,}$/.exec(history.location.pathname)[0];
+          operations(listId, item.id);
+        } else {
+          operations(item.id, false);
+        }
       },
       onCancel() {},
     });

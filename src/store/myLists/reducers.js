@@ -1,6 +1,7 @@
 const initialState = {
   lists: [],
   total_results: 0,
+  current_page: 0,
   loading: false,
   error: false,
 };

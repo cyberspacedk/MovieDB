@@ -46,10 +46,10 @@ const getWatchListLogic = createLogic({
         method: 'get',
         url: `account/{account_id}/watchlist/movies?api_key=${API}&session_id=${SSID}&sort_by=created_at.asc&page=${page}`,
       });
-
       const watchlist = {
         watchlist_list: data.results,
         total_results: data.total_results,
+        current_page: data.page,
       };
       dispatch(getWatchListResponse(watchlist));
     } catch (err) {

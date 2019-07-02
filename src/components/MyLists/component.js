@@ -21,6 +21,7 @@ const MyList = ({
   loading,
   empty,
   totalResults,
+  currentPage,
   goToNextPage,
   history,
 }) => {
@@ -55,11 +56,12 @@ const MyList = ({
           </Col>
         </Row>
 
-        {!loading && totalResults !== 0 && (
+        {!loading && totalResults > 0 && (
           <Row type="flex" justify="center">
             <Col>
               <Pagination
                 defaultCurrent={1}
+                current={currentPage}
                 total={totalResults}
                 className="pagination"
                 defaultPageSize={20}
@@ -87,5 +89,6 @@ MyList.propTypes = {
   empty: PropTypes.bool,
   totalResults: PropTypes.number,
   history: PropTypes.shape(PropTypes.object),
+  currentPage: PropTypes.number,
 };
 export default MyList;

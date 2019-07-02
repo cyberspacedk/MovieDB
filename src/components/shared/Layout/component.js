@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 /* eslint-disable no-nested-ternary */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -20,6 +19,7 @@ const PageLayout = ({
   operations,
   history,
   totalResults,
+  currentPage,
   goToNextPage,
   removeBox,
 }) => (
@@ -61,6 +61,7 @@ const PageLayout = ({
               <Col>
                 <Pagination
                   defaultCurrent={1}
+                  current={currentPage}
                   total={totalResults}
                   className="pagination"
                   defaultPageSize={20}
@@ -77,6 +78,7 @@ const PageLayout = ({
     <BackTop />
   </Layout>
 );
+
 PageLayout.defaultProps = {
   removeBox: false,
 };
@@ -92,6 +94,7 @@ PageLayout.propTypes = {
   empty: PropTypes.bool.isRequired,
   removeBox: PropTypes.bool,
   title: PropTypes.string,
+  currentPage: PropTypes.number,
 };
 
 export default PageLayout;

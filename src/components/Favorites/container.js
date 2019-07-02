@@ -13,6 +13,7 @@ import {
   isLoading,
   isEmpty,
   getTotalPages,
+  getCurrentPage,
 } from '../../store/favorites/selectors';
 
 class FavoritesContainer extends Component {
@@ -39,6 +40,7 @@ const mstp = state => ({
   empty: isEmpty(state),
   favoritesList: getFavoritesList(state),
   totalResults: getTotalPages(state),
+  currentPage: getCurrentPage(state),
 });
 
 const mdtp = {

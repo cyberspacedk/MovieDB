@@ -1,6 +1,7 @@
 const initialState = {
   watchlist_list: [],
   total_results: 0,
+  current_page: 0,
   loading: false,
   error: false,
 };

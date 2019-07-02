@@ -20,6 +20,7 @@ const ListDetails = ({
       array={detailsList}
       history={history}
       operations={deleteMovieFromListRequest}
+      removeBox
     />
   );
 };
