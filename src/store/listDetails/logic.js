@@ -40,7 +40,7 @@ const deleteMovieFromListLogic = createLogic({
       });
       dispatch(getListDetailsRequest(listId));
     } catch (err) {
-      console.log(err);
+      throw new Error(err);
     }
     done();
   },
