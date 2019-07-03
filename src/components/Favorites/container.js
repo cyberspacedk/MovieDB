@@ -31,7 +31,7 @@ class FavoritesContainer extends Component {
 }
 
 FavoritesContainer.propTypes = {
-  getFavoritesRequest: PropTypes.func,
+  getFavoritesRequest: PropTypes.func.isRequired,
 };
 
 const mstp = state => ({

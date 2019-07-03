@@ -31,15 +31,15 @@ const WatchList = ({
 };
 
 WatchList.propTypes = {
-  watchList: PropTypes.arrayOf(PropTypes.object),
-  loading: PropTypes.bool,
-  error: PropTypes.bool,
-  history: PropTypes,
-  operationsWatchListRequest: PropTypes.func,
-  totalResults: PropTypes.number,
-  empty: PropTypes.bool,
-  goToNextPage: PropTypes.func,
-  currentPage: PropTypes.number,
+  watchList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  history: PropTypes.isRequired,
+  operationsWatchListRequest: PropTypes.func.isRequired,
+  totalResults: PropTypes.number.isRequired,
+  empty: PropTypes.bool.isRequired,
+  goToNextPage: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
 };
 
 export default WatchList;

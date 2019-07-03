@@ -31,15 +31,15 @@ const Favorites = ({
 };
 
 Favorites.propTypes = {
-  favoritesList: PropTypes.arrayOf(PropTypes.object),
-  loading: PropTypes.bool,
-  error: PropTypes.bool,
-  history: PropTypes,
-  operationsFavoritesRequest: PropTypes.func,
-  totalResults: PropTypes.number,
-  empty: PropTypes.bool,
-  goToNextPage: PropTypes.func,
-  currentPage: PropTypes.number,
+  favoritesList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  history: PropTypes.isRequired,
+  operationsFavoritesRequest: PropTypes.func.isRequired,
+  totalResults: PropTypes.number.isRequired,
+  empty: PropTypes.bool.isRequired,
+  goToNextPage: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
 };
 
 export default Favorites;

@@ -81,14 +81,23 @@ const PageLayout = ({
 
 PageLayout.defaultProps = {
   removeBox: false,
+  title: '',
+  operations: () => {},
+  totalResults: 0,
+  currentPage: 0,
+  goToNextPage: () => {},
 };
 
 PageLayout.propTypes = {
-  array: PropTypes.arrayOf(PropTypes.object).isRequired,
-  totalResults: PropTypes.number.isRequired,
+  array: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  ).isRequired,
+  totalResults: PropTypes.number,
   history: PropTypes.shape(PropTypes.object).isRequired,
-  goToNextPage: PropTypes.func.isRequired,
-  operations: PropTypes.func.isRequired,
+  goToNextPage: PropTypes.func,
+  operations: PropTypes.func,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   empty: PropTypes.bool.isRequired,

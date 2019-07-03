@@ -26,13 +26,13 @@ const ListDetails = ({
 };
 
 ListDetails.propTypes = {
-  detailsList: PropTypes.arrayOf(PropTypes.object),
-  loading: PropTypes.bool,
-  error: PropTypes.bool,
-  history: PropTypes,
-  empty: PropTypes.bool,
-  listName: PropTypes.string,
-  deleteMovieFromListRequest: PropTypes.func,
+  detailsList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  history: PropTypes.isRequired,
+  empty: PropTypes.bool.isRequired,
+  listName: PropTypes.string.isRequired,
+  deleteMovieFromListRequest: PropTypes.func.isRequired,
 };
 
 export default ListDetails;

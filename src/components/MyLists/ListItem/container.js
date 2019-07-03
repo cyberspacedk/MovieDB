@@ -34,7 +34,9 @@ class ListItemContainer extends Component {
 }
 
 ListItemContainer.propTypes = {
-  history: PropTypes.shape(PropTypes.object).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
   deleteListRequest: PropTypes.func.isRequired,
   item: PropTypes.shape({
     id: PropTypes.number,

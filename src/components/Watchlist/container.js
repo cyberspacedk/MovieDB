@@ -32,8 +32,8 @@ class WatchListContainer extends Component {
 }
 
 WatchListContainer.propTypes = {
-  operationsWatchListRequest: PropTypes.func,
-  getWatchListRequest: PropTypes.func,
+  operationsWatchListRequest: PropTypes.func.isRequired,
+  getWatchListRequest: PropTypes.func.isRequired,
 };
 
 const mstp = state => ({

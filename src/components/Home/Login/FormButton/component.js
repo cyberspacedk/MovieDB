@@ -20,6 +20,6 @@ FormButton.propTypes = {
   form: PropTypes.shape({
     touched: PropTypes.object,
     errors: PropTypes.object,
-  }),
+  }).isRequired,
 };
 export default FormButton;

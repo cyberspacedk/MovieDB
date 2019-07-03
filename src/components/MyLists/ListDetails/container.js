@@ -27,9 +27,13 @@ class ListDetailsContainer extends Component {
 }
 
 ListDetailsContainer.propTypes = {
-  id: PropTypes.number,
-  getListDetailsRequest: PropTypes.func,
-  match: PropTypes.shape(PropTypes.object),
+  id: PropTypes.number.isRequired,
+  getListDetailsRequest: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
 };
 
 const mstp = state => ({

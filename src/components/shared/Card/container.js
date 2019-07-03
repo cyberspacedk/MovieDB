@@ -12,6 +12,7 @@ class CardItemContainer extends Component {
   handleRemoveWatchModal = e => {
     e.stopPropagation();
     const { history, operations, item } = this.props;
+
     Modal.confirm({
       title: 'Do you want to delete movie ?',
       onOk() {
@@ -21,7 +22,6 @@ class CardItemContainer extends Component {
         } else {
           operations(item.id, false);
         }
-
       },
       onCancel() {},
     });
@@ -39,9 +39,16 @@ class CardItemContainer extends Component {
 }
 
 CardItemContainer.propTypes = {
-  item: PropTypes.shape(PropTypes.string),
-  history: PropTypes.shape(PropTypes.object),
-  operations: PropTypes.func,
+  item: PropTypes.shape({
+    id: PropTypes.number,
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+    location: PropTypes.shape({
+      pathname: PropTypes.string,
+    }),
+  }).isRequired,
+  operations: PropTypes.func.isRequired,
 };
 
 export default CardItemContainer;

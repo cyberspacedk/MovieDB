@@ -23,7 +23,11 @@ const PopoverContent = ({ showDialog, myLists, movieId, addMovieToList }) => (
 
 PopoverContent.propTypes = {
   showDialog: PropTypes.func.isRequired,
-  myLists: PropTypes.arrayOf(PropTypes.object).isRequired,
+  myLists: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  ).isRequired,
   movieId: PropTypes.number.isRequired,
   addMovieToList: PropTypes.func.isRequired,
 };
