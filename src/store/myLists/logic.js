@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-/* eslint-disable no-console */
+
 import { createLogic } from 'redux-logic';
 import {
   getCreatedListResponse,
@@ -22,7 +22,7 @@ const createListLogic = createLogic({
 
       dispatch(getCreatedListRequest());
     } catch (err) {
-      console.log(err);
+      throw new Error(err);
     }
     done();
   },
@@ -50,7 +50,6 @@ const getCreatedListLogic = createLogic({
 
       dispatch(getCreatedListResponse(resp));
     } catch (err) {
-      console.log(err);
       dispatch(getCreatedListError());
     }
     done();
@@ -69,7 +68,6 @@ const deleteCreatedListLogic = createLogic({
 
       dispatch(getCreatedListRequest());
     } catch (err) {
-      console.log(err);
       dispatch(getCreatedListRequest());
     }
     done();
@@ -84,13 +82,11 @@ const addMovieToListLogic = createLogic({
     const { listId, movieId } = action.payload;
 
     try {
-      const { data } = await httpClient.post(`list/${listId}/add_item`, {
+      await httpClient.post(`list/${listId}/add_item`, {
         media_id: movieId,
       });
-
-      console.log(data);
     } catch (err) {
-      console.log(err);
+      throw new Error(err);
     }
     done();
   },

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable camelcase */
 import { createLogic } from 'redux-logic';
 import Cookies from 'js-cookie';
@@ -57,7 +56,7 @@ export const userLogoutLogic = createLogic({
       Cookies.remove('SESSION_ID');
       Cookies.remove('USERNAME');
     } catch (err) {
-      console.log(err);
+      throw new Error(err);
     }
     done();
   },

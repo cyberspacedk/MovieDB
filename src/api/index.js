@@ -19,12 +19,7 @@ client.interceptors.request.use(config => {
     session_id: Cookies.get('SESSION_ID'),
   };
   config.paramsSerializer = params => qs.stringify(params);
-  console.log(config);
   return config;
 });
-
-// login :  movie__watcher
-// pass:    VedbL<!@#$%7
-// apiKey:   2452661f8c986fe61a12ec7532335900
 
 export default client;
