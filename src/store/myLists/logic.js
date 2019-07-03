@@ -1,8 +1,6 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-console */
 import { createLogic } from 'redux-logic';
-import Cookies from 'js-cookie';
-import { API } from '../../api';
 import {
   getCreatedListResponse,
   getCreatedListError,
@@ -14,7 +12,6 @@ const createListLogic = createLogic({
   latest: true,
 
   async process({ httpClient, action }, dispatch, done) {
-    const ssid = Cookies.get('SESSION_ID');
     const { name, description } = action.payload;
     try {
       await httpClient({
@@ -22,7 +19,7 @@ const createListLogic = createLogic({
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
         },
-        url: `list?session_id=${ssid}&api_key=${API}`,
+        url: `list?`,
         data: {
           name,
           description,
@@ -41,11 +38,11 @@ const getCreatedListLogic = createLogic({
   latest: true,
 
   async process({ httpClient, action }, dispatch, done) {
-    const ssid = Cookies.get('SESSION_ID');
     const page = action.payload;
+
     try {
       const { data } = await httpClient.get(
-        `account/{account_id}/lists?api_key=${API}&session_id=${ssid}&page=${page}`,
+        `account/{account_id}/lists?&page=${page}`,
       );
       const resp = {
         lists: data.results,
@@ -53,7 +50,6 @@ const getCreatedListLogic = createLogic({
         current_page: data.page,
       };
 
-      // ПРОВЕРИТЬ ЗАПРОС
       dispatch(getCreatedListResponse(resp));
     } catch (err) {
       console.log(err);
@@ -68,10 +64,9 @@ const deleteCreatedListLogic = createLogic({
   latest: true,
 
   async process({ httpClient, action }, dispatch, done) {
-    const ssid = Cookies.get('SESSION_ID');
     const id = action.payload;
     try {
-      await httpClient.delete(`/list/${id}?api_key=${API}&session_id=${ssid}`);
+      await httpClient.delete(`/list/${id}?`);
       dispatch(getCreatedListRequest());
     } catch (err) {
       console.log(err);
@@ -86,7 +81,6 @@ const addMovieToListLogic = createLogic({
   latest: true,
 
   async process({ httpClient, action }, dispatch, done) {
-    const ssid = Cookies.get('SESSION_ID');
     const { listId, movieId } = action.payload;
 
     try {
@@ -95,7 +89,7 @@ const addMovieToListLogic = createLogic({
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
         },
-        url: `list/${listId}/add_item?api_key=${API}&session_id=${ssid}`,
+        url: `list/${listId}/add_item?`,
         data: {
           media_id: movieId,
         },

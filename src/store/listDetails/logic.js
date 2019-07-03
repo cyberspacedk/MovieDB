@@ -1,6 +1,4 @@
 import { createLogic } from 'redux-logic';
-import Cookies from 'js-cookie';
-import { API } from '../../api';
 import {
   getListDetailsResponse,
   getCreatedListError,
@@ -14,7 +12,7 @@ const getListDetailsLogic = createLogic({
   async process({ httpClient, action }, dispatch, done) {
     const id = action.payload;
     try {
-      const { data } = await httpClient.get(`/list/${id}?api_key=${API}`);
+      const { data } = await httpClient.get(`/list/${id}?`);
 
       const details = {
         list_details: data.items,
@@ -34,15 +32,12 @@ const deleteMovieFromListLogic = createLogic({
   latest: true,
 
   async process({ httpClient, action }, dispatch, done) {
-    const ssid = Cookies.get('SESSION_ID');
     const { listId, movieId } = action.payload;
+
     try {
-      await httpClient.post(
-        `/list/${listId}/remove_item?api_key=${API}&session_id=${ssid}`,
-        {
-          media_id: movieId,
-        },
-      );
+      await httpClient.post(`/list/${listId}/remove_item?`, {
+        media_id: movieId,
+      });
       dispatch(getListDetailsRequest(listId));
     } catch (err) {
       console.log(err);

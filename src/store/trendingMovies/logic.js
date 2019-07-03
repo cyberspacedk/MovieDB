@@ -9,9 +9,8 @@ const getTopFilmsLogic = createLogic({
     try {
       const {
         data: { results },
-      } = await httpClient.get(
-        `trending/movie/day?api_key=2452661f8c986fe61a12ec7532335900`,
-      );
+      } = await httpClient.get(`trending/movie/day?`);
+
       dispatch(fetchDataSuccess(results));
     } catch (err) {
       dispatch(fetchDataError(err));
