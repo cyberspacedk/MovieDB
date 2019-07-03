@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -15,12 +15,17 @@ import {
 } from '../../../../../store/search/selectors';
 import { searchRequest } from '../../../../../store/search/actions';
 
-const MoviesContainer = props => {
-  const goToNextPage = page => {
-    props.searchRequest(props.query, page);
+class MoviesContainer extends Component {
+  goToNextPage = page => {
+    // eslint-disable-next-line no-shadow
+    const { searchRequest, query } = this.props;
+    searchRequest(query, page);
   };
-  return <Movies {...props} goToNextPage={goToNextPage} />;
-};
+
+  render() {
+    return <Movies {...this.props} goToNextPage={this.goToNextPage} />;
+  }
+}
 
 MoviesContainer.propTypes = {
   query: PropTypes.string.isRequired,

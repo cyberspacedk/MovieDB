@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { createLogic } from 'redux-logic';
 import {
   getFavoritesResponse,
@@ -23,7 +22,7 @@ const operationsFavoriteLogic = createLogic({
 
       dispatch(getFavoritesRequest());
     } catch (err) {
-      console.log(err);
+      throw new Error(err);
     }
     done();
   },

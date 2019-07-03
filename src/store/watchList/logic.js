@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { createLogic } from 'redux-logic';
 import {
   getWatchListError,
@@ -23,7 +22,7 @@ const operationWatchListLogic = createLogic({
 
       dispatch(getWatchListRequest());
     } catch (err) {
-      console.log(err);
+      throw new Error(err);
     }
     done();
   },
