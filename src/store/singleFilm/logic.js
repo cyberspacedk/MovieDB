@@ -9,21 +9,15 @@ const singleFilmLogic = createLogic({
     const filmId = action.payload;
 
     try {
-      const { data } = await httpClient.get(
-        `/movie/${filmId}?api_key=2452661f8c986fe61a12ec7532335900`,
-      );
+      const { data } = await httpClient.get(`/movie/${filmId}`);
 
       const {
         data: { crew, cast },
-      } = await httpClient.get(
-        `/movie/${filmId}/credits?api_key=2452661f8c986fe61a12ec7532335900`,
-      );
+      } = await httpClient.get(`/movie/${filmId}/credits`);
 
       const {
         data: { backdrops },
-      } = await httpClient.get(
-        `/movie/${filmId}/images?api_key=2452661f8c986fe61a12ec7532335900`,
-      );
+      } = await httpClient.get(`/movie/${filmId}/images`);
 
       const aboutFilm = {
         ...data,
@@ -31,6 +25,7 @@ const singleFilmLogic = createLogic({
         crew,
         backdrops,
       };
+
       dispatch(singleFilmSuccess(aboutFilm));
     } catch (err) {
       dispatch(singleFilmError());
