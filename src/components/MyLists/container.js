@@ -49,7 +49,7 @@ class MyListsContainer extends Component {
 }
 
 MyListsContainer.propTypes = {
-  getCreatedListRequest: PropTypes.func,
+  getCreatedListRequest: PropTypes.func.isRequired,
 };
 
 const mstp = state => ({

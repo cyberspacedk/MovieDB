@@ -10,10 +10,12 @@ class WatchListActionContainer extends Component {
   };
 
   handleWatchList = () => {
+    // eslint-disable-next-line no-shadow
+    const { operationsWatchListRequest, movieId } = this.props;
     this.setState(prevState => ({
       watchListStatus: !prevState.watchListStatus,
     }));
-    this.props.operationsWatchListRequest(this.props.movieId, true);
+    operationsWatchListRequest(movieId, true);
   };
 
   render() {
@@ -28,8 +30,8 @@ class WatchListActionContainer extends Component {
 }
 
 WatchListActionContainer.propTypes = {
-  operationsWatchListRequest: PropTypes.func,
-  movieId: PropTypes.number,
+  operationsWatchListRequest: PropTypes.func.isRequired,
+  movieId: PropTypes.number.isRequired,
 };
 
 const mdtp = {

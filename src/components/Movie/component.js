@@ -21,16 +21,7 @@ const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
 
-const Movie = ({
-  error,
-  loading,
-  aboutFilm,
-  casts,
-  crew,
-  genres,
-  images,
-  posters,
-}) => {
+const Movie = ({ error, loading, aboutFilm, casts, crew, genres, posters }) => {
   return (
     <Layout>
       {error && <Error />}
@@ -41,7 +32,7 @@ const Movie = ({
           <Row type="flex">
             <Col span={24}>
               <Carousel>
-                {images &&
+                {posters &&
                   posters.map(img => (
                     <div key={img.file_path}>
                       <img
@@ -193,14 +184,38 @@ const Movie = ({
 };
 
 Movie.propTypes = {
-  error: PropTypes.bool,
-  loading: PropTypes.bool,
-  aboutFilm: PropTypes.shape(PropTypes.object),
-  casts: PropTypes.arrayOf(PropTypes.object),
-  crew: PropTypes.arrayOf(PropTypes.object),
-  genres: PropTypes.arrayOf(PropTypes.object),
-  images: PropTypes.arrayOf(PropTypes.object),
-  posters: PropTypes.arrayOf(PropTypes.object),
+  error: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  aboutFilm: PropTypes.shape({
+    id: PropTypes.number,
+    overview: PropTypes.string,
+    lang: PropTypes.string,
+    runtime: PropTypes.number,
+    budget: PropTypes.number,
+    revenue: PropTypes.number,
+  }).isRequired,
+  casts: PropTypes.arrayOf(
+    PropTypes.shape({
+      cast_id: PropTypes.number,
+      profile_path: PropTypes.string,
+      name: PropTypes.string,
+      character: PropTypes.string,
+    }),
+  ).isRequired,
+  crew: PropTypes.arrayOf(
+    PropTypes.shape({
+      credit_id: PropTypes.string,
+      profile_path: PropTypes.string,
+      name: PropTypes.string,
+      department: PropTypes.string,
+    }),
+  ).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
+  posters: PropTypes.arrayOf(
+    PropTypes.shape({
+      file_path: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
 export default Movie;

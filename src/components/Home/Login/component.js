@@ -41,6 +41,6 @@ const LoginForm = ({ isFailAuth }) => (
 );
 
 LoginForm.propTypes = {
-  isFailAuth: PropTypes.bool,
+  isFailAuth: PropTypes.bool.isRequired,
 };
 export default LoginForm;

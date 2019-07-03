@@ -78,17 +78,21 @@ const MyList = ({
 };
 
 MyList.propTypes = {
-  showModal: PropTypes.func,
-  hideModal: PropTypes.func,
-  goToNextPage: PropTypes.func,
-  visibleMod: PropTypes.bool,
-  deleteListRequest: PropTypes.func,
-  myLists: PropTypes.arrayOf(PropTypes.object),
-  error: PropTypes.bool,
-  loading: PropTypes.bool,
-  empty: PropTypes.bool,
-  totalResults: PropTypes.number,
-  history: PropTypes.shape(PropTypes.object),
-  currentPage: PropTypes.number,
+  showModal: PropTypes.func.isRequired,
+  hideModal: PropTypes.func.isRequired,
+  goToNextPage: PropTypes.func.isRequired,
+  deleteListRequest: PropTypes.func.isRequired,
+  visibleMod: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  empty: PropTypes.bool.isRequired,
+  totalResults: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  myLists: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  ).isRequired,
+  history: PropTypes.shape(PropTypes.object).isRequired,
 };
 export default MyList;

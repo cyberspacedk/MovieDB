@@ -10,8 +10,10 @@ class FavoriteActionContainer extends Component {
   };
 
   handleFavorite = () => {
+    // eslint-disable-next-line no-shadow
+    const { operationsFavoritesRequest, movieId } = this.props;
     this.setState(prevState => ({ favoriteStatus: !prevState.favoriteStatus }));
-    this.props.operationsFavoritesRequest(this.props.movieId, true);
+    operationsFavoritesRequest(movieId, true);
   };
 
   render() {
@@ -26,8 +28,8 @@ class FavoriteActionContainer extends Component {
 }
 
 FavoriteActionContainer.propTypes = {
-  operationsFavoritesRequest: PropTypes.func,
-  movieId: PropTypes.number,
+  operationsFavoritesRequest: PropTypes.func.isRequired,
+  movieId: PropTypes.number.isRequired,
 };
 
 const mdtp = {

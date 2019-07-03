@@ -23,8 +23,8 @@ const MoviesContainer = props => {
 };
 
 MoviesContainer.propTypes = {
-  query: PropTypes.string,
-  searchRequest: PropTypes.func,
+  query: PropTypes.string.isRequired,
+  searchRequest: PropTypes.func.isRequired,
 };
 
 const mstp = state => ({
