@@ -17,7 +17,7 @@ const operationsFavoriteLogic = createLogic({
     try {
       await httpClient({
         method: 'post',
-        url: `account/{account_id}/favorite?`,
+        url: `account/{account_id}/favorite`,
         data: {
           media_type: 'movie',
           media_id: movieId,
@@ -37,12 +37,12 @@ const getFavoritesLogic = createLogic({
   latest: true,
 
   async process({ httpClient, action }, dispatch, done) {
+    const page = action.payload;
+
     try {
-      const page = action.payload;
-      const { data } = await httpClient({
-        method: 'get',
-        url: `account/{account_id}/favorite/movies?&sort_by=created_at.asc&page=${page}`,
-      });
+      const { data } = await httpClient.get(
+        `account/{account_id}/favorite/movies?sort_by=created_at.asc&page=${page}`,
+      );
 
       const favorites = {
         favorites_list: data.results,

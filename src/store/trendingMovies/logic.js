@@ -9,7 +9,7 @@ const getTopFilmsLogic = createLogic({
     try {
       const {
         data: { results },
-      } = await httpClient.get(`trending/movie/day?`);
+      } = await httpClient.get(`trending/movie/day`);
 
       dispatch(fetchDataSuccess(results));
     } catch (err) {

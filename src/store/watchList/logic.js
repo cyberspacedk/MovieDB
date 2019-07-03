@@ -40,10 +40,9 @@ const getWatchListLogic = createLogic({
     const page = action.payload;
 
     try {
-      const { data } = await httpClient({
-        method: 'get',
-        url: `account/{account_id}/watchlist/movies?&sort_by=created_at.asc&page=${page}`,
-      });
+      const { data } = await httpClient.get(
+        `account/{account_id}/watchlist/movies?&sort_by=created_at.asc&page=${page}`,
+      );
 
       const watchlist = {
         watchlist_list: data.results,

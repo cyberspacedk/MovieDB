@@ -12,17 +12,19 @@ export const authUserLogic = createLogic({
     try {
       const {
         data: { request_token },
-      } = await httpClient.get(`authentication/token/new? `);
+      } = await httpClient.get(`authentication/token/new`);
+
       const { username, password } = action.payload;
 
-      await httpClient.post(`authentication/token/validate_with_login?`, {
+      await httpClient.post(`authentication/token/validate_with_login`, {
         username,
         password,
         request_token,
       });
+
       const {
         data: { session_id },
-      } = await httpClient.post(`authentication/session/new?`, {
+      } = await httpClient.post(`authentication/session/new`, {
         request_token,
       });
 
@@ -44,11 +46,13 @@ export const userLogoutLogic = createLogic({
   async process({ httpClient }, dispatch, done) {
     try {
       const SSID = Cookies.get('SESSION_ID');
-      await httpClient.delete(`authentication/session?`, {
+
+      await httpClient.delete(`authentication/session`, {
         data: {
           session_id: SSID,
         },
       });
+
       dispatch(authLogout());
       Cookies.remove('SESSION_ID');
       Cookies.remove('USERNAME');

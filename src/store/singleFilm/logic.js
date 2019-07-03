@@ -9,15 +9,15 @@ const singleFilmLogic = createLogic({
     const filmId = action.payload;
 
     try {
-      const { data } = await httpClient.get(`/movie/${filmId}?`);
+      const { data } = await httpClient.get(`/movie/${filmId}`);
 
       const {
         data: { crew, cast },
-      } = await httpClient.get(`/movie/${filmId}/credits?`);
+      } = await httpClient.get(`/movie/${filmId}/credits`);
 
       const {
         data: { backdrops },
-      } = await httpClient.get(`/movie/${filmId}/images?`);
+      } = await httpClient.get(`/movie/${filmId}/images`);
 
       const aboutFilm = {
         ...data,
