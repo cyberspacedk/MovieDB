@@ -18,7 +18,7 @@ class FailAuthContainer extends Component {
 }
 
 FailAuthContainer.propTypes = {
-  tryAgain: PropTypes.func.isRequired,
+  tryAgain: PropTypes.func,
 };
 
 const mdtp = {

@@ -8,8 +8,9 @@ const getFavoritesError = () => ({
   type: 'GET_FAVORITES_ERROR',
 });
 
-const getFavoritesRequest = () => ({
+const getFavoritesRequest = (page = 1) => ({
   type: 'GET_FAVORITES_REQUEST',
+  payload: page,
 });
 
 const getFavoritesResponse = fav => ({

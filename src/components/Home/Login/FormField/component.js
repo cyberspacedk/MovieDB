@@ -24,10 +24,10 @@ const FormField = ({ field, form: { touched, errors }, ...props }) => (
 );
 
 FormField.propTypes = {
-  field: PropTypes.shape({ name: PropTypes.string }).isRequired,
+  field: PropTypes.shape({ name: PropTypes.string }),
   form: PropTypes.shape({
     touched: PropTypes.object,
     errors: PropTypes.object,
-  }).isRequired,
+  }),
 };
 export default FormField;

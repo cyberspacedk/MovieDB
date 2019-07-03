@@ -1,7 +1,7 @@
 const initialState = {
   watchlist_list: [],
+  total_results: 0,
   current_page: 0,
-  total_pages: 0,
   loading: false,
   error: false,
 };
@@ -11,11 +11,12 @@ export default (state = initialState, { type, payload }) => {
     case 'GET_WATCHLIST_REQUEST':
       return {
         ...state,
-        loadiing: true,
+        loading: true,
         error: false,
       };
     case 'GET_WATCHLIST_RESPONSE':
       return {
+        ...state,
         ...payload,
         loading: false,
         error: false,

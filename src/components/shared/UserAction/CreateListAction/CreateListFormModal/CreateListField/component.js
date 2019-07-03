@@ -14,11 +14,11 @@ const CreateListField = ({ field, form: { touched, errors }, ...props }) => (
 );
 
 CreateListField.propTypes = {
-  field: PropTypes.shape(PropTypes.object).isRequired,
+  field: PropTypes.shape(PropTypes.object),
   form: PropTypes.shape({
     touched: PropTypes.object,
     errors: PropTypes.object,
-  }).isRequired,
+  }),
 };
 
 export default CreateListField;

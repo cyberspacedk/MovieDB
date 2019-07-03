@@ -13,6 +13,7 @@ import {
   isLoading,
   isEmpty,
   getTotalPages,
+  getCurrentPage,
 } from '../../store/favorites/selectors';
 
 class FavoritesContainer extends Component {
@@ -20,21 +21,26 @@ class FavoritesContainer extends Component {
     this.props.getFavoritesRequest();
   }
 
+  goToNextPage = page => {
+    this.props.getFavoritesRequest(page);
+  };
+
   render() {
-    return <Favorites {...this.props} />;
+    return <Favorites {...this.props} goToNextPage={this.goToNextPage} />;
   }
 }
 
 FavoritesContainer.propTypes = {
-  getFavoritesRequest: PropTypes.func.isRequired,
+  getFavoritesRequest: PropTypes.func,
 };
 
 const mstp = state => ({
-  favoritesList: getFavoritesList(state),
   loading: isLoading(state),
   error: isError(state),
   empty: isEmpty(state),
-  totalPage: getTotalPages(state),
+  favoritesList: getFavoritesList(state),
+  totalResults: getTotalPages(state),
+  currentPage: getCurrentPage(state),
 });
 
 const mdtp = {

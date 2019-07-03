@@ -26,8 +26,8 @@ class FavoriteActionContainer extends Component {
 }
 
 FavoriteActionContainer.propTypes = {
-  operationsFavoritesRequest: PropTypes.func.isRequired,
-  movieId: PropTypes.number.isRequired,
+  operationsFavoritesRequest: PropTypes.func,
+  movieId: PropTypes.number,
 };
 
 const mdtp = {

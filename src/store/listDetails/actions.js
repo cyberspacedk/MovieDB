@@ -7,8 +7,21 @@ const getListDetailsRequest = listId => ({
   payload: listId,
 });
 
-const getListDetailsResponse = listDetails => ({
+const getListDetailsResponse = data => ({
   type: 'GET_LIST_DETAILS_RESPONSE',
-  payload: listDetails,
+  payload: data,
 });
-export { getCreatedListError, getListDetailsRequest, getListDetailsResponse };
+
+const deleteMovieFromListRequest = (listId, movieId) => ({
+  type: 'DELETE_MOVIE_FROM_LIST_REQUEST',
+  payload: {
+    listId,
+    movieId,
+  },
+});
+export {
+  getCreatedListError,
+  getListDetailsRequest,
+  getListDetailsResponse,
+  deleteMovieFromListRequest,
+};

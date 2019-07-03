@@ -39,19 +39,21 @@ const getFavoritesLogic = createLogic({
   type: 'GET_FAVORITES_REQUEST',
   latest: true,
 
-  async process({ httpClient }, dispatch, done) {
+  async process({ httpClient, action }, dispatch, done) {
     try {
       const SSID = Cookies.get('SESSION_ID');
+      const page = action.payload;
       const { data } = await httpClient({
         method: 'get',
-        url: `account/{account_id}/favorite/movies?api_key=${API}&session_id=${SSID}&sort_by=created_at.asc&page=${1}`,
+        url: `account/{account_id}/favorite/movies?api_key=${API}&session_id=${SSID}&sort_by=created_at.asc&page=${page}`,
       });
 
       const favorites = {
         favorites_list: data.results,
+        total_results: data.total_results,
         current_page: data.page,
-        total_pages: data.total_pages,
       };
+
       dispatch(getFavoritesResponse(favorites));
     } catch (err) {
       dispatch(getFavoritesError());

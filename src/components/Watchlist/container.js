@@ -13,6 +13,7 @@ import {
   isLoading,
   isEmpty,
   getTotalPages,
+  getCurrentPage,
 } from '../../store/watchList/selectors';
 
 class WatchListContainer extends Component {
@@ -21,22 +22,27 @@ class WatchListContainer extends Component {
     this.props.getWatchListRequest();
   }
 
+  goToNextPage = page => {
+    this.props.getWatchListRequest(page);
+  };
+
   render() {
-    return <WatchList {...this.props} />;
+    return <WatchList {...this.props} goToNextPage={this.goToNextPage} />;
   }
 }
 
 WatchListContainer.propTypes = {
-  operationsWatchListRequest: PropTypes.func.isRequired,
-  getWatchListRequest: PropTypes.func.isRequired,
+  operationsWatchListRequest: PropTypes.func,
+  getWatchListRequest: PropTypes.func,
 };
 
 const mstp = state => ({
-  watchList: getWatchList(state),
-  loading: isLoading(state),
   error: isError(state),
+  loading: isLoading(state),
   empty: isEmpty(state),
-  totalPage: getTotalPages(state),
+  watchList: getWatchList(state),
+  totalResults: getTotalPages(state),
+  currentPage: getCurrentPage(state),
 });
 
 const mdtp = {

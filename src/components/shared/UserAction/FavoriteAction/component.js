@@ -13,8 +13,8 @@ const FavoriteAction = ({ handleFavorite, favoriteStatus }) => {
 };
 
 FavoriteAction.propTypes = {
-  handleFavorite: PropTypes.func.isRequired,
-  favoriteStatus: PropTypes.bool.isRequired,
+  handleFavorite: PropTypes.func,
+  favoriteStatus: PropTypes.bool,
 };
 
 export default FavoriteAction;
