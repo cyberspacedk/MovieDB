@@ -15,15 +15,12 @@ const operationWatchListLogic = createLogic({
     const { whatToDo } = action;
 
     try {
-      await httpClient({
-        method: 'post',
-        url: `account/{account_id}/watchlist?`,
-        data: {
-          media_type: 'movie',
-          media_id: movieId,
-          watchlist: whatToDo,
-        },
+      await httpClient.post('account/{account_id}/watchlist', {
+        media_type: 'movie',
+        media_id: movieId,
+        watchlist: whatToDo,
       });
+
       dispatch(getWatchListRequest());
     } catch (err) {
       console.log(err);
@@ -41,7 +38,13 @@ const getWatchListLogic = createLogic({
 
     try {
       const { data } = await httpClient.get(
-        `account/{account_id}/watchlist/movies?&sort_by=created_at.asc&page=${page}`,
+        'account/{account_id}/watchlist/movies',
+        {
+          params: {
+            sort_by: 'created_at.asc',
+            page,
+          },
+        },
       );
 
       const watchlist = {

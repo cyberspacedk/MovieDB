@@ -13,18 +13,13 @@ const createListLogic = createLogic({
 
   async process({ httpClient, action }, dispatch, done) {
     const { name, description } = action.payload;
+
     try {
-      await httpClient({
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-        url: `list?`,
-        data: {
-          name,
-          description,
-        },
+      await httpClient.post('list', {
+        name,
+        description,
       });
+
       dispatch(getCreatedListRequest());
     } catch (err) {
       console.log(err);
@@ -41,9 +36,12 @@ const getCreatedListLogic = createLogic({
     const page = action.payload;
 
     try {
-      const { data } = await httpClient.get(
-        `account/{account_id}/lists?&page=${page}`,
-      );
+      const { data } = await httpClient.get('account/{account_id}/lists', {
+        params: {
+          page,
+        },
+      });
+
       const resp = {
         lists: data.results,
         total_results: data.total_results,
@@ -65,8 +63,10 @@ const deleteCreatedListLogic = createLogic({
 
   async process({ httpClient, action }, dispatch, done) {
     const id = action.payload;
+
     try {
-      await httpClient.delete(`/list/${id}?`);
+      await httpClient.delete(`/list/${id}`);
+
       dispatch(getCreatedListRequest());
     } catch (err) {
       console.log(err);
@@ -84,16 +84,10 @@ const addMovieToListLogic = createLogic({
     const { listId, movieId } = action.payload;
 
     try {
-      const { data } = await httpClient({
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-        url: `list/${listId}/add_item?`,
-        data: {
-          media_id: movieId,
-        },
+      const { data } = await httpClient.post(`list/${listId}/add_item`, {
+        media_id: movieId,
       });
+
       console.log(data);
     } catch (err) {
       console.log(err);

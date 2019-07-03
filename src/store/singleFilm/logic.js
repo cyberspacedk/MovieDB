@@ -25,6 +25,7 @@ const singleFilmLogic = createLogic({
         crew,
         backdrops,
       };
+
       dispatch(singleFilmSuccess(aboutFilm));
     } catch (err) {
       dispatch(singleFilmError());

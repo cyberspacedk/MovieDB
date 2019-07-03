@@ -14,10 +14,12 @@ const client = axios.create({
 
 client.interceptors.request.use(config => {
   config.params = {
+    ...config.params,
     api_key: '2452661f8c986fe61a12ec7532335900',
     session_id: Cookies.get('SESSION_ID'),
   };
   config.paramsSerializer = params => qs.stringify(params);
+  console.log(config);
   return config;
 });
 

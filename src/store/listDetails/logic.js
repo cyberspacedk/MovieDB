@@ -12,7 +12,7 @@ const getListDetailsLogic = createLogic({
   async process({ httpClient, action }, dispatch, done) {
     const id = action.payload;
     try {
-      const { data } = await httpClient.get(`/list/${id}?`);
+      const { data } = await httpClient.get(`/list/${id}`);
 
       const details = {
         list_details: data.items,
@@ -35,7 +35,7 @@ const deleteMovieFromListLogic = createLogic({
     const { listId, movieId } = action.payload;
 
     try {
-      await httpClient.post(`/list/${listId}/remove_item?`, {
+      await httpClient.post(`/list/${listId}/remove_item`, {
         media_id: movieId,
       });
       dispatch(getListDetailsRequest(listId));

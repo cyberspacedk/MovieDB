@@ -15,15 +15,12 @@ const operationsFavoriteLogic = createLogic({
     const { whatToDo } = action;
 
     try {
-      await httpClient({
-        method: 'post',
-        url: `account/{account_id}/favorite`,
-        data: {
-          media_type: 'movie',
-          media_id: movieId,
-          favorite: whatToDo,
-        },
+      await httpClient.post(`account/{account_id}/favorite`, {
+        media_type: 'movie',
+        media_id: movieId,
+        favorite: whatToDo,
       });
+
       dispatch(getFavoritesRequest());
     } catch (err) {
       console.log(err);
@@ -41,7 +38,13 @@ const getFavoritesLogic = createLogic({
 
     try {
       const { data } = await httpClient.get(
-        `account/{account_id}/favorite/movies?sort_by=created_at.asc&page=${page}`,
+        `account/{account_id}/favorite/movies`,
+        {
+          params: {
+            sort_by: 'created_at.asc',
+            page,
+          },
+        },
       );
 
       const favorites = {

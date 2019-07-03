@@ -10,9 +10,13 @@ const searchFilmsLogic = createLogic({
     const { page } = action;
 
     try {
-      const { data } = await httpClient.get(
-        `search/movie?&query=${query}&page=${page}`,
-      );
+      const { data } = await httpClient.get(`search/movie`, {
+        params: {
+          query,
+          page,
+        },
+      });
+
       dispatch(searchSuccess(data));
     } catch (err) {
       dispatch(searchError());
