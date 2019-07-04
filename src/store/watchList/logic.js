@@ -1,4 +1,7 @@
 import { createLogic } from 'redux-logic';
+import { normalize } from 'normalizr';
+import writeToDatabase from '../database/actions';
+import movies from '../../schema';
 import {
   getWatchListError,
   getWatchListResponse,
@@ -46,12 +49,15 @@ const getWatchListLogic = createLogic({
         },
       );
 
+      const norm = normalize(data.results, [movies]);
+
       const watchlist = {
-        watchlist_list: data.results,
+        ids: norm.result,
         total_results: data.total_results,
         current_page: data.page,
       };
 
+      dispatch(writeToDatabase(norm.entities.movies));
       dispatch(getWatchListResponse(watchlist));
     } catch (err) {
       dispatch(getWatchListError());

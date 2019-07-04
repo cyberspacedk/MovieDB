@@ -6,11 +6,11 @@ import { connect } from 'react-redux';
 import { fetchDataRequest } from '../../../../../store/trendingMovies/actions';
 import TopFilms from './component';
 import {
-  getTopFilmsSelector,
   isloading,
   isError,
   isEmpty,
 } from '../../../../../store/trendingMovies/selectors';
+import getFieldMovies from '../../../../../store/database/selectors';
 
 export class TrendingMoviesContainer extends Component {
   componentDidMount() {
@@ -28,7 +28,7 @@ TrendingMoviesContainer.propTypes = {
 };
 
 export const mstp = state => ({
-  topFilms: getTopFilmsSelector(state),
+  topFilms: getFieldMovies(state, 'trending'),
   loading: isloading(state),
   error: isError(state),
   empty: isEmpty(state),

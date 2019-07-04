@@ -1,5 +1,5 @@
 export const initialState = {
-  films: [],
+  ids: [],
   loading: false,
   error: false,
 };
@@ -20,7 +20,7 @@ export default (state = initialState, { type, payload }) => {
     case 'FETCH_RESPONSE':
       return {
         ...state,
-        films: payload,
+        ids: payload,
         loading: false,
         error: false,
       };

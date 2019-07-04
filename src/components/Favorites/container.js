@@ -8,13 +8,13 @@ import {
   operationsFavoritesRequest,
 } from '../../store/favorites/actions';
 import {
-  getFavoritesList,
   isError,
   isLoading,
   isEmpty,
   getTotalPages,
   getCurrentPage,
 } from '../../store/favorites/selectors';
+import getFieldMovies from '../../store/database/selectors';
 
 class FavoritesContainer extends Component {
   componentDidMount() {
@@ -38,9 +38,9 @@ const mstp = state => ({
   loading: isLoading(state),
   error: isError(state),
   empty: isEmpty(state),
-  favoritesList: getFavoritesList(state),
   totalResults: getTotalPages(state),
   currentPage: getCurrentPage(state),
+  favorites: getFieldMovies(state, 'favorites'),
 });
 
 const mdtp = {

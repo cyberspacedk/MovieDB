@@ -1,5 +1,7 @@
 export const initialState = {
-  response: {},
+  ids: [],
+  page: 0,
+  total_results: 0,
   loading: false,
   error: false,
   query: '',
@@ -22,7 +24,7 @@ export default (state = initialState, { type, payload }) => {
     case 'SEARCH_RESPONSE':
       return {
         ...state,
-        response: payload,
+        ...payload,
         loading: false,
         error: false,
       };
