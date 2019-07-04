@@ -1,5 +1,5 @@
 const initialState = {
-  favorites_list: [],
+  ids: [],
   total_results: 0,
   current_page: 0,
   loading: false,

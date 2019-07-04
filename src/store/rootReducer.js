@@ -7,9 +7,10 @@ import favoritesListReducer from './favorites/reducers';
 import watchListReducer from './watchList/reducers';
 import myListsReducer from './myLists/reducers';
 import listDetailsReducer from './listDetails/reducers';
+import databaseReducer from './database/reducers';
 
 const rootReducer = combineReducers({
-  trendingMovies: topFilmsReducer,
+  trending: topFilmsReducer,
   user: setUserDataReducer,
   search: searchFilmsReducer,
   singleFilm: singleFilmReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   listDetails: listDetailsReducer,
   favorites: favoritesListReducer,
   watchlist: watchListReducer,
+  database: databaseReducer,
 });
 
 export default rootReducer;

@@ -8,13 +8,13 @@ import {
   operationsWatchListRequest,
 } from '../../store/watchList/actions';
 import {
-  getWatchList,
   isError,
   isLoading,
   isEmpty,
   getTotalPages,
   getCurrentPage,
 } from '../../store/watchList/selectors';
+import getFieldMovies from '../../store/database/selectors';
 
 class WatchListContainer extends Component {
   componentDidMount() {
@@ -40,7 +40,7 @@ const mstp = state => ({
   error: isError(state),
   loading: isLoading(state),
   empty: isEmpty(state),
-  watchList: getWatchList(state),
+  watchList: getFieldMovies(state, 'watchlist'),
   totalResults: getTotalPages(state),
   currentPage: getCurrentPage(state),
 });

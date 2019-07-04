@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PageLayout from '../shared/Layout';
 
 const Favorites = ({
-  favoritesList,
+  favorites,
   loading,
   error,
   empty,
@@ -18,7 +18,7 @@ const Favorites = ({
       title="Favorites"
       error={error}
       loading={loading}
-      array={favoritesList}
+      array={favorites}
       goToNextPage={goToNextPage}
       currentPage={currentPage}
       totalResults={totalResults}
@@ -31,7 +31,7 @@ const Favorites = ({
 };
 
 Favorites.propTypes = {
-  favoritesList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  favorites: PropTypes.arrayOf(PropTypes.object).isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   history: PropTypes.isRequired,

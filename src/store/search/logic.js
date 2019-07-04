@@ -1,5 +1,8 @@
 import { createLogic } from 'redux-logic';
+import { normalize } from 'normalizr';
+import movies from '../../schema';
 import { searchError, searchSuccess } from './actions';
+import writeToDatabase from '../database/actions';
 
 const searchFilmsLogic = createLogic({
   type: 'SEARCH_REQUEST',
@@ -17,7 +20,16 @@ const searchFilmsLogic = createLogic({
         },
       });
 
-      dispatch(searchSuccess(data));
+      const norm = normalize(data.results, [movies]);
+
+      const resp = {
+        page: data.page,
+        total_results: data.total_results,
+        ids: norm.result,
+      };
+
+      dispatch(writeToDatabase(norm.entities.movies));
+      dispatch(searchSuccess(resp));
     } catch (err) {
       dispatch(searchError());
     }
