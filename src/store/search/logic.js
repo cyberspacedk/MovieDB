@@ -21,9 +21,10 @@ const searchFilmsLogic = createLogic({
       });
 
       const norm = normalize(data.results, [movies]);
-      const { results: _r, total_pages: _p, ...rest } = data;
+
       const resp = {
-        ...rest,
+        page: data.page,
+        total_results: data.total_results,
         ids: norm.result,
       };
 
