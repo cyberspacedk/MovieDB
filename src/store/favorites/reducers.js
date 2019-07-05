@@ -16,7 +16,9 @@ export default (state = initialState, { type, payload }) => {
       };
     case 'GET_FAVORITES_RESPONSE':
       return {
-        ...payload,
+        ids: payload.ids,
+        total_results: payload.total_results,
+        current_page: payload.current_page,
         loading: false,
         error: false,
       };

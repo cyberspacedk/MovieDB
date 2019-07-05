@@ -24,7 +24,9 @@ export default (state = initialState, { type, payload }) => {
     case 'SEARCH_RESPONSE':
       return {
         ...state,
-        ...payload,
+        ids: payload.ids,
+        page: payload.page,
+        total_results: payload.total_results,
         loading: false,
         error: false,
       };

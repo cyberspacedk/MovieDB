@@ -5,6 +5,12 @@ const getQuery = state => state.search.query;
 const getTotalResults = state => state.search.total_results;
 const getCurrentPage = state => state.search.page;
 
+const getSearched = state => {
+  const { ids } = state.search;
+  const { movies } = state.database;
+  return ids.map(id => movies[id]);
+};
+
 export {
   isError,
   isLoading,
@@ -12,4 +18,5 @@ export {
   getTotalResults,
   getQuery,
   getCurrentPage,
+  getSearched,
 };
