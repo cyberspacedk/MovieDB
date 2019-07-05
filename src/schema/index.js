@@ -1,6 +1,13 @@
 import { schema } from 'normalizr';
 
-const movies = new schema.Entity('movies');
-const lists = new schema.Entity('lists');
+const Movies = new schema.Entity('movies');
 
-export { movies, lists };
+const Lists = new schema.Entity('lists');
+
+const Genres = new schema.Entity('genres');
+
+const Movie = new schema.Entity('movie', {
+  genres: [Genres],
+});
+
+export { Movies, Lists, Movie };

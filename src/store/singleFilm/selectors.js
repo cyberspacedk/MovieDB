@@ -1,20 +1,22 @@
+/* eslint-disable consistent-return */
 const isError = state => state.singleFilm.error;
 const isLoading = state => state.singleFilm.loading;
 
-const getImages = state => state.singleFilm.response.backdrops;
-const getCasts = state => state.singleFilm.response.cast;
-const getCrew = state => state.singleFilm.response.crew;
-const getGenres = state => state.singleFilm.response.genres || false;
+const getImages = state => state.singleFilm.backdrops;
+const getCasts = state => state.singleFilm.cast;
+const getCrew = state => state.singleFilm.crew;
 
-const getFilmInfo = state => ({
-  budget: state.singleFilm.response.budget,
-  id: state.singleFilm.response.id,
-  lang: state.singleFilm.response.original_language,
-  runtime: state.singleFilm.response.runtime,
-  title: state.singleFilm.response.original_title,
-  overview: state.singleFilm.response.overview,
-  revenue: state.singleFilm.response.revenue,
-});
+const getMovie = state => {
+  const { id } = state.singleFilm;
+  return state.database.movies[id];
+};
+
+const getGenres = state => {
+  const { id } = state.singleFilm;
+  if (state.database.movies[id] === undefined) return;
+  const { genres } = state.database.movies[id];
+  return genres.map(genre => state.database.genres[genre]);
+};
 
 export {
   isError,
@@ -23,5 +25,5 @@ export {
   getCasts,
   getCrew,
   getGenres,
-  getFilmInfo,
+  getMovie,
 };

@@ -12,7 +12,7 @@ import {
   getCasts,
   getCrew,
   getGenres,
-  getFilmInfo,
+  getMovie,
 } from '../../store/singleFilm/selectors';
 
 class Movie extends Component {
@@ -42,7 +42,7 @@ Movie.propTypes = {
 const mstp = state => ({
   error: isError(state),
   loading: isLoading(state),
-  aboutFilm: getFilmInfo(state),
+  aboutFilm: getMovie(state),
   images: getImages(state),
   casts: getCasts(state),
   crew: getCrew(state),

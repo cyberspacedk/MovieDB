@@ -1,8 +1,8 @@
 import { createLogic } from 'redux-logic';
 import { normalize } from 'normalizr';
-import { movies } from '../../schema';
+import { Movies } from '../../schema';
 import { getFavoritesResponse, getFavoritesError } from './actions';
-import { writeToMoviesDatabase } from '../database/actions';
+import writeToDatabase from '../database/actions';
 
 const operationsFavoriteLogic = createLogic({
   type: 'OPERATIONS_FAVORITES_REQUEST',
@@ -42,16 +42,17 @@ const getFavoritesLogic = createLogic({
           },
         },
       );
-      const norm = normalize(data.results, [movies]);
 
-      const favorites = {
+      const norm = normalize(data.results, [Movies]);
+      const { movies } = norm.entities;
+      const response = {
         ids: norm.result,
         total_results: data.total_results,
         current_page: data.page,
       };
 
-      dispatch(writeToMoviesDatabase(norm.entities.movies));
-      dispatch(getFavoritesResponse(favorites));
+      dispatch(writeToDatabase(movies));
+      dispatch(getFavoritesResponse(response));
     } catch (err) {
       dispatch(getFavoritesError());
     }

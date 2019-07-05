@@ -2,8 +2,8 @@
 
 import { createLogic } from 'redux-logic';
 import { normalize } from 'normalizr';
-import { writeListsToDataBase } from '../database/actions';
-import { lists } from '../../schema';
+import writeToDatabase from '../database/actions';
+import { Lists } from '../../schema';
 import {
   getCreatedListResponse,
   getCreatedListError,
@@ -44,16 +44,17 @@ const getCreatedListLogic = createLogic({
           page,
         },
       });
-      const norm = normalize(data.results, [lists]);
 
-      const resp = {
+      const norm = normalize(data.results, [Lists]);
+      const { lists } = norm.entities;
+      const response = {
         ids: norm.result,
         total_results: data.total_results,
         current_page: data.page,
       };
 
-      dispatch(writeListsToDataBase(norm.entities.lists));
-      dispatch(getCreatedListResponse(resp));
+      dispatch(writeToDatabase({}, lists));
+      dispatch(getCreatedListResponse(response));
     } catch (err) {
       dispatch(getCreatedListError());
     }

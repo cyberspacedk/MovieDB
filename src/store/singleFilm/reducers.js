@@ -1,8 +1,8 @@
-/* eslint-disable camelcase */
-/* eslint-disable no-case-declarations */
 export const initialState = {
-  response: {},
-  ids: [],
+  id: [],
+  cast: [],
+  crew: [],
+  backdrops: [],
   loading: false,
   error: false,
 };
@@ -21,38 +21,12 @@ export default (state = initialState, { type, payload }) => {
         error: true,
       };
     case 'SINGLE_RESPONSE':
-      const {
-        backdrops,
-        budget,
-        cast,
-        crew,
-        genres,
-        id,
-        original_language,
-        original_title,
-        overview,
-        runtime,
-        revenue,
-        ids,
-      } = payload;
-
-      const totalData = {
-        backdrops,
-        budget,
-        cast,
-        crew,
-        genres,
-        id,
-        original_language,
-        original_title,
-        overview,
-        runtime,
-        revenue,
-      };
       return {
         ...state,
-        ids,
-        response: totalData,
+        id: payload.id,
+        cast: payload.cast,
+        crew: payload.crew,
+        backdrops: payload.backdrops,
         loading: false,
         error: false,
       };

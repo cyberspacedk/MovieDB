@@ -1,12 +1,12 @@
 import { createLogic } from 'redux-logic';
 import { normalize } from 'normalizr';
-import { movies } from '../../schema';
+import { Movies } from '../../schema';
 import {
   getListDetailsResponse,
   getCreatedListError,
   getListDetailsRequest,
 } from './actions';
-import { writeToMoviesDatabase } from '../database/actions';
+import writeToDatabase from '../database/actions';
 
 const getListDetailsLogic = createLogic({
   type: 'GET_LIST_DETAILS_REQUEST',
@@ -18,17 +18,17 @@ const getListDetailsLogic = createLogic({
     try {
       const { data } = await httpClient.get(`/list/${id}`);
 
-      const norm = normalize(data.items, [movies]);
-
-      const details = {
+      const norm = normalize(data.items, [Movies]);
+      const { movies } = norm.entities;
+      const response = {
         list_details: data.items,
         ids: norm.result,
         list_name: data.name,
         totalResults: data.item_count,
       };
 
-      dispatch(writeToMoviesDatabase(norm.entities.movies));
-      dispatch(getListDetailsResponse(details));
+      dispatch(writeToDatabase(movies));
+      dispatch(getListDetailsResponse(response));
     } catch (err) {
       dispatch(getCreatedListError());
     }

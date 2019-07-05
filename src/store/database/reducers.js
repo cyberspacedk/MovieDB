@@ -1,26 +1,27 @@
 const initialState = {
   movies: {},
   lists: {},
+  genres: {},
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case 'WRITE_MOVIES_TO_DATABASE':
+    case 'WRITE_TO_DATABASE':
       return {
         movies: {
           ...state.movies,
-          ...payload,
+          ...payload.movies,
+        },
+        lists: {
+          ...state.lists,
+          ...payload.lists,
+        },
+        genres: {
+          ...state.genres,
+          ...payload.genres,
         },
       };
 
-    case 'WRITE_LISTS_TO_DATABASE':
-      return {
-        ...state,
-        lists: {
-          ...state.lists,
-          ...payload,
-        },
-      };
     default:
       return state;
   }

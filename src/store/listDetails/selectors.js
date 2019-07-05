@@ -5,7 +5,7 @@ const getListName = state => state.listDetails.list_name;
 
 const getListMovies = state => {
   const { ids } = state.listDetails;
-  const all = state.database;
+  const all = state.database.movies;
   return ids.map(id => all[id]);
 };
 
