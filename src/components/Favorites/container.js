@@ -13,8 +13,8 @@ import {
   isEmpty,
   getTotalPages,
   getCurrentPage,
+  getFavorites,
 } from '../../store/favorites/selectors';
-import getFieldMovies from '../../store/database/selectors';
 
 class FavoritesContainer extends Component {
   componentDidMount() {
@@ -40,7 +40,7 @@ const mstp = state => ({
   empty: isEmpty(state),
   totalResults: getTotalPages(state),
   currentPage: getCurrentPage(state),
-  favorites: getFieldMovies(state, 'favorites'),
+  favorites: getFavorites(state),
 });
 
 const mdtp = {

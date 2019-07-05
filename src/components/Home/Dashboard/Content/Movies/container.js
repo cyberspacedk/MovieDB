@@ -11,9 +11,9 @@ import {
   getTotalResults,
   getQuery,
   getCurrentPage,
+  getSearched,
 } from '../../../../../store/search/selectors';
 import { searchRequest } from '../../../../../store/search/actions';
-import getFieldMovies from '../../../../../store/database/selectors';
 
 class MoviesContainer extends Component {
   goToNextPage = page => {
@@ -36,7 +36,7 @@ const mstp = state => ({
   loading: isLoading(state),
   error: isError(state),
   empty: isEmpty(state),
-  movies: getFieldMovies(state, 'search'),
+  movies: getSearched(state),
   query: getQuery(state),
   totalResults: getTotalResults(state),
   currentPage: getCurrentPage(state),

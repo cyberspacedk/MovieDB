@@ -13,8 +13,8 @@ import {
   isEmpty,
   getTotalPages,
   getCurrentPage,
+  getWatchList,
 } from '../../store/watchList/selectors';
-import getFieldMovies from '../../store/database/selectors';
 
 class WatchListContainer extends Component {
   componentDidMount() {
@@ -40,7 +40,7 @@ const mstp = state => ({
   error: isError(state),
   loading: isLoading(state),
   empty: isEmpty(state),
-  watchList: getFieldMovies(state, 'watchlist'),
+  watchList: getWatchList(state),
   totalResults: getTotalPages(state),
   currentPage: getCurrentPage(state),
 });

@@ -9,8 +9,8 @@ import {
   isloading,
   isError,
   isEmpty,
+  getTrending,
 } from '../../../../../store/trendingMovies/selectors';
-import getFieldMovies from '../../../../../store/database/selectors';
 
 export class TrendingMoviesContainer extends Component {
   componentDidMount() {
@@ -28,7 +28,7 @@ TrendingMoviesContainer.propTypes = {
 };
 
 export const mstp = state => ({
-  topFilms: getFieldMovies(state, 'trending'),
+  topFilms: getTrending(state),
   loading: isloading(state),
   error: isError(state),
   empty: isEmpty(state),
