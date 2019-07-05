@@ -1,12 +1,8 @@
 import { createLogic } from 'redux-logic';
 import { normalize } from 'normalizr';
-import writeToDatabase from '../database/actions';
-import movies from '../../schema';
-import {
-  getWatchListError,
-  getWatchListResponse,
-  getWatchListRequest,
-} from './actions';
+import { writeToMoviesDatabase } from '../database/actions';
+import { movies } from '../../schema';
+import { getWatchListError, getWatchListResponse } from './actions';
 
 const operationWatchListLogic = createLogic({
   type: 'OPERATIONS_WATCHLIST_REQUEST',
@@ -22,8 +18,6 @@ const operationWatchListLogic = createLogic({
         media_id: movieId,
         watchlist: whatToDo,
       });
-
-      dispatch(getWatchListRequest());
     } catch (err) {
       throw new Error(err);
     }
@@ -57,7 +51,7 @@ const getWatchListLogic = createLogic({
         current_page: data.page,
       };
 
-      dispatch(writeToDatabase(norm.entities.movies));
+      dispatch(writeToMoviesDatabase(norm.entities.movies));
       dispatch(getWatchListResponse(watchlist));
     } catch (err) {
       dispatch(getWatchListError());

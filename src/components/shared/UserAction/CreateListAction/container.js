@@ -5,7 +5,7 @@ import {
   getCreatedListRequest,
   addMovieToListRequest,
 } from '../../../../store/myLists/actions';
-import { getMyList } from '../../../../store/myLists/selectors';
+import { getLists } from '../../../../store/myLists/selectors';
 import CreateListAction from './component';
 
 class CreateListActionContainer extends Component {
@@ -14,12 +14,10 @@ class CreateListActionContainer extends Component {
     visibleMod: false,
   };
 
-  componentDidMount() {
-    // eslint-disable-next-line react/destructuring-assignment
+  showPopover = visible => {
     this.props.getCreatedListRequest();
-  }
-
-  showPopover = visible => this.setState({ visiblePop: visible });
+    this.setState({ visiblePop: visible });
+  };
 
   hidePopover = () => this.setState({ visiblePop: false });
 
@@ -63,7 +61,7 @@ CreateListActionContainer.propTypes = {
 };
 
 const mstp = store => ({
-  myLists: getMyList(store),
+  myLists: getLists(store),
 });
 
 const mdtp = {

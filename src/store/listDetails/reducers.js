@@ -1,5 +1,6 @@
 const initialState = {
   list_details: [],
+  ids: [],
   list_name: '',
   totalResults: 0,
   loading: false,
@@ -16,7 +17,10 @@ export default (state = initialState, { type, payload }) => {
     case 'GET_LIST_DETAILS_RESPONSE':
       return {
         ...state,
-        ...payload,
+        list_details: payload.list_details,
+        ids: payload.ids,
+        list_name: payload.list_name,
+        totalResults: payload.totalResults,
         loading: false,
       };
     case 'GET_LIST_DETAILS_ERROR':

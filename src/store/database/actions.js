@@ -1,6 +1,11 @@
-const writeToDatabase = data => ({
-  type: 'WRITE_TO_DATABASE',
+const writeToMoviesDatabase = data => ({
+  type: 'WRITE_MOVIES_TO_DATABASE',
   payload: data,
 });
 
-export default writeToDatabase;
+const writeListsToDataBase = data => ({
+  type: 'WRITE_LISTS_TO_DATABASE',
+  payload: data,
+});
+
+export { writeToMoviesDatabase, writeListsToDataBase };

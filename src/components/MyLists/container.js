@@ -8,7 +8,7 @@ import {
   deleteListRequest,
 } from '../../store/myLists/actions';
 import {
-  getMyList,
+  getLists,
   isError,
   isLoading,
   getTotalPages,
@@ -58,7 +58,7 @@ const mstp = state => ({
   empty: isEmpty(state),
   totalResults: getTotalPages(state),
   currentPage: getCurrentPage(state),
-  myLists: getMyList(state),
+  myLists: getLists(state),
 });
 
 const mdtp = { getCreatedListRequest, deleteListRequest };

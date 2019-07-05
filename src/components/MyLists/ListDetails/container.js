@@ -8,7 +8,7 @@ import {
   deleteMovieFromListRequest,
 } from '../../../store/listDetails/actions';
 import {
-  getListDetails,
+  getListMovies,
   isError,
   isLoading,
   isEmpty,
@@ -40,7 +40,7 @@ const mstp = state => ({
   loading: isLoading(state),
   error: isError(state),
   empty: isEmpty(state),
-  detailsList: getListDetails(state),
+  detailsList: getListMovies(state),
   listName: getListName(state),
 });
 

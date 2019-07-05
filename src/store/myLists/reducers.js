@@ -1,5 +1,5 @@
 const initialState = {
-  lists: [],
+  ids: [],
   total_results: 0,
   current_page: 0,
   loading: false,
@@ -17,6 +17,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         ...payload,
+        ids: payload.ids,
         loading: false,
       };
     case 'GET_CREATED_LIST_ERROR':

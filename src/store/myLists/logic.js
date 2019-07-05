@@ -1,6 +1,9 @@
 /* eslint-disable camelcase */
 
 import { createLogic } from 'redux-logic';
+import { normalize } from 'normalizr';
+import { writeListsToDataBase } from '../database/actions';
+import { lists } from '../../schema';
 import {
   getCreatedListResponse,
   getCreatedListError,
@@ -41,13 +44,15 @@ const getCreatedListLogic = createLogic({
           page,
         },
       });
+      const norm = normalize(data.results, [lists]);
 
       const resp = {
-        lists: data.results,
+        ids: norm.result,
         total_results: data.total_results,
         current_page: data.page,
       };
 
+      dispatch(writeListsToDataBase(norm.entities.lists));
       dispatch(getCreatedListResponse(resp));
     } catch (err) {
       dispatch(getCreatedListError());
@@ -80,7 +85,6 @@ const addMovieToListLogic = createLogic({
 
   async process({ httpClient, action }, dispatch, done) {
     const { listId, movieId } = action.payload;
-
     try {
       await httpClient.post(`list/${listId}/add_item`, {
         media_id: movieId,

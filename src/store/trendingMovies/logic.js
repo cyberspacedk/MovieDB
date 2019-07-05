@@ -1,8 +1,8 @@
 import { createLogic } from 'redux-logic';
 import { normalize } from 'normalizr';
 import { fetchDataError, fetchDataSuccess } from './actions';
-import writeToDatabase from '../database/actions';
-import movies from '../../schema';
+import { writeToMoviesDatabase } from '../database/actions';
+import { movies } from '../../schema';
 
 const getTopFilmsLogic = createLogic({
   type: 'FETCH_REQUEST',
@@ -16,7 +16,7 @@ const getTopFilmsLogic = createLogic({
 
       const norm = normalize(results, [movies]);
 
-      dispatch(writeToDatabase(norm.entities.movies));
+      dispatch(writeToMoviesDatabase(norm.entities.movies));
       dispatch(fetchDataSuccess(norm.result));
     } catch (err) {
       dispatch(fetchDataError(err));

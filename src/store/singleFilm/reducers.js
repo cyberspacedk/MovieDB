@@ -2,6 +2,7 @@
 /* eslint-disable no-case-declarations */
 export const initialState = {
   response: {},
+  ids: [],
   loading: false,
   error: false,
 };
@@ -32,6 +33,7 @@ export default (state = initialState, { type, payload }) => {
         overview,
         runtime,
         revenue,
+        ids,
       } = payload;
 
       const totalData = {
@@ -49,6 +51,7 @@ export default (state = initialState, { type, payload }) => {
       };
       return {
         ...state,
+        ids,
         response: totalData,
         loading: false,
         error: false,
