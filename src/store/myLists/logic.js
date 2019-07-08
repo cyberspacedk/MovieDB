@@ -16,16 +16,21 @@ const createListLogic = createLogic({
 
   async process({ httpClient, action }, dispatch, done) {
     const { name, description } = action.payload;
+    const { setSubmitting, setErrors, setStatus } = action.formikBag;
 
     try {
       await httpClient.post('list', {
         name,
         description,
       });
-
+      setStatus('succes');
       dispatch(getCreatedListRequest());
     } catch (err) {
-      throw new Error(err);
+      setStatus('error');
+      setErrors({ status: err.message });
+    } finally {
+      setStatus('waiting');
+      setSubmitting(false);
     }
     done();
   },

@@ -1,4 +1,6 @@
 /* eslint-disable no-shadow */
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFormik } from 'formik';
@@ -6,15 +8,56 @@ import * as Yup from 'yup';
 import CreateListFormModal from './component';
 import { createListRequest } from '../../../../../store/myLists/actions';
 
+class CreateListFormModalContainer extends Component {
+  componentDidUpdate() {
+    const { status, hideModal } = this.props;
+    if (status === 'succes') hideModal();
+  }
+
+  handleFormCancel = () => {
+    const { handleReset, hideModal } = this.props;
+    handleReset();
+    hideModal();
+  };
+
+  handleFormSubmit = () => {
+    const { handleReset, handleSubmit } = this.props;
+    handleSubmit();
+    setTimeout(handleReset, 0);
+  };
+
+  render() {
+    return (
+      <CreateListFormModal
+        {...this.props}
+        handleFormCancel={this.handleFormCancel}
+        handleFormSubmit={this.handleFormSubmit}
+      />
+    );
+  }
+}
+
+CreateListFormModalContainer.defaultProps = {
+  status: 'waiting',
+};
+
+CreateListFormModalContainer.propTypes = {
+  hideModal: PropTypes.func.isRequired,
+  handleReset: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.func.isRequired,
+  status: PropTypes.string,
+};
+
 export const mapPropsToValues = () => ({
   name: '',
   description: '',
 });
 
-export const handleSubmit = (values, { props }) => {
+export const handleSubmit = (values, formikBag) => {
   const { name, description } = values;
-  const { createListRequest } = props;
-  createListRequest(name, description);
+  const { createListRequest } = formikBag.props;
+  createListRequest(name, description, formikBag);
 };
 
 export const validationSchema = Yup.object().shape({
@@ -40,4 +83,4 @@ export default compose(
     handleSubmit,
     validationSchema,
   }),
-)(CreateListFormModal);
+)(CreateListFormModalContainer);
