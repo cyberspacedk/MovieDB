@@ -20,15 +20,14 @@ const searchFilmsLogic = createLogic({
         },
       });
 
-      const norm = normalize(data.results, [Movies]);
-      const { movies } = norm.entities;
+      const { entities, result } = normalize(data.results, [Movies]);
       const response = {
         page: data.page,
         total_results: data.total_results,
-        ids: norm.result,
+        ids: result,
       };
 
-      dispatch(writeToDatabase(movies));
+      dispatch(writeToDatabase(entities));
       dispatch(searchSuccess(response));
     } catch (err) {
       dispatch(searchError());

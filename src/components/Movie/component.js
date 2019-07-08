@@ -21,30 +21,30 @@ const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
 
-const Movie = ({ error, loading, aboutFilm, casts, crew, genres, posters }) => {
+const Movie = ({ error, loading, aboutFilm, genres }) => {
   return (
     <Layout>
       {error && <Error />}
       {loading ? (
         <Spinner />
       ) : (
-        aboutFilm && (
+        aboutFilm &&
+        aboutFilm.backdrops && (
           <Content>
             <Row type="flex">
               <Col span={24}>
                 <Carousel>
-                  {posters &&
-                    posters.map(img => (
-                      <div key={img.file_path}>
-                        <img
-                          className="movie-image"
-                          src={`https://image.tmdb.org/t/p/original${
-                            img.file_path
-                          }`}
-                          alt="Poster"
-                        />
-                      </div>
-                    ))}
+                  {aboutFilm.backdrops.map(img => (
+                    <div key={img.file_path}>
+                      <img
+                        className="movie-image"
+                        src={`https://image.tmdb.org/t/p/original${
+                          img.file_path
+                        }`}
+                        alt="Poster"
+                      />
+                    </div>
+                  ))}
                 </Carousel>
               </Col>
             </Row>
@@ -107,35 +107,34 @@ const Movie = ({ error, loading, aboutFilm, casts, crew, genres, posters }) => {
               </Row>
               <Row gutter={8} type="flex">
                 <Col span={20} offset={2}>
-                  {casts &&
-                    casts.map(person => (
-                      <Col
-                        key={person.cast_id}
-                        xs={{ span: 12 }}
-                        sm={{ span: 8 }}
-                        md={{ span: 6 }}
-                        lg={{ span: 4 }}
-                        xl={{ span: 4 }}
-                      >
-                        <Card
-                          className="casts-card"
-                          cover={
-                            <img
-                              className="person-image"
-                              alt="Person"
-                              src={`https://image.tmdb.org/t/p/w200${
-                                person.profile_path
-                              }`}
-                            />
-                          }
-                        >
-                          <Meta
-                            title={person.name}
-                            description={person.character}
+                  {aboutFilm.cast.map(person => (
+                    <Col
+                      key={person.cast_id}
+                      xs={{ span: 12 }}
+                      sm={{ span: 8 }}
+                      md={{ span: 6 }}
+                      lg={{ span: 4 }}
+                      xl={{ span: 4 }}
+                    >
+                      <Card
+                        className="casts-card"
+                        cover={
+                          <img
+                            className="person-image"
+                            alt="Person"
+                            src={`https://image.tmdb.org/t/p/w200${
+                              person.profile_path
+                            }`}
                           />
-                        </Card>
-                      </Col>
-                    ))}
+                        }
+                      >
+                        <Meta
+                          title={person.name}
+                          description={person.character}
+                        />
+                      </Card>
+                    </Col>
+                  ))}
                 </Col>
               </Row>
               <Row>
@@ -147,35 +146,34 @@ const Movie = ({ error, loading, aboutFilm, casts, crew, genres, posters }) => {
               </Row>
               <Row gutter={8} type="flex">
                 <Col span={20} offset={2}>
-                  {crew &&
-                    crew.map(person => (
-                      <Col
-                        key={person.credit_id}
-                        xs={{ span: 12 }}
-                        sm={{ span: 8 }}
-                        md={{ span: 6 }}
-                        lg={{ span: 4 }}
-                        xl={{ span: 4 }}
-                      >
-                        <Card
-                          className="casts-card"
-                          cover={
-                            <img
-                              className="person-image"
-                              alt="Person"
-                              src={`https://image.tmdb.org/t/p/w200${
-                                person.profile_path
-                              }`}
-                            />
-                          }
-                        >
-                          <Meta
-                            title={person.name}
-                            description={person.department}
+                  {aboutFilm.crew.map(person => (
+                    <Col
+                      key={person.credit_id}
+                      xs={{ span: 12 }}
+                      sm={{ span: 8 }}
+                      md={{ span: 6 }}
+                      lg={{ span: 4 }}
+                      xl={{ span: 4 }}
+                    >
+                      <Card
+                        className="casts-card"
+                        cover={
+                          <img
+                            className="person-image"
+                            alt="Person"
+                            src={`https://image.tmdb.org/t/p/w200${
+                              person.profile_path
+                            }`}
                           />
-                        </Card>
-                      </Col>
-                    ))}
+                        }
+                      >
+                        <Meta
+                          title={person.name}
+                          description={person.department}
+                        />
+                      </Card>
+                    </Col>
+                  ))}
                 </Col>
               </Row>
             </div>
@@ -198,28 +196,7 @@ Movie.propTypes = {
     budget: PropTypes.number,
     revenue: PropTypes.number,
   }).isRequired,
-  casts: PropTypes.arrayOf(
-    PropTypes.shape({
-      cast_id: PropTypes.number,
-      profile_path: PropTypes.string,
-      name: PropTypes.string,
-      character: PropTypes.string,
-    }),
-  ).isRequired,
-  crew: PropTypes.arrayOf(
-    PropTypes.shape({
-      credit_id: PropTypes.string,
-      profile_path: PropTypes.string,
-      name: PropTypes.string,
-      department: PropTypes.string,
-    }),
-  ).isRequired,
   genres: PropTypes.arrayOf(PropTypes.object).isRequired,
-  posters: PropTypes.arrayOf(
-    PropTypes.shape({
-      file_path: PropTypes.string,
-    }),
-  ).isRequired,
 };
 
 export default Movie;

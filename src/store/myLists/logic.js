@@ -45,15 +45,14 @@ const getCreatedListLogic = createLogic({
         },
       });
 
-      const norm = normalize(data.results, [Lists]);
-      const { lists } = norm.entities;
+      const { entities, result } = normalize(data.results, [Lists]);
       const response = {
-        ids: norm.result,
+        ids: result,
         total_results: data.total_results,
         current_page: data.page,
       };
 
-      dispatch(writeToDatabase({}, lists));
+      dispatch(writeToDatabase(entities));
       dispatch(getCreatedListResponse(response));
     } catch (err) {
       dispatch(getCreatedListError());

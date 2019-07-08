@@ -1,29 +1,19 @@
-/* eslint-disable consistent-return */
+/* eslint-disable no-prototype-builtins */
+
 const isError = state => state.singleFilm.error;
 const isLoading = state => state.singleFilm.loading;
 
-const getImages = state => state.singleFilm.backdrops;
-const getCasts = state => state.singleFilm.cast;
-const getCrew = state => state.singleFilm.crew;
-
-const getMovie = state => {
-  const { id } = state.singleFilm;
+const getMovie = (state, ownProps) => {
+  const { id } = ownProps.match.params;
   return state.database.movies[id];
 };
 
-const getGenres = state => {
-  const { id } = state.singleFilm;
-  if (state.database.movies[id] === undefined) return;
-  const { genres } = state.database.movies[id];
-  return genres.map(genre => state.database.genres[genre]);
+// eslint-disable-next-line consistent-return
+const getGenres = (state, ownProps) => {
+  const movie = getMovie(state, ownProps);
+  if (movie && movie.genres !== undefined) {
+    return movie.genres.map(id => state.database.genres[id]);
+  }
 };
 
-export {
-  isError,
-  isLoading,
-  getImages,
-  getCasts,
-  getCrew,
-  getGenres,
-  getMovie,
-};
+export { isError, isLoading, getGenres, getMovie };

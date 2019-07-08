@@ -18,16 +18,14 @@ const getListDetailsLogic = createLogic({
     try {
       const { data } = await httpClient.get(`/list/${id}`);
 
-      const norm = normalize(data.items, [Movies]);
-      const { movies } = norm.entities;
+      const { entities, result } = normalize(data.items, [Movies]);
       const response = {
         list_details: data.items,
-        ids: norm.result,
-        list_name: data.name,
+        ids: result,
         totalResults: data.item_count,
       };
 
-      dispatch(writeToDatabase(movies));
+      dispatch(writeToDatabase(entities));
       dispatch(getListDetailsResponse(response));
     } catch (err) {
       dispatch(getCreatedListError());

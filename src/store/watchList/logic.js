@@ -43,15 +43,14 @@ const getWatchListLogic = createLogic({
         },
       );
 
-      const norm = normalize(data.results, [Movies]);
-      const { movies } = norm.entities;
+      const { entities, result } = normalize(data.results, [Movies]);
       const response = {
-        ids: norm.result,
+        ids: result,
         total_results: data.total_results,
         current_page: data.page,
       };
 
-      dispatch(writeToDatabase(movies));
+      dispatch(writeToDatabase(entities));
       dispatch(getWatchListResponse(response));
     } catch (err) {
       dispatch(getWatchListError());

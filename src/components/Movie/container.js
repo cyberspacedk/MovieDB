@@ -8,9 +8,6 @@ import AboutFilm from './component';
 import {
   isError,
   isLoading,
-  getImages,
-  getCasts,
-  getCrew,
   getGenres,
   getMovie,
 } from '../../store/singleFilm/selectors';
@@ -22,15 +19,12 @@ class Movie extends Component {
   }
 
   render() {
-    const { images } = this.props;
-    const posters = (images && images.slice(0, 3)) || [];
-
-    return <AboutFilm {...this.props} posters={posters} />;
+    return <AboutFilm {...this.props} />;
   }
 }
 
 Movie.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+  aboutFilm: PropTypes.arrayOf(PropTypes.object).isRequired,
   singleFilmRequest: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -39,14 +33,11 @@ Movie.propTypes = {
   }).isRequired,
 };
 
-const mstp = state => ({
+const mstp = (state, ownProps) => ({
+  aboutFilm: getMovie(state, ownProps) || {},
+  genres: getGenres(state, ownProps) || [],
   error: isError(state),
   loading: isLoading(state),
-  aboutFilm: getMovie(state),
-  images: getImages(state),
-  casts: getCasts(state),
-  crew: getCrew(state),
-  genres: getGenres(state),
 });
 
 const mdtp = {

@@ -1,6 +1,5 @@
 const initialState = {
   ids: [],
-  list_name: '',
   totalResults: 0,
   loading: false,
   error: false,
@@ -17,7 +16,6 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         ids: payload.ids,
-        list_name: payload.list_name,
         totalResults: payload.totalResults,
         loading: false,
       };

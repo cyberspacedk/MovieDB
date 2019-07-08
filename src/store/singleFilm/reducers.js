@@ -1,13 +1,9 @@
 export const initialState = {
-  id: [],
-  cast: [],
-  crew: [],
-  backdrops: [],
   loading: false,
   error: false,
 };
 
-export default (state = initialState, { type, payload }) => {
+export default (state = initialState, { type }) => {
   switch (type) {
     case 'SINGLE_REQUEST':
       return {
@@ -23,10 +19,6 @@ export default (state = initialState, { type, payload }) => {
     case 'SINGLE_RESPONSE':
       return {
         ...state,
-        id: payload.id,
-        cast: payload.cast,
-        crew: payload.crew,
-        backdrops: payload.backdrops,
         loading: false,
         error: false,
       };
