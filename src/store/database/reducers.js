@@ -20,6 +20,14 @@ export default (state = initialState, { type, payload }) => {
           ...state.genres,
           ...payload.genres,
         },
+        cast: {
+          ...state.cast,
+          ...payload.cast,
+        },
+        crew: {
+          ...state.crew,
+          ...payload.crew,
+        },
       };
 
     default:

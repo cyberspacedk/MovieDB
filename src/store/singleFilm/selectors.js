@@ -16,6 +16,12 @@ const getMovie = (state, id) => {
       genres: {
         ...state.database.genres,
       },
+      crew: {
+        ...state.database.crew,
+      },
+      cast: {
+        ...state.database.cast,
+      },
     };
 
     result = denormalize({ movies: id }, mySchema, entities);
