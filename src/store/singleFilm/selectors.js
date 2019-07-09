@@ -1,27 +1,26 @@
+import { denormalize } from 'normalizr';
+import { Movies } from '../../schema';
+
 const isError = state => state.singleFilm.error;
 const isLoading = state => state.singleFilm.loading;
 
-const getImages = state => state.singleFilm.response.backdrops;
-const getCasts = state => state.singleFilm.response.cast;
-const getCrew = state => state.singleFilm.response.crew;
-const getGenres = state => state.singleFilm.response.genres || false;
+const getMovie = (state, id) => {
+  const mySchema = { movies: Movies };
+  let result = {};
 
-const getFilmInfo = state => ({
-  budget: state.singleFilm.response.budget,
-  id: state.singleFilm.response.id,
-  lang: state.singleFilm.response.original_language,
-  runtime: state.singleFilm.response.runtime,
-  title: state.singleFilm.response.original_title,
-  overview: state.singleFilm.response.overview,
-  revenue: state.singleFilm.response.revenue,
-});
+  if (state.database.movies[id]) {
+    const entities = {
+      movies: {
+        ...state.database.movies,
+      },
+      genres: {
+        ...state.database.genres,
+      },
+    };
 
-export {
-  isError,
-  isLoading,
-  getImages,
-  getCasts,
-  getCrew,
-  getGenres,
-  getFilmInfo,
+    result = denormalize({ movies: id }, mySchema, entities);
+  }
+  return result.movies;
 };
+
+export { isError, isLoading, getMovie };

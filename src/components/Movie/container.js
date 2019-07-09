@@ -1,36 +1,29 @@
-/* eslint-disable react/destructuring-assignment */
-
+/* eslint-disable no-shadow */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { singleFilmRequest } from '../../store/singleFilm/actions';
 import AboutFilm from './component';
-import {
-  isError,
-  isLoading,
-  getImages,
-  getCasts,
-  getCrew,
-  getGenres,
-  getFilmInfo,
-} from '../../store/singleFilm/selectors';
+import { isError, isLoading, getMovie } from '../../store/singleFilm/selectors';
 
 class Movie extends Component {
   componentDidMount() {
-    const { id } = this.props.match.params;
-    this.props.singleFilmRequest(id);
+    const {
+      match: {
+        params: { id },
+      },
+      singleFilmRequest,
+    } = this.props;
+    singleFilmRequest(id);
   }
 
   render() {
-    const { images } = this.props;
-    const posters = (images && images.slice(0, 3)) || [];
-
-    return <AboutFilm {...this.props} posters={posters} />;
+    return <AboutFilm {...this.props} />;
   }
 }
 
 Movie.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+  aboutFilm: PropTypes.arrayOf(PropTypes.object).isRequired,
   singleFilmRequest: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -39,14 +32,17 @@ Movie.propTypes = {
   }).isRequired,
 };
 
-const mstp = state => ({
+const mstp = (
+  state,
+  {
+    match: {
+      params: { id },
+    },
+  },
+) => ({
+  aboutFilm: getMovie(state, id),
   error: isError(state),
   loading: isLoading(state),
-  aboutFilm: getFilmInfo(state),
-  images: getImages(state),
-  casts: getCasts(state),
-  crew: getCrew(state),
-  genres: getGenres(state),
 });
 
 const mdtp = {

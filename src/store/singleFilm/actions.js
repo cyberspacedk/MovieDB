@@ -5,9 +5,8 @@ const singleFilmRequest = filmId => ({
 
 const singleFilmError = () => ({ type: 'SINGLE_ERROR' });
 
-const singleFilmSuccess = data => ({
+const singleFilmSuccess = () => ({
   type: 'SINGLE_RESPONSE',
-  payload: data,
 });
 
 export { singleFilmRequest, singleFilmError, singleFilmSuccess };

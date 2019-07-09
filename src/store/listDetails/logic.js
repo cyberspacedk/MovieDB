@@ -1,9 +1,12 @@
 import { createLogic } from 'redux-logic';
+import { normalize } from 'normalizr';
+import { Movies } from '../../schema';
 import {
   getListDetailsResponse,
   getCreatedListError,
   getListDetailsRequest,
 } from './actions';
+import writeToDatabase from '../database/actions';
 
 const getListDetailsLogic = createLogic({
   type: 'GET_LIST_DETAILS_REQUEST',
@@ -11,15 +14,19 @@ const getListDetailsLogic = createLogic({
 
   async process({ httpClient, action }, dispatch, done) {
     const id = action.payload;
+
     try {
       const { data } = await httpClient.get(`/list/${id}`);
 
-      const details = {
+      const { entities, result } = normalize(data.items, [Movies]);
+      const response = {
         list_details: data.items,
-        list_name: data.name,
+        ids: result,
         totalResults: data.item_count,
       };
-      dispatch(getListDetailsResponse(details));
+
+      dispatch(writeToDatabase(entities));
+      dispatch(getListDetailsResponse(response));
     } catch (err) {
       dispatch(getCreatedListError());
     }

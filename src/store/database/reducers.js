@@ -1,5 +1,7 @@
 const initialState = {
   movies: {},
+  lists: {},
+  genres: {},
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -8,7 +10,15 @@ export default (state = initialState, { type, payload }) => {
       return {
         movies: {
           ...state.movies,
-          ...payload,
+          ...payload.movies,
+        },
+        lists: {
+          ...state.lists,
+          ...payload.lists,
+        },
+        genres: {
+          ...state.genres,
+          ...payload.genres,
         },
       };
 

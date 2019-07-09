@@ -1,5 +1,8 @@
 import { createLogic } from 'redux-logic';
+import { normalize } from 'normalizr';
 import { singleFilmError, singleFilmSuccess } from './actions';
+import { Movies } from '../../schema';
+import writeToDatabase from '../database/actions';
 
 const singleFilmLogic = createLogic({
   type: 'SINGLE_REQUEST',
@@ -19,14 +22,15 @@ const singleFilmLogic = createLogic({
         data: { backdrops },
       } = await httpClient.get(`/movie/${filmId}/images`);
 
-      const aboutFilm = {
+      const movie = {
         ...data,
-        cast,
         crew,
+        cast,
         backdrops,
       };
-
-      dispatch(singleFilmSuccess(aboutFilm));
+      const { entities } = normalize(movie, Movies);
+      dispatch(writeToDatabase(entities));
+      dispatch(singleFilmSuccess());
     } catch (err) {
       dispatch(singleFilmError());
     }
