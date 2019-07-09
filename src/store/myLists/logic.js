@@ -7,7 +7,7 @@ import {
   getCreatedListError,
   getCreatedListRequest,
 } from './actions';
-import * as constants from '../../helpers/constants';
+import constant from '../../helpers/constants';
 
 const createListLogic = createLogic({
   type: 'CREATE_LIST_REQUEST',
@@ -22,13 +22,13 @@ const createListLogic = createLogic({
         name,
         description,
       });
-      setStatus(constants.success);
+      setStatus(constant.SUCCESS);
       dispatch(getCreatedListRequest());
     } catch (err) {
-      setStatus(constants.error);
+      setStatus(constant.FAILURE);
       setErrors({ status: err.message });
     } finally {
-      setStatus(constants.waiting);
+      setStatus(constant.WAITING);
       setSubmitting(false);
     }
     done();

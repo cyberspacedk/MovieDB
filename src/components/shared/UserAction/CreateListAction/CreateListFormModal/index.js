@@ -1,3 +1,3 @@
-import CreateListFormModalContainer from './container';
+import CreateListFormModal from './container';
 
-export default CreateListFormModalContainer;
+export default CreateListFormModal;

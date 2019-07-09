@@ -6,11 +6,12 @@ import { withFormik } from 'formik';
 import * as Yup from 'yup';
 import CreateListFormModal from './component';
 import { createListRequest } from '../../../../../store/myLists/actions';
+import constant from '../../../../../helpers/constants';
 
 class CreateListFormModalContainer extends Component {
   componentDidUpdate() {
     const { status, hideModal, handleReset } = this.props;
-    if (status === 'success') {
+    if (status === constant.SUCCESS) {
       hideModal();
       handleReset();
     }
@@ -39,7 +40,7 @@ class CreateListFormModalContainer extends Component {
 }
 
 CreateListFormModalContainer.defaultProps = {
-  status: 'waiting',
+  status: constant.WAITING,
 };
 
 CreateListFormModalContainer.propTypes = {
