@@ -46,12 +46,19 @@ ListDetailsContainer.propTypes = {
   }).isRequired,
 };
 
-const mstp = (state, ownProps) => ({
+const mstp = (
+  state,
+  {
+    match: {
+      params: { id },
+    },
+  },
+) => ({
   loading: isLoading(state),
   error: isError(state),
   empty: isEmpty(state),
   detailsList: getListMovies(state),
-  listName: getListName(state, ownProps),
+  listName: getListName(state, id),
 });
 
 const mdtp = {

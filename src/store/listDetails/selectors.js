@@ -2,8 +2,7 @@ const isError = state => state.listDetails.error;
 const isLoading = state => state.listDetails.loading;
 const isEmpty = state => state.listDetails.ids.length === 0;
 
-const getListName = (state, ownProps) => {
-  const { id } = ownProps.match.params;
+const getListName = (state, id) => {
   let listName = '';
   if (state.database.lists[id]) {
     listName = state.database.lists[id].name;
