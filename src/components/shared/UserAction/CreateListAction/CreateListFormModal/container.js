@@ -1,20 +1,65 @@
-/* eslint-disable no-shadow */
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 import * as Yup from 'yup';
 import CreateListFormModal from './component';
 import { createListRequest } from '../../../../../store/myLists/actions';
+import constant from '../../../../../helpers/constants';
+
+class CreateListFormModalContainer extends Component {
+  componentDidUpdate() {
+    const { status, hideModal, handleReset } = this.props;
+    if (status === constant.SUCCESS) {
+      hideModal();
+      handleReset();
+    }
+  }
+
+  handleFormCancel = () => {
+    const { handleReset, hideModal } = this.props;
+    handleReset();
+    hideModal();
+  };
+
+  handleFormSubmit = () => {
+    const { handleSubmit } = this.props;
+    handleSubmit();
+  };
+
+  render() {
+    return (
+      <CreateListFormModal
+        {...this.props}
+        handleFormCancel={this.handleFormCancel}
+        handleFormSubmit={this.handleFormSubmit}
+      />
+    );
+  }
+}
+
+CreateListFormModalContainer.defaultProps = {
+  status: constant.WAITING,
+};
+
+CreateListFormModalContainer.propTypes = {
+  hideModal: PropTypes.func.isRequired,
+  handleReset: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.func.isRequired,
+  status: PropTypes.string,
+};
 
 export const mapPropsToValues = () => ({
   name: '',
   description: '',
 });
 
-export const handleSubmit = (values, { props }) => {
+export const handleSubmit = (values, formikBag) => {
   const { name, description } = values;
-  const { createListRequest } = props;
-  createListRequest(name, description);
+  const { createListRequest } = formikBag.props;
+  createListRequest(name, description, formikBag);
 };
 
 export const validationSchema = Yup.object().shape({
@@ -40,4 +85,4 @@ export default compose(
     handleSubmit,
     validationSchema,
   }),
-)(CreateListFormModal);
+)(CreateListFormModalContainer);

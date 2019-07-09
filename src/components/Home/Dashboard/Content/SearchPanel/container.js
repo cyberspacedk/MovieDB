@@ -11,7 +11,6 @@ export const mapPropsToValues = () => ({
 
 export const handleSubmit = (values, { props }) => {
   const { search } = values;
-  // eslint-disable-next-line no-shadow
   const { searchRequest } = props;
   searchRequest(search);
 };

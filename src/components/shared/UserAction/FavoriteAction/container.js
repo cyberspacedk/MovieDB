@@ -10,7 +10,6 @@ class FavoriteActionContainer extends Component {
   };
 
   handleFavorite = () => {
-    // eslint-disable-next-line no-shadow
     const { operationsFavoritesRequest, movieId } = this.props;
     this.setState(prevState => ({ favoriteStatus: !prevState.favoriteStatus }));
     operationsFavoritesRequest(movieId, true);

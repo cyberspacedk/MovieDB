@@ -9,7 +9,6 @@ import { getUserLogin } from '../../../../../store/authentifiction/selectors';
 
 class MenuContainer extends Component {
   handleLogout = () => {
-    // eslint-disable-next-line no-shadow
     const { authLogout, history } = this.props;
     authLogout();
     history.push('/');

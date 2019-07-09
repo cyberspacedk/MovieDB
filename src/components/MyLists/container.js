@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -22,7 +21,8 @@ class MyListsContainer extends Component {
   };
 
   componentDidMount() {
-    this.props.getCreatedListRequest();
+    const { getCreatedListRequest } = this.props;
+    getCreatedListRequest();
   }
 
   showModal = () => this.setState({ visibleMod: true });

@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-
 import { createLogic } from 'redux-logic';
 import { normalize } from 'normalizr';
 import writeToDatabase from '../database/actions';
@@ -9,6 +7,7 @@ import {
   getCreatedListError,
   getCreatedListRequest,
 } from './actions';
+import constant from '../../helpers/constants';
 
 const createListLogic = createLogic({
   type: 'CREATE_LIST_REQUEST',
@@ -16,16 +15,21 @@ const createListLogic = createLogic({
 
   async process({ httpClient, action }, dispatch, done) {
     const { name, description } = action.payload;
+    const { setSubmitting, setErrors, setStatus } = action.formikBag;
 
     try {
       await httpClient.post('list', {
         name,
         description,
       });
-
+      setStatus(constant.SUCCESS);
       dispatch(getCreatedListRequest());
     } catch (err) {
-      throw new Error(err);
+      setStatus(constant.FAILURE);
+      setErrors({ status: err.message });
+    } finally {
+      setStatus(constant.WAITING);
+      setSubmitting(false);
     }
     done();
   },

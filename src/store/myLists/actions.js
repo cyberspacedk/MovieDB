@@ -1,6 +1,7 @@
-const createListRequest = (name, description) => ({
+const createListRequest = (name, description, formikBag) => ({
   type: 'CREATE_LIST_REQUEST',
   payload: { name, description },
+  formikBag,
 });
 
 const deleteListRequest = id => ({

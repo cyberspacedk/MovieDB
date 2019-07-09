@@ -12,7 +12,6 @@ export const mapPropsToValues = () => ({
 });
 
 export const handleSubmit = (values, { props, resetForm }) => {
-  // eslint-disable-next-line no-shadow
   const { authRequest } = props;
   const { rememberMe: _, ...user } = values;
   authRequest(user);

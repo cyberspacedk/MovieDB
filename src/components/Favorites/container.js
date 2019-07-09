@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -18,11 +17,13 @@ import {
 
 class FavoritesContainer extends Component {
   componentDidMount() {
-    this.props.getFavoritesRequest();
+    const { getFavoritesRequest } = this.props;
+    getFavoritesRequest();
   }
 
   goToNextPage = page => {
-    this.props.getFavoritesRequest(page);
+    const { getFavoritesRequest } = this.props;
+    getFavoritesRequest(page);
   };
 
   render() {

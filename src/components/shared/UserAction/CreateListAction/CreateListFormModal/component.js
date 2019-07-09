@@ -1,31 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Field } from 'formik';
-import { Modal } from 'antd';
+import { Modal, Alert } from 'antd';
 import CreateListField from './CreateListField/component';
 
 const CreateListFormModal = ({
   visibleMod,
-  hideModal,
-  handleSubmit,
-  handleReset,
   errors,
+  handleFormCancel,
+  handleFormSubmit,
 }) => (
   <Modal
     title="Create list"
     visible={visibleMod}
     okButtonProps={{ disabled: errors.name || errors.description }}
-    onCancel={() => {
-      handleReset();
-      hideModal();
-    }}
-    onOk={() => {
-      handleSubmit();
-      hideModal();
-      setTimeout(handleReset, 0);
-    }}
+    onCancel={handleFormCancel}
+    onOk={handleFormSubmit}
   >
     <Form>
+      {errors && errors.status && (
+        <Alert
+          message="Fail list creation."
+          description={errors.status}
+          type="error"
+        />
+      )}
       <Field
         name="name"
         placeholder="Type list name"
@@ -42,9 +41,8 @@ const CreateListFormModal = ({
 
 CreateListFormModal.propTypes = {
   visibleMod: PropTypes.bool.isRequired,
-  hideModal: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  handleReset: PropTypes.func.isRequired,
+  handleFormCancel: PropTypes.func.isRequired,
+  handleFormSubmit: PropTypes.func.isRequired,
   errors: PropTypes.shape({
     name: PropTypes.string,
     description: PropTypes.string,

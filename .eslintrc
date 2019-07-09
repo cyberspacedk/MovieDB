@@ -26,6 +26,9 @@
   },
   "rules": {
     "no-console": 2,
+    "no-shadow": "off",
+    "no-nested-ternary": "off",
+    "camelcase": [0, { "properties": "never" }],
     "react/require-default-props": [0, { "forbidDefaultForRequired": true }],
     "linebreak-style": ["error", "unix"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

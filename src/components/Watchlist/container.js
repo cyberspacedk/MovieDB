@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -18,12 +17,13 @@ import {
 
 class WatchListContainer extends Component {
   componentDidMount() {
-    // eslint-disable-next-line react/destructuring-assignment
-    this.props.getWatchListRequest();
+    const { getWatchListRequest } = this.props;
+    getWatchListRequest();
   }
 
   goToNextPage = page => {
-    this.props.getWatchListRequest(page);
+    const { getWatchListRequest } = this.props;
+    getWatchListRequest(page);
   };
 
   render() {
