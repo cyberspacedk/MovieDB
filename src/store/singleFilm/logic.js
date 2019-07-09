@@ -29,7 +29,7 @@ const singleFilmLogic = createLogic({
         backdrops,
       };
       const { entities } = normalize(movie, Movies);
-      await dispatch(writeToDatabase(entities));
+      dispatch(writeToDatabase(entities));
       dispatch(singleFilmSuccess());
     } catch (err) {
       dispatch(singleFilmError());

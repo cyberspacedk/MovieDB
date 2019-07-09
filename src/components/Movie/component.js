@@ -21,7 +21,7 @@ const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
 
-const Movie = ({ error, loading, aboutFilm, genres }) => {
+const Movie = ({ error, loading, aboutFilm }) => {
   return (
     <Layout>
       {error && <Error />}
@@ -91,10 +91,9 @@ const Movie = ({ error, loading, aboutFilm, genres }) => {
                 <Col span={20} offset={2}>
                   <Paragraph>
                     <span className="accent-movie">Genres :</span>
-                    {genres &&
-                      genres.map(genre => (
-                        <Tag key={genre.id}>{genre.name.toUpperCase()}</Tag>
-                      ))}
+                    {aboutFilm.genres.map(genre => (
+                      <Tag key={genre.id}>{genre.name.toUpperCase()}</Tag>
+                    ))}
                   </Paragraph>
                 </Col>
               </Row>
@@ -196,7 +195,6 @@ Movie.propTypes = {
     budget: PropTypes.number,
     revenue: PropTypes.number,
   }).isRequired,
-  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Movie;

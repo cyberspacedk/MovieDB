@@ -1,21 +1,20 @@
-/* eslint-disable react/destructuring-assignment */
-
+/* eslint-disable no-shadow */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { singleFilmRequest } from '../../store/singleFilm/actions';
 import AboutFilm from './component';
-import {
-  isError,
-  isLoading,
-  getGenres,
-  getMovie,
-} from '../../store/singleFilm/selectors';
+import { isError, isLoading, getMovie } from '../../store/singleFilm/selectors';
 
 class Movie extends Component {
   componentDidMount() {
-    const { id } = this.props.match.params;
-    this.props.singleFilmRequest(id);
+    const {
+      match: {
+        params: { id },
+      },
+      singleFilmRequest,
+    } = this.props;
+    singleFilmRequest(id);
   }
 
   render() {
@@ -33,9 +32,15 @@ Movie.propTypes = {
   }).isRequired,
 };
 
-const mstp = (state, ownProps) => ({
-  aboutFilm: getMovie(state, ownProps) || {},
-  genres: getGenres(state, ownProps) || [],
+const mstp = (
+  state,
+  {
+    match: {
+      params: { id },
+    },
+  },
+) => ({
+  aboutFilm: getMovie(state, id),
   error: isError(state),
   loading: isLoading(state),
 });

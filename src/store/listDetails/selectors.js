@@ -4,9 +4,11 @@ const isEmpty = state => state.listDetails.ids.length === 0;
 
 const getListName = (state, ownProps) => {
   const { id } = ownProps.match.params;
-  return (
-    Object.keys(state.database.lists).length && state.database.lists[id].name
-  );
+  let listName = '';
+  if (state.database.lists[id]) {
+    listName = state.database.lists[id].name;
+  }
+  return listName;
 };
 
 const getListMovies = state => {

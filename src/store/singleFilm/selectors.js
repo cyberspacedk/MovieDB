@@ -1,19 +1,26 @@
-/* eslint-disable no-prototype-builtins */
+import { denormalize } from 'normalizr';
+import { Movies } from '../../schema';
 
 const isError = state => state.singleFilm.error;
 const isLoading = state => state.singleFilm.loading;
 
-const getMovie = (state, ownProps) => {
-  const { id } = ownProps.match.params;
-  return state.database.movies[id];
-};
+const getMovie = (state, id) => {
+  const mySchema = { movies: Movies };
+  let result = {};
 
-// eslint-disable-next-line consistent-return
-const getGenres = (state, ownProps) => {
-  const movie = getMovie(state, ownProps);
-  if (movie && movie.genres !== undefined) {
-    return movie.genres.map(id => state.database.genres[id]);
+  if (state.database.movies[id]) {
+    const entities = {
+      movies: {
+        ...state.database.movies,
+      },
+      genres: {
+        ...state.database.genres,
+      },
+    };
+
+    result = denormalize({ movies: id }, mySchema, entities);
   }
+  return result.movies;
 };
 
-export { isError, isLoading, getGenres, getMovie };
+export { isError, isLoading, getMovie };
