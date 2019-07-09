@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-
 import { createLogic } from 'redux-logic';
 import { normalize } from 'normalizr';
 import writeToDatabase from '../database/actions';
@@ -9,6 +7,7 @@ import {
   getCreatedListError,
   getCreatedListRequest,
 } from './actions';
+import * as constants from '../../helpers/constants';
 
 const createListLogic = createLogic({
   type: 'CREATE_LIST_REQUEST',
@@ -23,13 +22,13 @@ const createListLogic = createLogic({
         name,
         description,
       });
-      setStatus('succes');
+      setStatus(constants.success);
       dispatch(getCreatedListRequest());
     } catch (err) {
-      setStatus('error');
+      setStatus(constants.error);
       setErrors({ status: err.message });
     } finally {
-      setStatus('waiting');
+      setStatus(constants.waiting);
       setSubmitting(false);
     }
     done();

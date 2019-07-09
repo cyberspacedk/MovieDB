@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
@@ -10,8 +9,11 @@ import { createListRequest } from '../../../../../store/myLists/actions';
 
 class CreateListFormModalContainer extends Component {
   componentDidUpdate() {
-    const { status, hideModal } = this.props;
-    if (status === 'succes') hideModal();
+    const { status, hideModal, handleReset } = this.props;
+    if (status === 'success') {
+      hideModal();
+      handleReset();
+    }
   }
 
   handleFormCancel = () => {
@@ -21,9 +23,8 @@ class CreateListFormModalContainer extends Component {
   };
 
   handleFormSubmit = () => {
-    const { handleReset, handleSubmit } = this.props;
+    const { handleSubmit } = this.props;
     handleSubmit();
-    setTimeout(handleReset, 0);
   };
 
   render() {

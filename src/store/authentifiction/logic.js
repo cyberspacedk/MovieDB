@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { createLogic } from 'redux-logic';
 import Cookies from 'js-cookie';
 import { authLogout, authSuccess, authError } from './actions';

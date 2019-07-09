@@ -17,7 +17,6 @@ import { searchRequest } from '../../../../../store/search/actions';
 
 class MoviesContainer extends Component {
   goToNextPage = page => {
-    // eslint-disable-next-line no-shadow
     const { searchRequest, query } = this.props;
     searchRequest(query, page);
   };

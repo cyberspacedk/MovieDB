@@ -6,9 +6,9 @@ import FailAuth from './component';
 
 class FailAuthContainer extends Component {
   componentDidMount() {
+    const { tryAgain } = this.props;
     setTimeout(() => {
-      // eslint-disable-next-line react/destructuring-assignment
-      this.props.tryAgain();
+      tryAgain();
     }, 2000);
   }
 

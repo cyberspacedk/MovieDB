@@ -10,7 +10,6 @@ class WatchListActionContainer extends Component {
   };
 
   handleWatchList = () => {
-    // eslint-disable-next-line no-shadow
     const { operationsWatchListRequest, movieId } = this.props;
     this.setState(prevState => ({
       watchListStatus: !prevState.watchListStatus,

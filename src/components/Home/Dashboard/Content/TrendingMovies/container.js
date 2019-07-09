@@ -14,8 +14,8 @@ import {
 
 export class TrendingMoviesContainer extends Component {
   componentDidMount() {
-    // eslint-disable-next-line react/destructuring-assignment
-    this.props.fetchDataRequest();
+    const { fetchDataRequest } = this.props;
+    fetchDataRequest();
   }
 
   render() {
