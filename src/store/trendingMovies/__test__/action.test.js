@@ -19,7 +19,7 @@ describe('actions', () => {
     });
 
     it('should return responce - array', () => {
-      const response = [{}];
+      const response = [1, 2];
       const expectedAction = {
         type: 'FETCH_RESPONSE',
         payload: response,

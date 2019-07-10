@@ -25,11 +25,11 @@ describe('reducers', () => {
   it('should set films field to response - films array', () => {
     const action = {
       type: 'FETCH_RESPONSE',
-      payload: [{}],
+      payload: [1, 2, 3],
     };
     expect(reducer(initialState, action)).toEqual({
       ...initialState,
-      films: action.payload,
+      ids: action.payload,
     });
   });
 

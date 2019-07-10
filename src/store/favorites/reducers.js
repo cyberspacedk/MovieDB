@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   ids: [],
   total_results: 0,
   current_page: 0,
