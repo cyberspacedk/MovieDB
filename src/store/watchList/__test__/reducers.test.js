@@ -5,8 +5,13 @@ describe('Watchlist: reducers', () => {
     const action = {
       type: 'GET_WATCHLIST_REQUEST',
     };
-    expect(reducer(initialState, action)).toEqual({
+    const state = {
       ...initialState,
+      loading: false,
+      error: false,
+    };
+    expect(reducer(state, action)).toEqual({
+      ...state,
       loading: true,
       error: false,
     });
@@ -19,12 +24,16 @@ describe('Watchlist: reducers', () => {
         ids: [1, 2, 3],
         total_results: 3,
         current_page: 2,
-        loading: false,
-        error: false,
       },
     };
-    expect(reducer(initialState, action)).toEqual({
+    const state = {
       ...initialState,
+      loading: true,
+      error: false,
+    };
+    expect(reducer(state, action)).toEqual({
+      ...state,
+      loading: false,
       ...action.payload,
     });
   });
@@ -33,9 +42,15 @@ describe('Watchlist: reducers', () => {
     const action = {
       type: 'GET_WATCHLIST_ERROR',
     };
-    expect(reducer(initialState, action)).toEqual({
+    const state = {
       ...initialState,
+      loading: true,
+      error: false,
+    };
+    expect(reducer(state, action)).toEqual({
+      ...state,
       error: true,
+      loading: false,
     });
   });
 

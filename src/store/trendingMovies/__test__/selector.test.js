@@ -26,4 +26,15 @@ describe('TrendingMovies: selector', () => {
   it('returns false if data exist ', () => {
     expect(isEmpty(state)).toBeFalsy();
   });
+
+  it('returns true if data doesnt exist', () => {
+    const nextState = {
+      ...state,
+      trending: {
+        ...state.trending,
+        ids: [],
+      },
+    };
+    expect(isEmpty(nextState)).toBeTruthy();
+  });
 });
