@@ -38,6 +38,24 @@ describe('Watchlist: selector', () => {
     });
   });
 
+  describe('Watchlist: is data exist ?', () => {
+    const nextState = {
+      ...state,
+      watchlist: {
+        ...state.watchlist,
+        ids: [],
+      },
+    };
+
+    it('returns true if data doesnt exist', () => {
+      expect(isEmpty(nextState)).toBeTruthy();
+    });
+
+    it('returns false if data exist', () => {
+      expect(isEmpty(state)).toBeFalsy();
+    });
+  });
+
   describe('Watchlist: current page', () => {
     it('returns current page ', () => {
       expect(getCurrentPage(state)).toEqual(state.watchlist.current_page);

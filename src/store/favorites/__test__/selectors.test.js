@@ -33,6 +33,17 @@ describe('Favorites: selector', () => {
   });
 
   describe('Favorites: is data exist ?', () => {
+    const nextState = {
+      ...state,
+      favorites: {
+        ...state.favorites,
+        ids: [],
+      },
+    };
+    it('returns true if data doesnt exist', () => {
+      expect(isEmpty(nextState)).toBeTruthy();
+    });
+
     it('returns false if data exist', () => {
       expect(isEmpty(state)).toBeFalsy();
     });

@@ -24,40 +24,4 @@ describe('Component: Favorites', () => {
     );
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
-
-  it('Match its snapshot. Loading ...', () => {
-    const nextProps = {
-      ...props,
-      favorites: [],
-      loading: true,
-    };
-    const wrapper = shallow(
-      <Favorites {...nextProps} title="Favorites" removeBox />,
-    );
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('Match its snapshot. Error', () => {
-    const nextProps = {
-      ...props,
-      favorites: [],
-      error: true,
-    };
-    const wrapper = shallow(
-      <Favorites {...nextProps} title="Favorites" removeBox />,
-    );
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('Match its snapshot. Empty', () => {
-    const nextProps = {
-      ...props,
-      favorites: [],
-      empty: true,
-    };
-    const wrapper = shallow(
-      <Favorites {...nextProps} title="Favorites" removeBox />,
-    );
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
-  });
 });

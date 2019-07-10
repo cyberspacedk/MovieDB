@@ -5,8 +5,12 @@ describe('reducers', () => {
     const action = {
       type: 'FETCH_REQUEST',
     };
-    expect(reducer(initialState, action)).toEqual({
+    const state = {
       ...initialState,
+      loading: false,
+    };
+    expect(reducer(state, action)).toEqual({
+      ...state,
       loading: true,
     });
   });
@@ -16,8 +20,14 @@ describe('reducers', () => {
       type: 'FETCH_ERROR',
       payload: 'error message',
     };
-    expect(reducer(initialState, action)).toEqual({
+    const state = {
       ...initialState,
+      loading: true,
+      error: false,
+    };
+    expect(reducer(state, action)).toEqual({
+      ...state,
+      loading: false,
       error: action.payload,
     });
   });
@@ -27,8 +37,14 @@ describe('reducers', () => {
       type: 'FETCH_RESPONSE',
       payload: [1, 2, 3],
     };
-    expect(reducer(initialState, action)).toEqual({
+    const state = {
       ...initialState,
+      loading: true,
+      error: false,
+    };
+    expect(reducer(state, action)).toEqual({
+      ...state,
+      loading: false,
       ids: action.payload,
     });
   });
