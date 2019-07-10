@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Favorites Match its snapshot. Array provided 1`] = `
+<PageLayout
+  array={
+    Array [
+      Object {
+        "id": 1,
+        "overview": "Some description",
+        "title": "Some title",
+      },
+    ]
+  }
+  currentPage={1}
+  empty={false}
+  error={false}
+  goToNextPage={[MockFunction]}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  operations={[Function]}
+  removeBox={true}
+  title="Favorites"
+  totalResults={25}
+/>
+`;
+
+exports[`Component: Favorites Match its snapshot. Empty 1`] = `
+<PageLayout
+  array={Array []}
+  currentPage={1}
+  empty={true}
+  error={false}
+  goToNextPage={[MockFunction]}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  operations={[Function]}
+  removeBox={true}
+  title="Favorites"
+  totalResults={25}
+/>
+`;
+
+exports[`Component: Favorites Match its snapshot. Error 1`] = `
+<PageLayout
+  array={Array []}
+  currentPage={1}
+  empty={false}
+  error={true}
+  goToNextPage={[MockFunction]}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  operations={[Function]}
+  removeBox={true}
+  title="Favorites"
+  totalResults={25}
+/>
+`;
+
+exports[`Component: Favorites Match its snapshot. Loading ... 1`] = `
+<PageLayout
+  array={Array []}
+  currentPage={1}
+  empty={false}
+  error={false}
+  goToNextPage={[MockFunction]}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={true}
+  operations={[Function]}
+  removeBox={true}
+  title="Favorites"
+  totalResults={25}
+/>
+`;
