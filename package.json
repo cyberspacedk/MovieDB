@@ -29,7 +29,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test",
     "coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js",
@@ -66,5 +66,10 @@
     "lint-staged": "^8.2.0",
     "prettier": "^1.17.1",
     "redux-logic-test": "^2.0.0"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

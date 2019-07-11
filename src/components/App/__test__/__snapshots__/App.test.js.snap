@@ -4,8 +4,6 @@ exports[`Component: App should match its snapshot 1`] = `
 <div
   className="App"
 >
-  <Connect(ParentForm) />
-  <Connect(TopFilmsContainer) />
-  <GlobalStyleComponent />
+  <Connect(Home) />
 </div>
 `;
