@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FavoritesContainer  Should match its snapshot 1`] = `
+<CreateListActionContainer
+  addMovieToListRequest={[Function]}
+  getCreatedListRequest={[Function]}
+  myLists={
+    Array [
+      Object {},
+      undefined,
+      undefined,
+    ]
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+/>
+`;
