@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import WatchListContainer from '../container';
 import { getWatchListRequest } from '../../../store/watchList/actions';
@@ -22,14 +21,20 @@ describe('WatchListContainer ', () => {
   store.dispatch = jest.fn();
 
   const wrapper = shallow(<WatchListContainer store={store} />);
-  const container = wrapper.dive();
+  const container = wrapper.dive().dive();
+  const instance = container.instance();
 
   it('Should match its snapshot', () => {
-    expect(shallowToJson(container)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('Check call lifeCycleMethod componentDidMount', () => {
     mount(<WatchListContainer store={store} />);
+    expect(store.dispatch).toHaveBeenCalledWith(getWatchListRequest());
+  });
+
+  it('should call getWatchListRequest action', () => {
+    instance.componentDidMount();
     expect(store.dispatch).toHaveBeenCalledWith(getWatchListRequest());
   });
 

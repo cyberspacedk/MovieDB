@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
 import Favorites from '../component';
 
 describe('Component: Favorites', () => {
@@ -22,6 +21,6 @@ describe('Component: Favorites', () => {
     const wrapper = shallow(
       <Favorites {...props} title="Favorites" removeBox />,
     );
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });

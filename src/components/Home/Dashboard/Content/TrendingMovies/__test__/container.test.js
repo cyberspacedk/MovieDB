@@ -1,7 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { shallowToJson } from 'enzyme-to-json';
+import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import TrendingMoviesConnected from '../container';
 import { fetchDataRequest } from '../../../../../../store/trendingMovies/actions';
@@ -21,17 +19,14 @@ describe('TrendingMoviesContainer ', () => {
 
   const wrapper = shallow(<TrendingMoviesConnected store={store} />);
   const container = wrapper.dive();
+  const instance = container.instance();
 
   it('Should match its snapshot', () => {
-    expect(shallowToJson(container)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
-  it('Check call lifeCycleMethod componentDidMount', () => {
-    mount(
-      <Router>
-        <TrendingMoviesConnected store={store} />
-      </Router>,
-    );
+  xit('Check call lifeCycleMethod componentDidMount', () => {
+    instance.componentDidMount();
     expect(store.dispatch).toHaveBeenCalledWith(fetchDataRequest());
   });
 
