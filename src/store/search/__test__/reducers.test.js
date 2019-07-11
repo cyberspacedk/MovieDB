@@ -1,28 +1,32 @@
 import reducer, { initialState } from '../reducers';
 
-describe('List Details: reducers', () => {
-  it('should set field loading to true', () => {
+describe('Search: reducers', () => {
+  it('should set field loading to true and store query', () => {
     const action = {
-      type: 'GET_LIST_DETAILS_REQUEST',
+      type: 'SEARCH_REQUEST',
+      payload: 'sport',
     };
 
     const state = {
       ...initialState,
       loading: false,
+      query: '',
     };
 
     expect(reducer(state, action)).toEqual({
       ...state,
       loading: true,
+      query: 'sport',
     });
   });
 
   it('should store data', () => {
     const action = {
-      type: 'GET_LIST_DETAILS_RESPONSE',
+      type: 'SEARCH_RESPONSE',
       payload: {
         ids: 55,
-        totalResults: 3,
+        total_results: 3,
+        page: 3,
       },
     };
     const state = {
@@ -33,13 +37,14 @@ describe('List Details: reducers', () => {
       ...state,
       loading: false,
       ids: 55,
-      totalResults: 3,
+      total_results: 3,
+      page: 3,
     });
   });
 
   it('should set field error to true', () => {
     const action = {
-      type: 'GET_LIST_DETAILS_ERROR',
+      type: 'SEARCH_ERROR',
     };
     const state = {
       ...initialState,

@@ -1,6 +1,6 @@
 import reducer, { initialState } from '../reducers';
 
-describe('reducers', () => {
+describe('Database: reducers', () => {
   const action = {
     type: 'WRITE_TO_DATABASE',
     payload: {
@@ -11,9 +11,7 @@ describe('reducers', () => {
   };
 
   const state = {
-    movies: {},
-    lists: {},
-    genres: {},
+    ...initialState,
   };
 
   it('should return data', () => {

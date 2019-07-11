@@ -6,7 +6,7 @@ import {
   tryAgain,
 } from '../actions';
 
-describe('actions', () => {
+describe('Auth: actions', () => {
   it("should return - type:'AUTH_LOGOUT'", () => {
     const expectedAction = {
       type: 'AUTH_LOGOUT',

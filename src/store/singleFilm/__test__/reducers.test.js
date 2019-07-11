@@ -1,9 +1,9 @@
 import reducer, { initialState } from '../reducers';
 
-describe('List Details: reducers', () => {
+describe('Single: reducers', () => {
   it('should set field loading to true', () => {
     const action = {
-      type: 'GET_LIST_DETAILS_REQUEST',
+      type: 'SINGLE_REQUEST',
     };
 
     const state = {
@@ -17,14 +17,11 @@ describe('List Details: reducers', () => {
     });
   });
 
-  it('should store data', () => {
+  it('hould set field loading to false', () => {
     const action = {
-      type: 'GET_LIST_DETAILS_RESPONSE',
-      payload: {
-        ids: 55,
-        totalResults: 3,
-      },
+      type: 'SINGLE_RESPONSE',
     };
+
     const state = {
       ...initialState,
       loading: true,
@@ -32,14 +29,12 @@ describe('List Details: reducers', () => {
     expect(reducer(state, action)).toEqual({
       ...state,
       loading: false,
-      ids: 55,
-      totalResults: 3,
     });
   });
 
   it('should set field error to true', () => {
     const action = {
-      type: 'GET_LIST_DETAILS_ERROR',
+      type: 'SINGLE_ERROR',
     };
     const state = {
       ...initialState,

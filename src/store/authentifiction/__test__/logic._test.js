@@ -1,7 +1,7 @@
 import { authUserLogic, userLogoutLogic } from '../logic';
 import { httpClientMock, multiHttpClientMock } from '../../../helpers';
 
-describe('authUserLogic operation', () => {
+describe('Auth: authUserLogic', () => {
   const requests = [
     { method: 'get', response: { data: { request_token: 'token' } } },
     { method: 'post', response: {} },
@@ -44,7 +44,7 @@ describe('authUserLogic operation', () => {
 });
 
 // USER LOGOUT
-describe('userLogoutLogic operation', () => {
+describe('Auth: userLogoutLogic', () => {
   const httpClient = httpClientMock({
     method: 'delete',
   });

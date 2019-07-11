@@ -1,6 +1,6 @@
 import reducer, { initialState } from '../reducers';
 
-describe('reducers', () => {
+describe('Auth: reducers', () => {
   it('should return username and sessionId', () => {
     const action = {
       type: 'AUTH_SUCCESS',
@@ -8,13 +8,13 @@ describe('reducers', () => {
     };
 
     const state = {
-      failAuth: false,
+      ...initialState,
       username: '',
       sessionId: '',
     };
 
     expect(reducer(state, action)).toEqual({
-      failAuth: false,
+      ...state,
       username: 'fakeuser',
       sessionId: '53623g4jgfsusilss',
     });
@@ -25,12 +25,12 @@ describe('reducers', () => {
       type: 'AUTH_LOGOUT',
     };
     const state = {
-      failAuth: false,
+      ...initialState,
       username: 'fakeuser',
       sessionId: '53623g4jgfsusilss',
     };
     expect(reducer(state, action)).toEqual({
-      failAuth: false,
+      ...state,
       username: '',
       sessionId: '',
     });
@@ -68,9 +68,7 @@ describe('reducers', () => {
 
   it('should return initialState', () => {
     expect(reducer(undefined, {})).toEqual({
-      username: '',
-      sessionId: '',
-      failAuth: false,
+      ...initialState,
     });
   });
 });

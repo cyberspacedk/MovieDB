@@ -5,7 +5,7 @@ import {
   deleteMovieFromListRequest,
 } from '../actions';
 
-describe('actions', () => {
+describe('List Details: actions', () => {
   it("should return - type:'GET_LIST_DETAILS_ERROR'", () => {
     const expectedAction = {
       type: 'GET_LIST_DETAILS_ERROR',

@@ -1,6 +1,6 @@
 import { isAuthentificated, getUserLogin, isFailAuth } from '../selectors';
 
-describe('topfilms selector', () => {
+describe('Auth: selector', () => {
   const state = {
     user: {
       username: 'fakeuser',
@@ -28,13 +28,13 @@ describe('topfilms selector', () => {
 
   describe('grab username', () => {
     it('returns username', () => {
-      expect(getUserLogin(state)).toEqual(state.user.username);
+      expect(getUserLogin(state)).toEqual('fakeuser');
     });
   });
 
   describe('grab auth status', () => {
     it('returns is username auth ', () => {
-      expect(isFailAuth(state)).toEqual(state.user.failAuth);
+      expect(isFailAuth(state)).toBeFalsy();
     });
   });
 });

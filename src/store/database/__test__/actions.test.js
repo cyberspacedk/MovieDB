@@ -1,6 +1,6 @@
 import writeToDatabase from '../actions';
 
-describe('Darabase: actions', () => {
+describe('Database: actions', () => {
   it('should deliver data to database', () => {
     const entities = {
       movies: { 1: { id: 1 } },
