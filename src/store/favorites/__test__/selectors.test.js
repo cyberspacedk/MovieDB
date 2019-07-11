@@ -51,13 +51,13 @@ describe('Favorites: selector', () => {
 
   describe('Favorites: current page', () => {
     it('returns current page ', () => {
-      expect(getCurrentPage(state)).toEqual(state.favorites.current_page);
+      expect(getCurrentPage(state)).toEqual(2);
     });
   });
 
   describe('Favorites: total pages', () => {
     it('returns all pages ', () => {
-      expect(getTotalPages(state)).toEqual(state.favorites.total_results);
+      expect(getTotalPages(state)).toEqual(31);
     });
   });
 

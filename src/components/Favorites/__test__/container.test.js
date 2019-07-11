@@ -36,9 +36,12 @@ describe('FavoritesContainer ', () => {
   it('Check is calling container method.', () => {
     const wrapper = mount(<FavoritesContainer store={store} />);
     const container = wrapper.find('FavoritesContainer').instance();
-    jest.spyOn(container, 'goToNextPage');
+    jest.spyOn(store, 'dispatch');
     container.goToNextPage();
-    expect(container.goToNextPage).toHaveBeenCalled();
+    expect(store.dispatch).toHaveBeenCalledWith({
+      payload: 1,
+      type: 'GET_FAVORITES_REQUEST',
+    });
   });
 
   it('Map state and dispatch to props', () => {

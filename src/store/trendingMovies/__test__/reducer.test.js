@@ -40,7 +40,6 @@ describe('reducers', () => {
     const state = {
       ...initialState,
       loading: true,
-      error: false,
     };
     expect(reducer(state, action)).toEqual({
       ...state,

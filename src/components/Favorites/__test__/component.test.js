@@ -15,12 +15,12 @@ describe('Component: Favorites', () => {
     },
     operationsFavoritesRequest: () => {},
     goToNextPage: jest.fn(),
+    title: 'Favorites',
+    removeBox: true,
   };
 
   it('Match its snapshot. Array provided', () => {
-    const wrapper = shallow(
-      <Favorites {...props} title="Favorites" removeBox />,
-    );
+    const wrapper = shallow(<Favorites {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

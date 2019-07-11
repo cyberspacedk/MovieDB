@@ -12,7 +12,6 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: true,
-        error: false,
       };
     case 'GET_WATCHLIST_RESPONSE':
       return {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
 import TrendingMovies from '../component';
 
 describe('Component: TrendingMovies', () => {
@@ -13,7 +12,7 @@ describe('Component: TrendingMovies', () => {
 
   it('Match its snapshot. Array provided', () => {
     const wrapper = shallow(<TrendingMovies {...props} />);
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('Match its snapshot. Loading ...', () => {
@@ -23,7 +22,7 @@ describe('Component: TrendingMovies', () => {
       loading: true,
     };
     const wrapper = shallow(<TrendingMovies {...nextProps} />);
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('Match its snapshot. Error', () => {
@@ -33,16 +32,6 @@ describe('Component: TrendingMovies', () => {
       error: true,
     };
     const wrapper = shallow(<TrendingMovies {...nextProps} />);
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('Match its snapshot. Empty', () => {
-    const nextProps = {
-      ...props,
-      topFilms: [],
-      empty: true,
-    };
-    const wrapper = shallow(<TrendingMovies {...nextProps} />);
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
