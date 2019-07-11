@@ -27,10 +27,10 @@ describe('authUserLogic operation', () => {
 
   it('calls httpClient to get request token', () => {});
 
-  it('dispatches action - SET_USER_DATA', () => {
+  it('dispatches action - AUTH_SUCCESS', () => {
     expect(dispatch.mock.calls.length).toBe(1);
     expect(dispatch.mock.calls[0][0]).toEqual({
-      type: 'SET_USER_DATA',
+      type: 'AUTH_SUCCESS',
       payload: {
         username: 'somename',
         sessionId: '465sdc3awa',
@@ -49,21 +49,15 @@ describe('userLogoutLogic operation', () => {
     method: 'delete',
   });
 
-  const getState = jest.fn();
   const done = jest.fn();
   const dispatch = jest.fn();
 
-  getState.mockReturnValue({
-    username: '',
-    sessionId: '',
-  });
+  userLogoutLogic.process({ httpClient }, dispatch, done);
 
-  userLogoutLogic.process({ httpClient, getState }, dispatch, done);
-
-  it('dispatches action - DELETE_SESSION_ID', () => {
+  it('dispatches action - AUTH_LOGOUT', () => {
     expect(dispatch.mock.calls.length).toBe(1);
     expect(dispatch.mock.calls[0][0]).toEqual({
-      type: 'DELETE_SESSION_ID',
+      type: 'AUTH_LOGOUT',
     });
   });
 

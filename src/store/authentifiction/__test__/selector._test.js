@@ -1,10 +1,11 @@
-import { isAuthentificated, getUserLogin } from '../selectors';
+import { isAuthentificated, getUserLogin, isFailAuth } from '../selectors';
 
 describe('topfilms selector', () => {
   const state = {
     user: {
       username: 'fakeuser',
       sessionId: '12345',
+      failAuth: false,
     },
   };
   describe('session id exist', () => {
@@ -14,14 +15,26 @@ describe('topfilms selector', () => {
   });
 
   describe("session id doesn't exist", () => {
+    const nextState = {
+      user: {
+        ...state.user,
+        sessionId: '',
+      },
+    };
     it('returns false', () => {
-      expect(isAuthentificated({})).toBeFalsy();
+      expect(isAuthentificated(nextState)).toBeFalsy();
     });
   });
 
   describe('grab username', () => {
     it('returns username', () => {
       expect(getUserLogin(state)).toEqual(state.user.username);
+    });
+  });
+
+  describe('grab auth status', () => {
+    it('returns is username auth ', () => {
+      expect(isFailAuth(state)).toEqual(state.user.failAuth);
     });
   });
 });
