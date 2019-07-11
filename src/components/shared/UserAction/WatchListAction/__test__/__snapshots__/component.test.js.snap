@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: WatchListAction Match its snapshot. 1`] = `
+<Icon
+  onClick={[MockFunction]}
+  type="book"
+/>
+`;

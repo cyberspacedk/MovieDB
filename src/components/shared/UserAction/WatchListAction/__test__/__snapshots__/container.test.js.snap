@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WatchListActionContainer  Should match its snapshot 1`] = `
+<WatchListAction
+  handleWatchList={[Function]}
+  watchListStatus={false}
+/>
+`;

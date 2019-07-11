@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateListActionConnected  Should match its snapshot 1`] = `
+<FavoriteAction
+  favoriteStatus={false}
+  handleFavorite={[Function]}
+/>
+`;

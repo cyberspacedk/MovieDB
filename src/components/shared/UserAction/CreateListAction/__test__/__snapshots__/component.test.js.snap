@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: CreateListAction Match its snapshot. Item provided 1`] = `
+<Fragment>
+  <Popover
+    content={
+      <PopoverContent
+        addMovieToList={[MockFunction]}
+        movieId={777}
+        myLists={
+          Array [
+            Object {},
+          ]
+        }
+        showDialog={[MockFunction]}
+      />
+    }
+    mouseEnterDelay={0.1}
+    mouseLeaveDelay={0.1}
+    onVisibleChange={[MockFunction]}
+    overlayStyle={Object {}}
+    placement="top"
+    title="Add movie to list"
+    transitionName="zoom-big"
+    trigger="click"
+    visible={false}
+  >
+    <Icon
+      type="plus-circle"
+    />
+  </Popover>
+  <Connect(WithFormik(CreateListFormModalContainer))
+    hideModal={[MockFunction]}
+    visibleMod={false}
+  />
+</Fragment>
+`;

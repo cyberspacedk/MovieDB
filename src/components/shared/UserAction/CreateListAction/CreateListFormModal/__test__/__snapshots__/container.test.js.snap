@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateListActionConnected  Should match its snapshot 1`] = `
+<WithFormik(CreateListFormModalContainer)
+  createListRequest={[Function]}
+  handleReset={[MockFunction]}
+  handleSubmit={[MockFunction]}
+  hideModal={[MockFunction]}
+  isSubmitting={[MockFunction]}
+  status="waiting"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+/>
+`;
