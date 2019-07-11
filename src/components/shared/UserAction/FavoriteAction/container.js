@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import FavoriteAction from './component';
 import { operationsFavoritesRequest } from '../../../../store/favorites/actions';
 
-class FavoriteActionContainer extends Component {
+export class FavoriteActionContainer extends Component {
   state = {
     favoriteStatus: false,
   };

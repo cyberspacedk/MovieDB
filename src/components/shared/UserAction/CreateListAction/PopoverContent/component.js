@@ -28,7 +28,7 @@ PopoverContent.propTypes = {
       id: PropTypes.number,
     }),
   ).isRequired,
-  movieId: PropTypes.number.isRequired,
+  movieId: PropTypes.number,
   addMovieToList: PropTypes.func.isRequired,
 };
 

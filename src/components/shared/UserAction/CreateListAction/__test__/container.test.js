@@ -1,10 +1,9 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
+import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import CreateListActionConnected from '../container';
 
-describe('FavoritesContainer ', () => {
+describe('CreateListActionConnected ', () => {
   const store = configureStore()({
     myLists: {
       ids: [1, 2, 3],
@@ -21,7 +20,7 @@ describe('FavoritesContainer ', () => {
   const instance = container.instance();
 
   it('Should match its snapshot', () => {
-    expect(shallowToJson(container)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   xit('should update the count by 1 when invoked by default', () => {
@@ -31,18 +30,16 @@ describe('FavoritesContainer ', () => {
   });
 
   xit('Check is calling container method.', () => {
-    const wrapper = mount(<CreateListActionConnected store={store} />);
-    const container = wrapper.find('CreateListActionContainer').instance();
-    jest.spyOn(container, 'showPopover');
-    container.showPopover = jest.fn();
-    container.showPopover();
-    expect(container.showPopover).toHaveBeenCalled();
+    jest.spyOn(instance, 'showPopover');
+    instance.showPopover = jest.fn();
+    instance.showPopover();
+    expect(instance.showPopover).toHaveBeenCalled();
   });
 
-  xit('Map state and dispatch to props', () => {
+  it('Map state and dispatch to props', () => {
     expect(container.props()).toEqual(
       expect.objectContaining({
-        favorites: expect.any(Array),
+        myLists: expect.any(Array),
         getCreatedListRequest: expect.any(Function),
         addMovieToListRequest: expect.any(Function),
       }),

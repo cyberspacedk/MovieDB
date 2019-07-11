@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FavoritesContainer  Should match its snapshot 1`] = `
+exports[`CreateListActionConnected  Should match its snapshot 1`] = `
 <CreateListActionContainer
   addMovieToListRequest={[Function]}
   getCreatedListRequest={[Function]}
