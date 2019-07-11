@@ -77,7 +77,7 @@ const deleteCreatedListLogic = createLogic({
 
       dispatch(getCreatedListRequest());
     } catch (err) {
-      dispatch(getCreatedListRequest());
+      throw new Error(err);
     }
     done();
   },

@@ -10,7 +10,6 @@ describe('Auth: authUserLogic', () => {
 
   const httpClient = multiHttpClientMock(requests);
 
-  const getState = jest.fn();
   const done = jest.fn();
   const dispatch = jest.fn();
   const action = {
@@ -19,11 +18,8 @@ describe('Auth: authUserLogic', () => {
       password: 'qwerty123',
     },
   };
-  getState.mockReturnValue({
-    user: {},
-  });
 
-  authUserLogic.process({ httpClient, getState, action }, dispatch, done);
+  authUserLogic.process({ httpClient, action }, dispatch, done);
 
   it('calls httpClient to get request token', () => {});
 
@@ -43,7 +39,6 @@ describe('Auth: authUserLogic', () => {
   });
 });
 
-// USER LOGOUT
 describe('Auth: userLogoutLogic', () => {
   const httpClient = httpClientMock({
     method: 'delete',

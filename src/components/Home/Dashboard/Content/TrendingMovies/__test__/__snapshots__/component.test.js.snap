@@ -1,6 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component: TrendingMovies Match its snapshot. Array provided 1`] = `
+exports[`Component: TopFilms Match its snapshot. Display ...Loading  1`] = `
 <PageLayout
   array={
     Array [
@@ -14,6 +15,17 @@ exports[`Component: TrendingMovies Match its snapshot. Array provided 1`] = `
   currentPage={0}
   empty={false}
   error={false}
+        "poster_path": "path to picture",
+        "title": "Some title",
+      },
+      Object {
+        "id": 2,
+        "poster_path": "path to another picture",
+        "title": "Another title",
+      },
+    ]
+  }
+  currentPage={0}
   goToNextPage={[Function]}
   history={
     Object {
@@ -21,6 +33,7 @@ exports[`Component: TrendingMovies Match its snapshot. Array provided 1`] = `
     }
   }
   loading={false}
+  loading={true}
   operations={[Function]}
   removeBox={false}
   title=""
@@ -54,6 +67,23 @@ exports[`Component: TrendingMovies Match its snapshot. Loading ... 1`] = `
   currentPage={0}
   empty={false}
   error={false}
+exports[`Component: TopFilms Match its snapshot. Display Data from DataBse 1`] = `
+<PageLayout
+  array={
+    Array [
+      Object {
+        "id": 1,
+        "poster_path": "path to picture",
+        "title": "Some title",
+      },
+      Object {
+        "id": 2,
+        "poster_path": "path to another picture",
+        "title": "Another title",
+      },
+    ]
+  }
+  currentPage={0}
   goToNextPage={[Function]}
   history={
     Object {
@@ -61,6 +91,7 @@ exports[`Component: TrendingMovies Match its snapshot. Loading ... 1`] = `
     }
   }
   loading={true}
+  loading={false}
   operations={[Function]}
   removeBox={false}
   title=""
