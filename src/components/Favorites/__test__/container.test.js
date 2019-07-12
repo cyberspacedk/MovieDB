@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import FavoritesContainer from '../container';
 import { getFavoritesRequest } from '../../../store/favorites/actions';
@@ -31,17 +31,6 @@ describe('FavoritesContainer ', () => {
   it('Check call lifeCycleMethod componentDidMount', () => {
     instance.componentDidMount();
     expect(store.dispatch).toHaveBeenCalledWith(getFavoritesRequest());
-  });
-
-  it('Check is calling container method.', () => {
-    const wrapper = mount(<FavoritesContainer store={store} />);
-    const container = wrapper.find('FavoritesContainer').instance();
-    jest.spyOn(store, 'dispatch');
-    container.goToNextPage();
-    expect(store.dispatch).toHaveBeenCalledWith({
-      payload: 1,
-      type: 'GET_FAVORITES_REQUEST',
-    });
   });
 
   it('Map state and dispatch to props', () => {

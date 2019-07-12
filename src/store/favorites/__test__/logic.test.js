@@ -45,23 +45,38 @@ describe('Favorites: getFavoritesLogic', () => {
 });
 
 describe('Favorites: operationsFavoriteLogic', () => {
-  const request = {
-    method: 'post',
-    response: { data: { results: [{}] } },
-  };
-
-  const httpClient = httpClientMock(request);
-
   const done = jest.fn();
   const dispatch = jest.fn();
+  const action = {
+    payload: 5,
+  };
 
-  operationsFavoriteLogic.process(
-    { httpClient, action: { payload: {} } },
-    dispatch,
-    done,
-  );
+  describe('Success operation', () => {
+    const request = {
+      method: 'post',
+      response: { data: { results: [{}] } },
+    };
+    const httpClient = httpClientMock(request);
 
-  it('calls done', () => {
-    expect(done).toBeCalled();
+    operationsFavoriteLogic.process({ httpClient, action }, dispatch, done);
+
+    it('calls done', () => {
+      expect(done).toBeCalled();
+    });
+  });
+
+  describe('Operation ends with fail', () => {
+    const httpClient = httpClientMock({ method: 'post', response: {} });
+
+    operationsFavoriteLogic.process({ httpClient, action }, dispatch, done);
+    it('Should throw Error', () => {
+      expect(() => {
+        throw new Error();
+      }).toThrow();
+    });
+
+    it('calls done', () => {
+      expect(done).toBeCalled();
+    });
   });
 });

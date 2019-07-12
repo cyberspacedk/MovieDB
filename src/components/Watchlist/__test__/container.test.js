@@ -17,10 +17,12 @@ describe('WatchListContainer ', () => {
       movies: { 1: {} },
     },
   });
-
+  const props = {
+    page: 5,
+  };
   store.dispatch = jest.fn();
 
-  const wrapper = shallow(<WatchListContainer store={store} />);
+  const wrapper = shallow(<WatchListContainer store={store} {...props} />);
   const container = wrapper.dive().dive();
   const instance = container.instance();
 
@@ -28,13 +30,17 @@ describe('WatchListContainer ', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('Check call lifeCycleMethod componentDidMount', () => {
-    expect(store.dispatch).toHaveBeenCalledWith(getWatchListRequest());
-  });
-
   it('should call getWatchListRequest action', () => {
     instance.componentDidMount();
     expect(store.dispatch).toHaveBeenCalledWith(getWatchListRequest());
+  });
+
+  it('check class method', () => {
+    instance.goToNextPage(props.page);
+    expect(store.dispatch).toHaveBeenCalledWith({
+      type: 'GET_WATCHLIST_REQUEST',
+      payload: 5,
+    });
   });
 
   it('Map state and dispatch to props', () => {
