@@ -28,12 +28,18 @@ describe('My Lists: createListLogic', () => {
 
   createListLogic.process({ httpClient, action }, dispatch, done);
 
-  it('dispatches action - GET_CREATED_LIST_REQUEST', () => {
+  it('dispatch action', () => {
     expect(dispatch.mock.calls.length).toBe(1);
+  });
+
+  it('dispatches action - GET_CREATED_LIST_REQUEST', () => {
     expect(dispatch.mock.calls[0][0]).toEqual({
       type: 'GET_CREATED_LIST_REQUEST',
       payload: 1,
     });
+  });
+
+  it('should launch form status', () => {
     expect(action.formikBag.setStatus).toHaveBeenCalled();
   });
 
@@ -45,6 +51,7 @@ describe('My Lists: createListLogic', () => {
 describe('My Lists: getCreatedListLogic', () => {
   const request = {
     method: 'get',
+    response: { data: { results: {} } },
   };
   const httpClient = httpClientMock(request);
 
@@ -58,10 +65,16 @@ describe('My Lists: getCreatedListLogic', () => {
 
   getCreatedListLogic.process({ httpClient, action }, dispatch, done);
 
+  it('dispatches 2 action ', () => {
+    expect(dispatch.mock.calls.length).toBe(2);
+  });
+
+  it('dispatches action - WRITE_TO_DATABASE', () => {
+    expect(dispatch.mock.calls[0][0].type).toBe('WRITE_TO_DATABASE');
+  });
+
   it('dispatches action - GET_CREATED_LIST_RESPONSE', () => {
-    // запускает экшн в catch
-    // console.log(dispatch.mock.calls);
-    expect(dispatch.mock.calls.length).toBe(1);
+    expect(dispatch.mock.calls[1][0].type).toBe('GET_CREATED_LIST_RESPONSE');
   });
 
   it('calls done', () => {
@@ -85,8 +98,11 @@ describe('My Lists: deleteCreatedListLogic', () => {
 
   deleteCreatedListLogic.process({ httpClient, action }, dispatch, done);
 
-  it('dispatches action - GET_CREATED_LIST_REQUEST', () => {
+  it('dispatches action ', () => {
     expect(dispatch.mock.calls.length).toBe(1);
+  });
+
+  it('dispatches action - GET_CREATED_LIST_REQUEST', () => {
     expect(dispatch.mock.calls[0][0]).toEqual({
       type: 'GET_CREATED_LIST_REQUEST',
       payload: 1,
