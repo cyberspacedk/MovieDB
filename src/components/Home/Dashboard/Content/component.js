@@ -4,7 +4,7 @@ import SearchPanel from './SearchPanel';
 import TrendingMovies from './TrendingMovies';
 import Movies from './Movies';
 
-const PageContent = ({ searchResponse }) => {
+export const PageContent = ({ searchResponse }) => {
   return (
     <>
       <SearchPanel />
@@ -16,4 +16,5 @@ const PageContent = ({ searchResponse }) => {
 PageContent.propTypes = {
   searchResponse: PropTypes.number.isRequired,
 };
+
 export default PageContent;

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Home Match its snapshot. Display Dashboard 1`] = `
+<Fragment>
+  <Dashboard />
+</Fragment>
+`;
+
+exports[`Component: Home Match its snapshot. Display LoginPage  1`] = `
+<Fragment>
+  <Connect(WithFormik(LoginForm)) />
+</Fragment>
+`;

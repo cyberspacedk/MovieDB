@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container: MyListsContainer Snapshot: should match 1`] = `
+<MyListsContainer
+  currentPage={2}
+  deleteListRequest={[Function]}
+  empty={false}
+  error={false}
+  getCreatedListRequest={[Function]}
+  loading={false}
+  myLists={
+    Array [
+      Object {
+        "id": 1,
+      },
+      undefined,
+      undefined,
+    ]
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  totalResults={10}
+/>
+`;

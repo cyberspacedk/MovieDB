@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: SearchPanel Snapshot: should match. Display search results 1`] = `
+<Adapter>
+  <Row
+    gutter={0}
+    type="flex"
+  >
+    <Col
+      lg={
+        Object {
+          "offset": 4,
+          "span": 16,
+        }
+      }
+      md={
+        Object {
+          "offset": 3,
+          "span": 18,
+        }
+      }
+      sm={
+        Object {
+          "offset": 2,
+          "span": 20,
+        }
+      }
+      xl={
+        Object {
+          "offset": 5,
+          "span": 14,
+        }
+      }
+      xs={
+        Object {
+          "offset": 1,
+          "span": 22,
+        }
+      }
+    >
+      <Form>
+        <FormikConnect(FieldInner)
+          component={[Function]}
+          name="search"
+        />
+      </Form>
+    </Col>
+  </Row>
+</Adapter>
+`;

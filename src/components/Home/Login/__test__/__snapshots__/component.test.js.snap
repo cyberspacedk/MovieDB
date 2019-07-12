@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: LoginForm Match its snapshot. Display Fail auth 1`] = `
+<div
+  className="center"
+>
+  <Adapter>
+    <Adapter>
+      <Row
+        gutter={0}
+        justify="center"
+        type="flex"
+      >
+        <Connect(FailAuthContainer) />
+      </Row>
+    </Adapter>
+  </Adapter>
+</div>
+`;
+
+exports[`Component: LoginForm Match its snapshot. Display Login form  1`] = `
+<div
+  className="center"
+>
+  <Adapter>
+    <Adapter>
+      <Row
+        gutter={0}
+        justify="center"
+        type="flex"
+      >
+        <Typography>
+          <Title>
+            The Movie DB
+          </Title>
+          <Form>
+            <FormikConnect(FieldInner)
+              component={[Function]}
+              name="username"
+              placeholder="Username"
+            />
+            <FormikConnect(FieldInner)
+              component={[Function]}
+              name="password"
+              placeholder="Password"
+            />
+            <FormikConnect(FieldInner)
+              component={[Function]}
+            />
+          </Form>
+        </Typography>
+      </Row>
+    </Adapter>
+  </Adapter>
+</div>
+`;

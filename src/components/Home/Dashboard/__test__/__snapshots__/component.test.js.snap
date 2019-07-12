@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Dashboard Match its snapshot. Display Dashboard 1`] = `
+<div>
+  <PageHeader />
+  <Switch>
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(PageContent)",
+          "type": [Function],
+        }
+      }
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(MyListsContainer)",
+          "type": [Function],
+        }
+      }
+      exact={true}
+      path="/lists/"
+    />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(FavoritesContainer)",
+          "type": [Function],
+        }
+      }
+      path="/favorites"
+    />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(WatchListContainer)",
+          "type": [Function],
+        }
+      }
+      path="/watchlist"
+    />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(ListDetailsContainer)",
+          "type": [Function],
+        }
+      }
+      exact={true}
+      path="/lists/:id"
+    />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(Movie)",
+          "type": [Function],
+        }
+      }
+      path="/:id"
+    />
+  </Switch>
+</div>
+`;

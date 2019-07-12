@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: FormField should match its snapshot. Field with error 1`] = `
+<FormItem
+  hasFeedback={false}
+  help="Too short password"
+  validateStatus="error"
+>
+  <Input
+    disabled={false}
+    name="password"
+    prefix={
+      <Icon
+        style={
+          Object {
+            "color": "rgba(0,0,0,.25)",
+          }
+        }
+        type="lock"
+      />
+    }
+    type="password"
+  />
+</FormItem>
+`;
+
+exports[`Component: FormField should match its snapshot. Field without errors 1`] = `
+<FormItem
+  hasFeedback={false}
+>
+  <Input
+    disabled={false}
+    name="password"
+    prefix={
+      <Icon
+        style={
+          Object {
+            "color": "rgba(0,0,0,.25)",
+          }
+        }
+        type="lock"
+      />
+    }
+    type="password"
+  />
+</FormItem>
+`;

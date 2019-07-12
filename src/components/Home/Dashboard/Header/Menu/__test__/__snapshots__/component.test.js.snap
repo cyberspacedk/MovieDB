@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: UserMenu Snapshot: should match 1`] = `
+<Col>
+  <Avatar
+    icon="user"
+    shape="circle"
+    size="default"
+    src="https://media.wired.com/photos/5b7350e75fc74d47846ce4e4/master/w_550,c_limit/Popcorn-869302844.jpg"
+  />
+  <Dropdown
+    mouseEnterDelay={0.15}
+    mouseLeaveDelay={0.1}
+    overlay={[Function]}
+    placement="bottomLeft"
+  >
+    <Text>
+      User-1
+      <Icon
+        type="caret-down"
+      />
+    </Text>
+  </Dropdown>
+</Col>
+`;

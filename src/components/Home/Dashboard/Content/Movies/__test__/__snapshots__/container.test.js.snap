@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container: MoviesContainer Snapshot: should match 1`] = `
+<withRouter(MoviesContainer)
+  currentPage={3}
+  empty={false}
+  error={false}
+  loading={false}
+  movies={
+    Array [
+      Object {
+        "id": 1,
+      },
+      undefined,
+      undefined,
+    ]
+  }
+  query="some film"
+  searchRequest={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  totalResults={10}
+/>
+`;

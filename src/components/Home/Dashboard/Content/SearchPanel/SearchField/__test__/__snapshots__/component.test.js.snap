@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: SearchField Snapshot: should match. Field with errors 1`] = `
+<FormItem
+  hasFeedback={false}
+  help="Some error"
+  validateStatus="error"
+>
+  <Search
+    className="top-margin"
+    enterButton="Search"
+    name="search"
+    placeholder="Enter movie name"
+    size="large"
+  />
+</FormItem>
+`;
+
+exports[`Component: SearchField Snapshot: should match. Field without errors 1`] = `
+<FormItem
+  hasFeedback={false}
+>
+  <Search
+    className="top-margin"
+    enterButton="Search"
+    name="search"
+    placeholder="Enter movie name"
+    size="large"
+  />
+</FormItem>
+`;

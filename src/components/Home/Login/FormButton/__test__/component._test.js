@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
 import FormButton from '../component';
 
 describe('Component: FormButton', () => {
@@ -11,8 +10,23 @@ describe('Component: FormButton', () => {
     },
   };
 
-  it('should match its snapshot.', () => {
+  it('should match its snapshot. Active button', () => {
     const button = shallow(<FormButton {...props} />);
-    expect(shallowToJson(button)).toMatchSnapshot();
+    expect(button).toMatchSnapshot();
+  });
+
+  it('should match its snapshot. Disabled button', () => {
+    const nextProps = {
+      form: {
+        errors: {
+          username: 'retricted symbol',
+        },
+        touched: {
+          username: 'required',
+        },
+      },
+    };
+    const button = shallow(<FormButton {...nextProps} />);
+    expect(button).toMatchSnapshot();
   });
 });

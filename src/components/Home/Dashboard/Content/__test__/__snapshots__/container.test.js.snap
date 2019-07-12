@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Content Match its snapshot 1`] = `
+<Fragment>
+  <Connect(WithFormik(SearchPanel)) />
+  <Connect(withRouter(TrendingMoviesContainer)) />
+</Fragment>
+`;
