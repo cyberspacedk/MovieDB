@@ -57,46 +57,6 @@ exports[`Component: PageLayout Match its snapshot. Array provided 1`] = `
 </Adapter>
 `;
 
-exports[`Component: PageLayout Match its snapshot. Empty 1`] = `
-<Adapter>
-  <Adapter>
-    <Row
-      gutter={0}
-    >
-      <Col
-        offset={2}
-        span={20}
-      >
-        <div
-          className="top-margin"
-        >
-          <Title>
-            some title
-          </Title>
-        </div>
-      </Col>
-    </Row>
-    <div
-      className="top-margin"
-    >
-      <Row
-        gutter={16}
-        justify="center"
-        type="flex"
-      >
-        <Col
-          span={20}
-        />
-      </Row>
-      <EmptyResult />
-    </div>
-  </Adapter>
-  <BackTop
-    visibilityHeight={400}
-  />
-</Adapter>
-`;
-
 exports[`Component: PageLayout Match its snapshot. Error 1`] = `
 <Adapter>
   <Adapter>

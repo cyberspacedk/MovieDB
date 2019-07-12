@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import WatchListContainer from '../container';
 import { getWatchListRequest } from '../../../store/watchList/actions';
@@ -29,21 +29,12 @@ describe('WatchListContainer ', () => {
   });
 
   it('Check call lifeCycleMethod componentDidMount', () => {
-    mount(<WatchListContainer store={store} />);
     expect(store.dispatch).toHaveBeenCalledWith(getWatchListRequest());
   });
 
   it('should call getWatchListRequest action', () => {
     instance.componentDidMount();
     expect(store.dispatch).toHaveBeenCalledWith(getWatchListRequest());
-  });
-
-  it('Check is calling container method.', () => {
-    const wrapper = mount(<WatchListContainer store={store} />);
-    const container = wrapper.find('WatchListContainer').instance();
-    jest.spyOn(container, 'goToNextPage');
-    container.goToNextPage();
-    expect(container.goToNextPage).toHaveBeenCalled();
   });
 
   it('Map state and dispatch to props', () => {

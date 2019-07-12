@@ -47,15 +47,6 @@ describe('Component: PageLayout', () => {
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
 
-  it('Match its snapshot. Empty', () => {
-    const nextProps = {
-      ...props,
-      empty: true,
-    };
-    const wrapper = shallow(<PageLayout {...nextProps} />);
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
-  });
-
   it('Match its snapshot. No title', () => {
     const nextProps = {
       ...props,

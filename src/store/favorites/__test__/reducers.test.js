@@ -9,13 +9,11 @@ describe('Favorites: reducers', () => {
     const state = {
       ...initialState,
       loading: false,
-      error: false,
     };
 
     expect(reducer(state, action)).toEqual({
       ...state,
       loading: true,
-      error: false,
     });
   });
 

@@ -34,21 +34,9 @@ describe('Favorites: getFavoritesLogic', () => {
     expect(dispatch.mock.calls.length).toBe(2);
   });
 
-  xit('dispatches action - WRITE_TO_DATABASE and GET_FAVORITES_RESPONSE', () => {
-    expect(dispatch.mock.calls[0][0]).toEqual({
-      type: 'WRITE_TO_DATABASE',
-      payload: {
-        movies: entities.movies,
-        genres: entities.genres,
-        lists: entities.lists,
-      },
-    });
-    expect(dispatch.mock.calls[0][1]).toEqual({
-      type: 'GET_FAVORITES_RESPONSE',
-      payload: {
-        ids: [1],
-      },
-    });
+  it('dispatches action - WRITE_TO_DATABASE and GET_FAVORITES_RESPONSE', () => {
+    expect(dispatch.mock.calls[0][0].type).toEqual('WRITE_TO_DATABASE');
+    expect(dispatch.mock.calls[1][0].type).toEqual('GET_FAVORITES_RESPONSE');
   });
 
   it('calls done', () => {
