@@ -1,28 +1,37 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
-import TopFilms from '../component';
+import TrendingMovies from '../component';
 
-describe('Component: TopFilms', () => {
+describe('Component: TrendingMovies', () => {
   const props = {
     loading: false,
-    topFilms: [
-      { id: 1, title: 'Some title', poster_path: 'path to picture' },
-      { id: 2, title: 'Another title', poster_path: 'path to another picture' },
-    ],
+    topFilms: [{ id: 1, title: 'Some title', overview: 'Some description' }],
+    error: false,
+    empty: false,
   };
 
-  it('Match its snapshot. Display Data from DataBse', () => {
-    const TopFilmsComponent = shallow(<TopFilms {...props} />);
-    expect(shallowToJson(TopFilmsComponent)).toMatchSnapshot();
+  it('Match its snapshot. Array provided', () => {
+    const wrapper = shallow(<TrendingMovies {...props} />);
+    expect(wrapper).toMatchSnapshot();
   });
 
-  it('Match its snapshot. Display ...Loading ', () => {
+  it('Match its snapshot. Loading ...', () => {
     const nextProps = {
       ...props,
+      topFilms: [],
       loading: true,
     };
-    const TopFilmsComponent = shallow(<TopFilms {...nextProps} />);
-    expect(shallowToJson(TopFilmsComponent)).toMatchSnapshot();
+    const wrapper = shallow(<TrendingMovies {...nextProps} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('Match its snapshot. Error', () => {
+    const nextProps = {
+      ...props,
+      topFilms: [],
+      error: true,
+    };
+    const wrapper = shallow(<TrendingMovies {...nextProps} />);
+    expect(wrapper).toMatchSnapshot();
   });
 });

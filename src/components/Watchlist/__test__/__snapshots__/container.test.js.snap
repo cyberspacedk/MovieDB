@@ -1,12 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Wishlist container should match snapshot 1`] = `
+exports[`WatchListContainer  Should match its snapshot 1`] = `
 <WatchList
-  empty={true}
-  error={null}
+  currentPage={2}
+  empty={false}
+  error={false}
   getWatchListRequest={[Function]}
   goToNextPage={[Function]}
-  loading={false}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={true}
   operationsWatchListRequest={[Function]}
   store={
     Object {
@@ -33,6 +39,11 @@ exports[`Wishlist container should match snapshot 1`] = `
       "subscribe": [Function],
     }
   }
-  watchList={Array []}
+  totalResults={1}
+  watchList={
+    Array [
+      Object {},
+    ]
+  }
 />
 `;

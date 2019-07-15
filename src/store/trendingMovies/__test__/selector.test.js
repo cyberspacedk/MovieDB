@@ -1,22 +1,40 @@
-import { getTopFilmsSelector, isloading, isError } from '../selectors';
+import { getTrending, isloading, isError, isEmpty } from '../selectors';
 
-describe('topfilms selector', () => {
+describe('TrendingMovies: selector', () => {
   const state = {
-    topFilms: {
-      films: [{}],
+    trending: {
+      ids: [1],
       loading: false,
       error: false,
     },
+    database: {
+      movies: { 1: { id: 1 } },
+    },
   };
   it('returns all films', () => {
-    expect(getTopFilmsSelector(state)).toEqual(state.topFilms.films);
+    expect(getTrending(state)).toEqual([{ id: 1 }]);
   });
 
-  it('returns loadiing status', () => {
-    expect(isloading(state)).toEqual(state.topFilms.loading);
+  it('returns loading status', () => {
+    expect(isloading(state)).toBeFalsy();
   });
 
   it('returns error status', () => {
-    expect(isError(state)).toEqual(state.topFilms.error);
+    expect(isError(state)).toBeFalsy();
+  });
+
+  it('returns false if data exist ', () => {
+    expect(isEmpty(state)).toBeFalsy();
+  });
+
+  it('returns true if data doesnt exist', () => {
+    const nextState = {
+      ...state,
+      trending: {
+        ...state.trending,
+        ids: [],
+      },
+    };
+    expect(isEmpty(nextState)).toBeTruthy();
   });
 });

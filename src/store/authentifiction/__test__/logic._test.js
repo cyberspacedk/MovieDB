@@ -1,7 +1,5 @@
 import { authUserLogic, userLogoutLogic } from '../logic';
-import httpClientMock, {
-  multiHttpClientMock,
-} from '../../../helpers/httpClientMock';
+import { httpClientMock, multiHttpClientMock } from '../../../helpers';
 
 describe('authUserLogic operation', () => {
   const requests = [

@@ -1,4 +1,4 @@
-const writeToDatabase = ({ movies, lists, genres }) => ({
+const writeToDatabase = ({ movies = {}, lists = {}, genres = {} }) => ({
   type: 'WRITE_TO_DATABASE',
   payload: {
     movies,

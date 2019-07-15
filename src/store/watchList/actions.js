@@ -1,7 +1,9 @@
-const operationsWatchListRequest = (movieId, what) => ({
+const operationsWatchListRequest = (movieId, whatToDo) => ({
   type: 'OPERATIONS_WATCHLIST_REQUEST',
-  payload: movieId,
-  whatToDo: what,
+  payload: {
+    movieId,
+    whatToDo,
+  },
 });
 
 const getWatchListError = () => ({

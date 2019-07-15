@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TopFilmsContainer  Should match its snapshot 1`] = `
-<TopFilmsContainer
+exports[`TrendingMoviesContainer  Should match its snapshot 1`] = `
+<withRouter(TrendingMoviesContainer)
+  empty={false}
   error={false}
   fetchDataRequest={[Function]}
   loading={false}
@@ -19,7 +20,7 @@ exports[`TopFilmsContainer  Should match its snapshot 1`] = `
     Array [
       Object {
         "id": 1,
-        "title": "Some title",
+        "overview": "some text",
       },
     ]
   }

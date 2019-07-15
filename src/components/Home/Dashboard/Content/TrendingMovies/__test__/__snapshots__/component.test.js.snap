@@ -1,50 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: TopFilms Match its snapshot. Display ...Loading  1`] = `
-<div>
-  <styled.h2>
-    Top Week chart 
-  </styled.h2>
-  <styled.ul>
-    <li>
-      ...Loading
-    </li>
-  </styled.ul>
-</div>
+exports[`Component: TrendingMovies Match its snapshot. Array provided 1`] = `
+<PageLayout
+  array={
+    Array [
+      Object {
+        "id": 1,
+        "overview": "Some description",
+        "title": "Some title",
+      },
+    ]
+  }
+  currentPage={0}
+  empty={false}
+  error={false}
+  goToNextPage={[Function]}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  operations={[Function]}
+  removeBox={false}
+  title=""
+  totalResults={0}
+/>
 `;
 
-exports[`Component: TopFilms Match its snapshot. Display Data from DataBse 1`] = `
-<div>
-  <styled.h2>
-    Top Week chart 
-  </styled.h2>
-  <styled.ul>
-    <styled.li
-      key="1"
-    >
-      <img
-        alt="Poster"
-        src="https://image.tmdb.org/t/p/w200path to picture"
-      />
-      <h2>
-         
-        Some title
-         
-      </h2>
-    </styled.li>
-    <styled.li
-      key="2"
-    >
-      <img
-        alt="Poster"
-        src="https://image.tmdb.org/t/p/w200path to another picture"
-      />
-      <h2>
-         
-        Another title
-         
-      </h2>
-    </styled.li>
-  </styled.ul>
-</div>
+exports[`Component: TrendingMovies Match its snapshot. Error 1`] = `
+<PageLayout
+  array={Array []}
+  currentPage={0}
+  empty={false}
+  error={true}
+  goToNextPage={[Function]}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  operations={[Function]}
+  removeBox={false}
+  title=""
+  totalResults={0}
+/>
+`;
+
+exports[`Component: TrendingMovies Match its snapshot. Loading ... 1`] = `
+<PageLayout
+  array={Array []}
+  currentPage={0}
+  empty={false}
+  error={false}
+  goToNextPage={[Function]}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={true}
+  operations={[Function]}
+  removeBox={false}
+  title=""
+  totalResults={0}
+/>
 `;

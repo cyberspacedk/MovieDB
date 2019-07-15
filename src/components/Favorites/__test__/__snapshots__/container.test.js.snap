@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FavoritesContainer  Should match its snapshot 1`] = `
+<Favorites
+  currentPage={2}
+  empty={false}
+  error={false}
+  favorites={
+    Array [
+      Object {},
+      undefined,
+      undefined,
+    ]
+  }
+  getFavoritesRequest={[Function]}
+  goToNextPage={[Function]}
+  loading={true}
+  operationsFavoritesRequest={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "payload": 1,
+              "type": "GET_FAVORITES_REQUEST",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  totalResults={1}
+/>
+`;

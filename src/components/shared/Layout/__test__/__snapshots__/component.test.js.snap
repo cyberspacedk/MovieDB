@@ -1,0 +1,242 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: PageLayout Match its snapshot. Array provided 1`] = `
+<Adapter>
+  <Adapter>
+    <Row
+      gutter={0}
+    >
+      <Col
+        offset={2}
+        span={20}
+      >
+        <div
+          className="top-margin"
+        >
+          <Title>
+            some title
+          </Title>
+        </div>
+      </Col>
+    </Row>
+    <div
+      className="top-margin"
+    >
+      <Row
+        gutter={16}
+        justify="center"
+        type="flex"
+      >
+        <Col
+          span={20}
+        >
+          <CardItemContainer
+            history={
+              Object {
+                "push": [Function],
+              }
+            }
+            item={
+              Object {
+                "id": 1,
+                "overview": "Some description",
+                "title": "Some title",
+              }
+            }
+            key="1"
+            operations={[Function]}
+            removeBox={false}
+          />
+        </Col>
+      </Row>
+    </div>
+  </Adapter>
+  <BackTop
+    visibilityHeight={400}
+  />
+</Adapter>
+`;
+
+exports[`Component: PageLayout Match its snapshot. Error 1`] = `
+<Adapter>
+  <Adapter>
+    <Error />
+    <Row
+      gutter={0}
+    >
+      <Col
+        offset={2}
+        span={20}
+      >
+        <div
+          className="top-margin"
+        >
+          <Title>
+            some title
+          </Title>
+        </div>
+      </Col>
+    </Row>
+    <div
+      className="top-margin"
+    >
+      <Row
+        gutter={16}
+        justify="center"
+        type="flex"
+      >
+        <Col
+          span={20}
+        />
+      </Row>
+    </div>
+  </Adapter>
+  <BackTop
+    visibilityHeight={400}
+  />
+</Adapter>
+`;
+
+exports[`Component: PageLayout Match its snapshot. Loading ... 1`] = `
+<Adapter>
+  <Adapter>
+    <Row
+      gutter={0}
+    >
+      <Col
+        offset={2}
+        span={20}
+      >
+        <div
+          className="top-margin"
+        >
+          <Title>
+            some title
+          </Title>
+        </div>
+      </Col>
+    </Row>
+    <Spinner />
+  </Adapter>
+  <BackTop
+    visibilityHeight={400}
+  />
+</Adapter>
+`;
+
+exports[`Component: PageLayout Match its snapshot. No remove box 1`] = `
+<Adapter>
+  <Adapter>
+    <Row
+      gutter={0}
+    >
+      <Col
+        offset={2}
+        span={20}
+      >
+        <div
+          className="top-margin"
+        >
+          <Title>
+            some title
+          </Title>
+        </div>
+      </Col>
+    </Row>
+    <div
+      className="top-margin"
+    >
+      <Row
+        gutter={16}
+        justify="center"
+        type="flex"
+      >
+        <Col
+          span={20}
+        />
+      </Row>
+    </div>
+  </Adapter>
+  <BackTop
+    visibilityHeight={400}
+  />
+</Adapter>
+`;
+
+exports[`Component: PageLayout Match its snapshot. No title 1`] = `
+<Adapter>
+  <Adapter>
+    <div
+      className="top-margin"
+    >
+      <Row
+        gutter={16}
+        justify="center"
+        type="flex"
+      >
+        <Col
+          span={20}
+        />
+      </Row>
+    </div>
+  </Adapter>
+  <BackTop
+    visibilityHeight={400}
+  />
+</Adapter>
+`;
+
+exports[`Component: PageLayout Match its snapshot. With pagination 1`] = `
+<Adapter>
+  <Adapter>
+    <Row
+      gutter={0}
+    >
+      <Col
+        offset={2}
+        span={20}
+      >
+        <div
+          className="top-margin"
+        >
+          <Title>
+            some title
+          </Title>
+        </div>
+      </Col>
+    </Row>
+    <div
+      className="top-margin"
+    >
+      <Row
+        gutter={16}
+        justify="center"
+        type="flex"
+      >
+        <Col
+          span={20}
+        />
+      </Row>
+      <Row
+        gutter={0}
+        justify="center"
+        type="flex"
+      >
+        <Col>
+          <Pagination
+            className="pagination"
+            current={1}
+            defaultCurrent={1}
+            defaultPageSize={20}
+            onChange={[Function]}
+            total={55}
+          />
+        </Col>
+      </Row>
+    </div>
+  </Adapter>
+  <BackTop
+    visibilityHeight={400}
+  />
+</Adapter>
+`;

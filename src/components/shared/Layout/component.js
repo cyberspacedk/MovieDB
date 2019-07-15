@@ -85,6 +85,9 @@ PageLayout.defaultProps = {
   totalResults: 0,
   currentPage: 0,
   goToNextPage: () => {},
+  history: {
+    push: () => {},
+  },
 };
 
 PageLayout.propTypes = {
@@ -94,7 +97,7 @@ PageLayout.propTypes = {
     }),
   ).isRequired,
   totalResults: PropTypes.number,
-  history: PropTypes.shape(PropTypes.object).isRequired,
+  history: PropTypes.shape({ push: PropTypes.func }),
   goToNextPage: PropTypes.func,
   operations: PropTypes.func,
   loading: PropTypes.bool.isRequired,

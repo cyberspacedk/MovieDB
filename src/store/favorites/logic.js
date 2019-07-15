@@ -9,8 +9,7 @@ const operationsFavoriteLogic = createLogic({
   latest: true,
 
   async process({ httpClient, action }, dispatch, done) {
-    const movieId = action.payload;
-    const { whatToDo } = action;
+    const { movieId, whatToDo } = action.payload;
 
     try {
       await httpClient.post(`account/{account_id}/favorite`, {
@@ -42,7 +41,6 @@ const getFavoritesLogic = createLogic({
           },
         },
       );
-
       const { entities, result } = normalize(data.results, [Movies]);
       const response = {
         ids: result,

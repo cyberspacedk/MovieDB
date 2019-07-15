@@ -29,17 +29,26 @@ const WatchList = ({
     />
   );
 };
+WatchList.defaultProps = {
+  currentPage: 0,
+  totalResults: 0,
+  history: {
+    push: () => {},
+  },
+};
 
 WatchList.propTypes = {
   watchList: PropTypes.arrayOf(PropTypes.object).isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
-  history: PropTypes.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
   operationsWatchListRequest: PropTypes.func.isRequired,
-  totalResults: PropTypes.number.isRequired,
+  totalResults: PropTypes.number,
   empty: PropTypes.bool.isRequired,
   goToNextPage: PropTypes.func.isRequired,
-  currentPage: PropTypes.number.isRequired,
+  currentPage: PropTypes.number,
 };
 
 export default WatchList;

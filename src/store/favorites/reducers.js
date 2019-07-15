@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   ids: [],
   total_results: 0,
   current_page: 0,
@@ -12,7 +12,6 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: true,
-        error: false,
       };
     case 'GET_FAVORITES_RESPONSE':
       return {

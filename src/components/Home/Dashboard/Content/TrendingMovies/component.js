@@ -12,13 +12,19 @@ const TrendingMovies = ({ loading, error, topFilms, history, empty }) => (
     totalResults={0}
   />
 );
-
+TrendingMovies.defaultProps = {
+  history: {
+    push: () => {},
+  },
+};
 TrendingMovies.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   empty: PropTypes.bool.isRequired,
   topFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
-  history: PropTypes.shape(PropTypes.object).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
 };
 
 export default TrendingMovies;

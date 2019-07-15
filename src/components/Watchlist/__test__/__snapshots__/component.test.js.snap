@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: WatchList Match its snapshot. Array provided 1`] = `
+<PageLayout
+  array={
+    Array [
+      Object {
+        "id": 1,
+        "overview": "Some description",
+        "title": "Some title",
+      },
+    ]
+  }
+  currentPage={1}
+  empty={false}
+  error={false}
+  goToNextPage={[MockFunction]}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  operations={[Function]}
+  removeBox={true}
+  title="Watchlist"
+  totalResults={25}
+/>
+`;

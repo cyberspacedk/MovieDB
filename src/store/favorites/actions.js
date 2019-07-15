@@ -1,7 +1,9 @@
-const operationsFavoritesRequest = (movieId, what) => ({
+const operationsFavoritesRequest = (movieId, whatToDo) => ({
   type: 'OPERATIONS_FAVORITES_REQUEST',
-  payload: movieId,
-  whatToDo: what,
+  payload: {
+    movieId,
+    whatToDo,
+  },
 });
 
 const getFavoritesError = () => ({
