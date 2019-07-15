@@ -18,8 +18,10 @@ describe('Favorites: actions', () => {
   it('should add or remove film', () => {
     const expectedAction = {
       type: 'OPERATIONS_FAVORITES_REQUEST',
-      payload: 2,
-      whatToDo: true,
+      payload: {
+        movieId: 2,
+        whatToDo: true,
+      },
     };
     expect(operationsFavoritesRequest(2, true)).toEqual(expectedAction);
   });

@@ -20,6 +20,7 @@ describe('Watchlist: selector', () => {
       movies: { 1: { id: 1 } },
     },
   };
+
   describe('Watchlist: data is loading', () => {
     it('returns loading true', () => {
       expect(isLoading(state)).toBeTruthy();
@@ -58,13 +59,13 @@ describe('Watchlist: selector', () => {
 
   describe('Watchlist: current page', () => {
     it('returns current page ', () => {
-      expect(getCurrentPage(state)).toEqual(state.watchlist.current_page);
+      expect(getCurrentPage(state)).toEqual(2);
     });
   });
 
   describe('Watchlist: total pages', () => {
     it('returns all pages ', () => {
-      expect(getTotalPages(state)).toEqual(state.watchlist.total_results);
+      expect(getTotalPages(state)).toEqual(31);
     });
   });
 

@@ -9,9 +9,7 @@ const operationWatchListLogic = createLogic({
   latest: true,
 
   async process({ httpClient, action }, dispatch, done) {
-    const movieId = action.payload;
-    const { whatToDo } = action;
-
+    const { movieId, whatToDo } = action.payload;
     try {
       await httpClient.post('account/{account_id}/watchlist', {
         media_type: 'movie',

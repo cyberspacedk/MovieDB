@@ -1,4 +1,4 @@
-import reducer, { initialState } from '../reducers';
+import reducer from '../reducers';
 
 describe('Watchlist: reducers', () => {
   it('should set loading field to true', () => {
@@ -6,11 +6,9 @@ describe('Watchlist: reducers', () => {
       type: 'GET_WATCHLIST_REQUEST',
     };
     const state = {
-      ...initialState,
       loading: false,
     };
     expect(reducer(state, action)).toEqual({
-      ...state,
       loading: true,
     });
   });
@@ -25,14 +23,18 @@ describe('Watchlist: reducers', () => {
       },
     };
     const state = {
-      ...initialState,
+      ids: [],
+      total_results: 0,
+      current_page: 0,
       loading: true,
       error: false,
     };
     expect(reducer(state, action)).toEqual({
-      ...state,
+      ids: [1, 2, 3],
+      total_results: 3,
+      current_page: 2,
       loading: false,
-      ...action.payload,
+      error: false,
     });
   });
 
@@ -41,18 +43,22 @@ describe('Watchlist: reducers', () => {
       type: 'GET_WATCHLIST_ERROR',
     };
     const state = {
-      ...initialState,
       loading: true,
       error: false,
     };
     expect(reducer(state, action)).toEqual({
-      ...state,
       error: true,
       loading: false,
     });
   });
 
   it('should return initialState', () => {
-    expect(reducer(undefined, {})).toEqual(initialState);
+    expect(reducer(undefined, {})).toEqual({
+      ids: [],
+      total_results: 0,
+      current_page: 0,
+      loading: false,
+      error: false,
+    });
   });
 });

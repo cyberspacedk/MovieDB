@@ -18,17 +18,22 @@ export const toStorage = (key, val) => {
 export const fromStorage = key => JSON.parse(localStorage.getItem(key));
 
 export const httpClientMock = (
-  { method, response, reject } = { reject: false },
-) => ({
-  [method]: () =>
-    new Promise((resolve, deny) => {
-      if (reject) {
-        deny(response);
-      } else {
-        resolve(response);
-      }
-    }),
-});
+  { method, response, reject } = { reject: false, response: {} },
+) => {
+  const httpClient = {
+    [method]: () =>
+      new Promise((resolve, deny) => {
+        if (reject) {
+          deny(response);
+        } else {
+          resolve(response);
+        }
+      }),
+  };
+  const spy = jest.spyOn(httpClient, method);
+  httpClient.spy = spy;
+  return httpClient;
+};
 
 export const multiHttpClientMock = mocks => {
   const httpClient = { spies: {} };

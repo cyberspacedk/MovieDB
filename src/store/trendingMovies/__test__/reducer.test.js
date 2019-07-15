@@ -1,4 +1,4 @@
-import reducer, { initialState } from '../reducers';
+import reducer from '../reducers';
 
 describe('reducers', () => {
   it('should set loading field to true', () => {
@@ -6,11 +6,9 @@ describe('reducers', () => {
       type: 'FETCH_REQUEST',
     };
     const state = {
-      ...initialState,
       loading: false,
     };
     expect(reducer(state, action)).toEqual({
-      ...state,
       loading: true,
     });
   });
@@ -21,12 +19,10 @@ describe('reducers', () => {
       payload: 'error message',
     };
     const state = {
-      ...initialState,
       loading: true,
       error: false,
     };
     expect(reducer(state, action)).toEqual({
-      ...state,
       loading: false,
       error: action.payload,
     });
@@ -38,17 +34,20 @@ describe('reducers', () => {
       payload: [1, 2, 3],
     };
     const state = {
-      ...initialState,
       loading: true,
+      ids: [],
     };
     expect(reducer(state, action)).toEqual({
-      ...state,
       loading: false,
-      ids: action.payload,
+      ids: [1, 2, 3],
     });
   });
 
   it('should return initialState', () => {
-    expect(reducer(undefined, {})).toEqual(initialState);
+    expect(reducer(undefined, {})).toEqual({
+      ids: [],
+      loading: false,
+      error: false,
+    });
   });
 });

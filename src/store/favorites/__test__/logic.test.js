@@ -1,12 +1,19 @@
 /* eslint-disable global-require */
-
+import { normalize } from 'normalizr';
+import { Movies } from '../../../schema';
 import { operationsFavoriteLogic, getFavoritesLogic } from '../logic';
 import { httpClientMock } from '../../../helpers';
 
 describe('Favorites: getFavoritesLogic', () => {
   const request = {
     method: 'get',
-    response: { data: { results: [{}] } },
+    response: {
+      data: {
+        results: [{ id: 1 }, { id: 2 }],
+        page: 3,
+        total_results: 77,
+      },
+    },
   };
 
   const httpClient = httpClientMock(request);
@@ -17,40 +24,39 @@ describe('Favorites: getFavoritesLogic', () => {
       ids: [1],
     },
   };
-  beforeEach(() => {
-    jest.resetModules();
-  });
 
   getFavoritesLogic.process({ httpClient, action }, dispatch, done);
+
+  const { data } = request.response;
+  const { entities, result } = normalize(data.results, [Movies]);
 
   it('Check: is all actions were dispatched', () => {
     expect(dispatch.mock.calls.length).toBe(2);
   });
 
-  xit('Use mock module normalizr', () => {
-    jest.doMock('normalizr', () => ({
-      normalize: jest.fn(() => ({
-        entities: {
-          movies: { 1: { id: 1 } },
-        },
-        result: [1],
-      })),
-    }));
-    const { normalize } = require('normalizr');
-    const { result } = normalize();
-    expect(result).toEqual([1]);
-
-    expect(dispatch.mock.calls[0][0]).toEqual({
+  it('Use mock module normalizr', () => {
+    expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: 'WRITE_TO_DATABASE',
       payload: {
-        movies: { 1: { id: 1 } },
+        ...entities,
+        lists: {},
+        genres: {},
       },
     });
   });
 
-  xit('Check favorites response', () => {
-    expect(dispatch.mock.calls[1][0]).toEqual({
+  it('Check favorites response', () => {
+    const response = {
+      ids: result,
+      total_results: data.total_results,
+      current_page: data.page,
+    };
+
+    expect(dispatch).toHaveBeenNthCalledWith(2, {
       type: 'GET_FAVORITES_RESPONSE',
+      payload: {
+        ...response,
+      },
     });
   });
 
@@ -81,7 +87,12 @@ describe('Favorites: operationsFavoriteLogic', () => {
   });
 
   describe('Operation ends with fail', () => {
-    const httpClient = httpClientMock({ method: 'post', response: {} });
+    const request = {
+      method: 'post',
+      response: { data: { results: [{}] } },
+      reject: true,
+    };
+    const httpClient = httpClientMock(request);
 
     operationsFavoriteLogic.process({ httpClient, action }, dispatch, done);
     it('Should throw Error', () => {

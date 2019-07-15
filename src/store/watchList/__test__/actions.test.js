@@ -18,8 +18,10 @@ describe('Watchlist: actions', () => {
   it('should add or remove film ', () => {
     const expectedAction = {
       type: 'OPERATIONS_WATCHLIST_REQUEST',
-      payload: 155,
-      whatToDo: false,
+      payload: {
+        movieId: 155,
+        whatToDo: false,
+      },
     };
     expect(operationsWatchListRequest(155, false)).toEqual(expectedAction);
   });
