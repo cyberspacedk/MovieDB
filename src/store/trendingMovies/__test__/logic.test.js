@@ -12,11 +12,11 @@ describe('getTopFilmsLogic operation', () => {
 
   getTopFilmsLogic.process({ httpClient }, dispatch, done);
 
-  it('dispatches action - FETCH_RESPONSE', () => {
+  xit('dispatches action - FETCH_RESPONSE', () => {
     expect(dispatch.mock.calls.length).toBe(1);
   });
 
-  it('calls done', () => {
+  xit('calls done', () => {
     expect(done).toBeCalled();
   });
 });

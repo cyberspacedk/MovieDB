@@ -13,14 +13,12 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         username: payload.username,
         sessionId: payload.sessionId,
-        failAuth: false,
       };
     case 'AUTH_LOGOUT':
       return {
         ...state,
         username: '',
         sessionId: '',
-        failAuth: false,
       };
     case 'AUTH_ERROR':
       return {

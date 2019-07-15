@@ -1,4 +1,4 @@
-import reducer, { initialState } from '../reducers';
+import reducer from '../reducers';
 
 describe('Auth: reducers', () => {
   it('should return username and sessionId', () => {
@@ -8,13 +8,11 @@ describe('Auth: reducers', () => {
     };
 
     const state = {
-      ...initialState,
       username: '',
       sessionId: '',
     };
 
     expect(reducer(state, action)).toEqual({
-      ...state,
       username: 'fakeuser',
       sessionId: '53623g4jgfsusilss',
     });
@@ -25,12 +23,10 @@ describe('Auth: reducers', () => {
       type: 'AUTH_LOGOUT',
     };
     const state = {
-      ...initialState,
       username: 'fakeuser',
       sessionId: '53623g4jgfsusilss',
     };
     expect(reducer(state, action)).toEqual({
-      ...state,
       username: '',
       sessionId: '',
     });
@@ -41,12 +37,10 @@ describe('Auth: reducers', () => {
       type: 'AUTH_ERROR',
     };
     const state = {
-      ...initialState,
       failAuth: false,
     };
 
     expect(reducer(state, action)).toEqual({
-      ...state,
       failAuth: true,
     });
   });
@@ -56,19 +50,19 @@ describe('Auth: reducers', () => {
       type: 'TRY_AGAIN',
     };
     const state = {
-      ...initialState,
       failAuth: true,
     };
 
     expect(reducer(state, action)).toEqual({
-      ...state,
       failAuth: false,
     });
   });
 
   it('should return initialState', () => {
     expect(reducer(undefined, {})).toEqual({
-      ...initialState,
+      username: '',
+      sessionId: '',
+      failAuth: false,
     });
   });
 });

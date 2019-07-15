@@ -1,4 +1,4 @@
-import reducer, { initialState } from '../reducers';
+import reducer from '../reducers';
 
 describe('Search: reducers', () => {
   it('should set field loading to true and store query', () => {
@@ -8,13 +8,11 @@ describe('Search: reducers', () => {
     };
 
     const state = {
-      ...initialState,
       loading: false,
       query: '',
     };
 
     expect(reducer(state, action)).toEqual({
-      ...state,
       loading: true,
       query: 'sport',
     });
@@ -30,7 +28,10 @@ describe('Search: reducers', () => {
       },
     };
     const state = {
-      ...initialState,
+      ids: [],
+      page: 0,
+      total_results: 0,
+      error: false,
       loading: true,
     };
     expect(reducer(state, action)).toEqual({
@@ -47,19 +48,22 @@ describe('Search: reducers', () => {
       type: 'SEARCH_ERROR',
     };
     const state = {
-      ...initialState,
       error: false,
     };
 
     expect(reducer(state, action)).toEqual({
-      ...state,
       error: true,
     });
   });
 
   it('should return initialState', () => {
     expect(reducer(undefined, {})).toEqual({
-      ...initialState,
+      ids: [],
+      page: 0,
+      total_results: 0,
+      loading: false,
+      error: false,
+      query: '',
     });
   });
 });

@@ -1,4 +1,4 @@
-import reducer, { initialState } from '../reducers';
+import reducer from '../reducers';
 
 describe('My Lists: reducers', () => {
   it('should set field loading to true', () => {
@@ -7,12 +7,10 @@ describe('My Lists: reducers', () => {
     };
 
     const state = {
-      ...initialState,
       loading: false,
     };
 
     expect(reducer(state, action)).toEqual({
-      ...state,
       loading: true,
     });
   });
@@ -28,14 +26,12 @@ describe('My Lists: reducers', () => {
     };
 
     const state = {
-      ...initialState,
       ids: [],
       total_results: 0,
       current_page: 0,
       loading: true,
     };
     expect(reducer(state, action)).toEqual({
-      ...state,
       ids: [1, 2, 3],
       total_results: 3,
       current_page: 7,
@@ -48,19 +44,21 @@ describe('My Lists: reducers', () => {
       type: 'GET_CREATED_LIST_ERROR',
     };
     const state = {
-      ...initialState,
       error: false,
     };
 
     expect(reducer(state, action)).toEqual({
-      ...state,
       error: true,
     });
   });
 
   it('should return initialState', () => {
     expect(reducer(undefined, {})).toEqual({
-      ...initialState,
+      ids: [],
+      total_results: 0,
+      current_page: 0,
+      loading: false,
+      error: false,
     });
   });
 });

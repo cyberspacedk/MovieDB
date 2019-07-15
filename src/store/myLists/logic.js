@@ -16,7 +16,6 @@ const createListLogic = createLogic({
   async process({ httpClient, action }, dispatch, done) {
     const { name, description } = action.payload;
     const { setSubmitting, setErrors, setStatus } = action.formikBag;
-
     try {
       await httpClient.post('list', {
         name,

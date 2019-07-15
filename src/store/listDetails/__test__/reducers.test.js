@@ -1,4 +1,4 @@
-import reducer, { initialState } from '../reducers';
+import reducer from '../reducers';
 
 describe('List Details: reducers', () => {
   it('should set field loading to true', () => {
@@ -7,12 +7,10 @@ describe('List Details: reducers', () => {
     };
 
     const state = {
-      ...initialState,
       loading: false,
     };
 
     expect(reducer(state, action)).toEqual({
-      ...state,
       loading: true,
     });
   });
@@ -26,11 +24,11 @@ describe('List Details: reducers', () => {
       },
     };
     const state = {
-      ...initialState,
+      ids: [],
+      totalResults: 0,
       loading: true,
     };
     expect(reducer(state, action)).toEqual({
-      ...state,
       loading: false,
       ids: 55,
       totalResults: 3,
@@ -42,19 +40,20 @@ describe('List Details: reducers', () => {
       type: 'GET_LIST_DETAILS_ERROR',
     };
     const state = {
-      ...initialState,
       error: false,
     };
 
     expect(reducer(state, action)).toEqual({
-      ...state,
       error: true,
     });
   });
 
   it('should return initialState', () => {
     expect(reducer(undefined, {})).toEqual({
-      ...initialState,
+      ids: [],
+      totalResults: 0,
+      loading: false,
+      error: false,
     });
   });
 });

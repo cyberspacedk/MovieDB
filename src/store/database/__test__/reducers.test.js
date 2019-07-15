@@ -1,4 +1,4 @@
-import reducer, { initialState } from '../reducers';
+import reducer from '../reducers';
 
 describe('Database: reducers', () => {
   const action = {
@@ -11,7 +11,9 @@ describe('Database: reducers', () => {
   };
 
   const state = {
-    ...initialState,
+    movies: {},
+    lists: {},
+    genres: {},
   };
 
   it('should return data', () => {
@@ -24,7 +26,9 @@ describe('Database: reducers', () => {
 
   it('should return initialState', () => {
     expect(reducer(undefined, {})).toEqual({
-      ...initialState,
+      movies: {},
+      lists: {},
+      genres: {},
     });
   });
 });
