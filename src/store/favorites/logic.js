@@ -49,6 +49,7 @@ const getFavoritesLogic = createLogic({
         total_results: data.total_results,
         current_page: data.page,
       };
+
       dispatch(writeToDatabase(entities));
       dispatch(getFavoritesResponse(response));
     } catch (err) {

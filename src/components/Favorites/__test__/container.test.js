@@ -33,6 +33,14 @@ describe('FavoritesContainer ', () => {
     expect(store.dispatch).toHaveBeenCalledWith(getFavoritesRequest());
   });
 
+  it('check class method', () => {
+    instance.goToNextPage(5);
+    expect(store.dispatch).toHaveBeenCalledWith({
+      type: 'GET_FAVORITES_REQUEST',
+      payload: 5,
+    });
+  });
+
   it('Map state and dispatch to props', () => {
     expect(container.props()).toEqual(
       expect.objectContaining({

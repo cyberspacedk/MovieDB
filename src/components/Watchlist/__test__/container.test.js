@@ -17,12 +17,10 @@ describe('WatchListContainer ', () => {
       movies: { 1: {} },
     },
   });
-  const props = {
-    page: 5,
-  };
+
   store.dispatch = jest.fn();
 
-  const wrapper = shallow(<WatchListContainer store={store} {...props} />);
+  const wrapper = shallow(<WatchListContainer store={store} />);
   const container = wrapper.dive().dive();
   const instance = container.instance();
 
@@ -36,7 +34,7 @@ describe('WatchListContainer ', () => {
   });
 
   it('check class method', () => {
-    instance.goToNextPage(props.page);
+    instance.goToNextPage(5);
     expect(store.dispatch).toHaveBeenCalledWith({
       type: 'GET_WATCHLIST_REQUEST',
       payload: 5,
