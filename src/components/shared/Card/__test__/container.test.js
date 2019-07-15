@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
 import CardItemContainer from '../container';
 
 describe('FavoritesContainer ', () => {
@@ -16,7 +15,7 @@ describe('FavoritesContainer ', () => {
   const instance = container.instance();
 
   it('Should match its snapshot', () => {
-    expect(shallowToJson(container)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('Check is calling container method.', () => {

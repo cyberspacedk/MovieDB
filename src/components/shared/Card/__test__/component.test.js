@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
 import CardItem from '../component';
 
 describe('Component: Card', () => {
@@ -13,7 +12,7 @@ describe('Component: Card', () => {
 
   it('Match its snapshot. Item provided', () => {
     const wrapper = shallow(<CardItem {...props} />);
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('Match its snapshot. Card without image', () => {
@@ -22,7 +21,7 @@ describe('Component: Card', () => {
       item: { title: 'Tittle', overview: 'Overview' },
     };
     const wrapper = shallow(<CardItem {...nextProps} />);
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('Match its snapshot. Card without remove box', () => {
@@ -31,6 +30,6 @@ describe('Component: Card', () => {
       removeBox: false,
     };
     const wrapper = shallow(<CardItem {...nextProps} />);
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
