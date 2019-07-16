@@ -1,66 +1,151 @@
+/* eslint-disable global-require */
+import { normalize } from 'normalizr';
+import { Movies } from '../../../schema';
 import { operationWatchListLogic, getWatchListLogic } from '../logic';
 import { httpClientMock } from '../../../helpers';
 
-describe('Wetchlist: getWatchListLogic', () => {
-  const request = {
-    method: 'get',
-    response: { data: { results: [{}] } },
-  };
+describe('Watchlist: getWatchListLogic', () => {
+  describe('Get watchlist SUCCESS', () => {
+    const request = {
+      method: 'get',
+      response: {
+        data: {
+          results: [{ id: 1 }, { id: 2 }],
+          page: 3,
+          total_results: 77,
+        },
+      },
+    };
 
-  const httpClient = httpClientMock(request);
+    const httpClient = httpClientMock(request);
+    const done = jest.fn();
+    const dispatch = jest.fn();
+    const action = {
+      payload: {
+        ids: [1],
+      },
+    };
 
-  const done = jest.fn();
-  const dispatch = jest.fn();
-  const action = {
-    payload: {
-      page: 555,
-    },
-  };
+    getWatchListLogic.process({ httpClient, action }, dispatch, done);
 
-  getWatchListLogic.process({ httpClient, action }, dispatch, done);
+    const { data } = request.response;
+    const { entities, result } = normalize(data.results, [Movies]);
 
-  it('Check: is all actions were dispatched', () => {
-    expect(dispatch.mock.calls.length).toBe(2);
+    it('Should return correct URL', () => {
+      expect(httpClient.get.mock.calls[0][0]).toBe(
+        'account/{account_id}/watchlist/movies',
+      );
+    });
+
+    it('Check: is all actions were dispatched', () => {
+      expect(dispatch.mock.calls.length).toBe(2);
+    });
+
+    it('Use mock module normalizr', () => {
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: 'WRITE_TO_DATABASE',
+        payload: {
+          ...entities,
+          lists: {},
+          genres: {},
+        },
+      });
+    });
+
+    it('Check watchlist response', () => {
+      const response = {
+        ids: result,
+        total_results: data.total_results,
+        current_page: data.page,
+      };
+
+      expect(dispatch).toHaveBeenNthCalledWith(2, {
+        type: 'GET_WATCHLIST_RESPONSE',
+        payload: {
+          ...response,
+        },
+      });
+    });
+
+    it('calls done', () => {
+      expect(done).toBeCalled();
+    });
   });
 
-  it('dispatches action - WRITE_TO_DATABASE ', () => {
-    expect(dispatch.mock.calls[0][0].type).toEqual('WRITE_TO_DATABASE');
-  });
+  describe('Get watchlist FAILURE', () => {
+    const request = {
+      method: 'get',
+      response: {},
+      reject: true,
+    };
 
-  it('dispatches action - GET_WATCHLIST_RESPONSE ', () => {
-    expect(dispatch.mock.calls[1][0].type).toEqual('GET_WATCHLIST_RESPONSE');
-  });
+    const httpClient = httpClientMock(request);
+    const done = jest.fn();
+    const dispatch = jest.fn();
+    const action = {
+      payload: {
+        ids: [1],
+      },
+    };
 
-  it('calls done', () => {
-    expect(done).toBeCalled();
+    getWatchListLogic.process({ httpClient, action }, dispatch, done);
+
+    it('Check: is all actions were dispatched', () => {
+      expect(dispatch.mock.calls.length).toBe(1);
+    });
+
+    it('Should dispatch error action', () => {
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: 'GET_WATCHLIST_ERROR',
+      });
+    });
+
+    it('calls done', () => {
+      expect(done).toBeCalled();
+    });
   });
 });
 
-describe('Wetchlist: operationWatchListLogic', () => {
-  const request = {
-    method: 'post',
-  };
-
-  const httpClient = httpClientMock(request);
-
+describe('Watchlist: operationWatchListLogic', () => {
   const done = jest.fn();
   const dispatch = jest.fn();
   const action = {
-    payload: 91,
-    whatToDo: true,
+    payload: 5,
   };
 
-  operationWatchListLogic.process({ httpClient, action }, dispatch, done);
+  describe('Operation SUCCESS', () => {
+    const request = {
+      method: 'post',
+      response: { data: { results: [{}] } },
+    };
+    const httpClient = httpClientMock(request);
 
-  it('Check: is all actions were dispatched', () => {
-    expect(dispatch.mock.calls.length).toBe(1);
+    operationWatchListLogic.process({ httpClient, action }, dispatch, done);
+
+    it('Should return correct URL', () => {
+      expect(httpClient.post.mock.calls[0][0]).toBe(
+        'account/{account_id}/watchlist',
+      );
+    });
+
+    it('calls done', () => {
+      expect(done).toBeCalled();
+    });
   });
 
-  it('Shoud launch action - GET_WATCHLIST_REQUEST', () => {
-    expect(dispatch.mock.calls[0][0].type).toEqual('GET_WATCHLIST_REQUEST');
-  });
+  describe('Operation FAILURE', () => {
+    const request = {
+      method: 'post',
+      response: { data: { results: [{}] } },
+      reject: true,
+    };
+    const httpClient = httpClientMock(request);
 
-  it('calls done', () => {
-    expect(done).toBeCalled();
+    operationWatchListLogic.process({ httpClient, action }, dispatch, done);
+    it('Should throw Error', () => {
+      expect(() => {
+        throw new Error();
+      }).toThrow();
+    });
   });
 });

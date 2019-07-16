@@ -14,18 +14,23 @@ describe('Auth: actions', () => {
     expect(authLogout()).toEqual(expectedAction);
   });
 
-  it('should return userData from form', () => {
-    const username = 'fakeuser';
-    const password = '12345';
+  it('should deliver userData for request ', () => {
+    const userData = {
+      username: 'fakeuser',
+      password: '53623g4jgfsusilss',
+    };
 
     const expectedAction = {
       type: 'AUTH_REQUEST',
-      payload: { username, password },
+      payload: {
+        username: 'fakeuser',
+        password: '53623g4jgfsusilss',
+      },
     };
-    expect(authRequest({ username, password })).toEqual(expectedAction);
+    expect(authRequest(userData)).toEqual(expectedAction);
   });
 
-  it('should return userData for setting in store', () => {
+  it('should return userData. response from server', () => {
     const userData = {
       username: 'fakeuser',
       sessionId: '53623g4jgfsusilss',
@@ -34,6 +39,7 @@ describe('Auth: actions', () => {
       type: 'AUTH_SUCCESS',
       payload: userData,
     };
+
     expect(authSuccess(userData)).toEqual(expectedAction);
   });
 

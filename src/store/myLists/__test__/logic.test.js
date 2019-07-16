@@ -31,6 +31,10 @@ describe('My Lists: createListLogic', () => {
 
     createListLogic.process({ httpClient, action }, dispatch, done);
 
+    it('Should return correct URL', () => {
+      expect(httpClient.post.mock.calls[0][0]).toBe('list');
+    });
+
     it('dispatch action', () => {
       expect(dispatch.mock.calls.length).toBe(1);
     });
@@ -155,6 +159,12 @@ describe('My Lists: getCreatedListLogic', () => {
       current_page: data.page,
     };
 
+    it('Should return correct URL', () => {
+      expect(httpClient.get.mock.calls[0][0]).toBe(
+        'account/{account_id}/lists',
+      );
+    });
+
     it('dispatches 2 action ', () => {
       expect(dispatch.mock.calls.length).toBe(2);
     });
@@ -234,6 +244,11 @@ describe('My Lists: deleteCreatedListLogic', () => {
     };
 
     deleteCreatedListLogic.process({ httpClient, action }, dispatch, done);
+    const id = action.payload;
+
+    it('Should return correct URL', () => {
+      expect(httpClient.delete.mock.calls[0][0]).toBe(`/list/${id}`);
+    });
 
     it('dispatches action ', () => {
       expect(dispatch.mock.calls.length).toBe(1);
@@ -293,11 +308,17 @@ describe('My Lists: addMovieToListLogic', () => {
     };
 
     addMovieToListLogic.process({ httpClient, action }, dispatch, done);
+    const { listId } = action.payload;
+
+    it('Should return correct URL', () => {
+      expect(httpClient.post.mock.calls[0][0]).toBe(`list/${listId}/add_item`);
+    });
 
     it('calls done', () => {
       expect(done).toBeCalled();
     });
   });
+
   describe('Add movie to list FAILURE', () => {
     const request = {
       method: 'post',

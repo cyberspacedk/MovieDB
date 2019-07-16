@@ -37,6 +37,13 @@ describe('Single: singleFilmLogic', () => {
       backdrops,
     };
     const { entities } = normalize(movie, Movies);
+    const filmId = action.payload;
+
+    it('Should return correct URL', () => {
+      expect(httpClient.get.mock.calls[0][0]).toBe(`/movie/${filmId}`);
+      expect(httpClient.get.mock.calls[1][0]).toBe(`/movie/${filmId}/credits`);
+      expect(httpClient.get.mock.calls[2][0]).toBe(`/movie/${filmId}/images`);
+    });
 
     it('should dispatch 2 actions', () => {
       expect(dispatch.mock.calls.length).toBe(2);

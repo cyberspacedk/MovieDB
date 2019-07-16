@@ -5,63 +5,104 @@ import { operationsFavoriteLogic, getFavoritesLogic } from '../logic';
 import { httpClientMock } from '../../../helpers';
 
 describe('Favorites: getFavoritesLogic', () => {
-  const request = {
-    method: 'get',
-    response: {
-      data: {
-        results: [{ id: 1 }, { id: 2 }],
-        page: 3,
-        total_results: 77,
+  describe('Get favorites SUCCESS', () => {
+    const request = {
+      method: 'get',
+      response: {
+        data: {
+          results: [{ id: 1 }, { id: 2 }],
+          page: 3,
+          total_results: 77,
+        },
       },
-    },
-  };
-
-  const httpClient = httpClientMock(request);
-  const done = jest.fn();
-  const dispatch = jest.fn();
-  const action = {
-    payload: {
-      ids: [1],
-    },
-  };
-
-  getFavoritesLogic.process({ httpClient, action }, dispatch, done);
-
-  const { data } = request.response;
-  const { entities, result } = normalize(data.results, [Movies]);
-
-  it('Check: is all actions were dispatched', () => {
-    expect(dispatch.mock.calls.length).toBe(2);
-  });
-
-  it('Use mock module normalizr', () => {
-    expect(dispatch).toHaveBeenNthCalledWith(1, {
-      type: 'WRITE_TO_DATABASE',
-      payload: {
-        ...entities,
-        lists: {},
-        genres: {},
-      },
-    });
-  });
-
-  it('Check favorites response', () => {
-    const response = {
-      ids: result,
-      total_results: data.total_results,
-      current_page: data.page,
     };
 
-    expect(dispatch).toHaveBeenNthCalledWith(2, {
-      type: 'GET_FAVORITES_RESPONSE',
+    const httpClient = httpClientMock(request);
+    const done = jest.fn();
+    const dispatch = jest.fn();
+    const action = {
       payload: {
-        ...response,
+        ids: [1],
       },
+    };
+
+    getFavoritesLogic.process({ httpClient, action }, dispatch, done);
+
+    const { data } = request.response;
+    const { entities, result } = normalize(data.results, [Movies]);
+
+    it('Should return correct URL', () => {
+      expect(httpClient.get.mock.calls[0][0]).toBe(
+        'account/{account_id}/favorite/movies',
+      );
+    });
+
+    it('Check: is all actions were dispatched', () => {
+      expect(dispatch.mock.calls.length).toBe(2);
+    });
+
+    it('Use mock module normalizr', () => {
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: 'WRITE_TO_DATABASE',
+        payload: {
+          ...entities,
+          lists: {},
+          genres: {},
+        },
+      });
+    });
+
+    it('Check favorites response', () => {
+      const response = {
+        ids: result,
+        total_results: data.total_results,
+        current_page: data.page,
+      };
+
+      expect(dispatch).toHaveBeenNthCalledWith(2, {
+        type: 'GET_FAVORITES_RESPONSE',
+        payload: {
+          ...response,
+        },
+      });
+    });
+
+    it('calls done', () => {
+      expect(done).toBeCalled();
     });
   });
 
-  it('calls done', () => {
-    expect(done).toBeCalled();
+  describe('Get favorites FAILURE', () => {
+    const request = {
+      method: 'get',
+      response: {},
+      reject: true,
+    };
+
+    const httpClient = httpClientMock(request);
+    const done = jest.fn();
+    const dispatch = jest.fn();
+    const action = {
+      payload: {
+        ids: [1],
+      },
+    };
+
+    getFavoritesLogic.process({ httpClient, action }, dispatch, done);
+
+    it('Check: is all actions were dispatched', () => {
+      expect(dispatch.mock.calls.length).toBe(1);
+    });
+
+    it('Should dispatch error action', () => {
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: 'GET_FAVORITES_ERROR',
+      });
+    });
+
+    it('calls done', () => {
+      expect(done).toBeCalled();
+    });
   });
 });
 
@@ -72,7 +113,7 @@ describe('Favorites: operationsFavoriteLogic', () => {
     payload: 5,
   };
 
-  describe('Success operation', () => {
+  describe('Operation SUCCESS', () => {
     const request = {
       method: 'post',
       response: { data: { results: [{}] } },
@@ -81,12 +122,18 @@ describe('Favorites: operationsFavoriteLogic', () => {
 
     operationsFavoriteLogic.process({ httpClient, action }, dispatch, done);
 
+    it('Should return correct URL', () => {
+      expect(httpClient.post.mock.calls[0][0]).toBe(
+        'account/{account_id}/favorite',
+      );
+    });
+
     it('calls done', () => {
       expect(done).toBeCalled();
     });
   });
 
-  describe('Operation ends with fail', () => {
+  describe('Operation FAILURE', () => {
     const request = {
       method: 'post',
       response: { data: { results: [{}] } },

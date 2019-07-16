@@ -18,7 +18,7 @@ describe('Auth: reducers', () => {
     });
   });
 
-  it('should delete username and sessionId', () => {
+  it('should clear username and sessionId', () => {
     const action = {
       type: 'AUTH_LOGOUT',
     };

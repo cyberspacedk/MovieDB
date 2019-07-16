@@ -8,21 +8,10 @@ describe('Auth: selector', () => {
       failAuth: false,
     },
   };
+
   describe('session id exist', () => {
     it('returns true', () => {
       expect(isAuthentificated(state)).toBeTruthy();
-    });
-  });
-
-  describe("session id doesn't exist", () => {
-    const nextState = {
-      user: {
-        ...state.user,
-        sessionId: '',
-      },
-    };
-    it('returns false', () => {
-      expect(isAuthentificated(nextState)).toBeFalsy();
     });
   });
 

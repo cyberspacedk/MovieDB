@@ -34,6 +34,11 @@ describe('Search: searchFilmsLogic', () => {
       total_results: data.total_results,
       ids: result,
     };
+
+    it('Should return correct URL', () => {
+      expect(httpClient.get.mock.calls[0][0]).toBe(`search/movie`);
+    });
+
     it('dispatches action - GET_CREATED_LIST_RESPONSE', () => {
       expect(dispatch.mock.calls.length).toBe(2);
     });
@@ -62,6 +67,7 @@ describe('Search: searchFilmsLogic', () => {
       expect(done).toBeCalled();
     });
   });
+
   describe('Search FAILURE', () => {
     const request = {
       method: 'get',

@@ -27,6 +27,11 @@ describe('List Details: getListDetailsLogic', () => {
 
     const { data } = request.response;
     const { entities, result } = normalize(data.items, [Movies]);
+    const id = action.payload;
+
+    it('Should return correct URL', () => {
+      expect(httpClient.get.mock.calls[0][0]).toBe(`/list/${id}`);
+    });
 
     it('dispatches 2 action ', () => {
       expect(dispatch.mock.calls.length).toBe(2);
@@ -115,6 +120,13 @@ describe('List Details: deleteMovieFromListLogic', () => {
       },
     };
     deleteMovieFromListLogic.process({ httpClient, action }, dispatch, done);
+    const { listId } = action.payload;
+
+    it('Should return correct URL', () => {
+      expect(httpClient.post.mock.calls[0][0]).toBe(
+        `/list/${listId}/remove_item`,
+      );
+    });
 
     it('spatches action', () => {
       expect(dispatch.mock.calls.length).toBe(1);

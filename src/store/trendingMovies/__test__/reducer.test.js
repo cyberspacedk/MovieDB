@@ -24,7 +24,7 @@ describe('reducers', () => {
     };
     expect(reducer(state, action)).toEqual({
       loading: false,
-      error: action.payload,
+      error: true,
     });
   });
 

@@ -1,4 +1,4 @@
-import { isError, isLoading } from '../selectors';
+import { isError, isLoading, getMovie } from '../selectors';
 
 describe('Single:  selector', () => {
   const state = {
@@ -9,6 +9,7 @@ describe('Single:  selector', () => {
     database: {
       movies: { 1: { id: 1, name: 'Rambo' } },
       lists: { 1: { id: 1, name: 'Comedy' } },
+      genres: { 1: { id: 1 } },
     },
   };
 
@@ -21,6 +22,12 @@ describe('Single:  selector', () => {
   describe('check is loading now', () => {
     it('returns false', () => {
       expect(isLoading(state)).toBeFalsy();
+    });
+  });
+
+  describe('Grab film bby id', () => {
+    it('shoud denormalize data', () => {
+      expect(getMovie(state, 1)).toEqual({ id: 1, name: 'Rambo' });
     });
   });
 });
