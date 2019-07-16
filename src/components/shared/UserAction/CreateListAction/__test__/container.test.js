@@ -16,24 +16,53 @@ describe('CreateListActionConnected ', () => {
   store.dispatch = jest.fn();
 
   const wrapper = shallow(<CreateListActionConnected store={store} />);
-  const container = wrapper.dive();
+  const container = wrapper.dive().dive();
   const instance = container.instance();
 
   it('Should match its snapshot', () => {
     expect(container).toMatchSnapshot();
   });
 
-  xit('should update the count by 1 when invoked by default', () => {
-    expect(instance.state('visiblePop')).toBeFalsy();
-    instance.showPopover();
+  it('should update state property "visiblePop" and dispatch action', () => {
+    instance.showPopover('visible');
     expect(container.state('visiblePop')).toBe('visible');
+    expect(store.dispatch).toHaveBeenNthCalledWith(1, {
+      type: 'GET_CREATED_LIST_REQUEST',
+      payload: 1,
+    });
   });
 
-  xit('Check is calling container method.', () => {
-    jest.spyOn(instance, 'showPopover');
-    instance.showPopover = jest.fn();
-    instance.showPopover();
-    expect(instance.showPopover).toHaveBeenCalled();
+  it('should update state property "visiblePop"', () => {
+    instance.hidePopover();
+    expect(container.state('visiblePop')).toBeFalsy();
+  });
+
+  it('should update state property "visibleMod"', () => {
+    instance.showModal();
+    expect(container.state('visibleMod')).toBeTruthy();
+  });
+
+  it('should update state property "visibleMod"', () => {
+    instance.hideModal();
+    expect(container.state('visibleMod')).toBeFalsy();
+  });
+
+  it('should update state property "visiblePop" and dispatch action', () => {
+    instance.addMovieToList(3, 55);
+    expect(container.state('visiblePop')).toBeFalsy();
+    expect(store.dispatch).toHaveBeenNthCalledWith(2, {
+      type: 'ADD_MOVIE_TO_LIST_REQUEST',
+      payload: {
+        listId: 3,
+        movieId: 55,
+      },
+    });
+  });
+
+  it('should update state property "visibleMod" and "visiblePop"', () => {
+    instance.showDialog();
+    expect(container.state('visibleMod')).toBeTruthy();
+    expect(container.state('visiblePop')).toBeFalsy();
   });
 
   it('Map state and dispatch to props', () => {

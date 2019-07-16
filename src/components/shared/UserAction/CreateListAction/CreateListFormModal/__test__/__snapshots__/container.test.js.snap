@@ -1,13 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CreateListActionConnected  Should match its snapshot 1`] = `
-<WithFormik(CreateListFormModalContainer)
-  createListRequest={[Function]}
+<CreateListFormModal
+  handleFormCancel={[Function]}
+  handleFormSubmit={[Function]}
   handleReset={[MockFunction]}
   handleSubmit={[MockFunction]}
   hideModal={[MockFunction]}
   isSubmitting={[MockFunction]}
-  status="waiting"
+  status="SUCCESS"
+/>
+`;
+
+exports[`CreateListActionConnected  Should match its snapshot. Received props from HOCs 1`] = `
+<CreateListFormModalContainer
+  createListRequest={[Function]}
+  dirty={false}
+  errors={Object {}}
+  handleBlur={[Function]}
+  handleChange={[Function]}
+  handleReset={[Function]}
+  handleSubmit={[Function]}
+  hideModal={[MockFunction]}
+  initialValues={
+    Object {
+      "description": "",
+      "name": "",
+    }
+  }
+  isSubmitting={false}
+  isValid={false}
+  isValidating={false}
+  registerField={[Function]}
+  resetForm={[Function]}
+  setError={[Function]}
+  setErrors={[Function]}
+  setFieldError={[Function]}
+  setFieldTouched={[Function]}
+  setFieldValue={[Function]}
+  setFormikState={[Function]}
+  setStatus={[Function]}
+  setSubmitting={[Function]}
+  setTouched={[Function]}
+  setValues={[Function]}
+  status="WAITING"
   store={
     Object {
       "clearActions": [Function],
@@ -16,6 +52,20 @@ exports[`CreateListActionConnected  Should match its snapshot 1`] = `
       "getState": [Function],
       "replaceReducer": [Function],
       "subscribe": [Function],
+    }
+  }
+  submitCount={0}
+  submitForm={[Function]}
+  touched={Object {}}
+  unregisterField={[Function]}
+  validateField={[Function]}
+  validateForm={[Function]}
+  validateOnBlur={true}
+  validateOnChange={true}
+  values={
+    Object {
+      "description": "",
+      "name": "",
     }
   }
 />

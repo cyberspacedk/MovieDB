@@ -8,7 +8,7 @@ import CreateListFormModal from './component';
 import { createListRequest } from '../../../../../store/myLists/actions';
 import constant from '../../../../../helpers/constants';
 
-class CreateListFormModalContainer extends Component {
+export class CreateListFormModalContainer extends Component {
   componentDidUpdate() {
     const { status, hideModal, handleReset } = this.props;
     if (status === constant.SUCCESS) {
