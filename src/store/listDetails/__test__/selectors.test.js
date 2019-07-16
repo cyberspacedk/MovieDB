@@ -44,6 +44,13 @@ describe('List Details:  selector', () => {
     });
   });
 
+  describe('grab actual listName', () => {
+    it('returns listName', () => {
+      const id = 3;
+      expect(getListName(state, id)).toBe('');
+    });
+  });
+
   describe('grab movies belongs to list', () => {
     const found = [{ id: 1, name: 'Rambo' }];
     it('returns list movies', () => {

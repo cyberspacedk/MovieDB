@@ -18,9 +18,7 @@ describe('List Details: getListDetailsLogic', () => {
     const done = jest.fn();
     const dispatch = jest.fn();
     const action = {
-      payload: {
-        id: 1,
-      },
+      payload: 1,
     };
     const httpClient = httpClientMock(request);
     getListDetailsLogic.process({ httpClient, action }, dispatch, done);
@@ -30,7 +28,7 @@ describe('List Details: getListDetailsLogic', () => {
     const id = action.payload;
 
     it('Should return correct URL', () => {
-      expect(httpClient.get.mock.calls[0][0]).toBe(`/list/${id}`);
+      expect(httpClient.get).toHaveBeenCalledWith(`/list/${id}`);
     });
 
     it('dispatches 2 action ', () => {
@@ -123,8 +121,9 @@ describe('List Details: deleteMovieFromListLogic', () => {
     const { listId } = action.payload;
 
     it('Should return correct URL', () => {
-      expect(httpClient.post.mock.calls[0][0]).toBe(
+      expect(httpClient.post).toHaveBeenCalledWith(
         `/list/${listId}/remove_item`,
+        { media_id: 777 },
       );
     });
 

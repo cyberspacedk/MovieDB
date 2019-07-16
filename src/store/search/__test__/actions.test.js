@@ -4,10 +4,13 @@ describe('Search: actions', () => {
   it("should return - type:'SEARCH_REQUEST'", () => {
     const expectedAction = {
       type: 'SEARCH_REQUEST',
-      payload: 'sport',
-      page: 1,
+      payload: {
+        query: 'sport',
+        page: 1,
+      },
     };
     expect(searchRequest('sport', 1)).toEqual(expectedAction);
+    expect(searchRequest('sport')).toEqual(expectedAction);
   });
 
   it('should return - type: SEARCH_ERROR', () => {

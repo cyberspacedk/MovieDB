@@ -21,9 +21,7 @@ describe('Watchlist: getWatchListLogic', () => {
     const done = jest.fn();
     const dispatch = jest.fn();
     const action = {
-      payload: {
-        ids: [1],
-      },
+      payload: 9,
     };
 
     getWatchListLogic.process({ httpClient, action }, dispatch, done);
@@ -32,8 +30,15 @@ describe('Watchlist: getWatchListLogic', () => {
     const { entities, result } = normalize(data.results, [Movies]);
 
     it('Should return correct URL', () => {
-      expect(httpClient.get.mock.calls[0][0]).toBe(
+      const page = action.payload;
+      expect(httpClient.get).toHaveBeenCalledWith(
         'account/{account_id}/watchlist/movies',
+        {
+          params: {
+            sort_by: 'created_at.asc',
+            page,
+          },
+        },
       );
     });
 
@@ -110,7 +115,10 @@ describe('Watchlist: operationWatchListLogic', () => {
   const done = jest.fn();
   const dispatch = jest.fn();
   const action = {
-    payload: 5,
+    payload: {
+      movieId: 99,
+      whatToDo: 6,
+    },
   };
 
   describe('Operation SUCCESS', () => {
@@ -123,8 +131,14 @@ describe('Watchlist: operationWatchListLogic', () => {
     operationWatchListLogic.process({ httpClient, action }, dispatch, done);
 
     it('Should return correct URL', () => {
-      expect(httpClient.post.mock.calls[0][0]).toBe(
+      const { movieId, whatToDo } = action.payload;
+      expect(httpClient.post).toHaveBeenCalledWith(
         'account/{account_id}/watchlist',
+        {
+          media_type: 'movie',
+          media_id: movieId,
+          watchlist: whatToDo,
+        },
       );
     });
 

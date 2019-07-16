@@ -32,7 +32,11 @@ describe('My Lists: createListLogic', () => {
     createListLogic.process({ httpClient, action }, dispatch, done);
 
     it('Should return correct URL', () => {
-      expect(httpClient.post.mock.calls[0][0]).toBe('list');
+      const { name, description } = action.payload;
+      expect(httpClient.post).toHaveBeenCalledWith('list', {
+        name,
+        description,
+      });
     });
 
     it('dispatch action', () => {
@@ -145,9 +149,7 @@ describe('My Lists: getCreatedListLogic', () => {
     const done = jest.fn();
     const dispatch = jest.fn();
     const action = {
-      payload: {
-        page: 100,
-      },
+      payload: 100,
     };
 
     getCreatedListLogic.process({ httpClient, action }, dispatch, done);
@@ -160,8 +162,14 @@ describe('My Lists: getCreatedListLogic', () => {
     };
 
     it('Should return correct URL', () => {
-      expect(httpClient.get.mock.calls[0][0]).toBe(
+      const page = action.payload;
+      expect(httpClient.get).toHaveBeenCalledWith(
         'account/{account_id}/lists',
+        {
+          params: {
+            page,
+          },
+        },
       );
     });
 
@@ -247,7 +255,7 @@ describe('My Lists: deleteCreatedListLogic', () => {
     const id = action.payload;
 
     it('Should return correct URL', () => {
-      expect(httpClient.delete.mock.calls[0][0]).toBe(`/list/${id}`);
+      expect(httpClient.delete).toHaveBeenCalledWith(`/list/${id}`);
     });
 
     it('dispatches action ', () => {
@@ -283,10 +291,14 @@ describe('My Lists: deleteCreatedListLogic', () => {
 
     deleteCreatedListLogic.process({ httpClient, action }, dispatch, done);
 
-    it('Should throw an Error', () => {
-      expect(() => {
-        throw new Error();
-      }).toThrow();
+    it('dispatches 1 action ', () => {
+      expect(dispatch.mock.calls.length).toBe(1);
+    });
+
+    it('dispatches action - GET_CREATED_LIST_REQUEST', () => {
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: 'GET_CREATED_LIST_ERROR',
+      });
     });
   });
 });
@@ -308,10 +320,12 @@ describe('My Lists: addMovieToListLogic', () => {
     };
 
     addMovieToListLogic.process({ httpClient, action }, dispatch, done);
-    const { listId } = action.payload;
 
     it('Should return correct URL', () => {
-      expect(httpClient.post.mock.calls[0][0]).toBe(`list/${listId}/add_item`);
+      const { listId, movieId } = action.payload;
+      expect(httpClient.post).toHaveBeenCalledWith(`list/${listId}/add_item`, {
+        media_id: movieId,
+      });
     });
 
     it('calls done', () => {

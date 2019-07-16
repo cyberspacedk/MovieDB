@@ -25,14 +25,25 @@ describe('Auth: authUserLogic', () => {
     authUserLogic.process({ httpClient, action }, dispatch, done);
 
     it('Should return correct request URL', () => {
-      expect(httpClient.get.mock.calls[0][0]).toBe(`authentication/token/new`);
+      const { username, password } = action.payload;
+      const { request_token } = requests[0].response.data;
 
-      expect(httpClient.post.mock.calls[0][0]).toBe(
+      expect(httpClient.get).toHaveBeenCalledWith(`authentication/token/new`);
+
+      expect(httpClient.post).toHaveBeenCalledWith(
         `authentication/token/validate_with_login`,
+        {
+          username,
+          password,
+          request_token,
+        },
       );
 
-      expect(httpClient.post.mock.calls[1][0]).toBe(
+      expect(httpClient.post).toHaveBeenCalledWith(
         `authentication/session/new`,
+        {
+          request_token,
+        },
       );
     });
 
@@ -101,7 +112,14 @@ describe('Auth: userLogoutLogic', () => {
     userLogoutLogic.process({ httpClient }, dispatch, done);
 
     it('Should return correct request URL', () => {
-      expect(httpClient.delete.mock.calls[0][0]).toBe(`authentication/session`);
+      Cookies.get = jest.fn();
+      const SSID = Cookies.get('SESSION_ID');
+
+      expect(httpClient.delete).toHaveBeenCalledWith(`authentication/session`, {
+        data: {
+          session_id: SSID,
+        },
+      });
     });
 
     it('dispatches action - AUTH_LOGOUT', () => {

@@ -4,7 +4,7 @@ describe('Search: reducers', () => {
   it('should set field loading to true and store query', () => {
     const action = {
       type: 'SEARCH_REQUEST',
-      payload: 'sport',
+      payload: { query: 'sport', page: 1 },
     };
 
     const state = {

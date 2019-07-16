@@ -19,7 +19,7 @@ describe('List Details: reducers', () => {
     const action = {
       type: 'GET_LIST_DETAILS_RESPONSE',
       payload: {
-        ids: 55,
+        ids: [55],
         totalResults: 3,
       },
     };
@@ -30,7 +30,7 @@ describe('List Details: reducers', () => {
     };
     expect(reducer(state, action)).toEqual({
       loading: false,
-      ids: 55,
+      ids: [55],
       totalResults: 3,
     });
   });

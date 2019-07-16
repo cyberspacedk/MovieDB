@@ -22,8 +22,8 @@ describe('Search: searchFilmsLogic', () => {
     const action = {
       payload: {
         query: 'Some',
+        page: 333,
       },
-      page: 333,
     };
 
     searchFilmsLogic.process({ httpClient, action }, dispatch, done);
@@ -36,7 +36,13 @@ describe('Search: searchFilmsLogic', () => {
     };
 
     it('Should return correct URL', () => {
-      expect(httpClient.get.mock.calls[0][0]).toBe(`search/movie`);
+      const { query, page } = action.payload;
+      expect(httpClient.get).toHaveBeenCalledWith(`search/movie`, {
+        params: {
+          query,
+          page,
+        },
+      });
     });
 
     it('dispatches action - GET_CREATED_LIST_RESPONSE', () => {

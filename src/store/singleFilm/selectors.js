@@ -6,7 +6,9 @@ const isLoading = state => state.singleFilm.loading;
 
 const getMovie = (state, id) => {
   const mySchema = { movies: Movies };
-  let result = {};
+  let result = {
+    movies: {},
+  };
 
   if (state.database.movies[id]) {
     const entities = {

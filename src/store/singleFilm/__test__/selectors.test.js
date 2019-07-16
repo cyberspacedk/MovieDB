@@ -28,6 +28,7 @@ describe('Single:  selector', () => {
   describe('Grab film bby id', () => {
     it('shoud denormalize data', () => {
       expect(getMovie(state, 1)).toEqual({ id: 1, name: 'Rambo' });
+      expect(getMovie(state, 7)).toEqual({});
     });
   });
 });

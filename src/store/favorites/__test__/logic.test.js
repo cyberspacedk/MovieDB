@@ -21,19 +21,24 @@ describe('Favorites: getFavoritesLogic', () => {
     const done = jest.fn();
     const dispatch = jest.fn();
     const action = {
-      payload: {
-        ids: [1],
-      },
+      payload: 3,
     };
 
     getFavoritesLogic.process({ httpClient, action }, dispatch, done);
 
     const { data } = request.response;
     const { entities, result } = normalize(data.results, [Movies]);
+    const page = action.payload;
 
     it('Should return correct URL', () => {
-      expect(httpClient.get.mock.calls[0][0]).toBe(
+      expect(httpClient.get).toHaveBeenCalledWith(
         'account/{account_id}/favorite/movies',
+        {
+          params: {
+            sort_by: 'created_at.asc',
+            page,
+          },
+        },
       );
     });
 
@@ -83,9 +88,7 @@ describe('Favorites: getFavoritesLogic', () => {
     const done = jest.fn();
     const dispatch = jest.fn();
     const action = {
-      payload: {
-        ids: [1],
-      },
+      payload: 5,
     };
 
     getFavoritesLogic.process({ httpClient, action }, dispatch, done);
@@ -110,7 +113,10 @@ describe('Favorites: operationsFavoriteLogic', () => {
   const done = jest.fn();
   const dispatch = jest.fn();
   const action = {
-    payload: 5,
+    payload: {
+      movieId: 121,
+      favorite: true,
+    },
   };
 
   describe('Operation SUCCESS', () => {
@@ -123,8 +129,14 @@ describe('Favorites: operationsFavoriteLogic', () => {
     operationsFavoriteLogic.process({ httpClient, action }, dispatch, done);
 
     it('Should return correct URL', () => {
-      expect(httpClient.post.mock.calls[0][0]).toBe(
+      const { movieId, whatToDo } = action.payload;
+      expect(httpClient.post).toHaveBeenCalledWith(
         'account/{account_id}/favorite',
+        {
+          media_type: 'movie',
+          media_id: movieId,
+          favorite: whatToDo,
+        },
       );
     });
 

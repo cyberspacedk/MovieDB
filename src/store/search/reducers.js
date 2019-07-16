@@ -13,7 +13,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: true,
-        query: payload,
+        query: payload.query,
       };
     case 'SEARCH_ERROR':
       return {

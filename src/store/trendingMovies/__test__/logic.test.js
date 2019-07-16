@@ -23,7 +23,7 @@ describe('getTopFilmsLogic operation', () => {
     const { entities, result } = normalize(results, [Movies]);
 
     it('Should return correct URL', () => {
-      expect(httpClient.get.mock.calls[0][0]).toBe(`trending/movie/day`);
+      expect(httpClient.get).toHaveBeenCalledWith(`trending/movie/day`);
     });
 
     it('Should dispatch 2 action', () => {
