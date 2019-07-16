@@ -1,51 +1,57 @@
 import reducer from '../reducers';
 
-describe('reducers', () => {
-  it('should set loading field to true', () => {
+describe('List Details: reducers', () => {
+  it('should set field loading to true', () => {
     const action = {
-      type: 'FETCH_REQUEST',
+      type: 'GET_LIST_DETAILS_REQUEST',
     };
+
     const state = {
       loading: false,
     };
+
     expect(reducer(state, action)).toEqual({
       loading: true,
     });
   });
 
-  it('should set error field to error message', () => {
+  it('should store data', () => {
     const action = {
-      type: 'FETCH_ERROR',
-      payload: 'error message',
+      type: 'GET_LIST_DETAILS_RESPONSE',
+      payload: {
+        ids: [55],
+        totalResults: 3,
+      },
     };
     const state = {
+      ids: [],
+      totalResults: 0,
       loading: true,
+    };
+    expect(reducer(state, action)).toEqual({
+      loading: false,
+      ids: [55],
+      totalResults: 3,
+    });
+  });
+
+  it('should set field error to true', () => {
+    const action = {
+      type: 'GET_LIST_DETAILS_ERROR',
+    };
+    const state = {
       error: false,
     };
-    expect(reducer(state, action)).toEqual({
-      loading: false,
-      error: true,
-    });
-  });
 
-  it('should set films field to response - films array', () => {
-    const action = {
-      type: 'FETCH_RESPONSE',
-      payload: [1, 2, 3],
-    };
-    const state = {
-      loading: true,
-      ids: [],
-    };
     expect(reducer(state, action)).toEqual({
-      loading: false,
-      ids: [1, 2, 3],
+      error: true,
     });
   });
 
   it('should return initialState', () => {
     expect(reducer(undefined, {})).toEqual({
       ids: [],
+      totalResults: 0,
       loading: false,
       error: false,
     });

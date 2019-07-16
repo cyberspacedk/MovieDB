@@ -9,8 +9,7 @@ const searchFilmsLogic = createLogic({
   latest: true,
 
   async process({ httpClient, action }, dispatch, done) {
-    const query = action.payload;
-    const { page } = action;
+    const { query, page } = action.payload;
 
     try {
       const { data } = await httpClient.get(`search/movie`, {

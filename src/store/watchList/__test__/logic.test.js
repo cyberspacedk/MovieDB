@@ -1,11 +1,11 @@
 /* eslint-disable global-require */
 import { normalize } from 'normalizr';
 import { Movies } from '../../../schema';
-import { operationsFavoriteLogic, getFavoritesLogic } from '../logic';
+import { operationWatchListLogic, getWatchListLogic } from '../logic';
 import { httpClientMock } from '../../../helpers';
 
-describe('Favorites: getFavoritesLogic', () => {
-  describe('Get favorites SUCCESS', () => {
+describe('Watchlist: getWatchListLogic', () => {
+  describe('Get watchlist SUCCESS', () => {
     const request = {
       method: 'get',
       response: {
@@ -21,18 +21,18 @@ describe('Favorites: getFavoritesLogic', () => {
     const done = jest.fn();
     const dispatch = jest.fn();
     const action = {
-      payload: 3,
+      payload: 9,
     };
 
-    getFavoritesLogic.process({ httpClient, action }, dispatch, done);
+    getWatchListLogic.process({ httpClient, action }, dispatch, done);
 
     const { data } = request.response;
     const { entities, result } = normalize(data.results, [Movies]);
-    const page = action.payload;
 
     it('Should return correct URL', () => {
+      const page = action.payload;
       expect(httpClient.get).toHaveBeenCalledWith(
-        'account/{account_id}/favorite/movies',
+        'account/{account_id}/watchlist/movies',
         {
           params: {
             sort_by: 'created_at.asc',
@@ -57,7 +57,7 @@ describe('Favorites: getFavoritesLogic', () => {
       });
     });
 
-    it('Check favorites response', () => {
+    it('Check watchlist response', () => {
       const response = {
         ids: result,
         total_results: data.total_results,
@@ -65,7 +65,7 @@ describe('Favorites: getFavoritesLogic', () => {
       };
 
       expect(dispatch).toHaveBeenNthCalledWith(2, {
-        type: 'GET_FAVORITES_RESPONSE',
+        type: 'GET_WATCHLIST_RESPONSE',
         payload: {
           ...response,
         },
@@ -77,7 +77,7 @@ describe('Favorites: getFavoritesLogic', () => {
     });
   });
 
-  describe('Get favorites FAILURE', () => {
+  describe('Get watchlist FAILURE', () => {
     const request = {
       method: 'get',
       response: {},
@@ -88,10 +88,12 @@ describe('Favorites: getFavoritesLogic', () => {
     const done = jest.fn();
     const dispatch = jest.fn();
     const action = {
-      payload: 5,
+      payload: {
+        ids: [1],
+      },
     };
 
-    getFavoritesLogic.process({ httpClient, action }, dispatch, done);
+    getWatchListLogic.process({ httpClient, action }, dispatch, done);
 
     it('Check: is all actions were dispatched', () => {
       expect(dispatch.mock.calls.length).toBe(1);
@@ -99,7 +101,7 @@ describe('Favorites: getFavoritesLogic', () => {
 
     it('Should dispatch error action', () => {
       expect(dispatch).toHaveBeenNthCalledWith(1, {
-        type: 'GET_FAVORITES_ERROR',
+        type: 'GET_WATCHLIST_ERROR',
       });
     });
 
@@ -109,13 +111,13 @@ describe('Favorites: getFavoritesLogic', () => {
   });
 });
 
-describe('Favorites: operationsFavoriteLogic', () => {
+describe('Watchlist: operationWatchListLogic', () => {
   const done = jest.fn();
   const dispatch = jest.fn();
   const action = {
     payload: {
-      movieId: 121,
-      favorite: true,
+      movieId: 99,
+      whatToDo: 6,
     },
   };
 
@@ -126,16 +128,16 @@ describe('Favorites: operationsFavoriteLogic', () => {
     };
     const httpClient = httpClientMock(request);
 
-    operationsFavoriteLogic.process({ httpClient, action }, dispatch, done);
+    operationWatchListLogic.process({ httpClient, action }, dispatch, done);
 
     it('Should return correct URL', () => {
       const { movieId, whatToDo } = action.payload;
       expect(httpClient.post).toHaveBeenCalledWith(
-        'account/{account_id}/favorite',
+        'account/{account_id}/watchlist',
         {
           media_type: 'movie',
           media_id: movieId,
-          favorite: whatToDo,
+          watchlist: whatToDo,
         },
       );
     });
@@ -153,15 +155,11 @@ describe('Favorites: operationsFavoriteLogic', () => {
     };
     const httpClient = httpClientMock(request);
 
-    operationsFavoriteLogic.process({ httpClient, action }, dispatch, done);
+    operationWatchListLogic.process({ httpClient, action }, dispatch, done);
     it('Should throw Error', () => {
       expect(() => {
         throw new Error();
       }).toThrow();
-    });
-
-    it('calls done', () => {
-      expect(done).toBeCalled();
     });
   });
 });

@@ -20,7 +20,6 @@ const getListDetailsLogic = createLogic({
 
       const { entities, result } = normalize(data.items, [Movies]);
       const response = {
-        list_details: data.items,
         ids: result,
         totalResults: data.item_count,
       };
@@ -40,7 +39,6 @@ const deleteMovieFromListLogic = createLogic({
 
   async process({ httpClient, action }, dispatch, done) {
     const { listId, movieId } = action.payload;
-
     try {
       await httpClient.post(`/list/${listId}/remove_item`, {
         media_id: movieId,

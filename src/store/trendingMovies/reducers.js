@@ -15,7 +15,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        error: payload,
+        error: true,
       };
     case 'FETCH_RESPONSE':
       return {

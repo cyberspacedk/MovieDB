@@ -9,11 +9,10 @@ describe('actions', () => {
       expect(fetchDataRequest()).toEqual(expectedAction);
     });
 
-    it('should return error message', () => {
+    it('should return type: FETCH_ERROR', () => {
       const message = 'error message';
       const expectedAction = {
         type: 'FETCH_ERROR',
-        payload: message,
       };
       expect(fetchDataError(message)).toEqual(expectedAction);
     });

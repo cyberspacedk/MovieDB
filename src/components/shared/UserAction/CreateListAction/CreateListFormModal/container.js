@@ -47,7 +47,7 @@ CreateListFormModalContainer.propTypes = {
   hideModal: PropTypes.func.isRequired,
   handleReset: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  isSubmitting: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
   status: PropTypes.string,
 };
 

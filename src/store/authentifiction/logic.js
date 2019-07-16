@@ -55,7 +55,7 @@ export const userLogoutLogic = createLogic({
       Cookies.remove('SESSION_ID');
       Cookies.remove('USERNAME');
     } catch (err) {
-      throw new Error(err);
+      dispatch(authError());
     }
     done();
   },

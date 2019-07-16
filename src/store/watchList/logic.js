@@ -2,7 +2,11 @@ import { createLogic } from 'redux-logic';
 import { normalize } from 'normalizr';
 import writeToDatabase from '../database/actions';
 import { Movies } from '../../schema';
-import { getWatchListError, getWatchListResponse } from './actions';
+import {
+  getWatchListError,
+  getWatchListResponse,
+  getWatchListRequest,
+} from './actions';
 
 const operationWatchListLogic = createLogic({
   type: 'OPERATIONS_WATCHLIST_REQUEST',
@@ -16,6 +20,7 @@ const operationWatchListLogic = createLogic({
         media_id: movieId,
         watchlist: whatToDo,
       });
+      dispatch(getWatchListRequest());
     } catch (err) {
       throw new Error(err);
     }

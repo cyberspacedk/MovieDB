@@ -13,14 +13,12 @@ export default (state = initialState, { type }) => {
     case 'SINGLE_ERROR':
       return {
         ...state,
-        loading: false,
         error: true,
       };
     case 'SINGLE_RESPONSE':
       return {
         ...state,
         loading: false,
-        error: false,
       };
     default:
       return state;

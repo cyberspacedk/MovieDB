@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   ids: [],
   total_results: 0,
   current_page: 0,
@@ -16,8 +16,9 @@ export default (state = initialState, { type, payload }) => {
     case 'GET_CREATED_LIST_RESPONSE':
       return {
         ...state,
-        ...payload,
         ids: payload.ids,
+        total_results: payload.total_results,
+        current_page: payload.current_page,
         loading: false,
       };
     case 'GET_CREATED_LIST_ERROR':

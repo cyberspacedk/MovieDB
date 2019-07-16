@@ -1,8 +1,7 @@
 const fetchDataRequest = () => ({ type: 'FETCH_REQUEST' });
 
-const fetchDataError = error => ({
+const fetchDataError = () => ({
   type: 'FETCH_ERROR',
-  payload: error,
 });
 
 const fetchDataSuccess = data => ({

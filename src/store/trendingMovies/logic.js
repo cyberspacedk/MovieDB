@@ -19,7 +19,7 @@ const getTopFilmsLogic = createLogic({
       dispatch(writeToDatabase(entities));
       dispatch(fetchDataSuccess(result));
     } catch (err) {
-      dispatch(fetchDataError(err));
+      dispatch(fetchDataError());
     }
     done();
   },

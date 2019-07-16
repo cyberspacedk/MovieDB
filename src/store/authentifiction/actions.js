@@ -6,7 +6,10 @@ const authRequest = ({ username, password }) => ({
   },
 });
 
-const authSuccess = userData => ({ type: 'AUTH_SUCCESS', payload: userData });
+const authSuccess = userData => ({
+  type: 'AUTH_SUCCESS',
+  payload: userData,
+});
 
 const authError = () => ({ type: 'AUTH_ERROR' });
 
