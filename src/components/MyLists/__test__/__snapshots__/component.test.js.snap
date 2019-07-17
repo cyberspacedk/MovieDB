@@ -72,3 +72,195 @@ exports[`Component: MyList Snapshot: should match 1`] = `
   />
 </Adapter>
 `;
+
+exports[`Component: MyList Snapshot: should match. Empty 1`] = `
+<Adapter>
+  <Adapter>
+    <Row
+      gutter={0}
+    >
+      <Col
+        offset={2}
+        span={20}
+      >
+        <div
+          className="top-margin"
+        >
+          <Title
+            level={1}
+          >
+            My Lists
+            <Icon
+              onClick={[MockFunction]}
+              type="plus-circle"
+            />
+          </Title>
+        </div>
+      </Col>
+    </Row>
+    <Row
+      gutter={8}
+      type="flex"
+    >
+      <Col
+        offset={2}
+        span={20}
+      >
+        <ListItemContainer
+          deleteListRequest={[MockFunction]}
+          history={
+            Object {
+              "push": [MockFunction],
+            }
+          }
+          item={
+            Object {
+              "id": 1,
+            }
+          }
+          key="1"
+        />
+      </Col>
+    </Row>
+    <Row
+      gutter={0}
+      justify="center"
+      type="flex"
+    >
+      <Col>
+        <Pagination
+          className="pagination"
+          current={33}
+          defaultCurrent={1}
+          defaultPageSize={20}
+          onChange={[MockFunction]}
+          total={5}
+        />
+      </Col>
+    </Row>
+    <EmptyResult />
+  </Adapter>
+  <Connect(WithFormik(CreateListFormModalContainer))
+    hideModal={[MockFunction]}
+    visibleMod={false}
+  />
+</Adapter>
+`;
+
+exports[`Component: MyList Snapshot: should match. Error 1`] = `
+<Adapter>
+  <Adapter>
+    <Row
+      gutter={0}
+    >
+      <Col
+        offset={2}
+        span={20}
+      >
+        <div
+          className="top-margin"
+        >
+          <Title
+            level={1}
+          >
+            My Lists
+            <Icon
+              onClick={[MockFunction]}
+              type="plus-circle"
+            />
+          </Title>
+        </div>
+      </Col>
+    </Row>
+    <Row
+      gutter={8}
+      type="flex"
+    >
+      <Col
+        offset={2}
+        span={20}
+      >
+        <Error />
+        <ListItemContainer
+          deleteListRequest={[MockFunction]}
+          history={
+            Object {
+              "push": [MockFunction],
+            }
+          }
+          item={
+            Object {
+              "id": 1,
+            }
+          }
+          key="1"
+        />
+      </Col>
+    </Row>
+    <Row
+      gutter={0}
+      justify="center"
+      type="flex"
+    >
+      <Col>
+        <Pagination
+          className="pagination"
+          current={33}
+          defaultCurrent={1}
+          defaultPageSize={20}
+          onChange={[MockFunction]}
+          total={5}
+        />
+      </Col>
+    </Row>
+  </Adapter>
+  <Connect(WithFormik(CreateListFormModalContainer))
+    hideModal={[MockFunction]}
+    visibleMod={false}
+  />
+</Adapter>
+`;
+
+exports[`Component: MyList Snapshot: should match. Loading 1`] = `
+<Adapter>
+  <Adapter>
+    <Row
+      gutter={0}
+    >
+      <Col
+        offset={2}
+        span={20}
+      >
+        <div
+          className="top-margin"
+        >
+          <Title
+            level={1}
+          >
+            My Lists
+            <Icon
+              onClick={[MockFunction]}
+              type="plus-circle"
+            />
+          </Title>
+        </div>
+      </Col>
+    </Row>
+    <Row
+      gutter={8}
+      type="flex"
+    >
+      <Col
+        offset={2}
+        span={20}
+      >
+        <Spinner />
+      </Col>
+    </Row>
+  </Adapter>
+  <Connect(WithFormik(CreateListFormModalContainer))
+    hideModal={[MockFunction]}
+    visibleMod={false}
+  />
+</Adapter>
+`;

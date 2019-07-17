@@ -1,5 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Component: FormField should match its snapshot. Field name = username 1`] = `
+<FormItem
+  hasFeedback={false}
+>
+  <Input
+    disabled={false}
+    name="username"
+    prefix={
+      <Icon
+        style={
+          Object {
+            "color": "rgba(0,0,0,.25)",
+          }
+        }
+        type="user"
+      />
+    }
+    type="text"
+  />
+</FormItem>
+`;
+
+exports[`Component: FormField should match its snapshot. Field name empty 1`] = `
+<FormItem
+  hasFeedback={false}
+>
+  <Input
+    disabled={false}
+    name=""
+    prefix={
+      <Icon
+        style={
+          Object {
+            "color": "rgba(0,0,0,.25)",
+          }
+        }
+        type="lock"
+      />
+    }
+    type="text"
+  />
+</FormItem>
+`;
+
 exports[`Component: FormField should match its snapshot. Field with error 1`] = `
 <FormItem
   hasFeedback={false}

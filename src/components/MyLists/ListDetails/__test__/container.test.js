@@ -5,12 +5,15 @@ import ListDetailsContainer from '../container';
 
 describe('Container: ListDetailsContainer', () => {
   const props = {
-    getCreatedListRequest: jest.fn(),
-    getListDetailsRequest: jest.fn(),
+    match: {
+      params: {
+        id: 999,
+      },
+    },
   };
   const store = configureStore()({
     listDetails: {
-      ids: [1, 2, 3],
+      ids: [1],
       totalResults: 10,
       loading: false,
       error: false,
@@ -25,10 +28,27 @@ describe('Container: ListDetailsContainer', () => {
     },
   });
 
-  // как передать второй параметр в mstp
-  xit('Snapshot: should match', () => {
-    const wrapper = shallow(<ListDetailsContainer store={store} {...props} />);
-    const container = wrapper.dive();
+  store.dispatch = jest.fn();
+
+  const wrapper = shallow(<ListDetailsContainer store={store} {...props} />);
+  const container = wrapper.dive().dive();
+  const instance = container.instance();
+
+  it('Snapshot: should match', () => {
     expect(container).toMatchSnapshot();
+  });
+
+  it('Check call lifeCycleMethod componentDidMount. Should dispatch 2 actions', () => {
+    instance.componentDidMount();
+
+    expect(store.dispatch).toHaveBeenNthCalledWith(1, {
+      type: 'GET_CREATED_LIST_REQUEST',
+      payload: 1,
+    });
+
+    expect(store.dispatch).toHaveBeenNthCalledWith(2, {
+      type: 'GET_LIST_DETAILS_REQUEST',
+      payload: 999,
+    });
   });
 });

@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { BrowserRouter } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import TrendingMoviesConnected from '../container';
-import { fetchDataRequest } from '../../../../../../store/trendingMovies/actions';
 
 describe('TrendingMoviesContainer ', () => {
   const store = configureStore()({
@@ -17,17 +17,29 @@ describe('TrendingMoviesContainer ', () => {
   });
   store.dispatch = jest.fn();
 
-  const wrapper = shallow(<TrendingMoviesConnected store={store} />);
-  const container = wrapper.dive();
+  const wrapper = shallow(
+    <BrowserRouter>
+      <TrendingMoviesConnected store={store} />
+    </BrowserRouter>,
+  );
+  const container = wrapper
+    .dive()
+    .dive()
+    .dive()
+    .dive()
+    .dive()
+    .dive()
+    .dive();
+
   const instance = container.instance();
 
   it('Should match its snapshot', () => {
     expect(container).toMatchSnapshot();
   });
 
-  xit('Check call lifeCycleMethod componentDidMount', () => {
+  it('Check call lifeCycleMethod componentDidMount', () => {
     instance.componentDidMount();
-    expect(store.dispatch).toHaveBeenCalledWith(fetchDataRequest());
+    expect(store.dispatch).toHaveBeenCalledWith({ type: 'FETCH_REQUEST' });
   });
 
   it('Map state and dispatch to props', () => {

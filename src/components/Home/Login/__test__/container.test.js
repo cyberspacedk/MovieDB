@@ -21,20 +21,18 @@ describe('Container: LoginForm', () => {
       sessionId: '955360edb24b7e6d0179b7b4d6afdf5da2f56ada',
     },
   });
+  store.dispatch = jest.fn();
 
-  const wrapper = mount(<LoginForm store={store} {...props} />);
-  const container = wrapper.find('LoginForm');
+  const wrapper = shallow(<LoginForm store={store} {...props} />);
+
+  const container = wrapper
+    .dive()
+    .dive()
+    .dive()
+    .dive();
 
   it('Snapshot: should match', () => {
     expect(container).toMatchSnapshot();
-  });
-
-  xit('Check: map dispatch to props', () => {
-    expect(container.props().isFailAuth).toEqual(
-      expect.objectContaining({
-        isFailAuth: expect.any(Boolean),
-      }),
-    );
   });
 
   it('Check: mapPropsToValues function', () => {
@@ -49,7 +47,6 @@ describe('Container: LoginForm', () => {
   });
 
   xit('check call handlesubmit and function inside', () => {
-    const resetForm = jest.fn();
     const values = {
       username: 'name',
       password: '219fsf',
@@ -63,7 +60,6 @@ describe('Container: LoginForm', () => {
     };
     handleSubmit(values, params);
 
-    const spy = jest.spyOn(store, 'dispatch');
     expect(store.dispatch).toHaveBeenCalledWith(authRequest(values));
   });
 });

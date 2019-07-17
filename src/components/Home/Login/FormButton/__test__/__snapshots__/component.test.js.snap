@@ -15,7 +15,20 @@ exports[`Component: FormButton should match its snapshot. Active button 1`] = `
 exports[`Component: FormButton should match its snapshot. Disabled button 1`] = `
 <Button
   block={false}
-  disabled="retricted symbol"
+  disabled="restricted symbol"
+  ghost={false}
+  htmlType="submit"
+  loading={false}
+  type="primary"
+>
+  Log in
+</Button>
+`;
+
+exports[`Component: FormButton should match its snapshot. Disabled button 2`] = `
+<Button
+  block={false}
+  disabled="too short"
   ghost={false}
   htmlType="submit"
   loading={false}

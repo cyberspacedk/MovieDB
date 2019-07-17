@@ -19,10 +19,24 @@ describe('Component: FormButton', () => {
     const nextProps = {
       form: {
         errors: {
-          username: 'retricted symbol',
+          username: 'restricted symbol',
         },
         touched: {
           username: 'required',
+        },
+      },
+    };
+    const button = shallow(<FormButton {...nextProps} />);
+    expect(button).toMatchSnapshot();
+  });
+  it('should match its snapshot. Disabled button', () => {
+    const nextProps = {
+      form: {
+        errors: {
+          password: 'too short',
+        },
+        touched: {
+          password: 'required',
         },
       },
     };

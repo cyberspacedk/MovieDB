@@ -1,25 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Container: MyListsContainer Snapshot: should match 1`] = `
-<MyList
-  currentPage={2}
-  deleteListRequest={[Function]}
-  empty={false}
+exports[`Movie  container Should match its snapshot 1`] = `
+<Movie
+  aboutFilm={
+    Object {
+      "id": 1,
+    }
+  }
   error={false}
-  getCreatedListRequest={[Function]}
-  goToNextPage={[Function]}
-  hideModal={[Function]}
   loading={false}
-  myLists={
-    Array [
-      Object {
+  match={
+    Object {
+      "params": Object {
         "id": 1,
       },
-      undefined,
-      undefined,
-    ]
+    }
   }
-  showModal={[Function]}
+  singleFilmRequest={[Function]}
   store={
     Object {
       "clearActions": [Function],
@@ -28,7 +25,7 @@ exports[`Container: MyListsContainer Snapshot: should match 1`] = `
           Array [
             Object {
               "payload": 1,
-              "type": "GET_CREATED_LIST_REQUEST",
+              "type": "SINGLE_REQUEST",
             },
           ],
         ],
@@ -45,7 +42,5 @@ exports[`Container: MyListsContainer Snapshot: should match 1`] = `
       "subscribe": [Function],
     }
   }
-  totalResults={10}
-  visibleMod={false}
 />
 `;

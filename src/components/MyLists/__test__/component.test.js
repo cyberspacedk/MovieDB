@@ -20,9 +20,38 @@ describe('Component: MyList', () => {
     },
   };
 
-  const container = shallow(<MyList {...props} />);
-
   it('Snapshot: should match', () => {
+    const container = shallow(<MyList {...props} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('Snapshot: should match. Error', () => {
+    const nextProps = {
+      ...props,
+      error: true,
+    };
+    const container = shallow(<MyList {...nextProps} />);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('Snapshot: should match. Loading', () => {
+    const nextProps = {
+      ...props,
+      loading: true,
+    };
+    const container = shallow(<MyList {...nextProps} />);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('Snapshot: should match. Empty', () => {
+    const nextProps = {
+      ...props,
+      empty: true,
+    };
+    const container = shallow(<MyList {...nextProps} />);
+
     expect(container).toMatchSnapshot();
   });
 });

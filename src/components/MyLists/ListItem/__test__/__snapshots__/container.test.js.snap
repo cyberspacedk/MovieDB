@@ -1,53 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Container: ListItemContainer Snapshot: should match 1`] = `
-<Col
-  className="my-list-card"
-  lg={
+<ListItem
+  handleDeleteModal={[Function]}
+  handleListDetails={[Function]}
+  item={
     Object {
-      "span": 4,
+      "id": 1,
     }
   }
-  mg={
-    Object {
-      "span": 6,
-    }
-  }
-  sm={
-    Object {
-      "span": 8,
-    }
-  }
-  xl={
-    Object {
-      "span": 4,
-    }
-  }
-  xs={
-    Object {
-      "span": 12,
-    }
-  }
->
-  <Card
-    actions={
-      Array [
-        <Icon
-          onClick={[Function]}
-          type="delete"
-        />,
-      ]
-    }
-    className="top-margin"
-    hoverable={true}
-    onClick={[Function]}
-  >
-    <Title
-      level={4}
-    />
-    <Paragraph
-      level={4}
-    />
-  </Card>
-</Col>
+/>
 `;

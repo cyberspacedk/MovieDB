@@ -35,4 +35,26 @@ describe('Component: FormField', () => {
     const container = shallow(<FormField {...nextProps} />);
     expect(container).toMatchSnapshot();
   });
+
+  it('should match its snapshot. Field name empty', () => {
+    const nextProps = {
+      ...props,
+      field: {
+        name: '',
+      },
+    };
+    const container = shallow(<FormField {...nextProps} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should match its snapshot. Field name = username', () => {
+    const nextProps = {
+      ...props,
+      field: {
+        name: 'username',
+      },
+    };
+    const container = shallow(<FormField {...nextProps} />);
+    expect(container).toMatchSnapshot();
+  });
 });
