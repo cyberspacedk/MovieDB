@@ -11,23 +11,13 @@ describe('CreateListActionConnected ', () => {
   const props = {
     movieId: 777,
   };
+
   const wrapper = shallow(<FavoriteActionConnected store={store} {...props} />);
   const container = wrapper.dive();
   const instance = container.instance();
 
-  // const container = shallow(<FavoriteActionContainer {...props} />);
-
-  // const instanceWrapper = wrapper.instance();
-  // const instance = container.instance();
-
-  // console.log(wrapper.debug());
-  // console.log(container.debug());
-
-  // console.log(instanceWrapper);
-  // console.log(instance);
-
   it('Should match its snapshot', () => {
-    expect(container).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('Check class method. Should update state field "favoriteStatus" adn dispatch action', () => {

@@ -72,7 +72,8 @@
       "enzyme-to-json/serializer"
     ],
     "collectCoverageFrom": [
-      "<rootDir>/src/**/*.{js,jsx}"
+      "<rootDir>/src/**/*.{js,jsx}",
+      "!**/store/*.{js,jsx}"
     ]
   }
 }

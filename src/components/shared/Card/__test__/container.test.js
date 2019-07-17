@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import CardItemContainer from '../container';
 
-describe('FavoritesContainer ', () => {
+describe('CardItemContainer ', () => {
   const props = {
     item: {},
     operations: jest.fn(),
@@ -19,16 +19,16 @@ describe('FavoritesContainer ', () => {
   });
 
   it('Check is calling container method.', () => {
-    jest.spyOn(instance, 'handleShowMoreDetails');
-    instance.handleShowMoreDetails = jest.fn();
     instance.handleShowMoreDetails();
-    expect(instance.handleShowMoreDetails).toHaveBeenCalled();
+    expect(container.props().history.push).toHaveBeenCalled();
   });
 
-  it('Check is calling container method.', () => {
-    jest.spyOn(instance, 'handleRemoveWatchModal');
-    instance.handleRemoveWatchModal = jest.fn();
-    instance.handleRemoveWatchModal();
-    expect(instance.handleRemoveWatchModal).toHaveBeenCalled();
+  xit('Check is calling container method.', () => {
+    const e = { stopPropagation: jest.fn() };
+    const Modal = {
+      confirm: jest.fn(),
+    };
+    instance.handleRemoveWatchModal(e);
+    expect(Modal.confirm).toHaveBeenCalled();
   });
 });

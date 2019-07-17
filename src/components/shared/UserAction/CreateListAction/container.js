@@ -14,9 +14,9 @@ class CreateListActionContainer extends Component {
     visibleMod: false,
   };
 
-  showPopover = visible => {
+  showPopover = () => {
     this.props.getCreatedListRequest();
-    this.setState({ visiblePop: visible });
+    this.setState({ visiblePop: true });
   };
 
   hidePopover = () => this.setState({ visiblePop: false });

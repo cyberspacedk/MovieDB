@@ -6,3 +6,18 @@ exports[`Component: WatchListAction Match its snapshot. 1`] = `
   type="book"
 />
 `;
+
+exports[`Component: WatchListAction Match its snapshot. Icon doesnt filled 1`] = `
+<Icon
+  onClick={[MockFunction]}
+  type="book"
+/>
+`;
+
+exports[`Component: WatchListAction Match its snapshot. Icon filled 1`] = `
+<Icon
+  onClick={[MockFunction]}
+  theme="filled"
+  type="book"
+/>
+`;

@@ -10,8 +10,14 @@ describe('CreateListActionConnected ', () => {
   };
 
   const container = shallow(<PopoverButtonContainer {...props} />);
+  const instance = container.instance();
 
   it('Should match its snapshot', () => {
     expect(container).toMatchSnapshot();
+  });
+
+  it('Should call method handlerAddMovieToList', () => {
+    instance.handlerAddMovieToList();
+    expect(instance.props.addMovieToList).toHaveBeenCalledWith(9, 777);
   });
 });

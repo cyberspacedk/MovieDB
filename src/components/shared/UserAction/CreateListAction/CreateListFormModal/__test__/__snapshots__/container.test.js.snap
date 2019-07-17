@@ -1,27 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreateListActionConnected  Should match its snapshot 1`] = `
+exports[`CreateListActionConnected  Test container with connect Should match its snapshot 1`] = `
 <CreateListFormModal
-  handleFormCancel={[Function]}
-  handleFormSubmit={[Function]}
-  handleReset={[MockFunction]}
-  handleSubmit={[MockFunction]}
-  hideModal={[MockFunction]}
-  isSubmitting={[MockFunction]}
-  status="SUCCESS"
-/>
-`;
-
-exports[`CreateListActionConnected  Should match its snapshot. Received props from HOCs 1`] = `
-<CreateListFormModalContainer
   createListRequest={[Function]}
   dirty={false}
   errors={Object {}}
   handleBlur={[Function]}
   handleChange={[Function]}
+  handleFormCancel={[Function]}
+  handleFormSubmit={[Function]}
   handleReset={[Function]}
   handleSubmit={[Function]}
-  hideModal={[MockFunction]}
   initialValues={
     Object {
       "description": "",
@@ -69,4 +58,101 @@ exports[`CreateListActionConnected  Should match its snapshot. Received props fr
     }
   }
 />
+`;
+
+exports[`CreateListActionConnected  Test container with connect check validationSchema 1`] = `
+ObjectSchema {
+  "_blacklist": RefSet {
+    "list": Set {},
+    "refs": Map {},
+  },
+  "_conditions": Array [],
+  "_defaultDefault": [Function],
+  "_deps": Array [],
+  "_excludedEdges": Array [],
+  "_exclusive": Object {},
+  "_mutate": undefined,
+  "_nodes": Array [
+    "description",
+    "name",
+  ],
+  "_options": Object {
+    "abortEarly": true,
+    "recursive": true,
+  },
+  "_type": "object",
+  "_typeError": [Function],
+  "_whitelist": RefSet {
+    "list": Set {},
+    "refs": Map {},
+  },
+  "fields": Object {
+    "description": StringSchema {
+      "_blacklist": RefSet {
+        "list": Set {},
+        "refs": Map {},
+      },
+      "_conditions": Array [],
+      "_deps": Array [],
+      "_exclusive": Object {
+        "min": true,
+        "required": true,
+      },
+      "_mutate": undefined,
+      "_options": Object {
+        "abortEarly": true,
+        "recursive": true,
+      },
+      "_type": "string",
+      "_typeError": [Function],
+      "_whitelist": RefSet {
+        "list": Set {},
+        "refs": Map {},
+      },
+      "tests": Array [
+        [Function],
+        [Function],
+      ],
+      "transforms": Array [
+        [Function],
+      ],
+    },
+    "name": StringSchema {
+      "_blacklist": RefSet {
+        "list": Set {},
+        "refs": Map {},
+      },
+      "_conditions": Array [],
+      "_deps": Array [],
+      "_exclusive": Object {
+        "min": true,
+        "required": true,
+        "undefined": false,
+      },
+      "_mutate": undefined,
+      "_options": Object {
+        "abortEarly": true,
+        "recursive": true,
+      },
+      "_type": "string",
+      "_typeError": [Function],
+      "_whitelist": RefSet {
+        "list": Set {},
+        "refs": Map {},
+      },
+      "tests": Array [
+        [Function],
+        [Function],
+        [Function],
+      ],
+      "transforms": Array [
+        [Function],
+      ],
+    },
+  },
+  "tests": Array [],
+  "transforms": Array [
+    [Function],
+  ],
+}
 `;

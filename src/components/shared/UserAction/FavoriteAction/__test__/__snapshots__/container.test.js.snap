@@ -3,6 +3,7 @@
 exports[`CreateListActionConnected  Should match its snapshot 1`] = `
 <FavoriteActionContainer
   movieId={777}
+  operationsFavoritesRequest={[Function]}
   store={
     Object {
       "clearActions": [Function],

@@ -6,3 +6,11 @@ exports[`Component: CreateListAction Match its snapshot. 1`] = `
   type="heart"
 />
 `;
+
+exports[`Component: CreateListAction Match its snapshot. 2`] = `
+<Icon
+  onClick={[MockFunction]}
+  theme="filled"
+  type="heart"
+/>
+`;

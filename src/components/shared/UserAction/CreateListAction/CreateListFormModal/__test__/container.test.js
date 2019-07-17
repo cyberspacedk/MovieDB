@@ -1,63 +1,95 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
-
 import CreateListFormModalConnected, {
   CreateListFormModalContainer,
+  mapPropsToValues,
+  handleSubmit,
+  validationSchema,
 } from '../container';
+import { createListRequest } from '../../../../../../store/myLists/actions';
 
 describe('CreateListActionConnected ', () => {
-  const store = configureStore()({
-    myLists: {
-      ids: [1, 2, 3],
-    },
-    database: {
-      lists: { 1: {} },
-    },
-  });
-  store.dispatch = jest.fn();
+  describe('Test container with connect', () => {
+    const store = configureStore()({});
+    store.dispatch = jest.fn();
 
-  const props = {
-    hideModal: jest.fn(),
-    handleReset: jest.fn(),
-    handleSubmit: jest.fn(),
-    isSubmitting: jest.fn(),
-    status: 'SUCCESS',
-  };
+    const wrapper = shallow(<CreateListFormModalConnected store={store} />);
 
-  const wrapperConnected = shallow(
-    <CreateListFormModalConnected store={store} {...props} />,
-  );
-  const containerConnected = wrapperConnected
-    .dive()
-    .dive()
-    .dive();
+    const container = wrapper
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-  const container = shallow(<CreateListFormModalContainer {...props} />);
-  const instance = container.instance();
+    it('Should match its snapshot', () => {
+      expect(container).toMatchSnapshot();
+    });
 
-  it('Should match its snapshot. Received props from HOCs', () => {
-    expect(containerConnected).toMatchSnapshot();
-  });
+    it('check mapPropsToValues function', () => {
+      expect(mapPropsToValues()).toEqual({
+        name: '',
+        description: '',
+      });
+    });
 
-  it('Should match its snapshot', () => {
-    expect(container).toMatchSnapshot();
-  });
+    it('check validationSchema', () => {
+      expect(validationSchema).toMatchSnapshot();
+    });
 
-  it('check lifecycle method. should call handleReset and hideModal functions  ', () => {
-    instance.componentDidUpdate();
-    expect(container.props().hideModal).toHaveBeenCalled();
-    expect(container.props().handleReset).toHaveBeenCalled();
+    xit('check call handlesubmit and function inside', () => {
+      const values = {
+        name: 'list name',
+        description: 'list description',
+      };
+      const formikBag = { props: { createListRequest } };
+      handleSubmit(values, formikBag);
+      expect(store.dispatch).toHaveBeenCalledWith(createListRequest());
+    });
   });
 
-  it('should call handleReset and hideModal functions', () => {
-    instance.handleFormCancel();
-    expect(container.props().hideModal).toHaveBeenCalled();
-    expect(container.props().handleReset).toHaveBeenCalled();
-  });
+  describe('Test container without connect', () => {
+    const props = {
+      hideModal: jest.fn(),
+      handleReset: jest.fn(),
+      handleSubmit: jest.fn(),
+      isSubmitting: jest.fn(),
+      status: 'SUCCESS',
+    };
 
-  it('should call handleSubmit', () => {
-    instance.handleFormSubmit();
-    expect(container.props().handleSubmit).toHaveBeenCalled();
+    const container = shallow(<CreateListFormModalContainer {...props} />);
+    const instance = container.instance();
+
+    it('check lifecycle method. should not call handleReset and hideModal functions  ', () => {
+      const nextProps = {
+        ...props,
+        status: 'WAITING',
+      };
+      const container = shallow(
+        <CreateListFormModalContainer {...nextProps} />,
+      );
+      const instance = container.instance();
+
+      instance.componentDidUpdate();
+      expect(container.props().hideModal).not.toHaveBeenCalled();
+      expect(container.props().handleReset).not.toHaveBeenCalled();
+    });
+
+    it('check lifecycle method. should call handleReset and hideModal functions  ', () => {
+      instance.componentDidUpdate();
+      expect(container.props().hideModal).toHaveBeenCalled();
+      expect(container.props().handleReset).toHaveBeenCalled();
+    });
+
+    it('should call handleReset and hideModal functions', () => {
+      instance.handleFormCancel();
+      expect(container.props().hideModal).toHaveBeenCalled();
+      expect(container.props().handleReset).toHaveBeenCalled();
+    });
+
+    it('should call handleSubmit', () => {
+      instance.handleFormSubmit();
+      expect(container.props().handleSubmit).toHaveBeenCalled();
+    });
   });
 });

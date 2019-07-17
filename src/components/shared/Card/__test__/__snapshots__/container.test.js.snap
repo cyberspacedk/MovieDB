@@ -1,5 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CardItemContainer  Should match its snapshot 1`] = `
+<CardItem
+  handleRemoveWatchModal={[Function]}
+  handleShowMoreDetails={[Function]}
+  history={
+    Object {
+      "push": [MockFunction],
+    }
+  }
+  item={Object {}}
+  operations={[MockFunction]}
+  removeBox={false}
+/>
+`;
+
 exports[`FavoritesContainer  Should match its snapshot 1`] = `
 <CardItem
   handleRemoveWatchModal={[Function]}

@@ -24,8 +24,8 @@ describe('CreateListActionConnected ', () => {
   });
 
   it('should update state property "visiblePop" and dispatch action', () => {
-    instance.showPopover('visible');
-    expect(container.state('visiblePop')).toBe('visible');
+    instance.showPopover();
+    expect(container.state('visiblePop')).toBeTruthy();
     expect(store.dispatch).toHaveBeenNthCalledWith(1, {
       type: 'GET_CREATED_LIST_REQUEST',
       payload: 1,
