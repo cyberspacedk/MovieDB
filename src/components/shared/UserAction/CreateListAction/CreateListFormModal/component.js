@@ -8,14 +8,14 @@ const CreateListFormModal = ({
   visibleMod,
   errors,
   handleFormCancel,
-  handleFormSubmit,
+  submitForm,
 }) => (
   <Modal
     title="Create list"
     visible={visibleMod}
     okButtonProps={{ disabled: errors.name || errors.description }}
     onCancel={handleFormCancel}
-    onOk={handleFormSubmit}
+    onOk={submitForm}
   >
     <Form>
       {errors && errors.status && (
@@ -42,7 +42,7 @@ const CreateListFormModal = ({
 CreateListFormModal.propTypes = {
   visibleMod: PropTypes.bool.isRequired,
   handleFormCancel: PropTypes.func.isRequired,
-  handleFormSubmit: PropTypes.func.isRequired,
+  submitForm: PropTypes.func.isRequired,
   errors: PropTypes.shape({
     name: PropTypes.string,
     description: PropTypes.string,

@@ -11,7 +11,6 @@ exports[`Component: CreateListFormModal Match its snapshot. 1`] = `
   }
   okType="primary"
   onCancel={[MockFunction]}
-  onOk={[MockFunction]}
   title="Create list"
   transitionName="zoom"
   visible={false}
@@ -43,7 +42,6 @@ exports[`Component: CreateListFormModal Match its snapshot. Creation Error 1`] =
   }
   okType="primary"
   onCancel={[MockFunction]}
-  onOk={[MockFunction]}
   title="Create list"
   transitionName="zoom"
   visible={false}

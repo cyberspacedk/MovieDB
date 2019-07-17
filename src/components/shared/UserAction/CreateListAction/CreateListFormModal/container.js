@@ -23,17 +23,11 @@ export class CreateListFormModalContainer extends Component {
     hideModal();
   };
 
-  handleFormSubmit = () => {
-    const { handleSubmit } = this.props;
-    handleSubmit();
-  };
-
   render() {
     return (
       <CreateListFormModal
         {...this.props}
         handleFormCancel={this.handleFormCancel}
-        handleFormSubmit={this.handleFormSubmit}
       />
     );
   }
@@ -46,7 +40,6 @@ CreateListFormModalContainer.defaultProps = {
 CreateListFormModalContainer.propTypes = {
   hideModal: PropTypes.func,
   handleReset: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
   isSubmitting: PropTypes.bool.isRequired,
   status: PropTypes.string,
 };

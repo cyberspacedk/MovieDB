@@ -7,7 +7,7 @@ import CreateListFormModalConnected, {
   handleSubmit,
   validationSchema,
 } from '../container';
-import { createListRequest } from '../../../../../../store/myLists/actions';
+// import { createListRequest } from '../../../../../../store/myLists/actions';
 
 describe('CreateListActionConnected ', () => {
   describe('Test container with connect', () => {
@@ -37,14 +37,20 @@ describe('CreateListActionConnected ', () => {
       expect(validationSchema).toMatchSnapshot();
     });
 
-    xit('check call handlesubmit and function inside', () => {
+    it('check call handlesubmit and function inside', () => {
       const values = {
         name: 'list name',
         description: 'list description',
       };
+      const createListRequest = jest.fn();
       const formikBag = { props: { createListRequest } };
       handleSubmit(values, formikBag);
-      expect(store.dispatch).toHaveBeenCalledWith(createListRequest());
+
+      expect(createListRequest).toHaveBeenCalledWith(
+        values.name,
+        values.description,
+        formikBag,
+      );
     });
   });
 
@@ -85,11 +91,6 @@ describe('CreateListActionConnected ', () => {
       instance.handleFormCancel();
       expect(container.props().hideModal).toHaveBeenCalled();
       expect(container.props().handleReset).toHaveBeenCalled();
-    });
-
-    it('should call handleSubmit', () => {
-      instance.handleFormSubmit();
-      expect(container.props().handleSubmit).toHaveBeenCalled();
     });
   });
 });
