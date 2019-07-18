@@ -13,10 +13,6 @@ describe('CreateListActionConnected ', () => {
 
   const props = {
     hideModal: jest.fn(),
-    handleReset: jest.fn(),
-    handleSubmit: jest.fn(),
-    isSubmitting: jest.fn(),
-    status: 'SUCCESS',
   };
 
   const wrapper = shallow(
@@ -31,44 +27,39 @@ describe('CreateListActionConnected ', () => {
 
   const instance = container.instance();
 
+  const handleReset = jest.fn();
+  container.setProps({ handleReset });
+
+  beforeEach(() => {
+    props.hideModal.mockClear();
+    handleReset.mockClear();
+  });
+
   it('Should match its snapshot', () => {
     expect(container).toMatchSnapshot();
   });
 
   it('check lifecycle method. should call handleReset and hideModal functions  ', () => {
     instance.componentDidUpdate();
-
-    expect(container.props().hideModal).toHaveBeenCalled();
-    expect(container.props().handleReset).toHaveBeenCalled();
+    container.setProps({ status: 'SUCCESS' });
+    expect(props.hideModal).toHaveBeenCalled();
+    expect(handleReset).toHaveBeenCalled();
   });
 
   it('should call handleReset and hideModal functions', () => {
     instance.handleFormCancel();
 
-    expect(container.props().hideModal).toHaveBeenCalled();
-    expect(container.props().handleReset).toHaveBeenCalled();
+    expect(props.hideModal).toHaveBeenCalled();
+    expect(handleReset).toHaveBeenCalled();
   });
 
   it('check lifecycle method. should not call handleReset and hideModal functions  ', () => {
-    const nextProps = {
-      ...props,
-      status: 'WAITING',
-    };
-    const wrapper = shallow(
-      <CreateListFormModalConnected store={store} {...nextProps} />,
-    );
-
-    const container = wrapper
-      .dive()
-      .dive()
-      .dive()
-      .dive();
-
-    const instance = container.instance();
+    container.setProps({ status: 'WAITING' });
 
     instance.componentDidUpdate();
-    expect(container.props().hideModal).not.toHaveBeenCalled();
-    expect(container.props().handleReset).not.toHaveBeenCalled();
+
+    expect(props.hideModal).not.toHaveBeenCalled();
+    expect(handleReset).not.toHaveBeenCalled();
   });
 
   it('check mapPropsToValues function', () => {

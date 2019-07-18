@@ -9,10 +9,8 @@ exports[`Component: ListDetails Snapshot: should match 1`] = `
       },
     ]
   }
-  currentPage={0}
   empty={false}
   error={false}
-  goToNextPage={[Function]}
   history={
     Object {
       "push": [MockFunction],
@@ -22,6 +20,5 @@ exports[`Component: ListDetails Snapshot: should match 1`] = `
   operations={[MockFunction]}
   removeBox={true}
   title="Comedy"
-  totalResults={0}
 />
 `;

@@ -22,7 +22,7 @@ class Movie extends Component {
 }
 
 Movie.propTypes = {
-  aboutFilm: PropTypes.arrayOf(PropTypes.object).isRequired,
+  aboutFilm: PropTypes.shape(PropTypes.object),
   singleFilmRequest: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({

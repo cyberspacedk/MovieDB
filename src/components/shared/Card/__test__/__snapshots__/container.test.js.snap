@@ -6,25 +6,17 @@ exports[`CardItemContainer  Should match its snapshot 1`] = `
   handleShowMoreDetails={[Function]}
   history={
     Object {
+      "location": Object {
+        "pathname": "",
+      },
       "push": [MockFunction],
     }
   }
-  item={Object {}}
-  operations={[MockFunction]}
-  removeBox={false}
-/>
-`;
-
-exports[`FavoritesContainer  Should match its snapshot 1`] = `
-<CardItem
-  handleRemoveWatchModal={[Function]}
-  handleShowMoreDetails={[Function]}
-  history={
+  item={
     Object {
-      "push": [MockFunction],
+      "id": 1,
     }
   }
-  item={Object {}}
   operations={[MockFunction]}
   removeBox={false}
 />

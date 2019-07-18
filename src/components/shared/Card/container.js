@@ -9,21 +9,22 @@ class CardItemContainer extends Component {
     history.push(`/${item.id}`);
   };
 
-  handleRemoveWatchModal = e => {
-    e.stopPropagation();
+  onOk = () => {
     const { history, operations, item } = this.props;
 
+    if (history.location.pathname.includes('lists')) {
+      const listId = /[0-9]{2,}$/.exec(history.location.pathname)[0];
+      operations(listId, item.id);
+    } else {
+      operations(item.id, false);
+    }
+  };
+
+  handleRemoveWatchModal = e => {
+    e.stopPropagation();
     Modal.confirm({
       title: 'Do you want to delete movie ?',
-      onOk() {
-        if (history.location.pathname.includes('lists')) {
-          const listId = /[0-9]{2,}$/.exec(history.location.pathname)[0];
-          operations(listId, item.id);
-        } else {
-          operations(item.id, false);
-        }
-      },
-      onCancel() {},
+      onOk: this.onOk,
     });
   };
 

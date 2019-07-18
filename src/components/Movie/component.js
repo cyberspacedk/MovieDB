@@ -194,7 +194,7 @@ Movie.propTypes = {
     runtime: PropTypes.number,
     budget: PropTypes.number,
     revenue: PropTypes.number,
-  }).isRequired,
+  }),
 };
 
 export default Movie;

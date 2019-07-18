@@ -19,9 +19,6 @@ exports[`Component: Movies Snapshot: should match. Field without errors 1`] = `
     }
   }
   loading={false}
-  operations={[Function]}
-  removeBox={false}
-  title=""
   totalResults={10}
 />
 `;
