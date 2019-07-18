@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { tryAgain } from '../../../../store/authentifiction/actions';
 import FailAuth from './component';
 
-export class FailAuthContainer extends Component {
+class FailAuthContainer extends Component {
   componentDidMount() {
     const { tryAgain } = this.props;
     setTimeout(() => {

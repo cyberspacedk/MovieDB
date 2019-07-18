@@ -1,22 +1,24 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import { FailAuthContainer } from '../container';
+import FailAuthContainer from '../container';
 
-describe('Component: Home', () => {
+window.setTimeout = jest.fn().mockImplementation(fn => fn());
+
+describe('Component: FailAuth', () => {
   const store = configureStore()({});
   store.dispatch = jest.fn();
 
-  const container = shallow(<FailAuthContainer store={store} />);
+  const wrapper = shallow(<FailAuthContainer store={store} />);
+  const container = wrapper.dive();
   const instance = container.instance();
 
   it('Match its snapshot', () => {
     expect(container).toMatchSnapshot();
   });
 
-  // нет доступа к пропс у контейнера
-  xit('Check call lifeCycleMethod componentDidMount', () => {
+  it('Check call lifeCycleMethod componentDidMount', () => {
     instance.componentDidMount();
-    expect(store.dispatch).toHaveBeenCalledWith({ type: 'FETCH_REQUEST' });
+    expect(store.dispatch).toHaveBeenCalledWith({ type: 'TRY_AGAIN' });
   });
 });

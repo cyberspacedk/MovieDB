@@ -1,6 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { Modal } from 'antd';
 import ListItemContainer from '../container';
+
+const spy = jest.spyOn(Modal, 'confirm');
 
 describe('Container: ListItemContainer', () => {
   const props = {
@@ -25,16 +28,22 @@ describe('Container: ListItemContainer', () => {
     expect(props.history.push).toHaveBeenCalled();
   });
 
+  it('Check is calling method. Should call action', () => {
+    instance.onOk();
+    expect(instance.props.deleteListRequest).toHaveBeenCalledWith(1);
+  });
+
   it('Check is calling method. Should call modal window', () => {
     const e = {
       stopPropagation: jest.fn(),
     };
-    /* const Modal = {
-      confirm: jest.fn(),
-    }; */
-    instance.handleDeleteModal(e);
 
+    instance.handleDeleteModal(e);
     expect(e.stopPropagation).toHaveBeenCalled();
-    // expect(Modal.confirm).toHaveBeenCalled();
+
+    expect(spy).toHaveBeenCalledWith({
+      title: 'Do you want to delete this list?',
+      onOk: expect.any(Function),
+    });
   });
 });

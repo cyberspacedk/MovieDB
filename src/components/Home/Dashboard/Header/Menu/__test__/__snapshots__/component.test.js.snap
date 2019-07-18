@@ -11,7 +11,7 @@ exports[`Component: UserMenu Snapshot: should match 1`] = `
   <Dropdown
     mouseEnterDelay={0.15}
     mouseLeaveDelay={0.1}
-    overlay={[Function]}
+    overlay={<Overlay />}
     placement="bottomLeft"
   >
     <Text>

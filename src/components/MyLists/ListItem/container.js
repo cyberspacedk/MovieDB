@@ -9,15 +9,19 @@ class ListItemContainer extends Component {
     history.push(`/lists/${item.id}`);
   };
 
+  onOk = () => {
+    const {
+      deleteListRequest,
+      item: { id },
+    } = this.props;
+    deleteListRequest(id);
+  };
+
   handleDeleteModal = e => {
     e.stopPropagation();
-    const { deleteListRequest, item } = this.props;
     Modal.confirm({
       title: 'Do you want to delete this list?',
-      onOk() {
-        deleteListRequest(item.id);
-      },
-      onCancel() {},
+      onOk: this.onOk,
     });
   };
 
