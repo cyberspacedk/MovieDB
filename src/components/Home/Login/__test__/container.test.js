@@ -7,7 +7,6 @@ import LoginForm, {
   validationSchema,
   handleSubmit,
 } from '../container';
-import { authRequest } from '../../../../store/authentifiction/actions';
 
 describe('Container: LoginForm', () => {
   const props = {
@@ -46,20 +45,25 @@ describe('Container: LoginForm', () => {
     expect(validationSchema).toMatchSnapshot();
   });
 
-  xit('check call handlesubmit and function inside', () => {
+  it('check call handlesubmit and function inside', () => {
     const values = {
       username: 'name',
       password: '219fsf',
       rememberMe: false,
     };
+    const authRequest = jest.fn();
+    const resetForm = jest.fn();
     const params = {
       props: {
         authRequest,
       },
-      resetForm: jest.fn(),
+      resetForm,
     };
     handleSubmit(values, params);
-
-    expect(store.dispatch).toHaveBeenCalledWith(authRequest(values));
+    expect(authRequest).toHaveBeenCalledWith({
+      username: 'name',
+      password: '219fsf',
+    });
+    expect(resetForm).toHaveBeenCalled();
   });
 });
