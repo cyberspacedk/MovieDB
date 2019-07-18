@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: CreateListField Match its snapshot. 1`] = `
+<FormItem
+  hasFeedback={false}
+  help=""
+  validateStatus=""
+>
+  <Input
+    disabled={false}
+    name="name"
+    type="text"
+  />
+</FormItem>
+`;
+
+exports[`Component: CreateListField Match its snapshot. Validation errors 1`] = `
+<FormItem
+  hasFeedback={false}
+  help="required"
+  validateStatus="error"
+>
+  <Input
+    disabled={false}
+    name="name"
+    type="text"
+  />
+</FormItem>
+`;

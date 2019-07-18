@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
 import PageLayout from '../component';
 
 describe('Component: PageLayout', () => {
@@ -26,7 +25,7 @@ describe('Component: PageLayout', () => {
       array: [{ id: 1, title: 'Some title', overview: 'Some description' }],
     };
     const wrapper = shallow(<PageLayout {...nextProps} />);
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('Match its snapshot. Loading ...', () => {
@@ -35,7 +34,7 @@ describe('Component: PageLayout', () => {
       loading: true,
     };
     const wrapper = shallow(<PageLayout {...nextProps} />);
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('Match its snapshot. Error', () => {
@@ -44,7 +43,17 @@ describe('Component: PageLayout', () => {
       error: true,
     };
     const wrapper = shallow(<PageLayout {...nextProps} />);
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('Match its snapshot. Error', () => {
+    const nextProps = {
+      ...props,
+      loading: false,
+      empty: true,
+    };
+    const wrapper = shallow(<PageLayout {...nextProps} />);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('Match its snapshot. No title', () => {
@@ -53,7 +62,7 @@ describe('Component: PageLayout', () => {
       title: '',
     };
     const wrapper = shallow(<PageLayout {...nextProps} />);
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('Match its snapshot. No remove box', () => {
@@ -62,7 +71,7 @@ describe('Component: PageLayout', () => {
       removeBox: true,
     };
     const wrapper = shallow(<PageLayout {...nextProps} />);
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('Match its snapshot. With pagination', () => {
@@ -71,6 +80,6 @@ describe('Component: PageLayout', () => {
       totalResults: 55,
     };
     const wrapper = shallow(<PageLayout {...nextProps} />);
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });

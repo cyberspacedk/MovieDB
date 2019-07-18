@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Card Match its snapshot. Card without image 1`] = `
+<Col
+  lg={
+    Object {
+      "span": 6,
+    }
+  }
+  md={
+    Object {
+      "span": 8,
+    }
+  }
+  onClick={[Function]}
+  sm={
+    Object {
+      "span": 12,
+    }
+  }
+  xl={
+    Object {
+      "span": 4,
+    }
+  }
+  xs={
+    Object {
+      "span": 12,
+    }
+  }
+>
+  <Card
+    actions={
+      Array [
+        <Icon
+          onClick={[Function]}
+          type="delete"
+        />,
+      ]
+    }
+    className="top-margin card-film"
+    cover={null}
+    hoverable={true}
+  >
+    <Meta
+      description="Overview..."
+      title="Tittle"
+    />
+  </Card>
+</Col>
+`;
+
+exports[`Component: Card Match its snapshot. Card without remove box 1`] = `
+<Col
+  lg={
+    Object {
+      "span": 6,
+    }
+  }
+  md={
+    Object {
+      "span": 8,
+    }
+  }
+  onClick={[Function]}
+  sm={
+    Object {
+      "span": 12,
+    }
+  }
+  xl={
+    Object {
+      "span": 4,
+    }
+  }
+  xs={
+    Object {
+      "span": 12,
+    }
+  }
+>
+  <Card
+    actions={null}
+    className="top-margin card-film"
+    cover={
+      <img
+        alt="Tittle"
+        src="https://image.tmdb.org/t/p/w200path"
+      />
+    }
+    hoverable={true}
+  >
+    <Meta
+      description="Overview..."
+      title="Tittle"
+    />
+  </Card>
+</Col>
+`;
+
+exports[`Component: Card Match its snapshot. Item provided 1`] = `
+<Col
+  lg={
+    Object {
+      "span": 6,
+    }
+  }
+  md={
+    Object {
+      "span": 8,
+    }
+  }
+  onClick={[Function]}
+  sm={
+    Object {
+      "span": 12,
+    }
+  }
+  xl={
+    Object {
+      "span": 4,
+    }
+  }
+  xs={
+    Object {
+      "span": 12,
+    }
+  }
+>
+  <Card
+    actions={
+      Array [
+        <Icon
+          onClick={[Function]}
+          type="delete"
+        />,
+      ]
+    }
+    className="top-margin card-film"
+    cover={
+      <img
+        alt="Tittle"
+        src="https://image.tmdb.org/t/p/w200path"
+      />
+    }
+    hoverable={true}
+  >
+    <Meta
+      description="Overview..."
+      title="Tittle"
+    />
+  </Card>
+</Col>
+`;

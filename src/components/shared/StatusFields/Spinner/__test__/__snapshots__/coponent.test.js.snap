@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Spinner Match its snapshot. 1`] = `
+<Adapter>
+  <Adapter>
+    <div
+      className="top-margin"
+    >
+      <Row
+        gutter={0}
+        justify="center"
+        type="flex"
+      >
+        <Col>
+          <Spin
+            size="default"
+            spinning={true}
+            wrapperClassName=""
+          />
+        </Col>
+      </Row>
+    </div>
+  </Adapter>
+</Adapter>
+`;

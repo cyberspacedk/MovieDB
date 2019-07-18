@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WatchListContainer container should match snapshot 1`] = `
+<WatchList
+  currentPage={0}
+  empty={true}
+  error={null}
+  getWatchListRequest={[Function]}
+  goToNextPage={[Function]}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  operationsWatchListRequest={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "payload": 1,
+              "type": "GET_WATCHLIST_REQUEST",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  totalResults={0}
+  watchList={Array []}
+/>
+`;

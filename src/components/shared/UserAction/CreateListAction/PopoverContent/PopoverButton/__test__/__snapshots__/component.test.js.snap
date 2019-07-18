@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: PopoverButton Match its snapshot. 1`] = `
+<Button
+  block={false}
+  ghost={false}
+  htmlType="button"
+  loading={false}
+  onClick={[MockFunction]}
+  type="link"
+>
+  John
+</Button>
+`;

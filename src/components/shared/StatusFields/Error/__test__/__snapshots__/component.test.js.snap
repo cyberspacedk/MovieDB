@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Error Match its snapshot. 1`] = `
+<Adapter>
+  <Adapter>
+    <Row
+      gutter={0}
+      justify="center"
+      type="flex"
+    >
+      <Col
+        span={10}
+      >
+        <Alert
+          description="Hey dude smth went wrong. Try again later"
+          message="OMG"
+          showIcon={true}
+          type="error"
+        />
+      </Col>
+    </Row>
+  </Adapter>
+</Adapter>
+`;

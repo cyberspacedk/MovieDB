@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: CreateListFormModal Match its snapshot. 1`] = `
+<Modal
+  confirmLoading={false}
+  maskTransitionName="fade"
+  okButtonProps={
+    Object {
+      "disabled": undefined,
+    }
+  }
+  okType="primary"
+  onCancel={[MockFunction]}
+  title="Create list"
+  transitionName="zoom"
+  visible={false}
+  width={520}
+>
+  <Form>
+    <FormikConnect(FieldInner)
+      component={[Function]}
+      name="name"
+      placeholder="Type list name"
+    />
+    <FormikConnect(FieldInner)
+      component={[Function]}
+      name="description"
+      placeholder="Type list description"
+    />
+  </Form>
+</Modal>
+`;
+
+exports[`Component: CreateListFormModal Match its snapshot. Creation Error 1`] = `
+<Modal
+  confirmLoading={false}
+  maskTransitionName="fade"
+  okButtonProps={
+    Object {
+      "disabled": undefined,
+    }
+  }
+  okType="primary"
+  onCancel={[MockFunction]}
+  title="Create list"
+  transitionName="zoom"
+  visible={false}
+  width={520}
+>
+  <Form>
+    <Alert
+      description="FAILURE"
+      message="Fail list creation."
+      type="error"
+    />
+    <FormikConnect(FieldInner)
+      component={[Function]}
+      name="name"
+      placeholder="Type list name"
+    />
+    <FormikConnect(FieldInner)
+      component={[Function]}
+      name="description"
+      placeholder="Type list description"
+    />
+  </Form>
+</Modal>
+`;

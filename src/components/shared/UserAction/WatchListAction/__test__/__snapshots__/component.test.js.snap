@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: WatchListAction Match its snapshot. 1`] = `
+<Icon
+  onClick={[MockFunction]}
+  type="book"
+/>
+`;
+
+exports[`Component: WatchListAction Match its snapshot. Icon doesnt filled 1`] = `
+<Icon
+  onClick={[MockFunction]}
+  type="book"
+/>
+`;
+
+exports[`Component: WatchListAction Match its snapshot. Icon filled 1`] = `
+<Icon
+  onClick={[MockFunction]}
+  theme="filled"
+  type="book"
+/>
+`;

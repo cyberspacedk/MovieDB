@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: CreateListAction Match its snapshot. 1`] = `
+<Icon
+  onClick={[MockFunction]}
+  type="heart"
+/>
+`;
+
+exports[`Component: CreateListAction Match its snapshot. 2`] = `
+<Icon
+  onClick={[MockFunction]}
+  theme="filled"
+  type="heart"
+/>
+`;

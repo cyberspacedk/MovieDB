@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: PopoverContent Match its snapshot. 1`] = `
+<div>
+  <Button
+    block={false}
+    ghost={false}
+    htmlType="button"
+    loading={false}
+    onClick={[MockFunction]}
+    type="link"
+  >
+    Create new list ...
+  </Button>
+  <div>
+    <PopoverButtonContainer
+      addMovieToList={[MockFunction]}
+      item={Object {}}
+      movieId={777}
+    />
+  </div>
+</div>
+`;

@@ -44,7 +44,7 @@ CreateListAction.propTypes = {
   showDialog: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   myLists: PropTypes.arrayOf(PropTypes.object).isRequired,
-  movieId: PropTypes.number.isRequired,
+  movieId: PropTypes.number,
   addMovieToList: PropTypes.func.isRequired,
 };
 
