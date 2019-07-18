@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreateListActionConnected  Test container with connect Should match its snapshot 1`] = `
+exports[`CreateListActionConnected  Should match its snapshot 1`] = `
 <CreateListFormModal
   createListRequest={[Function]}
   dirty={false}
@@ -10,6 +10,7 @@ exports[`CreateListActionConnected  Test container with connect Should match its
   handleFormCancel={[Function]}
   handleReset={[Function]}
   handleSubmit={[Function]}
+  hideModal={[MockFunction]}
   initialValues={
     Object {
       "description": "",
@@ -59,7 +60,7 @@ exports[`CreateListActionConnected  Test container with connect Should match its
 />
 `;
 
-exports[`CreateListActionConnected  Test container with connect check validationSchema 1`] = `
+exports[`CreateListActionConnected  check validationSchema 1`] = `
 ObjectSchema {
   "_blacklist": RefSet {
     "list": Set {},

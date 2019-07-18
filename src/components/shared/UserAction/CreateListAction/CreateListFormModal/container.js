@@ -8,7 +8,7 @@ import CreateListFormModal from './component';
 import { createListRequest } from '../../../../../store/myLists/actions';
 import constant from '../../../../../helpers/constants';
 
-export class CreateListFormModalContainer extends Component {
+class CreateListFormModalContainer extends Component {
   componentDidUpdate() {
     const { status, hideModal, handleReset } = this.props;
     if (status === constant.SUCCESS) {
@@ -64,6 +64,7 @@ export const validationSchema = Yup.object().shape({
     .min(3, 'Минимум 3 символа')
     .required(),
 });
+
 const mdtp = {
   createListRequest,
 };

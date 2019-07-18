@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import WatchListAction from './component';
 import { operationsWatchListRequest } from '../../../../store/watchList/actions';
 
-export class WatchListActionContainer extends Component {
+class WatchListActionContainer extends Component {
   state = {
     watchListStatus: false,
   };
