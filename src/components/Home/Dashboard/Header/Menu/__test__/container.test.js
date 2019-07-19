@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { BrowserRouter } from 'react-router-dom';
-
 import configureStore from 'redux-mock-store';
 import MenuContainer from '../container';
 
@@ -26,9 +25,10 @@ describe('Component: Home', () => {
     .dive()
     .dive()
     .dive()
+    .dive()
     .dive();
 
-  const instance = container.dive().instance();
+  const instance = container.instance();
 
   it('Match its snapshot', () => {
     expect(container).toMatchSnapshot();
@@ -37,14 +37,5 @@ describe('Component: Home', () => {
   it('Check call method.Should dispatch action', () => {
     instance.handleLogout();
     expect(store.dispatch).toHaveBeenCalledWith({ type: 'AUTH_LOGOUT' });
-  });
-
-  it('Map state and dispatch to props', () => {
-    expect(container.props()).toEqual(
-      expect.objectContaining({
-        username: expect.any(String),
-        authLogout: expect.any(Function),
-      }),
-    );
   });
 });

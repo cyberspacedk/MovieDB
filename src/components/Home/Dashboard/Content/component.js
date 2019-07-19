@@ -4,7 +4,7 @@ import SearchPanel from './SearchPanel';
 import TrendingMovies from './TrendingMovies';
 import Movies from './Movies';
 
-export const PageContent = ({ searchResponse }) => {
+const PageContent = ({ searchResponse }) => {
   return (
     <>
       <SearchPanel />

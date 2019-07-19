@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from 'antd';
 import Card from './component';
+import { deleteContent } from '../../../helpers';
 
 class CardItemContainer extends Component {
   handleShowMoreDetails = () => {
@@ -11,13 +12,7 @@ class CardItemContainer extends Component {
 
   onOk = () => {
     const { history, operations, item } = this.props;
-
-    if (history.location.pathname.includes('lists')) {
-      const listId = /[0-9]{2,}$/.exec(history.location.pathname)[0];
-      operations(listId, item.id);
-    } else {
-      operations(item.id, false);
-    }
+    deleteContent(history, item, operations);
   };
 
   handleRemoveWatchModal = e => {

@@ -11,6 +11,15 @@ export const transformNumbers = sum =>
     .split(/(?=(?:\d{3})+$)/)
     .join(',')}.00`;
 
+export const deleteContent = (history, item, operations) => {
+  if (history.location.pathname.includes('lists')) {
+    const listId = /[0-9]{2,}$/.exec(history.location.pathname)[0];
+    operations(listId, item.id);
+  } else {
+    operations(item.id, false);
+  }
+};
+
 /* istanbul ignore next */
 export const httpClientMock = (
   { method, response, reject } = { reject: false, response: {} },

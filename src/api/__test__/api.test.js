@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 import axios from 'axios';
 import client from '../index';
@@ -12,6 +13,7 @@ jest.mock('axios', () => ({
     get: jest.fn(),
   })),
 }));
+
 describe('API config', () => {
   it('should send request - apiConfig', () => {
     expect(axios.create).toHaveBeenCalledWith({
@@ -22,16 +24,5 @@ describe('API config', () => {
         'Content-Type': 'application/json;charset=utf-8',
       },
     });
-  });
-
-  it('fetches data', async () => {
-    client.get.mockImplementationOnce(() =>
-      Promise.resolve({ data: { results: 'Ninja' } }),
-    );
-    const {
-      data: { results: film },
-    } = await client.get();
-
-    expect(film).toEqual('Ninja');
   });
 });

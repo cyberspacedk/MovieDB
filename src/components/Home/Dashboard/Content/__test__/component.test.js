@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { PageContent } from '../component';
+import PageContent from '../component';
 
 describe('Component: PageContent', () => {
   const props = {

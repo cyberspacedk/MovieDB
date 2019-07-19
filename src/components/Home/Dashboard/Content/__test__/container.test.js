@@ -1,8 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import Content from '../component';
-import { mstp } from '../container';
+import Content from '../container';
 
 describe('Component: Content', () => {
   const store = configureStore()({
@@ -14,16 +13,5 @@ describe('Component: Content', () => {
 
   it('Match its snapshot', () => {
     expect(container).toMatchSnapshot();
-  });
-
-  it('Check imported mstp function', () => {
-    const state = {
-      search: {
-        total_results: 101,
-      },
-    };
-    expect(mstp(state)).toEqual({
-      searchResponse: 101,
-    });
   });
 });
