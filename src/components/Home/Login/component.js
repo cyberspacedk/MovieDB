@@ -21,12 +21,16 @@ const LoginForm = ({ isFailAuth }) => (
               <Title>The Movie DB</Title>
               <Form>
                 <Field
+                  type="text"
                   name="username"
+                  icon="user"
                   placeholder="Username"
                   component={FormField}
                 />
                 <Field
+                  type="password"
                   name="password"
+                  icon="lock"
                   placeholder="Password"
                   component={FormField}
                 />
