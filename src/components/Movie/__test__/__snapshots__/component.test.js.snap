@@ -1,0 +1,597 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Favorites Match its snapshot. About film object provided Match its snapshot. About film object provided.Another lang 1`] = `
+<Adapter>
+  <Adapter>
+    <Row
+      gutter={0}
+      type="flex"
+    >
+      <Col
+        span={24}
+      >
+        <Carousel
+          arrows={false}
+          dots={true}
+          draggable={false}
+        >
+          <div
+            key="path"
+          >
+            <img
+              alt="Poster"
+              className="movie-image"
+              src="https://image.tmdb.org/t/p/originalpath"
+            />
+          </div>
+        </Carousel>
+      </Col>
+    </Row>
+    <div
+      className="top-margin"
+    >
+      <Row
+        gutter={0}
+      >
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Title
+            level={1}
+          >
+            Robocop
+            <Connect(CreateListActionContainer)
+              movieId={1001}
+            />
+            <Connect(FavoriteActionContainer)
+              movieId={1001}
+            />
+            <Connect(WatchListActionContainer)
+              movieId={1001}
+            />
+          </Title>
+          <Title
+            level={3}
+          >
+            Overview
+          </Title>
+          <Paragraph>
+            Dead cop kill his murders
+          </Paragraph>
+        </Col>
+      </Row>
+      <Row
+        gutter={0}
+      >
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Paragraph>
+            <span
+              className="accent-movie"
+            >
+              Original Language : 
+            </span>
+            Europian
+          </Paragraph>
+        </Col>
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Paragraph>
+            <span
+              className="accent-movie"
+            >
+              Runtime :
+            </span>
+            2 h 30 m
+          </Paragraph>
+        </Col>
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Paragraph>
+            <span
+              className="accent-movie"
+            >
+              Budget :
+            </span>
+            7,000,000.00
+          </Paragraph>
+        </Col>
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Paragraph>
+            <span
+              className="accent-movie"
+            >
+              Revenue :
+            </span>
+            90,005.00
+          </Paragraph>
+        </Col>
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Paragraph>
+            <span
+              className="accent-movie"
+            >
+              Genres :
+            </span>
+            <Tag
+              closable={false}
+              key="1"
+            >
+              ACTION
+            </Tag>
+          </Paragraph>
+        </Col>
+      </Row>
+      <Row
+        gutter={0}
+      >
+        <Col
+          className="top-margin"
+          offset={2}
+          span={10}
+        >
+          <Title
+            level={3}
+          >
+            <span
+              className="accent-movie"
+            >
+              Casts
+            </span>
+          </Title>
+        </Col>
+      </Row>
+      <Row
+        gutter={8}
+        type="flex"
+      >
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Col
+            key="1"
+            lg={
+              Object {
+                "span": 4,
+              }
+            }
+            md={
+              Object {
+                "span": 6,
+              }
+            }
+            sm={
+              Object {
+                "span": 8,
+              }
+            }
+            xl={
+              Object {
+                "span": 4,
+              }
+            }
+            xs={
+              Object {
+                "span": 12,
+              }
+            }
+          >
+            <Card
+              className="casts-card"
+              cover={
+                <img
+                  alt="Person"
+                  className="person-image"
+                  src="https://image.tmdb.org/t/p/w200path"
+                />
+              }
+            >
+              <Meta
+                description="Cop"
+                title="Bill"
+              />
+            </Card>
+          </Col>
+        </Col>
+      </Row>
+      <Row
+        gutter={0}
+      >
+        <Col
+          className="top-margin"
+          offset={2}
+          span={10}
+        >
+          <Title
+            level={3}
+          >
+            <span
+              className="accent-movie"
+            >
+              Crew
+            </span>
+          </Title>
+        </Col>
+      </Row>
+      <Row
+        gutter={8}
+        type="flex"
+      >
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Col
+            key="177"
+            lg={
+              Object {
+                "span": 4,
+              }
+            }
+            md={
+              Object {
+                "span": 6,
+              }
+            }
+            sm={
+              Object {
+                "span": 8,
+              }
+            }
+            xl={
+              Object {
+                "span": 4,
+              }
+            }
+            xs={
+              Object {
+                "span": 12,
+              }
+            }
+          >
+            <Card
+              className="casts-card"
+              cover={
+                <img
+                  alt="Person"
+                  className="person-image"
+                  src="https://image.tmdb.org/t/p/w200path"
+                />
+              }
+            >
+              <Meta
+                description="3D"
+                title="John"
+              />
+            </Card>
+          </Col>
+        </Col>
+      </Row>
+    </div>
+  </Adapter>
+  <BackTop
+    visibilityHeight={400}
+  />
+</Adapter>
+`;
+
+exports[`Component: Favorites Match its snapshot. About film object provided Should draw component that shows film data 1`] = `
+<Adapter>
+  <Adapter>
+    <Row
+      gutter={0}
+      type="flex"
+    >
+      <Col
+        span={24}
+      >
+        <Carousel
+          arrows={false}
+          dots={true}
+          draggable={false}
+        >
+          <div
+            key="path"
+          >
+            <img
+              alt="Poster"
+              className="movie-image"
+              src="https://image.tmdb.org/t/p/originalpath"
+            />
+          </div>
+        </Carousel>
+      </Col>
+    </Row>
+    <div
+      className="top-margin"
+    >
+      <Row
+        gutter={0}
+      >
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Title
+            level={1}
+          >
+            Robocop
+            <Connect(CreateListActionContainer)
+              movieId={1001}
+            />
+            <Connect(FavoriteActionContainer)
+              movieId={1001}
+            />
+            <Connect(WatchListActionContainer)
+              movieId={1001}
+            />
+          </Title>
+          <Title
+            level={3}
+          >
+            Overview
+          </Title>
+          <Paragraph>
+            Dead cop kill his murders
+          </Paragraph>
+        </Col>
+      </Row>
+      <Row
+        gutter={0}
+      >
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Paragraph>
+            <span
+              className="accent-movie"
+            >
+              Original Language : 
+            </span>
+            English
+          </Paragraph>
+        </Col>
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Paragraph>
+            <span
+              className="accent-movie"
+            >
+              Runtime :
+            </span>
+            2 h 30 m
+          </Paragraph>
+        </Col>
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Paragraph>
+            <span
+              className="accent-movie"
+            >
+              Budget :
+            </span>
+            7,000,000.00
+          </Paragraph>
+        </Col>
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Paragraph>
+            <span
+              className="accent-movie"
+            >
+              Revenue :
+            </span>
+            90,005.00
+          </Paragraph>
+        </Col>
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Paragraph>
+            <span
+              className="accent-movie"
+            >
+              Genres :
+            </span>
+            <Tag
+              closable={false}
+              key="1"
+            >
+              ACTION
+            </Tag>
+          </Paragraph>
+        </Col>
+      </Row>
+      <Row
+        gutter={0}
+      >
+        <Col
+          className="top-margin"
+          offset={2}
+          span={10}
+        >
+          <Title
+            level={3}
+          >
+            <span
+              className="accent-movie"
+            >
+              Casts
+            </span>
+          </Title>
+        </Col>
+      </Row>
+      <Row
+        gutter={8}
+        type="flex"
+      >
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Col
+            key="1"
+            lg={
+              Object {
+                "span": 4,
+              }
+            }
+            md={
+              Object {
+                "span": 6,
+              }
+            }
+            sm={
+              Object {
+                "span": 8,
+              }
+            }
+            xl={
+              Object {
+                "span": 4,
+              }
+            }
+            xs={
+              Object {
+                "span": 12,
+              }
+            }
+          >
+            <Card
+              className="casts-card"
+              cover={
+                <img
+                  alt="Person"
+                  className="person-image"
+                  src="https://image.tmdb.org/t/p/w200path"
+                />
+              }
+            >
+              <Meta
+                description="Cop"
+                title="Bill"
+              />
+            </Card>
+          </Col>
+        </Col>
+      </Row>
+      <Row
+        gutter={0}
+      >
+        <Col
+          className="top-margin"
+          offset={2}
+          span={10}
+        >
+          <Title
+            level={3}
+          >
+            <span
+              className="accent-movie"
+            >
+              Crew
+            </span>
+          </Title>
+        </Col>
+      </Row>
+      <Row
+        gutter={8}
+        type="flex"
+      >
+        <Col
+          offset={2}
+          span={20}
+        >
+          <Col
+            key="177"
+            lg={
+              Object {
+                "span": 4,
+              }
+            }
+            md={
+              Object {
+                "span": 6,
+              }
+            }
+            sm={
+              Object {
+                "span": 8,
+              }
+            }
+            xl={
+              Object {
+                "span": 4,
+              }
+            }
+            xs={
+              Object {
+                "span": 12,
+              }
+            }
+          >
+            <Card
+              className="casts-card"
+              cover={
+                <img
+                  alt="Person"
+                  className="person-image"
+                  src="https://image.tmdb.org/t/p/w200path"
+                />
+              }
+            >
+              <Meta
+                description="3D"
+                title="John"
+              />
+            </Card>
+          </Col>
+        </Col>
+      </Row>
+    </div>
+  </Adapter>
+  <BackTop
+    visibilityHeight={400}
+  />
+</Adapter>
+`;
+
+exports[`Component: Favorites Status fields. Error , Loading Match its snapshot. Error 1`] = `
+<Adapter>
+  <Error />
+  <BackTop
+    visibilityHeight={400}
+  />
+</Adapter>
+`;
+
+exports[`Component: Favorites Status fields. Error , Loading Match its snapshot. Loading 1`] = `
+<Adapter>
+  <Spinner />
+  <BackTop
+    visibilityHeight={400}
+  />
+</Adapter>
+`;

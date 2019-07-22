@@ -1,15 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TrendingMoviesContainer  Should match its snapshot 1`] = `
-<withRouter(TrendingMoviesContainer)
+<TrendingMovies
   empty={false}
   error={false}
   fetchDataRequest={[Function]}
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "createHref": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
   loading={false}
+  location={
+    Object {
+      "hash": "",
+      "pathname": "/",
+      "search": "",
+      "state": undefined,
+    }
+  }
+  match={
+    Object {
+      "isExact": true,
+      "params": Object {},
+      "path": "/",
+      "url": "/",
+    }
+  }
   store={
     Object {
       "clearActions": [Function],
-      "dispatch": [MockFunction],
+      "dispatch": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "type": "FETCH_REQUEST",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
       "getActions": [Function],
       "getState": [Function],
       "replaceReducer": [Function],

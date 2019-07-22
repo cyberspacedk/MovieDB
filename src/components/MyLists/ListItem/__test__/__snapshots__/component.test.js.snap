@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: ListItem Snapshot: should match 1`] = `
+<Col
+  className="my-list-card"
+  lg={
+    Object {
+      "span": 4,
+    }
+  }
+  mg={
+    Object {
+      "span": 6,
+    }
+  }
+  sm={
+    Object {
+      "span": 8,
+    }
+  }
+  xl={
+    Object {
+      "span": 4,
+    }
+  }
+  xs={
+    Object {
+      "span": 12,
+    }
+  }
+>
+  <Card
+    actions={
+      Array [
+        <Icon
+          onClick={[MockFunction]}
+          type="delete"
+        />,
+      ]
+    }
+    className="top-margin"
+    hoverable={true}
+    onClick={[MockFunction]}
+  >
+    <Title
+      level={4}
+    >
+      Comedy
+    </Title>
+    <Paragraph
+      level={4}
+    >
+      List Description
+    </Paragraph>
+  </Card>
+</Col>
+`;

@@ -78,18 +78,6 @@ const PageLayout = ({
   </Layout>
 );
 
-PageLayout.defaultProps = {
-  removeBox: false,
-  title: '',
-  operations: () => {},
-  totalResults: 0,
-  currentPage: 0,
-  goToNextPage: () => {},
-  history: {
-    push: () => {},
-  },
-};
-
 PageLayout.propTypes = {
   array: PropTypes.arrayOf(
     PropTypes.shape({

@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container: LoginForm Snapshot: should match 1`] = `
+<LoginForm
+  authRequest={[Function]}
+  dirty={false}
+  errors={Object {}}
+  handleBlur={[Function]}
+  handleChange={[Function]}
+  handleReset={[Function]}
+  handleSubmit={[Function]}
+  initialValues={
+    Object {
+      "password": "",
+      "username": "",
+    }
+  }
+  isSubmitting={false}
+  isValid={false}
+  isValidating={false}
+  registerField={[Function]}
+  resetForm={[Function]}
+  sessionID={true}
+  setError={[Function]}
+  setErrors={[Function]}
+  setFieldError={[Function]}
+  setFieldTouched={[Function]}
+  setFieldValue={[Function]}
+  setFormikState={[Function]}
+  setStatus={[Function]}
+  setSubmitting={[Function]}
+  setTouched={[Function]}
+  setValues={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  submitCount={0}
+  submitForm={[Function]}
+  touched={Object {}}
+  unregisterField={[Function]}
+  username="movie__watcher"
+  validateField={[Function]}
+  validateForm={[Function]}
+  validateOnBlur={true}
+  validateOnChange={true}
+  values={
+    Object {
+      "password": "",
+      "username": "",
+    }
+  }
+/>
+`;
+
+exports[`Container: LoginForm check validationSchema 1`] = `
+ObjectSchema {
+  "_blacklist": RefSet {
+    "list": Set {},
+    "refs": Map {},
+  },
+  "_conditions": Array [],
+  "_defaultDefault": [Function],
+  "_deps": Array [],
+  "_excludedEdges": Array [],
+  "_exclusive": Object {},
+  "_mutate": undefined,
+  "_nodes": Array [
+    "password",
+    "username",
+  ],
+  "_options": Object {
+    "abortEarly": true,
+    "recursive": true,
+  },
+  "_type": "object",
+  "_typeError": [Function],
+  "_whitelist": RefSet {
+    "list": Set {},
+    "refs": Map {},
+  },
+  "fields": Object {
+    "password": StringSchema {
+      "_blacklist": RefSet {
+        "list": Set {},
+        "refs": Map {},
+      },
+      "_conditions": Array [],
+      "_deps": Array [],
+      "_exclusive": Object {
+        "min": true,
+        "required": true,
+      },
+      "_mutate": undefined,
+      "_options": Object {
+        "abortEarly": true,
+        "recursive": true,
+      },
+      "_type": "string",
+      "_typeError": [Function],
+      "_whitelist": RefSet {
+        "list": Set {},
+        "refs": Map {},
+      },
+      "tests": Array [
+        [Function],
+        [Function],
+      ],
+      "transforms": Array [
+        [Function],
+      ],
+    },
+    "username": StringSchema {
+      "_blacklist": RefSet {
+        "list": Set {},
+        "refs": Map {},
+      },
+      "_conditions": Array [],
+      "_deps": Array [],
+      "_exclusive": Object {
+        "required": true,
+        "undefined": false,
+      },
+      "_mutate": undefined,
+      "_options": Object {
+        "abortEarly": true,
+        "recursive": true,
+      },
+      "_type": "string",
+      "_typeError": [Function],
+      "_whitelist": RefSet {
+        "list": Set {},
+        "refs": Map {},
+      },
+      "tests": Array [
+        [Function],
+        [Function],
+      ],
+      "transforms": Array [
+        [Function],
+      ],
+    },
+  },
+  "tests": Array [],
+  "transforms": Array [
+    [Function],
+  ],
+}
+`;

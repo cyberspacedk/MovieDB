@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: FailAuth should match its snapshot. 1`] = `
+<Adapter>
+  <Adapter>
+    <Row
+      gutter={0}
+      justify="center"
+      type="flex"
+    >
+      <Col
+        span={10}
+      >
+        <Alert
+          description="Failed authentification. Hey dude, try again.  "
+          message="ACCESS DENIED. "
+          showIcon={true}
+          type="error"
+        />
+      </Col>
+    </Row>
+  </Adapter>
+</Adapter>
+`;

@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie  container Should match its snapshot 1`] = `
+<Movie
+  aboutFilm={
+    Object {
+      "id": 1,
+    }
+  }
+  error={false}
+  loading={false}
+  match={
+    Object {
+      "params": Object {
+        "id": 1,
+      },
+    }
+  }
+  singleFilmRequest={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "payload": 1,
+              "type": "SINGLE_REQUEST",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+/>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: PageContent Snapshot: should match. Display search results 1`] = `
+<Fragment>
+  <Connect(WithFormik(SearchPanel)) />
+  <Connect(withRouter(MoviesContainer)) />
+</Fragment>
+`;
+
+exports[`Component: PageContent Snapshot: should match. Display trending 1`] = `
+<Fragment>
+  <Connect(WithFormik(SearchPanel)) />
+  <Connect(withRouter(TrendingMoviesContainer)) />
+</Fragment>
+`;

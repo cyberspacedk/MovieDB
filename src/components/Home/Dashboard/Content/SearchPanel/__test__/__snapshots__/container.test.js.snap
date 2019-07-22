@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchPanel. Ckeck imported function Should match its snapshot 1`] = `
+<SearchPanel
+  dirty={false}
+  errors={Object {}}
+  handleBlur={[Function]}
+  handleChange={[Function]}
+  handleReset={[Function]}
+  handleSubmit={[Function]}
+  initialValues={
+    Object {
+      "search": "",
+    }
+  }
+  isSubmitting={false}
+  isValid={false}
+  isValidating={false}
+  registerField={[Function]}
+  resetForm={[Function]}
+  searchRequest={[Function]}
+  setError={[Function]}
+  setErrors={[Function]}
+  setFieldError={[Function]}
+  setFieldTouched={[Function]}
+  setFieldValue={[Function]}
+  setFormikState={[Function]}
+  setStatus={[Function]}
+  setSubmitting={[Function]}
+  setTouched={[Function]}
+  setValues={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  submitCount={0}
+  submitForm={[Function]}
+  touched={Object {}}
+  unregisterField={[Function]}
+  validateField={[Function]}
+  validateForm={[Function]}
+  validateOnBlur={true}
+  validateOnChange={true}
+  values={
+    Object {
+      "search": "",
+    }
+  }
+/>
+`;
+
+exports[`SearchPanel. Ckeck imported function check validationSchema 1`] = `
+ObjectSchema {
+  "_blacklist": RefSet {
+    "list": Set {},
+    "refs": Map {},
+  },
+  "_conditions": Array [],
+  "_defaultDefault": [Function],
+  "_deps": Array [],
+  "_excludedEdges": Array [],
+  "_exclusive": Object {},
+  "_mutate": undefined,
+  "_nodes": Array [
+    "search",
+  ],
+  "_options": Object {
+    "abortEarly": true,
+    "recursive": true,
+  },
+  "_type": "object",
+  "_typeError": [Function],
+  "_whitelist": RefSet {
+    "list": Set {},
+    "refs": Map {},
+  },
+  "fields": Object {
+    "search": StringSchema {
+      "_blacklist": RefSet {
+        "list": Set {},
+        "refs": Map {},
+      },
+      "_conditions": Array [],
+      "_deps": Array [],
+      "_exclusive": Object {
+        "min": true,
+        "required": true,
+        "undefined": false,
+      },
+      "_mutate": undefined,
+      "_options": Object {
+        "abortEarly": true,
+        "recursive": true,
+      },
+      "_type": "string",
+      "_typeError": [Function],
+      "_whitelist": RefSet {
+        "list": Set {},
+        "refs": Map {},
+      },
+      "tests": Array [
+        [Function],
+        [Function],
+        [Function],
+      ],
+      "transforms": Array [
+        [Function],
+      ],
+    },
+  },
+  "tests": Array [],
+  "transforms": Array [
+    [Function],
+  ],
+}
+`;

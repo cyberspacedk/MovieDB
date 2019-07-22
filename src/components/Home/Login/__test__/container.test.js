@@ -1,17 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { configure, shallow, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { shallowToJson } from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import LoginForm, {
   mapPropsToValues,
   validationSchema,
   handleSubmit,
 } from '../container';
-import { authRequest } from '../../../../store/authentifiction/actions';
-
-configure({ adapter: new Adapter() });
 
 describe('Container: LoginForm', () => {
   const props = {
@@ -25,20 +20,18 @@ describe('Container: LoginForm', () => {
       sessionId: '955360edb24b7e6d0179b7b4d6afdf5da2f56ada',
     },
   });
+  store.dispatch = jest.fn();
 
-  const wrapper = mount(<LoginForm store={store} {...props} />);
-  const loginForm = wrapper.find('LoginForm');
+  const wrapper = shallow(<LoginForm store={store} {...props} />);
+
+  const container = wrapper
+    .dive()
+    .dive()
+    .dive()
+    .dive();
 
   it('Snapshot: should match', () => {
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('Check: map dispatch to props', () => {
-    expect(loginForm.props()).toEqual(
-      expect.objectContaining({
-        authUser: expect.any(Function),
-      }),
-    );
+    expect(container).toMatchSnapshot();
   });
 
   it('Check: mapPropsToValues function', () => {
@@ -52,27 +45,25 @@ describe('Container: LoginForm', () => {
     expect(validationSchema).toMatchSnapshot();
   });
 
-  // РАСПУТАТЬ
   it('check call handlesubmit and function inside', () => {
-    /*  const spy = jest.spyOn(handleSubmit, 'resetForm');
-    const called = handleSubmit(); */
-    const resetForm = jest.fn();
     const values = {
       username: 'name',
       password: '219fsf',
       rememberMe: false,
     };
+    const authRequest = jest.fn();
+    const resetForm = jest.fn();
     const params = {
       props: {
         authRequest,
       },
-      resetForm: jest.fn(),
+      resetForm,
     };
     handleSubmit(values, params);
-
-    mount(<LoginForm store={store} />);
-    const spy = jest.spyOn(store, 'dispatch');
-    expect(spy).toHaveBeenCalledWith(authRequest(values));
-    /* expect(handleSubmit.props()).toHaveBeenCalled(); */
+    expect(authRequest).toHaveBeenCalledWith({
+      username: 'name',
+      password: '219fsf',
+    });
+    expect(resetForm).toHaveBeenCalled();
   });
 });

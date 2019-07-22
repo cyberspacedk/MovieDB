@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container: ListDetailsContainer Snapshot: should match 1`] = `
+<ListDetails
+  deleteMovieFromListRequest={[Function]}
+  detailsList={
+    Array [
+      Object {
+        "id": 1,
+      },
+    ]
+  }
+  empty={false}
+  error={false}
+  getCreatedListRequest={[Function]}
+  getListDetailsRequest={[Function]}
+  listName=""
+  loading={false}
+  match={
+    Object {
+      "params": Object {
+        "id": 999,
+      },
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "payload": 1,
+              "type": "GET_CREATED_LIST_REQUEST",
+            },
+          ],
+          Array [
+            Object {
+              "payload": 999,
+              "type": "GET_LIST_DETAILS_REQUEST",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+/>
+`;

@@ -73,7 +73,8 @@
     ],
     "collectCoverageFrom": [
       "<rootDir>/src/**/*.{js,jsx}",
-      "!**/store/*.{js,jsx}"
+      "!**/store/*.{js,jsx}",
+      "!**/src/*.{js,jsx}"
     ]
   }
 }

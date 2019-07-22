@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Home Match its snapshot 1`] = `
+<UserMenu
+  handleLogout={[Function]}
+  username="User-1"
+/>
+`;

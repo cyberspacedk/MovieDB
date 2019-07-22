@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Header Snapshot: should match 1`] = `
+<Adapter>
+  <Row
+    gutter={0}
+    justify="space-between"
+    type="flex"
+  >
+    <Col>
+      <Text>
+        THE MOVIE DB
+      </Text>
+    </Col>
+    <Connect(withRouter(MenuContainer)) />
+  </Row>
+</Adapter>
+`;

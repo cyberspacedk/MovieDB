@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: UserMenu Snapshot: should match 1`] = `
+<Menu>
+  <MenuItem>
+    <Link
+      to="/"
+    >
+      Dashboard
+    </Link>
+  </MenuItem>
+  <Divider
+    className=""
+    disabled={true}
+    style={Object {}}
+  />
+  <MenuItem>
+    <Link
+      to="/lists"
+    >
+      My Lists
+    </Link>
+  </MenuItem>
+  <MenuItem>
+    <Link
+      to="/watchlist"
+    >
+      Watchlist
+    </Link>
+  </MenuItem>
+  <MenuItem>
+    <Link
+      to="/favorites"
+    >
+      Favorites
+    </Link>
+  </MenuItem>
+  <Divider
+    className=""
+    disabled={true}
+    style={Object {}}
+  />
+  <MenuItem
+    onClick={[MockFunction]}
+  >
+    Logout
+  </MenuItem>
+</Menu>
+`;

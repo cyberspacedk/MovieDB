@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container: ListItemContainer Snapshot: should match 1`] = `
+<ListItem
+  handleDeleteModal={[Function]}
+  handleListDetails={[Function]}
+  item={
+    Object {
+      "id": 1,
+    }
+  }
+/>
+`;

@@ -11,19 +11,14 @@ exports[`Component: TrendingMovies Match its snapshot. Array provided 1`] = `
       },
     ]
   }
-  currentPage={0}
   empty={false}
   error={false}
-  goToNextPage={[Function]}
   history={
     Object {
       "push": [Function],
     }
   }
   loading={false}
-  operations={[Function]}
-  removeBox={false}
-  title=""
   totalResults={0}
 />
 `;
@@ -31,19 +26,14 @@ exports[`Component: TrendingMovies Match its snapshot. Array provided 1`] = `
 exports[`Component: TrendingMovies Match its snapshot. Error 1`] = `
 <PageLayout
   array={Array []}
-  currentPage={0}
   empty={false}
   error={true}
-  goToNextPage={[Function]}
   history={
     Object {
       "push": [Function],
     }
   }
   loading={false}
-  operations={[Function]}
-  removeBox={false}
-  title=""
   totalResults={0}
 />
 `;
@@ -51,19 +41,14 @@ exports[`Component: TrendingMovies Match its snapshot. Error 1`] = `
 exports[`Component: TrendingMovies Match its snapshot. Loading ... 1`] = `
 <PageLayout
   array={Array []}
-  currentPage={0}
   empty={false}
   error={false}
-  goToNextPage={[Function]}
   history={
     Object {
       "push": [Function],
     }
   }
   loading={true}
-  operations={[Function]}
-  removeBox={false}
-  title=""
   totalResults={0}
 />
 `;
