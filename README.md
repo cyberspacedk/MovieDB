@@ -16,6 +16,6 @@
   - favorites list
   - watch list
 
-For successful using app, you must have TheMovieDB account.
+For using app, you must have TheMovieDB account.
 
 You can register [here](https://www.themoviedb.org/account/signup?language=ru)
