@@ -4,21 +4,23 @@ import { Icon, Input, Form } from 'antd';
 
 const { Item } = Form;
 
-const FormField = ({ field, form: { touched, errors }, ...props }) => (
+const FormField = ({
+  type,
+  name,
+  icon,
+  field,
+  form: { touched, errors },
+  ...props
+}) => (
   <Item
-    validateStatus={touched[field.name] && errors[field.name] && 'error'}
-    help={errors[field.name]}
+    validateStatus={touched[name] && errors[name] && 'error'}
+    help={errors[name]}
   >
     <Input
-      type={field.name === 'password' ? 'password' : 'text'}
+      type={type}
       {...field}
       {...props}
-      prefix={
-        <Icon
-          type={field.name === 'username' ? 'user' : 'lock'}
-          style={{ color: 'rgba(0,0,0,.25)' }}
-        />
-      }
+      prefix={<Icon type={icon} style={{ color: 'rgba(0,0,0,.25)' }} />}
     />
   </Item>
 );
@@ -29,5 +31,9 @@ FormField.propTypes = {
     touched: PropTypes.object,
     errors: PropTypes.object,
   }).isRequired,
+  type: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
+
 export default FormField;
